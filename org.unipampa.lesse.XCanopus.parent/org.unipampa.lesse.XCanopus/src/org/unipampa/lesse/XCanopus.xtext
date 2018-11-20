@@ -10,7 +10,6 @@ Model:
 	   loadGenerators+=LoadGenerator*	   
 ; 
 
-
 Include:
 	'include' importURI=STRING 'as' name=ID
 ;
@@ -19,16 +18,27 @@ Include:
 Monitoring:
 	{Monitoring}
 	'Monitoring'
-	name=EString
-	'{'
-		('projectLabel' projectLabel=EString)?
-		('projectAuthor' projectAuthor=EString)?
-		('description' description=EString)?
-		('suts' '{' suts+=SUT ( "," suts+=SUT)* '}' )?
-		('loadGenerators' loadGenerators=LoadGenerator)?
-		('monitors' monitors=Monitor)?
-		('metricModel' '{' metricModel+=MetricModel ( "," metricModel+=MetricModel)* '}' )?
-	'}';
+	 EString
+	 '{'
+	 	'Given' "that" 'SUT' EString "monitored_by" 'SUT' "monitor" 
+	 	'And'  
+	 '}'
+	;
+
+
+//Monitoring:
+//	{Monitoring}
+//	'Monitoring'
+//	name=EString
+//	'{'
+//		('projectLabel' projectLabel=EString)?
+//		('projectAuthor' projectAuthor=EString)?
+//		('description' description=EString)?
+//		('suts' '{' suts+=SUT ( "," suts+=SUT)* '}' )?
+//		('loadGenerators' loadGenerators=LoadGenerator)?
+//		('monitors' monitors=Monitor)?
+//		('metricModel' '{' metricModel+=MetricModel ( "," metricModel+=MetricModel)* '}' )?
+//	'}';
 
 
 
