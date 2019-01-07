@@ -1,8 +1,10 @@
-grammar org.unipampa.lesse.XCanopus with org.eclipse.xtext.common.Terminals
+grammar org.unipampa.lesse.XCanopus with org.eclipse.xtext.common.Terminals hidden (WS, ML_COMMENT, SL_COMMENT) 
+
 
 generate xCanopus "http://www.unipampa.org/lesse/XCanopus"
 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
 Model: 
 	   includes += Include*
 	   monitorings += Monitoring*
@@ -17,14 +19,41 @@ Include:
 
 Monitoring:
 	{Monitoring}
-	'Monitoring'
-	 EString
-	 '{'
-	 	'Given' "that" 'SUT' EString "monitored_by" 'SUT' "monitor" 
-	 	'And'  
-	 '}'
-	;
+	'Feature' Freetext '.'
+	'Monitoring:' Freetext '.'
+	 	
+	 	'Given' 'that' sut=[SUT|ID] sut_type=SUT_TYPE 'monitored by' sut=[SUT|ID] "monitor" 
+	 	condition=CONDITION  sut=[SUT|ID] "Load Generator" "for the" sut_type2=SUT_TYPE "on" sut=[SUT|ID]
+;
 
+
+// '|' choice
+// '?' optional
+// '+' 1 or more
+// '*' 0 or more
+// '+=' list of elements
+
+
+Freetext:
+	EString*
+;
+
+CONDITION: AND | WHEN | THEN // features
+;
+AND:
+	'And' post=POSTCONDITION
+;
+WHEN:
+	'When' post=POSTCONDITION
+;
+THEN:
+	'Then' post=POSTCONDITION
+;
+
+POSTCONDITION:  WGT = 'workload generated through' | THE = 'the' | ATL = 'At Least'
+	
+;
+				
 
 //Monitoring:
 //	{Monitoring}
@@ -54,12 +83,13 @@ SUT:
 	{SUT}
 	'SUT'
 	'{'
-		('hostname' hostname=EString)?
-		('ip' ip=EString)?
-		('hardware' hardware=HARDWARE)?
-		('type' type=SUT_TYPE)?
-		('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
-		('metricmodel' metricmodel=[MetricModel|EString])?
+		name=ID
+	//	('hostname' hostname=EString)?
+	//	('ip' ip=EString)?
+	//	('hardware' hardware=HARDWARE)?
+	//	('type' type=SUT_TYPE)?
+	//	('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
+	//	('metricmodel' metricmodel=[MetricModel|EString])?
 	'}';
 
 LoadGenerator:
