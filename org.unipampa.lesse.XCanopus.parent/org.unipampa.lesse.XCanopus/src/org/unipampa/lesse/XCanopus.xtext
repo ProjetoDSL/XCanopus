@@ -120,21 +120,15 @@ MetricModel:
 	'MetricModel'
 	'{'
 		('memory' memory=Memory)?
-	//	('transaction' transaction=Transaction)?
 		('disk' disk=Disk)?
 		('criteria' '{' criteria+=Criteria ( "," criteria+=Criteria)* '}' )?
 		('threshold' '{' threshold+=Threshold ( "," threshold+=Threshold)* '}' )?
-	//	('associationcountercriteriathreshold' '{' associationcountercriteriathreshold+=AssociationCounterCriteriaThreshold ( "," associationcountercriteriathreshold+=AssociationCounterCriteriaThreshold)* '}' )?
 		('diskCounter' diskCounter=Disk_IO_Counter)?
 		('transactionCounter' transactionCounter=TransactionCounter)?
 		('memoryCounter' memoryCounter=MemoryCounter)?
 		('metric' '{' metric+=Metric ( "," metric+=Metric)* '}' )?
 		('counter' '{' counter+=Counter ( "," counter+=Counter)* '}' )?
 	'}';
-
-
-
-
 
 Memory:
 	{Memory}
@@ -173,15 +167,6 @@ Threshold:
 	'{'
 		('value' value=EInt)?
 	'}';
-
-//AssociationCounterCriteriaThreshold returns canopusPerformanceMetric::AssociationCounterCriteriaThreshold:
-//	{canopusPerformanceMetric::AssociationCounterCriteriaThreshold}
-//	'AssociationCounterCriteriaThreshold'
-//	'{'
-//		('associationCriteria' associationCriteria=ASSOCIATION_CRITERIA)?
-//		('threshold' threshold=[canopusPerformanceMetric::Threshold|EString])?
-//		('criteria' criteria=[canopusPerformanceMetric::Criteria|EString])?
-//	'}';
 
 Disk_IO_Counter:
 	{Disk_IO_Counter}
@@ -224,9 +209,6 @@ enum HARDWARE:
 
 enum SUT_TYPE:
 				DESKTOPAPP = 'DESKTOPAPP' | DATABASE = 'DATABASE' | WEBAPP = 'WEBAPP' | WEBSERVICE = 'WEBSERVICE';	
-
-enum ASSOCIATION_CRITERIA:
-				BETWEEN = 'BETWEEN' | GREATER_THAN_OR_EQUAL_TO = 'GREATER_THAN_OR_EQUAL_TO' | LESS_THAN = 'LESS_THAN';
 
 enum COUNTER_DISK:
 				AVG_DISK_SECS_TRANSFER_COUNTER = 'AVG_DISK_SECS_TRANSFER_COUNTER' | PERCENTAGE_IDLE_TIME_COUNTER = 'PERCENTAGE_IDLE_TIME_COUNTER' | DISK_TRANSFERS_SEC_COUNTER = 'DISK_TRANSFERS_SEC_COUNTER' | AVG_DISK_QUEUE_LENGTH_COUNTER = 'AVG_DISK_QUEUE_LENGTH_COUNTER' | SPLIT_IO_SEC_COUNTER = 'SPLIT_IO_SEC_COUNTER' | FREE_MEGABYTES_COUNTER = 'FREE_MEGABYTES_COUNTER';
