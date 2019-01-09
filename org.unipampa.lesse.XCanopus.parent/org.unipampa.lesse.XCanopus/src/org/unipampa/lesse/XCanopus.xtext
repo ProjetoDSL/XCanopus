@@ -24,6 +24,7 @@ Monitoring:
 	 	
 	 	'Given' 'that' sut=[SUT|ID] sut_type=SUT_TYPE 'monitored by' sut=[SUT|ID] "monitor" 
 	 	condition=CONDITION  sut=[SUT|ID] "Load Generator" "for the" sut_type2=SUT_TYPE "on" sut=[SUT|ID]
+	 	condition=CONDITION*
 ;
 
 
@@ -38,10 +39,10 @@ Freetext:
 	EString*
 ;
 
-CONDITION: AND | WHEN | THEN // features
+CONDITION: AND | WHEN | THEN // features that i call steps
 ;
 AND:
-	'And' post=POSTCONDITION
+	'And' post=POSTCONDITION 
 ;
 WHEN:
 	'When' post=POSTCONDITION
@@ -50,10 +51,22 @@ THEN:
 	'Then' post=POSTCONDITION
 ;
 
-POSTCONDITION:  WGT = 'workload generated through' | THE = 'the' | ATL = 'At Least'
+POSTCONDITION:  WGT = 'workload generated through' | THE | ATL	
 	
 ;
-				
+THE:
+	'the' metricforthe=METRICFORTHE
+;
+ATL:
+	'At Least' integer=INT 
+;
+
+METRICFORTHE:  MEMORY = 'memory' | AVAILABLEMBYTESCOUNTER = 'available mbytes counter' | DISK = 'disk' | IDLETIMECOUNTER = 'idle time counter'| WEBRESOURCES = 'web resources' | THROUGHPUTMBYTES = 'throughput mbytes' | TRANSACTION = 'transaction'| TRANSACTIONPERSECOND = 'transaction per second' | PROCESSOR = 'processor' | PROCESSORTIMECOUNTER = 'processor time counter' 
+	
+;	
+
+
+
 
 //Monitoring:
 //	{Monitoring}
@@ -71,8 +84,8 @@ POSTCONDITION:  WGT = 'workload generated through' | THE = 'the' | ATL = 'At Lea
 
 
 
-Metric:
-	Memory | Disk ;  // | Transaction;
+//Metric:
+//	Memory | Disk ;  // | Transaction;
 
 Counter:
 	Disk_IO_Counter | MemoryCounter | TransactionCounter;
@@ -119,40 +132,40 @@ MetricModel:
 	{MetricModel}
 	'MetricModel'
 	'{'
-		('memory' memory=Memory)?
-		('disk' disk=Disk)?
+	//	('memory' memory=Memory)?
+	//	('disk' disk=Disk)?
 		('criteria' '{' criteria+=Criteria ( "," criteria+=Criteria)* '}' )?
 		('threshold' '{' threshold+=Threshold ( "," threshold+=Threshold)* '}' )?
 		('diskCounter' diskCounter=Disk_IO_Counter)?
 		('transactionCounter' transactionCounter=TransactionCounter)?
 		('memoryCounter' memoryCounter=MemoryCounter)?
-		('metric' '{' metric+=Metric ( "," metric+=Metric)* '}' )?
+	//	('metric' '{' metric+=Metric ( "," metric+=Metric)* '}' )?
 		('counter' '{' counter+=Counter ( "," counter+=Counter)* '}' )?
 	'}';
 
-Memory:
-	{Memory}
-	'Memory'
-	name=EString
-	'{'
-		('memoryCounter' memoryCounter=[MemoryCounter|EString])?
-	'}';
+//Memory:
+	//{Memory}
+//	'Memory'
+//	name=EString
+//	'{'
+//		('memoryCounter' memoryCounter=[MemoryCounter|EString])?
+//	'}';
+//
+//Transaction:
+//	{Transaction}
+//	'Transaction'
+//	name=EString
+//	'{'
+//		('transactionCounter' transactionCounter=[TransactionCounter|EString])?
+//	'}';
 
-Transaction:
-	{Transaction}
-	'Transaction'
-	name=EString
-	'{'
-		('transactionCounter' transactionCounter=[TransactionCounter|EString])?
-	'}';
-
-Disk:
-	{Disk}
-	'Disk'
-	name=EString
-	'{'
-		('disk_io_counter' disk_io_counter=[Disk_IO_Counter|EString])?
-	'}';
+//Disk:
+//	{Disk}
+//	'Disk'
+//	name=EString
+//	'{'
+//		('disk_io_counter' disk_io_counter=[Disk_IO_Counter|EString])?
+//	'}';
 
 Criteria:
 	{Criteria}
