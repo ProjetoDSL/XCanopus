@@ -24,7 +24,7 @@ Monitoring:
 	 	
 	 	'Given' 'that' sut=[SUT|ID] sut_type=SUT_TYPE 'monitored by' sut=[SUT|ID] "monitor" 
 	 	condition=CONDITION  sut=[SUT|ID] "Load Generator" "for the" sut_type2=SUT_TYPE "on" sut=[SUT|ID]
-	 	condition=CONDITION*
+	 	condition=CONDITION
 ;
 
 
@@ -51,19 +51,28 @@ THEN:
 	'Then' post=POSTCONDITION
 ;
 
-POSTCONDITION:  WGT = 'workload generated through' | THE | ATL	
+POSTCONDITION:  WGT | THE | ATL	
 	
+;
+WGT:
+	'workload generated through'  sut=[SUT|ID]
 ;
 THE:
 	'the' metricforthe=METRICFORTHE
 ;
 ATL:
-	'At Least' integer=INT 
+	'At Least' '"'integer=INT'"' afteratleast=AFTERATLEAST '"'integer=INT'"'
 ;
 
 METRICFORTHE:  MEMORY = 'memory' | AVAILABLEMBYTESCOUNTER = 'available mbytes counter' | DISK = 'disk' | IDLETIMECOUNTER = 'idle time counter'| WEBRESOURCES = 'web resources' | THROUGHPUTMBYTES = 'throughput mbytes' | TRANSACTION = 'transaction'| TRANSACTIONPERSECOND = 'transaction per second' | PROCESSOR = 'processor' | PROCESSORTIMECOUNTER = 'processor time counter' 
 	
 ;	
+
+AFTERATLEAST: MBWHENLESSTHAN  = 'MB when the number of virtual users is less than'| 
+			  MBWHENGREATEROREQUAL = 'MB when the number of virtual users is greater or equal to' |
+			  MBWHENGREATERTHAN = 'MB when the number of virtual user is greater than'
+;
+
 
 
 
