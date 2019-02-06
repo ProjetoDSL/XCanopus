@@ -9,7 +9,8 @@ Model:
 	   includes += Include*
 	   monitorings += Monitoring*
 	   suts += SUT*
-	   loadGenerators+=LoadGenerator*	   
+	   loadGenerators+=LoadGenerator*
+	   scenario+=SCENARIO*	   
 ; 
 
 Include:
@@ -19,12 +20,13 @@ Include:
 
 Monitoring:
 	{Monitoring}
-	'Feature' Freetext '.'
-	'Monitoring:' Freetext '.'
-	 	
-	 	'Given' 'that' sut=[SUT|ID] sut_type=SUT_TYPE 'monitored by' sut=[SUT|ID] "monitor" 
-	 	condition=CONDITION  sut=[SUT|ID] "Load Generator" "for the" sut_type2=SUT_TYPE "on" sut=[SUT|ID]
-	 	condition=CONDITION
+	'Feature:' Freetext '.'
+	'Monitoring:' Freetext '.' '{'
+	 	'Given' 'that' sut1=[SUT|ID] sut_type=SUT_TYPE 
+	 	'monitored by' sut2=[SUT|ID] 
+	 	"monitor" condition1=CONDITION "Load Generator" 
+	 	"for the" sut_type2=SUT_TYPE 
+	 	"on" sut4=[SUT|ID] condition2+=CONDITION+ '}'
 ;
 
 
@@ -34,7 +36,7 @@ Monitoring:
 // '*' 0 or more
 // '+=' list of elements
 
-
+// 0 or more strings
 Freetext:
 	EString*
 ;
@@ -58,15 +60,22 @@ WGT:
 	'workload generated through'  sut=[SUT|ID]
 ;
 THE:
-	'the' metricforthe=METRICFORTHE
+	'the' metrictype=METRICTYPE
 ;
 ATL:
-	'At Least' '"'integer=INT'"' afteratleast=AFTERATLEAST '"'integer=INT'"'
+	'At Least' integer1=INT afteratleast=AFTERATLEAST integer2=INT
 ;
 
-METRICFORTHE:  MEMORY = 'memory' | AVAILABLEMBYTESCOUNTER = 'available mbytes counter' | DISK = 'disk' | IDLETIMECOUNTER = 'idle time counter'| WEBRESOURCES = 'web resources' | THROUGHPUTMBYTES = 'throughput mbytes' | TRANSACTION = 'transaction'| TRANSACTIONPERSECOND = 'transaction per second' | PROCESSOR = 'processor' | PROCESSORTIMECOUNTER = 'processor time counter' 
+METRICTYPE:  MEMORY = 'memory' | AVAILABLEMBYTESCOUNTER = 'available mbytes counter' | DISK = 'disk' | IDLETIMECOUNTER = 'idle time counter'| WEBRESOURCES = 'web resources' | THROUGHPUTMBYTES = 'throughput mbytes' | TRANSACTION = 'transaction'| TRANSACTIONPERSECOND = 'transaction per second' | PROCESSOR = 'processor' | PROCESSORTIMECOUNTER = 'processor time counter' | scenario=[SCENARIO|ID] 
 	
-;	
+;
+
+SCENARIO:
+	'Scenario' '{'
+	name=ID
+	'}'
+;
+	
 
 AFTERATLEAST: MBWHENLESSTHAN  = 'MB when the number of virtual users is less than'| 
 			  MBWHENGREATEROREQUAL = 'MB when the number of virtual users is greater or equal to' |
