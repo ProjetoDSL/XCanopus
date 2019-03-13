@@ -66,9 +66,34 @@ ATL:
 	'At Least' integer1=INT afteratleast=AFTERATLEAST integer2=INT
 ;
 
-METRICTYPE:  MEMORY = 'memory' | AVAILABLEMBYTESCOUNTER = 'available mbytes counter' | DISK = 'disk' | IDLETIMECOUNTER = 'idle time counter'| WEBRESOURCES = 'web resources' | THROUGHPUTMBYTES = 'throughput mbytes' | TRANSACTION = 'transaction'| TRANSACTIONPERSECOND = 'transaction per second' | PROCESSOR = 'processor' | PROCESSORTIMECOUNTER = 'processor time counter' | scenario=[SCENARIO|ID] 
+METRICTYPE: MEMORY | AVAILABLEMBYTESCOUNTER | DISK | IDLETIMECOUNTER | WEBRESOURCES | THROUGHPUTMBYTES | TRANSACTION = 'transaction'| TRANSACTIONPERSECOND = 'transaction per second' | PROCESSOR = 'processor' | PROCESSORTIMECOUNTER = 'processor time counter' | scenario=[SCENARIO|ID] 
 	
 ;
+
+MEMORY:
+	'memory' 'is monitored'
+;
+DISK:
+	'disk' 'is monitored'
+;
+IDLETIMECOUNTER:
+	'% idle time counter' shouldbe=SHOULDBE INTEGER=INT
+;
+WEBRESOURCES:
+	'web resources' 'is monitored'
+;
+THROUGHPUTMBYTES:
+	'throughput mbytes' shouldbe=SHOULDBE INTEGER1=INT  aftershouldbeatleast=AFTERSHOULDBEATLEAST
+;
+
+
+
+
+AVAILABLEMBYTESCOUNTER:
+	'available mbytes counter' shouldbe=SHOULDBE integer1=INT afteratleast=AFTERATLEAST
+;
+
+
 
 SCENARIO:
 	'Scenario' '{'
@@ -79,12 +104,38 @@ SCENARIO:
 
 AFTERATLEAST: MBWHENLESSTHAN  = 'MB when the number of virtual users is less than'| 
 			  MBWHENGREATEROREQUAL = 'MB when the number of virtual users is greater or equal to' |
-			  MBWHENGREATERTHAN = 'MB when the number of virtual user is greater than'
+			  MBWHENGREATERTHAN = 'MB when the number of virtual user is greater than' 
+			  
 ;
 
 
+SHOULDBE: SHOULDBEATLEAST  | SHOULDBELESSTHAN | SHOULDBEMORETHAN
+	
+;
 
+SHOULDBEATLEAST:
+	"should be at least"
+;
+SHOULDBELESSTHAN:
+	"should be less than"
+;
+SHOULDBEMORETHAN:
+	"should be more than"
+;
 
+AFTERSHOULDBEATLEAST: WHENTHENUMBERAREBETWEEN | WHENTHENUMBERISLESSTHAN | WHENTHENUMBERISMORETHAN
+	
+;
+
+WHENTHENUMBERAREBETWEEN:
+	'when the number of virtual users are between' INTEGER1=INT 'and' INTEGER2=INT
+;
+WHENTHENUMBERISLESSTHAN:
+	'when the number of virtual users is less than' INTEGER=INT
+;	
+WHENTHENUMBERISMORETHAN:
+	'when the number of virtual users is more than' INTEGER=INT
+;
 
 //Monitoring:
 //	{Monitoring}
