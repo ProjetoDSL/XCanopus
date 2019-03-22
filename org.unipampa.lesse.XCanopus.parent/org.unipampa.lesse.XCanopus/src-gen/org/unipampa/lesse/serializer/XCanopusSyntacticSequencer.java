@@ -10,6 +10,9 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
+import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.unipampa.lesse.services.XCanopusGrammarAccess;
@@ -18,17 +21,91 @@ import org.unipampa.lesse.services.XCanopusGrammarAccess;
 public class XCanopusSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected XCanopusGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_and_atleast_MBWHEN_GREATEROREQUAL_TEXTTerminalRuleCall_3_0_or_MBWHEN_LESSTHAN_TEXTTerminalRuleCall_3_1_or_MBWHEN_MINOROREQUAL_TEXTTerminalRuleCall_3_3_or_MBWHEN_MORETHAN_TEXTTerminalRuleCall_3_2;
+	protected AbstractElementAlias match_and_the_metric_SHOULDBEATLEAST_TEXTTerminalRuleCall_3_1_or_SHOULDBEGREATERTHANTerminalRuleCall_3_2_or_SHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0;
+	protected AbstractElementAlias match_and_the_metric_WHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4_or_WHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3_or_WHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2_or_WHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1_or_WHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0;
+	protected AbstractElementAlias match_then_SHOULDBEATLEAST_TEXTTerminalRuleCall_3_1_or_SHOULDBEGREATERTHANTerminalRuleCall_3_2_or_SHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0;
+	protected AbstractElementAlias match_then_WHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4_or_WHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3_or_WHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2_or_WHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1_or_WHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XCanopusGrammarAccess) access;
+		match_and_atleast_MBWHEN_GREATEROREQUAL_TEXTTerminalRuleCall_3_0_or_MBWHEN_LESSTHAN_TEXTTerminalRuleCall_3_1_or_MBWHEN_MINOROREQUAL_TEXTTerminalRuleCall_3_3_or_MBWHEN_MORETHAN_TEXTTerminalRuleCall_3_2 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getAnd_atleastAccess().getMBWHEN_GREATEROREQUAL_TEXTTerminalRuleCall_3_0()), new TokenAlias(false, false, grammarAccess.getAnd_atleastAccess().getMBWHEN_LESSTHAN_TEXTTerminalRuleCall_3_1()), new TokenAlias(false, false, grammarAccess.getAnd_atleastAccess().getMBWHEN_MINOROREQUAL_TEXTTerminalRuleCall_3_3()), new TokenAlias(false, false, grammarAccess.getAnd_atleastAccess().getMBWHEN_MORETHAN_TEXTTerminalRuleCall_3_2()));
+		match_and_the_metric_SHOULDBEATLEAST_TEXTTerminalRuleCall_3_1_or_SHOULDBEGREATERTHANTerminalRuleCall_3_2_or_SHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getAnd_the_metricAccess().getSHOULDBEATLEAST_TEXTTerminalRuleCall_3_1()), new TokenAlias(false, false, grammarAccess.getAnd_the_metricAccess().getSHOULDBEGREATERTHANTerminalRuleCall_3_2()), new TokenAlias(false, false, grammarAccess.getAnd_the_metricAccess().getSHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0()));
+		match_and_the_metric_WHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4_or_WHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3_or_WHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2_or_WHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1_or_WHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getAnd_the_metricAccess().getWHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4()), new TokenAlias(false, false, grammarAccess.getAnd_the_metricAccess().getWHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3()), new TokenAlias(false, false, grammarAccess.getAnd_the_metricAccess().getWHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2()), new TokenAlias(false, false, grammarAccess.getAnd_the_metricAccess().getWHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1()), new TokenAlias(false, false, grammarAccess.getAnd_the_metricAccess().getWHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0()));
+		match_then_SHOULDBEATLEAST_TEXTTerminalRuleCall_3_1_or_SHOULDBEGREATERTHANTerminalRuleCall_3_2_or_SHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getThenAccess().getSHOULDBEATLEAST_TEXTTerminalRuleCall_3_1()), new TokenAlias(false, false, grammarAccess.getThenAccess().getSHOULDBEGREATERTHANTerminalRuleCall_3_2()), new TokenAlias(false, false, grammarAccess.getThenAccess().getSHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0()));
+		match_then_WHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4_or_WHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3_or_WHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2_or_WHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1_or_WHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getThenAccess().getWHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4()), new TokenAlias(false, false, grammarAccess.getThenAccess().getWHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3()), new TokenAlias(false, false, grammarAccess.getThenAccess().getWHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2()), new TokenAlias(false, false, grammarAccess.getThenAccess().getWHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1()), new TokenAlias(false, false, grammarAccess.getThenAccess().getWHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0()));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getFreetextRule())
+		if (ruleCall.getRule() == grammarAccess.getANDRule())
+			return getANDToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getATLRule())
+			return getATLToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getFreetextRule())
 			return getFreetextToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getISMONITOREDRule())
+			return getISMONITOREDToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getISTESTSCENARIORule())
+			return getISTESTSCENARIOToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getLOADGENERATORFORTHERule())
+			return getLOADGENERATORFORTHEToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getMBWHEN_GREATEROREQUAL_TEXTRule())
+			return getMBWHEN_GREATEROREQUAL_TEXTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getMBWHEN_LESSTHAN_TEXTRule())
+			return getMBWHEN_LESSTHAN_TEXTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getMBWHEN_MINOROREQUAL_TEXTRule())
+			return getMBWHEN_MINOROREQUAL_TEXTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getMBWHEN_MORETHAN_TEXTRule())
+			return getMBWHEN_MORETHAN_TEXTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getMONITOREDBYRule())
+			return getMONITOREDBYToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getMONITOR_TEXTRule())
+			return getMONITOR_TEXTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getONRule())
+			return getONToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getSHOULDBEATLEAST_TEXTRule())
+			return getSHOULDBEATLEAST_TEXTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getSHOULDBEGREATERTHANRule())
+			return getSHOULDBEGREATERTHANToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getSHOULDBELESSTHAN_TEXTRule())
+			return getSHOULDBELESSTHAN_TEXTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getTHATRule())
+			return getTHATToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getTHERule())
+			return getTHEToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getWHENTHENUMBERAREBETWEEN_TEXTRule())
+			return getWHENTHENUMBERAREBETWEEN_TEXTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getWHENTHENUMBERIRLESSEROREQUAL_TEXTRule())
+			return getWHENTHENUMBERIRLESSEROREQUAL_TEXTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getWHENTHENUMBERISGREATEROREQUAL_TEXTRule())
+			return getWHENTHENUMBERISGREATEROREQUAL_TEXTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getWHENTHENUMBERISGREATERTHAN_TEXTRule())
+			return getWHENTHENUMBERISGREATERTHAN_TEXTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getWHENTHENUMBERISLESSTHAN_TEXTRule())
+			return getWHENTHENUMBERISLESSTHAN_TEXTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getWORKLOADGENERATEDRule())
+			return getWORKLOADGENERATEDToken(semanticObject, ruleCall, node);
 		return "";
+	}
+	
+	/**
+	 * terminal AND: 'and';
+	 */
+	protected String getANDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "and";
+	}
+	
+	/**
+	 * terminal ATL:'at least';
+	 */
+	protected String getATLToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "at least";
 	}
 	
 	/**
@@ -42,14 +119,280 @@ public class XCanopusSyntacticSequencer extends AbstractSyntacticSequencer {
 		return "";
 	}
 	
+	/**
+	 * terminal ISMONITORED:'is monitored';
+	 */
+	protected String getISMONITOREDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "is monitored";
+	}
+	
+	/**
+	 * terminal ISTESTSCENARIO:'test scenario';
+	 */
+	protected String getISTESTSCENARIOToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "test scenario";
+	}
+	
+	/**
+	 * terminal LOADGENERATORFORTHE:'Load Generator for the';
+	 */
+	protected String getLOADGENERATORFORTHEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "Load Generator for the";
+	}
+	
+	/**
+	 * terminal MBWHEN_GREATEROREQUAL_TEXT:'MB when the number of virtual users is greater than or equal to';
+	 */
+	protected String getMBWHEN_GREATEROREQUAL_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "MB when the number of virtual users is greater than or equal to";
+	}
+	
+	/**
+	 * terminal MBWHEN_LESSTHAN_TEXT:'MB when the number of virtual users is less than';
+	 */
+	protected String getMBWHEN_LESSTHAN_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "MB when the number of virtual users is less than";
+	}
+	
+	/**
+	 * terminal MBWHEN_MINOROREQUAL_TEXT:'MB when the number of virtual users is lesser than or equal to';
+	 */
+	protected String getMBWHEN_MINOROREQUAL_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "MB when the number of virtual users is lesser than or equal to";
+	}
+	
+	/**
+	 * terminal MBWHEN_MORETHAN_TEXT:'MB when the number of virtual users is more than';
+	 */
+	protected String getMBWHEN_MORETHAN_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "MB when the number of virtual users is more than";
+	}
+	
+	/**
+	 * terminal MONITOREDBY:'monitored by ';
+	 */
+	protected String getMONITOREDBYToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "monitored by ";
+	}
+	
+	/**
+	 * terminal MONITOR_TEXT:'monitor';
+	 */
+	protected String getMONITOR_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "monitor";
+	}
+	
+	/**
+	 * terminal ON:'on';
+	 */
+	protected String getONToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "on";
+	}
+	
+	/**
+	 * terminal SHOULDBEATLEAST_TEXT:'should be at least';
+	 */
+	protected String getSHOULDBEATLEAST_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "should be at least";
+	}
+	
+	/**
+	 * terminal SHOULDBEGREATERTHAN:'should be more than';
+	 */
+	protected String getSHOULDBEGREATERTHANToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "should be more than";
+	}
+	
+	/**
+	 * terminal SHOULDBELESSTHAN_TEXT:'should be less than';
+	 */
+	protected String getSHOULDBELESSTHAN_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "should be less than";
+	}
+	
+	/**
+	 * terminal THAT:'that';
+	 */
+	protected String getTHATToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "that";
+	}
+	
+	/**
+	 * terminal THE:'the';
+	 */
+	protected String getTHEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "the";
+	}
+	
+	/**
+	 * terminal WHENTHENUMBERAREBETWEEN_TEXT:'when the number of virtual users are between';
+	 */
+	protected String getWHENTHENUMBERAREBETWEEN_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "when the number of virtual users are between";
+	}
+	
+	/**
+	 * terminal WHENTHENUMBERIRLESSEROREQUAL_TEXT:'when the number of virtual users is lesser or equal to';
+	 */
+	protected String getWHENTHENUMBERIRLESSEROREQUAL_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "when the number of virtual users is lesser or equal to";
+	}
+	
+	/**
+	 * terminal WHENTHENUMBERISGREATEROREQUAL_TEXT:'when the number of virtual users is greater or equal to';
+	 */
+	protected String getWHENTHENUMBERISGREATEROREQUAL_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "when the number of virtual users is greater or equal to";
+	}
+	
+	/**
+	 * terminal WHENTHENUMBERISGREATERTHAN_TEXT:'when the number of virtual users is greater than';
+	 */
+	protected String getWHENTHENUMBERISGREATERTHAN_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "when the number of virtual users is greater than";
+	}
+	
+	/**
+	 * terminal WHENTHENUMBERISLESSTHAN_TEXT:'when the number of virtual users is less than';
+	 */
+	protected String getWHENTHENUMBERISLESSTHAN_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "when the number of virtual users is less than";
+	}
+	
+	/**
+	 * terminal WORKLOADGENERATED:'workload generated through';
+	 */
+	protected String getWORKLOADGENERATEDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "workload generated through";
+	}
+	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
 		if (transition.getAmbiguousSyntaxes().isEmpty()) return;
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			acceptNodes(getLastNavigableState(), syntaxNodes);
+			if (match_and_atleast_MBWHEN_GREATEROREQUAL_TEXTTerminalRuleCall_3_0_or_MBWHEN_LESSTHAN_TEXTTerminalRuleCall_3_1_or_MBWHEN_MINOROREQUAL_TEXTTerminalRuleCall_3_3_or_MBWHEN_MORETHAN_TEXTTerminalRuleCall_3_2.equals(syntax))
+				emit_and_atleast_MBWHEN_GREATEROREQUAL_TEXTTerminalRuleCall_3_0_or_MBWHEN_LESSTHAN_TEXTTerminalRuleCall_3_1_or_MBWHEN_MINOROREQUAL_TEXTTerminalRuleCall_3_3_or_MBWHEN_MORETHAN_TEXTTerminalRuleCall_3_2(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_and_the_metric_SHOULDBEATLEAST_TEXTTerminalRuleCall_3_1_or_SHOULDBEGREATERTHANTerminalRuleCall_3_2_or_SHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0.equals(syntax))
+				emit_and_the_metric_SHOULDBEATLEAST_TEXTTerminalRuleCall_3_1_or_SHOULDBEGREATERTHANTerminalRuleCall_3_2_or_SHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_and_the_metric_WHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4_or_WHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3_or_WHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2_or_WHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1_or_WHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0.equals(syntax))
+				emit_and_the_metric_WHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4_or_WHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3_or_WHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2_or_WHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1_or_WHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_then_SHOULDBEATLEAST_TEXTTerminalRuleCall_3_1_or_SHOULDBEGREATERTHANTerminalRuleCall_3_2_or_SHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0.equals(syntax))
+				emit_then_SHOULDBEATLEAST_TEXTTerminalRuleCall_3_1_or_SHOULDBEGREATERTHANTerminalRuleCall_3_2_or_SHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_then_WHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4_or_WHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3_or_WHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2_or_WHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1_or_WHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0.equals(syntax))
+				emit_then_WHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4_or_WHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3_or_WHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2_or_WHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1_or_WHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     integer1=INT (ambiguity) integer2=INT
+	 */
+	protected void emit_and_atleast_MBWHEN_GREATEROREQUAL_TEXTTerminalRuleCall_3_0_or_MBWHEN_LESSTHAN_TEXTTerminalRuleCall_3_1_or_MBWHEN_MINOROREQUAL_TEXTTerminalRuleCall_3_3_or_MBWHEN_MORETHAN_TEXTTerminalRuleCall_3_2(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     metric=METRICTYPE (ambiguity) integer1=INT
+	 */
+	protected void emit_and_the_metric_SHOULDBEATLEAST_TEXTTerminalRuleCall_3_1_or_SHOULDBEGREATERTHANTerminalRuleCall_3_2_or_SHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (
+	  *         WHENTHENUMBERISLESSTHAN_TEXT | 
+	  *         WHENTHENUMBERISGREATERTHAN_TEXT | 
+	  *         WHENTHENUMBERISGREATEROREQUAL_TEXT | 
+	  *         WHENTHENUMBERIRLESSEROREQUAL_TEXT | 
+	  *         WHENTHENUMBERAREBETWEEN_TEXT
+	  *     )
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     integer1=INT (ambiguity) integer2=INT
+	 */
+	protected void emit_and_the_metric_WHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4_or_WHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3_or_WHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2_or_WHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1_or_WHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     metric=METRICTYPE (ambiguity) integer1=INT
+	 */
+	protected void emit_then_SHOULDBEATLEAST_TEXTTerminalRuleCall_3_1_or_SHOULDBEGREATERTHANTerminalRuleCall_3_2_or_SHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (
+	  *         WHENTHENUMBERISLESSTHAN_TEXT | 
+	  *         WHENTHENUMBERISGREATERTHAN_TEXT | 
+	  *         WHENTHENUMBERISGREATEROREQUAL_TEXT | 
+	  *         WHENTHENUMBERIRLESSEROREQUAL_TEXT | 
+	  *         WHENTHENUMBERAREBETWEEN_TEXT
+	  *     )
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     integer1=INT (ambiguity) integer2=INT
+	 */
+	protected void emit_then_WHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4_or_WHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3_or_WHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2_or_WHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1_or_WHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 }

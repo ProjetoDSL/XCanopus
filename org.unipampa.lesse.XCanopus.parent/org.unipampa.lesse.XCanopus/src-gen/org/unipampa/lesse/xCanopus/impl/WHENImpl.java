@@ -3,26 +3,57 @@
  */
 package org.unipampa.lesse.xCanopus.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 
-import org.unipampa.lesse.xCanopus.WHEN;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.unipampa.lesse.xCanopus.METRICTYPEMONITORED;
 import org.unipampa.lesse.xCanopus.XCanopusPackage;
+import org.unipampa.lesse.xCanopus.when;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>WHEN</b></em>'.
+ * An implementation of the model object '<em><b>when</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.unipampa.lesse.xCanopus.impl.whenImpl#getMetrictype <em>Metrictype</em>}</li>
+ * </ul>
  *
  * @generated
  */
-public class WHENImpl extends CONDITIONImpl implements WHEN
+public class whenImpl extends STEPSImpl implements when
 {
+  /**
+   * The default value of the '{@link #getMetrictype() <em>Metrictype</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetrictype()
+   * @generated
+   * @ordered
+   */
+  protected static final METRICTYPEMONITORED METRICTYPE_EDEFAULT = METRICTYPEMONITORED.MEMORY;
+
+  /**
+   * The cached value of the '{@link #getMetrictype() <em>Metrictype</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetrictype()
+   * @generated
+   * @ordered
+   */
+  protected METRICTYPEMONITORED metrictype = METRICTYPE_EDEFAULT;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WHENImpl()
+  protected whenImpl()
   {
     super();
   }
@@ -38,4 +69,112 @@ public class WHENImpl extends CONDITIONImpl implements WHEN
     return XCanopusPackage.Literals.WHEN;
   }
 
-} //WHENImpl
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public METRICTYPEMONITORED getMetrictype()
+  {
+    return metrictype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMetrictype(METRICTYPEMONITORED newMetrictype)
+  {
+    METRICTYPEMONITORED oldMetrictype = metrictype;
+    metrictype = newMetrictype == null ? METRICTYPE_EDEFAULT : newMetrictype;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XCanopusPackage.WHEN__METRICTYPE, oldMetrictype, metrictype));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case XCanopusPackage.WHEN__METRICTYPE:
+        return getMetrictype();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case XCanopusPackage.WHEN__METRICTYPE:
+        setMetrictype((METRICTYPEMONITORED)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case XCanopusPackage.WHEN__METRICTYPE:
+        setMetrictype(METRICTYPE_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case XCanopusPackage.WHEN__METRICTYPE:
+        return metrictype != METRICTYPE_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (metrictype: ");
+    result.append(metrictype);
+    result.append(')');
+    return result.toString();
+  }
+
+} //whenImpl

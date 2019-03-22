@@ -78,93 +78,34 @@ ruleModel returns [EObject current=null]
 }:
 	(
 		(
-			(
-				{
-					newCompositeNode(grammarAccess.getModelAccess().getIncludesIncludeParserRuleCall_0_0());
+			{
+				newCompositeNode(grammarAccess.getModelAccess().getMainMainParserRuleCall_0());
+			}
+			lv_main_0_0=ruleMain
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getModelRule());
 				}
-				lv_includes_0_0=ruleInclude
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getModelRule());
-					}
-					add(
-						$current,
-						"includes",
-						lv_includes_0_0,
-						"org.unipampa.lesse.XCanopus.Include");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)*
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getModelAccess().getMonitoringsMonitoringParserRuleCall_1_0());
-				}
-				lv_monitorings_1_0=ruleMonitoring
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getModelRule());
-					}
-					add(
-						$current,
-						"monitorings",
-						lv_monitorings_1_0,
-						"org.unipampa.lesse.XCanopus.Monitoring");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)*
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getModelAccess().getSutsSUTParserRuleCall_2_0());
-				}
-				lv_suts_2_0=ruleSUT
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getModelRule());
-					}
-					add(
-						$current,
-						"suts",
-						lv_suts_2_0,
-						"org.unipampa.lesse.XCanopus.SUT");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)*
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getModelAccess().getLoadGeneratorsLoadGeneratorParserRuleCall_3_0());
-				}
-				lv_loadGenerators_3_0=ruleLoadGenerator
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getModelRule());
-					}
-					add(
-						$current,
-						"loadGenerators",
-						lv_loadGenerators_3_0,
-						"org.unipampa.lesse.XCanopus.LoadGenerator");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)*
-	)
+				add(
+					$current,
+					"main",
+					lv_main_0_0,
+					"org.unipampa.lesse.XCanopus.Main");
+				afterParserOrEnumRuleCall();
+			}
+		)
+	)*
 ;
 
-// Entry rule entryRuleInclude
-entryRuleInclude returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getIncludeRule()); }
-	iv_ruleInclude=ruleInclude
-	{ $current=$iv_ruleInclude.current; }
+// Entry rule entryRuleMetricModel
+entryRuleMetricModel returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMetricModelRule()); }
+	iv_ruleMetricModel=ruleMetricModel
+	{ $current=$iv_ruleMetricModel.current; }
 	EOF;
 
-// Rule Include
-ruleInclude returns [EObject current=null]
+// Rule MetricModel
+ruleMetricModel returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -172,62 +113,97 @@ ruleInclude returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='include'
+		otherlv_0='Feature:'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getIncludeAccess().getIncludeKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getMetricModelAccess().getFeatureKeyword_0());
+		}
+		{
+			newCompositeNode(grammarAccess.getMetricModelAccess().getFreetextParserRuleCall_1());
+		}
+		ruleFreetext
+		{
+			afterParserOrEnumRuleCall();
+		}
+		otherlv_2='.'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getMetricModelAccess().getFullStopKeyword_2());
+		}
+		otherlv_3='Monitoring:'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getMetricModelAccess().getMonitoringKeyword_3());
 		}
 		(
 			(
-				lv_importURI_1_0=RULE_STRING
+				lv_name_4_0=RULE_ID
 				{
-					newLeafNode(lv_importURI_1_0, grammarAccess.getIncludeAccess().getImportURISTRINGTerminalRuleCall_1_0());
+					newLeafNode(lv_name_4_0, grammarAccess.getMetricModelAccess().getNameIDTerminalRuleCall_4_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getIncludeRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"importURI",
-						lv_importURI_1_0,
-						"org.unipampa.lesse.XCanopus.STRING");
-				}
-			)
-		)
-		otherlv_2='as'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getIncludeAccess().getAsKeyword_2());
-		}
-		(
-			(
-				lv_name_3_0=RULE_ID
-				{
-					newLeafNode(lv_name_3_0, grammarAccess.getIncludeAccess().getNameIDTerminalRuleCall_3_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getIncludeRule());
+						$current = createModelElement(grammarAccess.getMetricModelRule());
 					}
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_3_0,
+						lv_name_4_0,
 						"org.unipampa.lesse.XCanopus.ID");
 				}
 			)
 		)
+		otherlv_5='description'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getMetricModelAccess().getDescriptionKeyword_5());
+		}
+		{
+			newCompositeNode(grammarAccess.getMetricModelAccess().getFreetextParserRuleCall_6());
+		}
+		ruleFreetext
+		{
+			afterParserOrEnumRuleCall();
+		}
+		otherlv_7='.'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getMetricModelAccess().getFullStopKeyword_7());
+		}
+		otherlv_8='{'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getMetricModelAccess().getLeftCurlyBracketKeyword_8());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMetricModelAccess().getStepsSTEPSParserRuleCall_9_0());
+				}
+				lv_steps_9_0=ruleSTEPS
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMetricModelRule());
+					}
+					add(
+						$current,
+						"steps",
+						lv_steps_9_0,
+						"org.unipampa.lesse.XCanopus.STEPS");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+		otherlv_10='}'
+		{
+			newLeafNode(otherlv_10, grammarAccess.getMetricModelAccess().getRightCurlyBracketKeyword_10());
+		}
 	)
 ;
 
-// Entry rule entryRuleMonitoring
-entryRuleMonitoring returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getMonitoringRule()); }
-	iv_ruleMonitoring=ruleMonitoring
-	{ $current=$iv_ruleMonitoring.current; }
+// Entry rule entryRuleMain
+entryRuleMain returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMainRule()); }
+	iv_ruleMain=ruleMain
+	{ $current=$iv_ruleMain.current; }
 	EOF;
 
-// Rule Monitoring
-ruleMonitoring returns [EObject current=null]
+// Rule Main
+ruleMain returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -236,176 +212,53 @@ ruleMonitoring returns [EObject current=null]
 }:
 	(
 		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getMonitoringAccess().getMonitoringAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='Feature'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getMonitoringAccess().getFeatureKeyword_1());
-		}
-		{
-			newCompositeNode(grammarAccess.getMonitoringAccess().getFreetextParserRuleCall_2());
-		}
-		ruleFreetext
-		{
-			afterParserOrEnumRuleCall();
-		}
-		otherlv_3='.'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getMonitoringAccess().getFullStopKeyword_3());
-		}
-		otherlv_4='Monitoring:'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getMonitoringAccess().getMonitoringKeyword_4());
-		}
-		{
-			newCompositeNode(grammarAccess.getMonitoringAccess().getFreetextParserRuleCall_5());
-		}
-		ruleFreetext
-		{
-			afterParserOrEnumRuleCall();
-		}
-		otherlv_6='.'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getMonitoringAccess().getFullStopKeyword_6());
-		}
-		otherlv_7='Given'
-		{
-			newLeafNode(otherlv_7, grammarAccess.getMonitoringAccess().getGivenKeyword_7());
-		}
-		otherlv_8='that'
-		{
-			newLeafNode(otherlv_8, grammarAccess.getMonitoringAccess().getThatKeyword_8());
-		}
-		(
 			(
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getMonitoringRule());
-					}
+					newCompositeNode(grammarAccess.getMainAccess().getMainMetricModelParserRuleCall_0_0());
 				}
-				otherlv_9=RULE_ID
-				{
-					newLeafNode(otherlv_9, grammarAccess.getMonitoringAccess().getSutSUTCrossReference_9_0());
-				}
-			)
-		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getMonitoringAccess().getSut_typeSUT_TYPEEnumRuleCall_10_0());
-				}
-				lv_sut_type_10_0=ruleSUT_TYPE
+				lv_main_0_1=ruleMetricModel
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getMonitoringRule());
+						$current = createModelElementForParent(grammarAccess.getMainRule());
 					}
-					set(
+					add(
 						$current,
-						"sut_type",
-						lv_sut_type_10_0,
-						"org.unipampa.lesse.XCanopus.SUT_TYPE");
+						"main",
+						lv_main_0_1,
+						"org.unipampa.lesse.XCanopus.MetricModel");
 					afterParserOrEnumRuleCall();
 				}
-			)
-		)
-		otherlv_11='monitored by'
-		{
-			newLeafNode(otherlv_11, grammarAccess.getMonitoringAccess().getMonitoredByKeyword_11());
-		}
-		(
-			(
+				    |
+				{
+					newCompositeNode(grammarAccess.getMainAccess().getMainSCENARIOParserRuleCall_0_1());
+				}
+				lv_main_0_2=ruleSCENARIO
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getMonitoringRule());
+						$current = createModelElementForParent(grammarAccess.getMainRule());
 					}
-				}
-				otherlv_12=RULE_ID
-				{
-					newLeafNode(otherlv_12, grammarAccess.getMonitoringAccess().getSutSUTCrossReference_12_0());
-				}
-			)
-		)
-		otherlv_13='monitor'
-		{
-			newLeafNode(otherlv_13, grammarAccess.getMonitoringAccess().getMonitorKeyword_13());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getMonitoringAccess().getConditionCONDITIONParserRuleCall_14_0());
-				}
-				lv_condition_14_0=ruleCONDITION
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getMonitoringRule());
-					}
-					set(
+					add(
 						$current,
-						"condition",
-						lv_condition_14_0,
-						"org.unipampa.lesse.XCanopus.CONDITION");
+						"main",
+						lv_main_0_2,
+						"org.unipampa.lesse.XCanopus.SCENARIO");
 					afterParserOrEnumRuleCall();
 				}
-			)
-		)
-		(
-			(
+				    |
+				{
+					newCompositeNode(grammarAccess.getMainAccess().getMainSUTParserRuleCall_0_2());
+				}
+				lv_main_0_3=ruleSUT
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getMonitoringRule());
+						$current = createModelElementForParent(grammarAccess.getMainRule());
 					}
-				}
-				otherlv_15=RULE_ID
-				{
-					newLeafNode(otherlv_15, grammarAccess.getMonitoringAccess().getSutSUTCrossReference_15_0());
-				}
-			)
-		)
-		otherlv_16='Load Generator'
-		{
-			newLeafNode(otherlv_16, grammarAccess.getMonitoringAccess().getLoadGeneratorKeyword_16());
-		}
-		otherlv_17='for the'
-		{
-			newLeafNode(otherlv_17, grammarAccess.getMonitoringAccess().getForTheKeyword_17());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getMonitoringAccess().getSut_type2SUT_TYPEEnumRuleCall_18_0());
-				}
-				lv_sut_type2_18_0=ruleSUT_TYPE
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getMonitoringRule());
-					}
-					set(
+					add(
 						$current,
-						"sut_type2",
-						lv_sut_type2_18_0,
-						"org.unipampa.lesse.XCanopus.SUT_TYPE");
+						"main",
+						lv_main_0_3,
+						"org.unipampa.lesse.XCanopus.SUT");
 					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_19='on'
-		{
-			newLeafNode(otherlv_19, grammarAccess.getMonitoringAccess().getOnKeyword_19());
-		}
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getMonitoringRule());
-					}
-				}
-				otherlv_20=RULE_ID
-				{
-					newLeafNode(otherlv_20, grammarAccess.getMonitoringAccess().getSutSUTCrossReference_20_0());
 				}
 			)
 		)
@@ -441,15 +294,15 @@ ruleFreetext returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
 	)*
 ;
 
-// Entry rule entryRuleCONDITION
-entryRuleCONDITION returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getCONDITIONRule()); }
-	iv_ruleCONDITION=ruleCONDITION
-	{ $current=$iv_ruleCONDITION.current; }
+// Entry rule entryRuleSTEPS
+entryRuleSTEPS returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSTEPSRule()); }
+	iv_ruleSTEPS=ruleSTEPS
+	{ $current=$iv_ruleSTEPS.current; }
 	EOF;
 
-// Rule CONDITION
-ruleCONDITION returns [EObject current=null]
+// Rule STEPS
+ruleSTEPS returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -458,43 +311,79 @@ ruleCONDITION returns [EObject current=null]
 }:
 	(
 		{
-			newCompositeNode(grammarAccess.getCONDITIONAccess().getANDParserRuleCall_0());
+			newCompositeNode(grammarAccess.getSTEPSAccess().getGivenParserRuleCall_0());
 		}
-		this_AND_0=ruleAND
+		this_given_0=rulegiven
 		{
-			$current = $this_AND_0.current;
+			$current = $this_given_0.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getCONDITIONAccess().getWHENParserRuleCall_1());
+			newCompositeNode(grammarAccess.getSTEPSAccess().getWhenParserRuleCall_1());
 		}
-		this_WHEN_1=ruleWHEN
+		this_when_1=rulewhen
 		{
-			$current = $this_WHEN_1.current;
+			$current = $this_when_1.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getCONDITIONAccess().getTHENParserRuleCall_2());
+			newCompositeNode(grammarAccess.getSTEPSAccess().getThenParserRuleCall_2());
 		}
-		this_THEN_2=ruleTHEN
+		this_then_2=rulethen
 		{
-			$current = $this_THEN_2.current;
+			$current = $this_then_2.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getSTEPSAccess().getAnd_workloadParserRuleCall_3());
+		}
+		this_and_workload_3=ruleand_workload
+		{
+			$current = $this_and_workload_3.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getSTEPSAccess().getAnd_atleastParserRuleCall_4());
+		}
+		this_and_atleast_4=ruleand_atleast
+		{
+			$current = $this_and_atleast_4.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getSTEPSAccess().getAnd_the_scenarioParserRuleCall_5());
+		}
+		this_and_the_scenario_5=ruleand_the_scenario
+		{
+			$current = $this_and_the_scenario_5.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getSTEPSAccess().getAnd_the_metricParserRuleCall_6());
+		}
+		this_and_the_metric_6=ruleand_the_metric
+		{
+			$current = $this_and_the_metric_6.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
 ;
 
-// Entry rule entryRuleAND
-entryRuleAND returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getANDRule()); }
-	iv_ruleAND=ruleAND
-	{ $current=$iv_ruleAND.current; }
+// Entry rule entryRuleand_workload
+entryRuleand_workload returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAnd_workloadRule()); }
+	iv_ruleand_workload=ruleand_workload
+	{ $current=$iv_ruleand_workload.current; }
 	EOF;
 
-// Rule AND
-ruleAND returns [EObject current=null]
+// Rule and_workload
+ruleand_workload returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -504,39 +393,353 @@ ruleAND returns [EObject current=null]
 	(
 		otherlv_0='And'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getANDAccess().getAndKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getAnd_workloadAccess().getAndKeyword_0());
+		}
+		this_WORKLOADGENERATED_1=RULE_WORKLOADGENERATED
+		{
+			newLeafNode(this_WORKLOADGENERATED_1, grammarAccess.getAnd_workloadAccess().getWORKLOADGENERATEDTerminalRuleCall_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getANDAccess().getPostPOSTCONDITIONParserRuleCall_1_0());
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAnd_workloadRule());
+					}
 				}
-				lv_post_1_0=rulePOSTCONDITION
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getAnd_workloadAccess().getSut1SUTCrossReference_2_0());
+				}
+			)
+		)
+		this_LOADGENERATORFORTHE_3=RULE_LOADGENERATORFORTHE
+		{
+			newLeafNode(this_LOADGENERATORFORTHE_3, grammarAccess.getAnd_workloadAccess().getLOADGENERATORFORTHETerminalRuleCall_3());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAnd_workloadAccess().getSuttypeSUT_TYPEEnumRuleCall_4_0());
+				}
+				lv_suttype_4_0=ruleSUT_TYPE
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getANDRule());
+						$current = createModelElementForParent(grammarAccess.getAnd_workloadRule());
 					}
 					set(
 						$current,
-						"post",
-						lv_post_1_0,
-						"org.unipampa.lesse.XCanopus.POSTCONDITION");
+						"suttype",
+						lv_suttype_4_0,
+						"org.unipampa.lesse.XCanopus.SUT_TYPE");
 					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		this_ON_5=RULE_ON
+		{
+			newLeafNode(this_ON_5, grammarAccess.getAnd_workloadAccess().getONTerminalRuleCall_5());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAnd_workloadRule());
+					}
+				}
+				otherlv_6=RULE_ID
+				{
+					newLeafNode(otherlv_6, grammarAccess.getAnd_workloadAccess().getSut2SUTCrossReference_6_0());
 				}
 			)
 		)
 	)
 ;
 
-// Entry rule entryRuleWHEN
-entryRuleWHEN returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getWHENRule()); }
-	iv_ruleWHEN=ruleWHEN
-	{ $current=$iv_ruleWHEN.current; }
+// Entry rule entryRuleand_the_scenario
+entryRuleand_the_scenario returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAnd_the_scenarioRule()); }
+	iv_ruleand_the_scenario=ruleand_the_scenario
+	{ $current=$iv_ruleand_the_scenario.current; }
 	EOF;
 
-// Rule WHEN
-ruleWHEN returns [EObject current=null]
+// Rule and_the_scenario
+ruleand_the_scenario returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='And'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getAnd_the_scenarioAccess().getAndKeyword_0());
+		}
+		this_THE_1=RULE_THE
+		{
+			newLeafNode(this_THE_1, grammarAccess.getAnd_the_scenarioAccess().getTHETerminalRuleCall_1());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAnd_the_scenarioRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getAnd_the_scenarioAccess().getScenarioSCENARIOCrossReference_2_0());
+				}
+			)
+		)
+		this_ISTESTSCENARIO_3=RULE_ISTESTSCENARIO
+		{
+			newLeafNode(this_ISTESTSCENARIO_3, grammarAccess.getAnd_the_scenarioAccess().getISTESTSCENARIOTerminalRuleCall_3());
+		}
+	)
+;
+
+// Entry rule entryRuleand_atleast
+entryRuleand_atleast returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAnd_atleastRule()); }
+	iv_ruleand_atleast=ruleand_atleast
+	{ $current=$iv_ruleand_atleast.current; }
+	EOF;
+
+// Rule and_atleast
+ruleand_atleast returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='And'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getAnd_atleastAccess().getAndKeyword_0());
+		}
+		this_ATL_1=RULE_ATL
+		{
+			newLeafNode(this_ATL_1, grammarAccess.getAnd_atleastAccess().getATLTerminalRuleCall_1());
+		}
+		(
+			(
+				lv_integer1_2_0=RULE_INT
+				{
+					newLeafNode(lv_integer1_2_0, grammarAccess.getAnd_atleastAccess().getInteger1INTTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAnd_atleastRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"integer1",
+						lv_integer1_2_0,
+						"org.unipampa.lesse.XCanopus.INT");
+				}
+			)
+		)
+		(
+			this_MBWHEN_GREATEROREQUAL_TEXT_3=RULE_MBWHEN_GREATEROREQUAL_TEXT
+			{
+				newLeafNode(this_MBWHEN_GREATEROREQUAL_TEXT_3, grammarAccess.getAnd_atleastAccess().getMBWHEN_GREATEROREQUAL_TEXTTerminalRuleCall_3_0());
+			}
+			    |
+			this_MBWHEN_LESSTHAN_TEXT_4=RULE_MBWHEN_LESSTHAN_TEXT
+			{
+				newLeafNode(this_MBWHEN_LESSTHAN_TEXT_4, grammarAccess.getAnd_atleastAccess().getMBWHEN_LESSTHAN_TEXTTerminalRuleCall_3_1());
+			}
+			    |
+			this_MBWHEN_MORETHAN_TEXT_5=RULE_MBWHEN_MORETHAN_TEXT
+			{
+				newLeafNode(this_MBWHEN_MORETHAN_TEXT_5, grammarAccess.getAnd_atleastAccess().getMBWHEN_MORETHAN_TEXTTerminalRuleCall_3_2());
+			}
+			    |
+			this_MBWHEN_MINOROREQUAL_TEXT_6=RULE_MBWHEN_MINOROREQUAL_TEXT
+			{
+				newLeafNode(this_MBWHEN_MINOROREQUAL_TEXT_6, grammarAccess.getAnd_atleastAccess().getMBWHEN_MINOROREQUAL_TEXTTerminalRuleCall_3_3());
+			}
+		)
+		(
+			(
+				lv_integer2_7_0=RULE_INT
+				{
+					newLeafNode(lv_integer2_7_0, grammarAccess.getAnd_atleastAccess().getInteger2INTTerminalRuleCall_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAnd_atleastRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"integer2",
+						lv_integer2_7_0,
+						"org.unipampa.lesse.XCanopus.INT");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleand_the_metric
+entryRuleand_the_metric returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAnd_the_metricRule()); }
+	iv_ruleand_the_metric=ruleand_the_metric
+	{ $current=$iv_ruleand_the_metric.current; }
+	EOF;
+
+// Rule and_the_metric
+ruleand_the_metric returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='And'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getAnd_the_metricAccess().getAndKeyword_0());
+		}
+		this_THE_1=RULE_THE
+		{
+			newLeafNode(this_THE_1, grammarAccess.getAnd_the_metricAccess().getTHETerminalRuleCall_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAnd_the_metricAccess().getMetricMETRICTYPEEnumRuleCall_2_0());
+				}
+				lv_metric_2_0=ruleMETRICTYPE
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAnd_the_metricRule());
+					}
+					set(
+						$current,
+						"metric",
+						lv_metric_2_0,
+						"org.unipampa.lesse.XCanopus.METRICTYPE");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			this_SHOULDBELESSTHAN_TEXT_3=RULE_SHOULDBELESSTHAN_TEXT
+			{
+				newLeafNode(this_SHOULDBELESSTHAN_TEXT_3, grammarAccess.getAnd_the_metricAccess().getSHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0());
+			}
+			    |
+			this_SHOULDBEATLEAST_TEXT_4=RULE_SHOULDBEATLEAST_TEXT
+			{
+				newLeafNode(this_SHOULDBEATLEAST_TEXT_4, grammarAccess.getAnd_the_metricAccess().getSHOULDBEATLEAST_TEXTTerminalRuleCall_3_1());
+			}
+			    |
+			this_SHOULDBEGREATERTHAN_5=RULE_SHOULDBEGREATERTHAN
+			{
+				newLeafNode(this_SHOULDBEGREATERTHAN_5, grammarAccess.getAnd_the_metricAccess().getSHOULDBEGREATERTHANTerminalRuleCall_3_2());
+			}
+		)
+		(
+			(
+				lv_integer1_6_0=RULE_INT
+				{
+					newLeafNode(lv_integer1_6_0, grammarAccess.getAnd_the_metricAccess().getInteger1INTTerminalRuleCall_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAnd_the_metricRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"integer1",
+						lv_integer1_6_0,
+						"org.unipampa.lesse.XCanopus.INT");
+				}
+			)
+		)
+		(
+			this_WHENTHENUMBERISLESSTHAN_TEXT_7=RULE_WHENTHENUMBERISLESSTHAN_TEXT
+			{
+				newLeafNode(this_WHENTHENUMBERISLESSTHAN_TEXT_7, grammarAccess.getAnd_the_metricAccess().getWHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0());
+			}
+			    |
+			this_WHENTHENUMBERISGREATERTHAN_TEXT_8=RULE_WHENTHENUMBERISGREATERTHAN_TEXT
+			{
+				newLeafNode(this_WHENTHENUMBERISGREATERTHAN_TEXT_8, grammarAccess.getAnd_the_metricAccess().getWHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1());
+			}
+			    |
+			this_WHENTHENUMBERISGREATEROREQUAL_TEXT_9=RULE_WHENTHENUMBERISGREATEROREQUAL_TEXT
+			{
+				newLeafNode(this_WHENTHENUMBERISGREATEROREQUAL_TEXT_9, grammarAccess.getAnd_the_metricAccess().getWHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2());
+			}
+			    |
+			this_WHENTHENUMBERIRLESSEROREQUAL_TEXT_10=RULE_WHENTHENUMBERIRLESSEROREQUAL_TEXT
+			{
+				newLeafNode(this_WHENTHENUMBERIRLESSEROREQUAL_TEXT_10, grammarAccess.getAnd_the_metricAccess().getWHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3());
+			}
+			    |
+			this_WHENTHENUMBERAREBETWEEN_TEXT_11=RULE_WHENTHENUMBERAREBETWEEN_TEXT
+			{
+				newLeafNode(this_WHENTHENUMBERAREBETWEEN_TEXT_11, grammarAccess.getAnd_the_metricAccess().getWHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4());
+			}
+		)
+		(
+			(
+				lv_integer2_12_0=RULE_INT
+				{
+					newLeafNode(lv_integer2_12_0, grammarAccess.getAnd_the_metricAccess().getInteger2INTTerminalRuleCall_6_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAnd_the_metricRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"integer2",
+						lv_integer2_12_0,
+						"org.unipampa.lesse.XCanopus.INT");
+				}
+			)
+		)
+		(
+			this_AND_13=RULE_AND
+			{
+				newLeafNode(this_AND_13, grammarAccess.getAnd_the_metricAccess().getANDTerminalRuleCall_7_0());
+			}
+			(
+				(
+					lv_integer3_14_0=RULE_INT
+					{
+						newLeafNode(lv_integer3_14_0, grammarAccess.getAnd_the_metricAccess().getInteger3INTTerminalRuleCall_7_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAnd_the_metricRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"integer3",
+							lv_integer3_14_0,
+							"org.unipampa.lesse.XCanopus.INT");
+					}
+				)
+			)
+		)?
+	)
+;
+
+// Entry rule entryRulewhen
+entryRulewhen returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getWhenRule()); }
+	iv_rulewhen=rulewhen
+	{ $current=$iv_rulewhen.current; }
+	EOF;
+
+// Rule when
+rulewhen returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -546,39 +749,47 @@ ruleWHEN returns [EObject current=null]
 	(
 		otherlv_0='When'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getWHENAccess().getWhenKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getWhenAccess().getWhenKeyword_0());
+		}
+		this_THE_1=RULE_THE
+		{
+			newLeafNode(this_THE_1, grammarAccess.getWhenAccess().getTHETerminalRuleCall_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getWHENAccess().getPostPOSTCONDITIONParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getWhenAccess().getMetrictypeMETRICTYPEMONITOREDEnumRuleCall_2_0());
 				}
-				lv_post_1_0=rulePOSTCONDITION
+				lv_metrictype_2_0=ruleMETRICTYPEMONITORED
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getWHENRule());
+						$current = createModelElementForParent(grammarAccess.getWhenRule());
 					}
 					set(
 						$current,
-						"post",
-						lv_post_1_0,
-						"org.unipampa.lesse.XCanopus.POSTCONDITION");
+						"metrictype",
+						lv_metrictype_2_0,
+						"org.unipampa.lesse.XCanopus.METRICTYPEMONITORED");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+		this_ISMONITORED_3=RULE_ISMONITORED
+		{
+			newLeafNode(this_ISMONITORED_3, grammarAccess.getWhenAccess().getISMONITOREDTerminalRuleCall_3());
+		}
 	)
 ;
 
-// Entry rule entryRuleTHEN
-entryRuleTHEN returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getTHENRule()); }
-	iv_ruleTHEN=ruleTHEN
-	{ $current=$iv_ruleTHEN.current; }
+// Entry rule entryRulethen
+entryRulethen returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getThenRule()); }
+	iv_rulethen=rulethen
+	{ $current=$iv_rulethen.current; }
 	EOF;
 
-// Rule THEN
-ruleTHEN returns [EObject current=null]
+// Rule then
+rulethen returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -588,39 +799,145 @@ ruleTHEN returns [EObject current=null]
 	(
 		otherlv_0='Then'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getTHENAccess().getThenKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getThenAccess().getThenKeyword_0());
+		}
+		this_THE_1=RULE_THE
+		{
+			newLeafNode(this_THE_1, grammarAccess.getThenAccess().getTHETerminalRuleCall_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getTHENAccess().getPostPOSTCONDITIONParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getThenAccess().getMetricMETRICTYPEEnumRuleCall_2_0());
 				}
-				lv_post_1_0=rulePOSTCONDITION
+				lv_metric_2_0=ruleMETRICTYPE
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getTHENRule());
+						$current = createModelElementForParent(grammarAccess.getThenRule());
 					}
 					set(
 						$current,
-						"post",
-						lv_post_1_0,
-						"org.unipampa.lesse.XCanopus.POSTCONDITION");
+						"metric",
+						lv_metric_2_0,
+						"org.unipampa.lesse.XCanopus.METRICTYPE");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+		(
+			this_SHOULDBELESSTHAN_TEXT_3=RULE_SHOULDBELESSTHAN_TEXT
+			{
+				newLeafNode(this_SHOULDBELESSTHAN_TEXT_3, grammarAccess.getThenAccess().getSHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0());
+			}
+			    |
+			this_SHOULDBEATLEAST_TEXT_4=RULE_SHOULDBEATLEAST_TEXT
+			{
+				newLeafNode(this_SHOULDBEATLEAST_TEXT_4, grammarAccess.getThenAccess().getSHOULDBEATLEAST_TEXTTerminalRuleCall_3_1());
+			}
+			    |
+			this_SHOULDBEGREATERTHAN_5=RULE_SHOULDBEGREATERTHAN
+			{
+				newLeafNode(this_SHOULDBEGREATERTHAN_5, grammarAccess.getThenAccess().getSHOULDBEGREATERTHANTerminalRuleCall_3_2());
+			}
+		)
+		(
+			(
+				lv_integer1_6_0=RULE_INT
+				{
+					newLeafNode(lv_integer1_6_0, grammarAccess.getThenAccess().getInteger1INTTerminalRuleCall_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getThenRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"integer1",
+						lv_integer1_6_0,
+						"org.unipampa.lesse.XCanopus.INT");
+				}
+			)
+		)
+		(
+			this_WHENTHENUMBERISLESSTHAN_TEXT_7=RULE_WHENTHENUMBERISLESSTHAN_TEXT
+			{
+				newLeafNode(this_WHENTHENUMBERISLESSTHAN_TEXT_7, grammarAccess.getThenAccess().getWHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0());
+			}
+			    |
+			this_WHENTHENUMBERISGREATERTHAN_TEXT_8=RULE_WHENTHENUMBERISGREATERTHAN_TEXT
+			{
+				newLeafNode(this_WHENTHENUMBERISGREATERTHAN_TEXT_8, grammarAccess.getThenAccess().getWHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1());
+			}
+			    |
+			this_WHENTHENUMBERISGREATEROREQUAL_TEXT_9=RULE_WHENTHENUMBERISGREATEROREQUAL_TEXT
+			{
+				newLeafNode(this_WHENTHENUMBERISGREATEROREQUAL_TEXT_9, grammarAccess.getThenAccess().getWHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2());
+			}
+			    |
+			this_WHENTHENUMBERIRLESSEROREQUAL_TEXT_10=RULE_WHENTHENUMBERIRLESSEROREQUAL_TEXT
+			{
+				newLeafNode(this_WHENTHENUMBERIRLESSEROREQUAL_TEXT_10, grammarAccess.getThenAccess().getWHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3());
+			}
+			    |
+			this_WHENTHENUMBERAREBETWEEN_TEXT_11=RULE_WHENTHENUMBERAREBETWEEN_TEXT
+			{
+				newLeafNode(this_WHENTHENUMBERAREBETWEEN_TEXT_11, grammarAccess.getThenAccess().getWHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4());
+			}
+		)
+		(
+			(
+				lv_integer2_12_0=RULE_INT
+				{
+					newLeafNode(lv_integer2_12_0, grammarAccess.getThenAccess().getInteger2INTTerminalRuleCall_6_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getThenRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"integer2",
+						lv_integer2_12_0,
+						"org.unipampa.lesse.XCanopus.INT");
+				}
+			)
+		)
+		(
+			this_AND_13=RULE_AND
+			{
+				newLeafNode(this_AND_13, grammarAccess.getThenAccess().getANDTerminalRuleCall_7_0());
+			}
+			(
+				(
+					lv_integer3_14_0=RULE_INT
+					{
+						newLeafNode(lv_integer3_14_0, grammarAccess.getThenAccess().getInteger3INTTerminalRuleCall_7_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getThenRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"integer3",
+							lv_integer3_14_0,
+							"org.unipampa.lesse.XCanopus.INT");
+					}
+				)
+			)
+		)?
 	)
 ;
 
-// Entry rule entryRulePOSTCONDITION
-entryRulePOSTCONDITION returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getPOSTCONDITIONRule()); }
-	iv_rulePOSTCONDITION=rulePOSTCONDITION
-	{ $current=$iv_rulePOSTCONDITION.current; }
+// Entry rule entryRulegiven
+entryRulegiven returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getGivenRule()); }
+	iv_rulegiven=rulegiven
+	{ $current=$iv_rulegiven.current; }
 	EOF;
 
-// Rule POSTCONDITION
-rulePOSTCONDITION returns [EObject current=null]
+// Rule given
+rulegiven returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -628,62 +945,79 @@ rulePOSTCONDITION returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0='Given'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getGivenAccess().getGivenKeyword_0());
+		}
+		this_THAT_1=RULE_THAT
+		{
+			newLeafNode(this_THAT_1, grammarAccess.getGivenAccess().getTHATTerminalRuleCall_1());
+		}
 		(
 			(
-				lv_WGT_0_0='workload generated through'
-				{
-					newLeafNode(lv_WGT_0_0, grammarAccess.getPOSTCONDITIONAccess().getWGTWorkloadGeneratedThroughKeyword_0_0());
-				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getPOSTCONDITIONRule());
+						$current = createModelElement(grammarAccess.getGivenRule());
 					}
-					setWithLastConsumed($current, "WGT", lv_WGT_0_0, "workload generated through");
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getGivenAccess().getSut1SUTCrossReference_2_0());
 				}
 			)
 		)
-		    |
 		(
 			(
-				lv_THE_1_0='the'
 				{
-					newLeafNode(lv_THE_1_0, grammarAccess.getPOSTCONDITIONAccess().getTHETheKeyword_1_0());
+					newCompositeNode(grammarAccess.getGivenAccess().getSuttypeSUT_TYPEEnumRuleCall_3_0());
 				}
+				lv_suttype_3_0=ruleSUT_TYPE
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getPOSTCONDITIONRule());
+						$current = createModelElementForParent(grammarAccess.getGivenRule());
 					}
-					setWithLastConsumed($current, "THE", lv_THE_1_0, "the");
+					set(
+						$current,
+						"suttype",
+						lv_suttype_3_0,
+						"org.unipampa.lesse.XCanopus.SUT_TYPE");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		    |
+		this_MONITOREDBY_4=RULE_MONITOREDBY
+		{
+			newLeafNode(this_MONITOREDBY_4, grammarAccess.getGivenAccess().getMONITOREDBYTerminalRuleCall_4());
+		}
 		(
 			(
-				lv_ATL_2_0='At Least'
-				{
-					newLeafNode(lv_ATL_2_0, grammarAccess.getPOSTCONDITIONAccess().getATLAtLeastKeyword_2_0());
-				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getPOSTCONDITIONRule());
+						$current = createModelElement(grammarAccess.getGivenRule());
 					}
-					setWithLastConsumed($current, "ATL", lv_ATL_2_0, "At Least");
+				}
+				otherlv_5=RULE_ID
+				{
+					newLeafNode(otherlv_5, grammarAccess.getGivenAccess().getSut2SUTCrossReference_5_0());
 				}
 			)
 		)
+		this_MONITOR_TEXT_6=RULE_MONITOR_TEXT
+		{
+			newLeafNode(this_MONITOR_TEXT_6, grammarAccess.getGivenAccess().getMONITOR_TEXTTerminalRuleCall_6());
+		}
 	)
 ;
 
-// Entry rule entryRuleMetric
-entryRuleMetric returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getMetricRule()); }
-	iv_ruleMetric=ruleMetric
-	{ $current=$iv_ruleMetric.current; }
+// Entry rule entryRuleSCENARIO
+entryRuleSCENARIO returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSCENARIORule()); }
+	iv_ruleSCENARIO=ruleSCENARIO
+	{ $current=$iv_ruleSCENARIO.current; }
 	EOF;
 
-// Rule Metric
-ruleMetric returns [EObject current=null]
+// Rule SCENARIO
+ruleSCENARIO returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -691,67 +1025,35 @@ ruleMetric returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0='Scenario'
 		{
-			newCompositeNode(grammarAccess.getMetricAccess().getMemoryParserRuleCall_0());
+			newLeafNode(otherlv_0, grammarAccess.getSCENARIOAccess().getScenarioKeyword_0());
 		}
-		this_Memory_0=ruleMemory
+		otherlv_1='{'
 		{
-			$current = $this_Memory_0.current;
-			afterParserOrEnumRuleCall();
+			newLeafNode(otherlv_1, grammarAccess.getSCENARIOAccess().getLeftCurlyBracketKeyword_1());
 		}
-		    |
+		(
+			(
+				lv_name_2_0=RULE_ID
+				{
+					newLeafNode(lv_name_2_0, grammarAccess.getSCENARIOAccess().getNameIDTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSCENARIORule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_2_0,
+						"org.unipampa.lesse.XCanopus.ID");
+				}
+			)
+		)
+		otherlv_3='}'
 		{
-			newCompositeNode(grammarAccess.getMetricAccess().getDiskParserRuleCall_1());
-		}
-		this_Disk_1=ruleDisk
-		{
-			$current = $this_Disk_1.current;
-			afterParserOrEnumRuleCall();
-		}
-	)
-;
-
-// Entry rule entryRuleCounter
-entryRuleCounter returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getCounterRule()); }
-	iv_ruleCounter=ruleCounter
-	{ $current=$iv_ruleCounter.current; }
-	EOF;
-
-// Rule Counter
-ruleCounter returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		{
-			newCompositeNode(grammarAccess.getCounterAccess().getDisk_IO_CounterParserRuleCall_0());
-		}
-		this_Disk_IO_Counter_0=ruleDisk_IO_Counter
-		{
-			$current = $this_Disk_IO_Counter_0.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getCounterAccess().getMemoryCounterParserRuleCall_1());
-		}
-		this_MemoryCounter_1=ruleMemoryCounter
-		{
-			$current = $this_MemoryCounter_1.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getCounterAccess().getTransactionCounterParserRuleCall_2());
-		}
-		this_TransactionCounter_2=ruleTransactionCounter
-		{
-			$current = $this_TransactionCounter_2.current;
-			afterParserOrEnumRuleCall();
+			newLeafNode(otherlv_3, grammarAccess.getSCENARIOAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;
@@ -812,891 +1114,6 @@ ruleSUT returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleLoadGenerator
-entryRuleLoadGenerator returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getLoadGeneratorRule()); }
-	iv_ruleLoadGenerator=ruleLoadGenerator
-	{ $current=$iv_ruleLoadGenerator.current; }
-	EOF;
-
-// Rule LoadGenerator
-ruleLoadGenerator returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getLoadGeneratorAccess().getLoadGeneratorAction_0(),
-					$current);
-			}
-		)
-		(
-			(
-				lv_isMonitor_1_0='isMonitor'
-				{
-					newLeafNode(lv_isMonitor_1_0, grammarAccess.getLoadGeneratorAccess().getIsMonitorIsMonitorKeyword_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getLoadGeneratorRule());
-					}
-					setWithLastConsumed($current, "isMonitor", true, "isMonitor");
-				}
-			)
-		)?
-		otherlv_2='LoadGenerator'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getLoadGeneratorAccess().getLoadGeneratorKeyword_2());
-		}
-		otherlv_3='{'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getLoadGeneratorAccess().getLeftCurlyBracketKeyword_3());
-		}
-		(
-			otherlv_4='hostname'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getLoadGeneratorAccess().getHostnameKeyword_4_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getLoadGeneratorAccess().getHostnameEStringParserRuleCall_4_1_0());
-					}
-					lv_hostname_5_0=ruleEString
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getLoadGeneratorRule());
-						}
-						set(
-							$current,
-							"hostname",
-							lv_hostname_5_0,
-							"org.unipampa.lesse.XCanopus.EString");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		(
-			otherlv_6='ip'
-			{
-				newLeafNode(otherlv_6, grammarAccess.getLoadGeneratorAccess().getIpKeyword_5_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getLoadGeneratorAccess().getIpEStringParserRuleCall_5_1_0());
-					}
-					lv_ip_7_0=ruleEString
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getLoadGeneratorRule());
-						}
-						set(
-							$current,
-							"ip",
-							lv_ip_7_0,
-							"org.unipampa.lesse.XCanopus.EString");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		(
-			otherlv_8='hardware'
-			{
-				newLeafNode(otherlv_8, grammarAccess.getLoadGeneratorAccess().getHardwareKeyword_6_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getLoadGeneratorAccess().getHardwareHARDWAREEnumRuleCall_6_1_0());
-					}
-					lv_hardware_9_0=ruleHARDWARE
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getLoadGeneratorRule());
-						}
-						set(
-							$current,
-							"hardware",
-							lv_hardware_9_0,
-							"org.unipampa.lesse.XCanopus.HARDWARE");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		(
-			otherlv_10='sut'
-			{
-				newLeafNode(otherlv_10, grammarAccess.getLoadGeneratorAccess().getSutKeyword_7_0());
-			}
-			otherlv_11='('
-			{
-				newLeafNode(otherlv_11, grammarAccess.getLoadGeneratorAccess().getLeftParenthesisKeyword_7_1());
-			}
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getLoadGeneratorRule());
-						}
-					}
-					{
-						newCompositeNode(grammarAccess.getLoadGeneratorAccess().getSutSUTCrossReference_7_2_0());
-					}
-					ruleEString
-					{
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			(
-				otherlv_13=','
-				{
-					newLeafNode(otherlv_13, grammarAccess.getLoadGeneratorAccess().getCommaKeyword_7_3_0());
-				}
-				(
-					(
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getLoadGeneratorRule());
-							}
-						}
-						{
-							newCompositeNode(grammarAccess.getLoadGeneratorAccess().getSutSUTCrossReference_7_3_1_0());
-						}
-						ruleEString
-						{
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)*
-			otherlv_15=')'
-			{
-				newLeafNode(otherlv_15, grammarAccess.getLoadGeneratorAccess().getRightParenthesisKeyword_7_4());
-			}
-		)?
-		(
-			otherlv_16='metricmodel'
-			{
-				newLeafNode(otherlv_16, grammarAccess.getLoadGeneratorAccess().getMetricmodelKeyword_8_0());
-			}
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getLoadGeneratorRule());
-						}
-					}
-					{
-						newCompositeNode(grammarAccess.getLoadGeneratorAccess().getMetricmodelMetricModelCrossReference_8_1_0());
-					}
-					ruleEString
-					{
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		(
-			otherlv_18='monitor'
-			{
-				newLeafNode(otherlv_18, grammarAccess.getLoadGeneratorAccess().getMonitorKeyword_9_0());
-			}
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getLoadGeneratorRule());
-						}
-					}
-					{
-						newCompositeNode(grammarAccess.getLoadGeneratorAccess().getMonitorMonitorCrossReference_9_1_0());
-					}
-					ruleEString
-					{
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		otherlv_20='}'
-		{
-			newLeafNode(otherlv_20, grammarAccess.getLoadGeneratorAccess().getRightCurlyBracketKeyword_10());
-		}
-	)
-;
-
-// Entry rule entryRuleMemory
-entryRuleMemory returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getMemoryRule()); }
-	iv_ruleMemory=ruleMemory
-	{ $current=$iv_ruleMemory.current; }
-	EOF;
-
-// Rule Memory
-ruleMemory returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getMemoryAccess().getMemoryAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='Memory'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getMemoryAccess().getMemoryKeyword_1());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getMemoryAccess().getNameEStringParserRuleCall_2_0());
-				}
-				lv_name_2_0=ruleEString
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getMemoryRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_2_0,
-						"org.unipampa.lesse.XCanopus.EString");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_3='{'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getMemoryAccess().getLeftCurlyBracketKeyword_3());
-		}
-		(
-			otherlv_4='memoryCounter'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getMemoryAccess().getMemoryCounterKeyword_4_0());
-			}
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getMemoryRule());
-						}
-					}
-					{
-						newCompositeNode(grammarAccess.getMemoryAccess().getMemoryCounterMemoryCounterCrossReference_4_1_0());
-					}
-					ruleEString
-					{
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		otherlv_6='}'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getMemoryAccess().getRightCurlyBracketKeyword_5());
-		}
-	)
-;
-
-// Entry rule entryRuleDisk
-entryRuleDisk returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getDiskRule()); }
-	iv_ruleDisk=ruleDisk
-	{ $current=$iv_ruleDisk.current; }
-	EOF;
-
-// Rule Disk
-ruleDisk returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getDiskAccess().getDiskAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='Disk'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getDiskAccess().getDiskKeyword_1());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getDiskAccess().getNameEStringParserRuleCall_2_0());
-				}
-				lv_name_2_0=ruleEString
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getDiskRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_2_0,
-						"org.unipampa.lesse.XCanopus.EString");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_3='{'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getDiskAccess().getLeftCurlyBracketKeyword_3());
-		}
-		(
-			otherlv_4='disk_io_counter'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getDiskAccess().getDisk_io_counterKeyword_4_0());
-			}
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getDiskRule());
-						}
-					}
-					{
-						newCompositeNode(grammarAccess.getDiskAccess().getDisk_io_counterDisk_IO_CounterCrossReference_4_1_0());
-					}
-					ruleEString
-					{
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		otherlv_6='}'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getDiskAccess().getRightCurlyBracketKeyword_5());
-		}
-	)
-;
-
-// Entry rule entryRuleCriteria
-entryRuleCriteria returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getCriteriaRule()); }
-	iv_ruleCriteria=ruleCriteria
-	{ $current=$iv_ruleCriteria.current; }
-	EOF;
-
-// Rule Criteria
-ruleCriteria returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getCriteriaAccess().getCriteriaAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='Criteria'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getCriteriaAccess().getCriteriaKeyword_1());
-		}
-		otherlv_2='{'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getCriteriaAccess().getLeftCurlyBracketKeyword_2());
-		}
-		(
-			otherlv_3='value'
-			{
-				newLeafNode(otherlv_3, grammarAccess.getCriteriaAccess().getValueKeyword_3_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getCriteriaAccess().getValueEIntParserRuleCall_3_1_0());
-					}
-					lv_value_4_0=ruleEInt
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getCriteriaRule());
-						}
-						set(
-							$current,
-							"value",
-							lv_value_4_0,
-							"org.unipampa.lesse.XCanopus.EInt");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		otherlv_5='}'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getCriteriaAccess().getRightCurlyBracketKeyword_4());
-		}
-	)
-;
-
-// Entry rule entryRuleThreshold
-entryRuleThreshold returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getThresholdRule()); }
-	iv_ruleThreshold=ruleThreshold
-	{ $current=$iv_ruleThreshold.current; }
-	EOF;
-
-// Rule Threshold
-ruleThreshold returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getThresholdAccess().getThresholdAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='Threshold'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getThresholdAccess().getThresholdKeyword_1());
-		}
-		otherlv_2='{'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getThresholdAccess().getLeftCurlyBracketKeyword_2());
-		}
-		(
-			otherlv_3='value'
-			{
-				newLeafNode(otherlv_3, grammarAccess.getThresholdAccess().getValueKeyword_3_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getThresholdAccess().getValueEIntParserRuleCall_3_1_0());
-					}
-					lv_value_4_0=ruleEInt
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getThresholdRule());
-						}
-						set(
-							$current,
-							"value",
-							lv_value_4_0,
-							"org.unipampa.lesse.XCanopus.EInt");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		otherlv_5='}'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getThresholdAccess().getRightCurlyBracketKeyword_4());
-		}
-	)
-;
-
-// Entry rule entryRuleDisk_IO_Counter
-entryRuleDisk_IO_Counter returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getDisk_IO_CounterRule()); }
-	iv_ruleDisk_IO_Counter=ruleDisk_IO_Counter
-	{ $current=$iv_ruleDisk_IO_Counter.current; }
-	EOF;
-
-// Rule Disk_IO_Counter
-ruleDisk_IO_Counter returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getDisk_IO_CounterAccess().getDisk_IO_CounterAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='Disk_IO_Counter'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getDisk_IO_CounterAccess().getDisk_IO_CounterKeyword_1());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getDisk_IO_CounterAccess().getNameEStringParserRuleCall_2_0());
-				}
-				lv_name_2_0=ruleEString
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getDisk_IO_CounterRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_2_0,
-						"org.unipampa.lesse.XCanopus.EString");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_3='{'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getDisk_IO_CounterAccess().getLeftCurlyBracketKeyword_3());
-		}
-		(
-			otherlv_4='counterDisk'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getDisk_IO_CounterAccess().getCounterDiskKeyword_4_0());
-			}
-			otherlv_5='{'
-			{
-				newLeafNode(otherlv_5, grammarAccess.getDisk_IO_CounterAccess().getLeftCurlyBracketKeyword_4_1());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getDisk_IO_CounterAccess().getCounterDiskCOUNTER_DISKEnumRuleCall_4_2_0());
-					}
-					lv_counterDisk_6_0=ruleCOUNTER_DISK
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getDisk_IO_CounterRule());
-						}
-						add(
-							$current,
-							"counterDisk",
-							lv_counterDisk_6_0,
-							"org.unipampa.lesse.XCanopus.COUNTER_DISK");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			(
-				otherlv_7=','
-				{
-					newLeafNode(otherlv_7, grammarAccess.getDisk_IO_CounterAccess().getCommaKeyword_4_3_0());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getDisk_IO_CounterAccess().getCounterDiskCOUNTER_DISKEnumRuleCall_4_3_1_0());
-						}
-						lv_counterDisk_8_0=ruleCOUNTER_DISK
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getDisk_IO_CounterRule());
-							}
-							add(
-								$current,
-								"counterDisk",
-								lv_counterDisk_8_0,
-								"org.unipampa.lesse.XCanopus.COUNTER_DISK");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)*
-			otherlv_9='}'
-			{
-				newLeafNode(otherlv_9, grammarAccess.getDisk_IO_CounterAccess().getRightCurlyBracketKeyword_4_4());
-			}
-		)?
-		otherlv_10='}'
-		{
-			newLeafNode(otherlv_10, grammarAccess.getDisk_IO_CounterAccess().getRightCurlyBracketKeyword_5());
-		}
-	)
-;
-
-// Entry rule entryRuleTransactionCounter
-entryRuleTransactionCounter returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getTransactionCounterRule()); }
-	iv_ruleTransactionCounter=ruleTransactionCounter
-	{ $current=$iv_ruleTransactionCounter.current; }
-	EOF;
-
-// Rule TransactionCounter
-ruleTransactionCounter returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getTransactionCounterAccess().getTransactionCounterAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='TransactionCounter'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getTransactionCounterAccess().getTransactionCounterKeyword_1());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getTransactionCounterAccess().getNameEStringParserRuleCall_2_0());
-				}
-				lv_name_2_0=ruleEString
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getTransactionCounterRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_2_0,
-						"org.unipampa.lesse.XCanopus.EString");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_3='{'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getTransactionCounterAccess().getLeftCurlyBracketKeyword_3());
-		}
-		(
-			otherlv_4='counterTransaction'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getTransactionCounterAccess().getCounterTransactionKeyword_4_0());
-			}
-			otherlv_5='{'
-			{
-				newLeafNode(otherlv_5, grammarAccess.getTransactionCounterAccess().getLeftCurlyBracketKeyword_4_1());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getTransactionCounterAccess().getCounterTransactionCOUNTER_TRANSACTIONEnumRuleCall_4_2_0());
-					}
-					lv_counterTransaction_6_0=ruleCOUNTER_TRANSACTION
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getTransactionCounterRule());
-						}
-						add(
-							$current,
-							"counterTransaction",
-							lv_counterTransaction_6_0,
-							"org.unipampa.lesse.XCanopus.COUNTER_TRANSACTION");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			(
-				otherlv_7=','
-				{
-					newLeafNode(otherlv_7, grammarAccess.getTransactionCounterAccess().getCommaKeyword_4_3_0());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getTransactionCounterAccess().getCounterTransactionCOUNTER_TRANSACTIONEnumRuleCall_4_3_1_0());
-						}
-						lv_counterTransaction_8_0=ruleCOUNTER_TRANSACTION
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getTransactionCounterRule());
-							}
-							add(
-								$current,
-								"counterTransaction",
-								lv_counterTransaction_8_0,
-								"org.unipampa.lesse.XCanopus.COUNTER_TRANSACTION");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)*
-			otherlv_9='}'
-			{
-				newLeafNode(otherlv_9, grammarAccess.getTransactionCounterAccess().getRightCurlyBracketKeyword_4_4());
-			}
-		)?
-		otherlv_10='}'
-		{
-			newLeafNode(otherlv_10, grammarAccess.getTransactionCounterAccess().getRightCurlyBracketKeyword_5());
-		}
-	)
-;
-
-// Entry rule entryRuleMemoryCounter
-entryRuleMemoryCounter returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getMemoryCounterRule()); }
-	iv_ruleMemoryCounter=ruleMemoryCounter
-	{ $current=$iv_ruleMemoryCounter.current; }
-	EOF;
-
-// Rule MemoryCounter
-ruleMemoryCounter returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getMemoryCounterAccess().getMemoryCounterAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='MemoryCounter'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getMemoryCounterAccess().getMemoryCounterKeyword_1());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getMemoryCounterAccess().getNameEStringParserRuleCall_2_0());
-				}
-				lv_name_2_0=ruleEString
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getMemoryCounterRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_2_0,
-						"org.unipampa.lesse.XCanopus.EString");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_3='{'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getMemoryCounterAccess().getLeftCurlyBracketKeyword_3());
-		}
-		(
-			otherlv_4='counterMemory'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getMemoryCounterAccess().getCounterMemoryKeyword_4_0());
-			}
-			otherlv_5='{'
-			{
-				newLeafNode(otherlv_5, grammarAccess.getMemoryCounterAccess().getLeftCurlyBracketKeyword_4_1());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getMemoryCounterAccess().getCounterMemoryCOUNTER_MEMORYEnumRuleCall_4_2_0());
-					}
-					lv_counterMemory_6_0=ruleCOUNTER_MEMORY
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getMemoryCounterRule());
-						}
-						add(
-							$current,
-							"counterMemory",
-							lv_counterMemory_6_0,
-							"org.unipampa.lesse.XCanopus.COUNTER_MEMORY");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			(
-				otherlv_7=','
-				{
-					newLeafNode(otherlv_7, grammarAccess.getMemoryCounterAccess().getCommaKeyword_4_3_0());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getMemoryCounterAccess().getCounterMemoryCOUNTER_MEMORYEnumRuleCall_4_3_1_0());
-						}
-						lv_counterMemory_8_0=ruleCOUNTER_MEMORY
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getMemoryCounterRule());
-							}
-							add(
-								$current,
-								"counterMemory",
-								lv_counterMemory_8_0,
-								"org.unipampa.lesse.XCanopus.COUNTER_MEMORY");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)*
-			otherlv_9='}'
-			{
-				newLeafNode(otherlv_9, grammarAccess.getMemoryCounterAccess().getRightCurlyBracketKeyword_4_4());
-			}
-		)?
-		otherlv_10='}'
-		{
-			newLeafNode(otherlv_10, grammarAccess.getMemoryCounterAccess().getRightCurlyBracketKeyword_5());
-		}
-	)
-;
-
-// Entry rule entryRuleEInt
-entryRuleEInt returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getEIntRule()); }
-	iv_ruleEInt=ruleEInt
-	{ $current=$iv_ruleEInt.current.getText(); }
-	EOF;
-
-// Rule EInt
-ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			kw='-'
-			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getEIntAccess().getHyphenMinusKeyword_0());
-			}
-		)?
-		this_INT_1=RULE_INT
-		{
-			$current.merge(this_INT_1);
-		}
-		{
-			newLeafNode(this_INT_1, grammarAccess.getEIntAccess().getINTTerminalRuleCall_1());
-		}
-	)
-;
-
 // Entry rule entryRuleEString
 entryRuleEString returns [String current=null]:
 	{ newCompositeNode(grammarAccess.getEStringRule()); }
@@ -1731,8 +1148,8 @@ ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 	)
 ;
 
-// Rule HARDWARE
-ruleHARDWARE returns [Enumerator current=null]
+// Rule METRICTYPEMONITORED
+ruleMETRICTYPEMONITORED returns [Enumerator current=null]
 @init {
 	enterRule();
 }
@@ -1741,26 +1158,109 @@ ruleHARDWARE returns [Enumerator current=null]
 }:
 	(
 		(
-			enumLiteral_0='PHYSICAL_MACHINE'
+			enumLiteral_0='memory'
 			{
-				$current = grammarAccess.getHARDWAREAccess().getPHYSICAL_MACHINEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getHARDWAREAccess().getPHYSICAL_MACHINEEnumLiteralDeclaration_0());
+				$current = grammarAccess.getMETRICTYPEMONITOREDAccess().getMEMORYEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getMETRICTYPEMONITOREDAccess().getMEMORYEnumLiteralDeclaration_0());
 			}
 		)
 		    |
 		(
-			enumLiteral_1='VIRTUAL_MACHINE'
+			enumLiteral_1='disk'
 			{
-				$current = grammarAccess.getHARDWAREAccess().getVIRTUAL_MACHINEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getHARDWAREAccess().getVIRTUAL_MACHINEEnumLiteralDeclaration_1());
+				$current = grammarAccess.getMETRICTYPEMONITOREDAccess().getDISKEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getMETRICTYPEMONITOREDAccess().getDISKEnumLiteralDeclaration_1());
 			}
 		)
 		    |
 		(
-			enumLiteral_2='CLOUD_SERVICE'
+			enumLiteral_2='web resources'
 			{
-				$current = grammarAccess.getHARDWAREAccess().getCLOUD_SERVICEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getHARDWAREAccess().getCLOUD_SERVICEEnumLiteralDeclaration_2());
+				$current = grammarAccess.getMETRICTYPEMONITOREDAccess().getWEBRESOURCESEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getMETRICTYPEMONITOREDAccess().getWEBRESOURCESEnumLiteralDeclaration_2());
+			}
+		)
+		    |
+		(
+			enumLiteral_3='transaction'
+			{
+				$current = grammarAccess.getMETRICTYPEMONITOREDAccess().getTRANSACTIONEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getMETRICTYPEMONITOREDAccess().getTRANSACTIONEnumLiteralDeclaration_3());
+			}
+		)
+		    |
+		(
+			enumLiteral_4='processor'
+			{
+				$current = grammarAccess.getMETRICTYPEMONITOREDAccess().getPROCESSOREnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_4, grammarAccess.getMETRICTYPEMONITOREDAccess().getPROCESSOREnumLiteralDeclaration_4());
+			}
+		)
+	)
+;
+
+// Rule METRICTYPE
+ruleMETRICTYPE returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='available mbytes counter'
+			{
+				$current = grammarAccess.getMETRICTYPEAccess().getAvailablembytescounterEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getMETRICTYPEAccess().getAvailablembytescounterEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='% idle time counter'
+			{
+				$current = grammarAccess.getMETRICTYPEAccess().getIdletimecounterEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getMETRICTYPEAccess().getIdletimecounterEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='throughput mbytes'
+			{
+				$current = grammarAccess.getMETRICTYPEAccess().getThroughputmbytesEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getMETRICTYPEAccess().getThroughputmbytesEnumLiteralDeclaration_2());
+			}
+		)
+		    |
+		(
+			enumLiteral_3='transactions per second'
+			{
+				$current = grammarAccess.getMETRICTYPEAccess().getTransactionpersecondEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getMETRICTYPEAccess().getTransactionpersecondEnumLiteralDeclaration_3());
+			}
+		)
+		    |
+		(
+			enumLiteral_4='TPS'
+			{
+				$current = grammarAccess.getMETRICTYPEAccess().getTPSEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_4, grammarAccess.getMETRICTYPEAccess().getTPSEnumLiteralDeclaration_4());
+			}
+		)
+		    |
+		(
+			enumLiteral_5='% processor time count'
+			{
+				$current = grammarAccess.getMETRICTYPEAccess().getProcessortimecounterEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_5, grammarAccess.getMETRICTYPEAccess().getProcessortimecounterEnumLiteralDeclaration_5());
+			}
+		)
+		    |
+		(
+			enumLiteral_6='transactions response time'
+			{
+				$current = grammarAccess.getMETRICTYPEAccess().getTransactionresponsetimeEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_6, grammarAccess.getMETRICTYPEAccess().getTransactionresponsetimeEnumLiteralDeclaration_6());
 			}
 		)
 	)
@@ -1809,174 +1309,55 @@ ruleSUT_TYPE returns [Enumerator current=null]
 	)
 ;
 
-// Rule COUNTER_DISK
-ruleCOUNTER_DISK returns [Enumerator current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			enumLiteral_0='AVG_DISK_SECS_TRANSFER_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_DISKAccess().getAVG_DISK_SECS_TRANSFER_COUNTEREnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getCOUNTER_DISKAccess().getAVG_DISK_SECS_TRANSFER_COUNTEREnumLiteralDeclaration_0());
-			}
-		)
-		    |
-		(
-			enumLiteral_1='PERCENTAGE_IDLE_TIME_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_DISKAccess().getPERCENTAGE_IDLE_TIME_COUNTEREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getCOUNTER_DISKAccess().getPERCENTAGE_IDLE_TIME_COUNTEREnumLiteralDeclaration_1());
-			}
-		)
-		    |
-		(
-			enumLiteral_2='DISK_TRANSFERS_SEC_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_DISKAccess().getDISK_TRANSFERS_SEC_COUNTEREnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getCOUNTER_DISKAccess().getDISK_TRANSFERS_SEC_COUNTEREnumLiteralDeclaration_2());
-			}
-		)
-		    |
-		(
-			enumLiteral_3='AVG_DISK_QUEUE_LENGTH_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_DISKAccess().getAVG_DISK_QUEUE_LENGTH_COUNTEREnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_3, grammarAccess.getCOUNTER_DISKAccess().getAVG_DISK_QUEUE_LENGTH_COUNTEREnumLiteralDeclaration_3());
-			}
-		)
-		    |
-		(
-			enumLiteral_4='SPLIT_IO_SEC_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_DISKAccess().getSPLIT_IO_SEC_COUNTEREnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_4, grammarAccess.getCOUNTER_DISKAccess().getSPLIT_IO_SEC_COUNTEREnumLiteralDeclaration_4());
-			}
-		)
-		    |
-		(
-			enumLiteral_5='FREE_MEGABYTES_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_DISKAccess().getFREE_MEGABYTES_COUNTEREnumLiteralDeclaration_5().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_5, grammarAccess.getCOUNTER_DISKAccess().getFREE_MEGABYTES_COUNTEREnumLiteralDeclaration_5());
-			}
-		)
-	)
-;
+RULE_SHOULDBELESSTHAN_TEXT : 'should be less than';
 
-// Rule COUNTER_TRANSACTION
-ruleCOUNTER_TRANSACTION returns [Enumerator current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			enumLiteral_0='TRANSACTION_RESPONSE_TIME'
-			{
-				$current = grammarAccess.getCOUNTER_TRANSACTIONAccess().getTRANSACTION_RESPONSE_TIMEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getCOUNTER_TRANSACTIONAccess().getTRANSACTION_RESPONSE_TIMEEnumLiteralDeclaration_0());
-			}
-		)
-		    |
-		(
-			enumLiteral_1='TRANSACTION_PER_SECOND_TPS'
-			{
-				$current = grammarAccess.getCOUNTER_TRANSACTIONAccess().getTRANSACTION_PER_SECOND_TPSEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getCOUNTER_TRANSACTIONAccess().getTRANSACTION_PER_SECOND_TPSEnumLiteralDeclaration_1());
-			}
-		)
-		    |
-		(
-			enumLiteral_2='TRANSACTION_SUCCESS_RATE'
-			{
-				$current = grammarAccess.getCOUNTER_TRANSACTIONAccess().getTRANSACTION_SUCCESS_RATEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getCOUNTER_TRANSACTIONAccess().getTRANSACTION_SUCCESS_RATEEnumLiteralDeclaration_2());
-			}
-		)
-	)
-;
+RULE_SHOULDBEATLEAST_TEXT : 'should be at least';
 
-// Rule COUNTER_MEMORY
-ruleCOUNTER_MEMORY returns [Enumerator current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			enumLiteral_0='AVALIABLE_MBYTES_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_MEMORYAccess().getAVALIABLE_MBYTES_COUNTEREnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getCOUNTER_MEMORYAccess().getAVALIABLE_MBYTES_COUNTEREnumLiteralDeclaration_0());
-			}
-		)
-		    |
-		(
-			enumLiteral_1='PAGES_SEC_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_MEMORYAccess().getPAGES_SEC_COUNTEREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getCOUNTER_MEMORYAccess().getPAGES_SEC_COUNTEREnumLiteralDeclaration_1());
-			}
-		)
-		    |
-		(
-			enumLiteral_2='PAGE_READS_SEC_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_MEMORYAccess().getPAGE_READS_SEC_COUNTEREnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getCOUNTER_MEMORYAccess().getPAGE_READS_SEC_COUNTEREnumLiteralDeclaration_2());
-			}
-		)
-		    |
-		(
-			enumLiteral_3='WORKING_SET_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_MEMORYAccess().getWORKING_SET_COUNTEREnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_3, grammarAccess.getCOUNTER_MEMORYAccess().getWORKING_SET_COUNTEREnumLiteralDeclaration_3());
-			}
-		)
-		    |
-		(
-			enumLiteral_4='POOL_NONPAGE_BYTES_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_MEMORYAccess().getPOOL_NONPAGE_BYTES_COUNTEREnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_4, grammarAccess.getCOUNTER_MEMORYAccess().getPOOL_NONPAGE_BYTES_COUNTEREnumLiteralDeclaration_4());
-			}
-		)
-		    |
-		(
-			enumLiteral_5='PAGED_POOL_BYTES_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_MEMORYAccess().getPAGED_POOL_BYTES_COUNTEREnumLiteralDeclaration_5().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_5, grammarAccess.getCOUNTER_MEMORYAccess().getPAGED_POOL_BYTES_COUNTEREnumLiteralDeclaration_5());
-			}
-		)
-		    |
-		(
-			enumLiteral_6='PAGED_POOL_FAILURES_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_MEMORYAccess().getPAGED_POOL_FAILURES_COUNTEREnumLiteralDeclaration_6().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_6, grammarAccess.getCOUNTER_MEMORYAccess().getPAGED_POOL_FAILURES_COUNTEREnumLiteralDeclaration_6());
-			}
-		)
-		    |
-		(
-			enumLiteral_7='CACHE_BYTES_COUNTER'
-			{
-				$current = grammarAccess.getCOUNTER_MEMORYAccess().getCACHE_BYTES_COUNTEREnumLiteralDeclaration_7().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_7, grammarAccess.getCOUNTER_MEMORYAccess().getCACHE_BYTES_COUNTEREnumLiteralDeclaration_7());
-			}
-		)
-	)
-;
+RULE_SHOULDBEGREATERTHAN : 'should be more than';
+
+RULE_WHENTHENUMBERISLESSTHAN_TEXT : 'when the number of virtual users is less than';
+
+RULE_WHENTHENUMBERISGREATERTHAN_TEXT : 'when the number of virtual users is greater than';
+
+RULE_WHENTHENUMBERISGREATEROREQUAL_TEXT : 'when the number of virtual users is greater or equal to';
+
+RULE_WHENTHENUMBERIRLESSEROREQUAL_TEXT : 'when the number of virtual users is lesser or equal to';
+
+RULE_WHENTHENUMBERAREBETWEEN_TEXT : 'when the number of virtual users are between';
+
+RULE_MBWHEN_GREATEROREQUAL_TEXT : 'MB when the number of virtual users is greater than or equal to';
+
+RULE_MBWHEN_LESSTHAN_TEXT : 'MB when the number of virtual users is less than';
+
+RULE_MBWHEN_MORETHAN_TEXT : 'MB when the number of virtual users is more than';
+
+RULE_MBWHEN_MINOROREQUAL_TEXT : 'MB when the number of virtual users is lesser than or equal to';
+
+RULE_AND : 'and';
+
+RULE_MONITOR_TEXT : 'monitor';
+
+RULE_THE : 'the';
+
+RULE_THAT : 'that';
+
+RULE_MONITOREDBY : 'monitored by ';
+
+RULE_WORKLOADGENERATED : 'workload generated through';
+
+RULE_LOADGENERATORFORTHE : 'Load Generator for the';
+
+RULE_ISTESTSCENARIO : 'test scenario';
+
+RULE_ON : 'on';
+
+RULE_ISMONITORED : 'is monitored';
+
+RULE_ATL : 'at least';
+
+fragment RULE_NNL : ~(('\r'|'\n'));
+
+fragment RULE_NL : '\r'? '\n'?;
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

@@ -80,93 +80,6 @@ public class XCanopusSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XCanopusPackage.INCLUDE:
-      {
-        Include include = (Include)theEObject;
-        T result = caseInclude(include);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XCanopusPackage.MONITORING:
-      {
-        Monitoring monitoring = (Monitoring)theEObject;
-        T result = caseMonitoring(monitoring);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XCanopusPackage.CONDITION:
-      {
-        CONDITION condition = (CONDITION)theEObject;
-        T result = caseCONDITION(condition);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XCanopusPackage.AND:
-      {
-        AND and = (AND)theEObject;
-        T result = caseAND(and);
-        if (result == null) result = caseCONDITION(and);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XCanopusPackage.WHEN:
-      {
-        WHEN when = (WHEN)theEObject;
-        T result = caseWHEN(when);
-        if (result == null) result = caseCONDITION(when);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XCanopusPackage.THEN:
-      {
-        THEN then = (THEN)theEObject;
-        T result = caseTHEN(then);
-        if (result == null) result = caseCONDITION(then);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XCanopusPackage.POSTCONDITION:
-      {
-        POSTCONDITION postcondition = (POSTCONDITION)theEObject;
-        T result = casePOSTCONDITION(postcondition);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XCanopusPackage.METRIC:
-      {
-        Metric metric = (Metric)theEObject;
-        T result = caseMetric(metric);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XCanopusPackage.COUNTER:
-      {
-        Counter counter = (Counter)theEObject;
-        T result = caseCounter(counter);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XCanopusPackage.SUT:
-      {
-        SUT sut = (SUT)theEObject;
-        T result = caseSUT(sut);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XCanopusPackage.LOAD_GENERATOR:
-      {
-        LoadGenerator loadGenerator = (LoadGenerator)theEObject;
-        T result = caseLoadGenerator(loadGenerator);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XCanopusPackage.MONITOR:
-      {
-        Monitor monitor = (Monitor)theEObject;
-        T result = caseMonitor(monitor);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case XCanopusPackage.METRIC_MODEL:
       {
         MetricModel metricModel = (MetricModel)theEObject;
@@ -174,64 +87,87 @@ public class XCanopusSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XCanopusPackage.MEMORY:
+      case XCanopusPackage.MAIN:
       {
-        Memory memory = (Memory)theEObject;
-        T result = caseMemory(memory);
-        if (result == null) result = caseMetric(memory);
+        Main main = (Main)theEObject;
+        T result = caseMain(main);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XCanopusPackage.TRANSACTION:
+      case XCanopusPackage.STEPS:
       {
-        Transaction transaction = (Transaction)theEObject;
-        T result = caseTransaction(transaction);
+        STEPS steps = (STEPS)theEObject;
+        T result = caseSTEPS(steps);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XCanopusPackage.DISK:
+      case XCanopusPackage.AND_WORKLOAD:
       {
-        Disk disk = (Disk)theEObject;
-        T result = caseDisk(disk);
-        if (result == null) result = caseMetric(disk);
+        and_workload and_workload = (and_workload)theEObject;
+        T result = caseand_workload(and_workload);
+        if (result == null) result = caseSTEPS(and_workload);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XCanopusPackage.CRITERIA:
+      case XCanopusPackage.AND_THE_SCENARIO:
       {
-        Criteria criteria = (Criteria)theEObject;
-        T result = caseCriteria(criteria);
+        and_the_scenario and_the_scenario = (and_the_scenario)theEObject;
+        T result = caseand_the_scenario(and_the_scenario);
+        if (result == null) result = caseSTEPS(and_the_scenario);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XCanopusPackage.THRESHOLD:
+      case XCanopusPackage.AND_ATLEAST:
       {
-        Threshold threshold = (Threshold)theEObject;
-        T result = caseThreshold(threshold);
+        and_atleast and_atleast = (and_atleast)theEObject;
+        T result = caseand_atleast(and_atleast);
+        if (result == null) result = caseSTEPS(and_atleast);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XCanopusPackage.DISK_IO_COUNTER:
+      case XCanopusPackage.AND_THE_METRIC:
       {
-        Disk_IO_Counter disk_IO_Counter = (Disk_IO_Counter)theEObject;
-        T result = caseDisk_IO_Counter(disk_IO_Counter);
-        if (result == null) result = caseCounter(disk_IO_Counter);
+        and_the_metric and_the_metric = (and_the_metric)theEObject;
+        T result = caseand_the_metric(and_the_metric);
+        if (result == null) result = caseSTEPS(and_the_metric);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XCanopusPackage.TRANSACTION_COUNTER:
+      case XCanopusPackage.WHEN:
       {
-        TransactionCounter transactionCounter = (TransactionCounter)theEObject;
-        T result = caseTransactionCounter(transactionCounter);
-        if (result == null) result = caseCounter(transactionCounter);
+        when when = (when)theEObject;
+        T result = casewhen(when);
+        if (result == null) result = caseSTEPS(when);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XCanopusPackage.MEMORY_COUNTER:
+      case XCanopusPackage.THEN:
       {
-        MemoryCounter memoryCounter = (MemoryCounter)theEObject;
-        T result = caseMemoryCounter(memoryCounter);
-        if (result == null) result = caseCounter(memoryCounter);
+        then then = (then)theEObject;
+        T result = casethen(then);
+        if (result == null) result = caseSTEPS(then);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XCanopusPackage.GIVEN:
+      {
+        given given = (given)theEObject;
+        T result = casegiven(given);
+        if (result == null) result = caseSTEPS(given);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XCanopusPackage.SCENARIO:
+      {
+        SCENARIO scenario = (SCENARIO)theEObject;
+        T result = caseSCENARIO(scenario);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XCanopusPackage.SUT:
+      {
+        SUT sut = (SUT)theEObject;
+        T result = caseSUT(sut);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -256,198 +192,6 @@ public class XCanopusSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Include</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Include</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseInclude(Include object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Monitoring</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Monitoring</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMonitoring(Monitoring object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>CONDITION</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>CONDITION</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCONDITION(CONDITION object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>AND</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>AND</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAND(AND object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>WHEN</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>WHEN</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWHEN(WHEN object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>THEN</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>THEN</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTHEN(THEN object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>POSTCONDITION</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>POSTCONDITION</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePOSTCONDITION(POSTCONDITION object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Metric</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Metric</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMetric(Metric object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Counter</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Counter</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCounter(Counter object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>SUT</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>SUT</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSUT(SUT object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Load Generator</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Load Generator</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLoadGenerator(LoadGenerator object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Monitor</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Monitor</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMonitor(Monitor object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Metric Model</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -464,129 +208,177 @@ public class XCanopusSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Memory</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Main</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Memory</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Main</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMemory(Memory object)
+  public T caseMain(Main object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Transaction</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>STEPS</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Transaction</em>'.
+   * @return the result of interpreting the object as an instance of '<em>STEPS</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseTransaction(Transaction object)
+  public T caseSTEPS(STEPS object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Disk</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>and workload</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Disk</em>'.
+   * @return the result of interpreting the object as an instance of '<em>and workload</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDisk(Disk object)
+  public T caseand_workload(and_workload object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Criteria</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>and the scenario</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Criteria</em>'.
+   * @return the result of interpreting the object as an instance of '<em>and the scenario</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseCriteria(Criteria object)
+  public T caseand_the_scenario(and_the_scenario object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Threshold</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>and atleast</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Threshold</em>'.
+   * @return the result of interpreting the object as an instance of '<em>and atleast</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseThreshold(Threshold object)
+  public T caseand_atleast(and_atleast object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Disk IO Counter</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>and the metric</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Disk IO Counter</em>'.
+   * @return the result of interpreting the object as an instance of '<em>and the metric</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDisk_IO_Counter(Disk_IO_Counter object)
+  public T caseand_the_metric(and_the_metric object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Transaction Counter</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>when</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Transaction Counter</em>'.
+   * @return the result of interpreting the object as an instance of '<em>when</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseTransactionCounter(TransactionCounter object)
+  public T casewhen(when object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Memory Counter</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>then</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Memory Counter</em>'.
+   * @return the result of interpreting the object as an instance of '<em>then</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMemoryCounter(MemoryCounter object)
+  public T casethen(then object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>given</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>given</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casegiven(given object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>SCENARIO</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>SCENARIO</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSCENARIO(SCENARIO object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>SUT</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>SUT</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSUT(SUT object)
   {
     return null;
   }

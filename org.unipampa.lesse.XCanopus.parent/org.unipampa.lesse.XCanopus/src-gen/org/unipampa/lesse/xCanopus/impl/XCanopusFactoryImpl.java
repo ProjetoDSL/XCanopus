@@ -67,27 +67,18 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
     switch (eClass.getClassifierID())
     {
       case XCanopusPackage.MODEL: return createModel();
-      case XCanopusPackage.INCLUDE: return createInclude();
-      case XCanopusPackage.MONITORING: return createMonitoring();
-      case XCanopusPackage.CONDITION: return createCONDITION();
-      case XCanopusPackage.AND: return createAND();
-      case XCanopusPackage.WHEN: return createWHEN();
-      case XCanopusPackage.THEN: return createTHEN();
-      case XCanopusPackage.POSTCONDITION: return createPOSTCONDITION();
-      case XCanopusPackage.METRIC: return createMetric();
-      case XCanopusPackage.COUNTER: return createCounter();
-      case XCanopusPackage.SUT: return createSUT();
-      case XCanopusPackage.LOAD_GENERATOR: return createLoadGenerator();
-      case XCanopusPackage.MONITOR: return createMonitor();
       case XCanopusPackage.METRIC_MODEL: return createMetricModel();
-      case XCanopusPackage.MEMORY: return createMemory();
-      case XCanopusPackage.TRANSACTION: return createTransaction();
-      case XCanopusPackage.DISK: return createDisk();
-      case XCanopusPackage.CRITERIA: return createCriteria();
-      case XCanopusPackage.THRESHOLD: return createThreshold();
-      case XCanopusPackage.DISK_IO_COUNTER: return createDisk_IO_Counter();
-      case XCanopusPackage.TRANSACTION_COUNTER: return createTransactionCounter();
-      case XCanopusPackage.MEMORY_COUNTER: return createMemoryCounter();
+      case XCanopusPackage.MAIN: return createMain();
+      case XCanopusPackage.STEPS: return createSTEPS();
+      case XCanopusPackage.AND_WORKLOAD: return createand_workload();
+      case XCanopusPackage.AND_THE_SCENARIO: return createand_the_scenario();
+      case XCanopusPackage.AND_ATLEAST: return createand_atleast();
+      case XCanopusPackage.AND_THE_METRIC: return createand_the_metric();
+      case XCanopusPackage.WHEN: return createwhen();
+      case XCanopusPackage.THEN: return createthen();
+      case XCanopusPackage.GIVEN: return creategiven();
+      case XCanopusPackage.SCENARIO: return createSCENARIO();
+      case XCanopusPackage.SUT: return createSUT();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -103,18 +94,14 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case XCanopusPackage.METRICTYPEMONITORED:
+        return createMETRICTYPEMONITOREDFromString(eDataType, initialValue);
+      case XCanopusPackage.METRICTYPE:
+        return createMETRICTYPEFromString(eDataType, initialValue);
       case XCanopusPackage.HARDWARE:
         return createHARDWAREFromString(eDataType, initialValue);
       case XCanopusPackage.SUT_TYPE:
         return createSUT_TYPEFromString(eDataType, initialValue);
-      case XCanopusPackage.ASSOCIATION_CRITERIA:
-        return createASSOCIATION_CRITERIAFromString(eDataType, initialValue);
-      case XCanopusPackage.COUNTER_DISK:
-        return createCOUNTER_DISKFromString(eDataType, initialValue);
-      case XCanopusPackage.COUNTER_TRANSACTION:
-        return createCOUNTER_TRANSACTIONFromString(eDataType, initialValue);
-      case XCanopusPackage.COUNTER_MEMORY:
-        return createCOUNTER_MEMORYFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -130,18 +117,14 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case XCanopusPackage.METRICTYPEMONITORED:
+        return convertMETRICTYPEMONITOREDToString(eDataType, instanceValue);
+      case XCanopusPackage.METRICTYPE:
+        return convertMETRICTYPEToString(eDataType, instanceValue);
       case XCanopusPackage.HARDWARE:
         return convertHARDWAREToString(eDataType, instanceValue);
       case XCanopusPackage.SUT_TYPE:
         return convertSUT_TYPEToString(eDataType, instanceValue);
-      case XCanopusPackage.ASSOCIATION_CRITERIA:
-        return convertASSOCIATION_CRITERIAToString(eDataType, instanceValue);
-      case XCanopusPackage.COUNTER_DISK:
-        return convertCOUNTER_DISKToString(eDataType, instanceValue);
-      case XCanopusPackage.COUNTER_TRANSACTION:
-        return convertCOUNTER_TRANSACTIONToString(eDataType, instanceValue);
-      case XCanopusPackage.COUNTER_MEMORY:
-        return convertCOUNTER_MEMORYToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -165,10 +148,10 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * @generated
    */
   @Override
-  public Include createInclude()
+  public MetricModel createMetricModel()
   {
-    IncludeImpl include = new IncludeImpl();
-    return include;
+    MetricModelImpl metricModel = new MetricModelImpl();
+    return metricModel;
   }
 
   /**
@@ -177,10 +160,10 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * @generated
    */
   @Override
-  public Monitoring createMonitoring()
+  public Main createMain()
   {
-    MonitoringImpl monitoring = new MonitoringImpl();
-    return monitoring;
+    MainImpl main = new MainImpl();
+    return main;
   }
 
   /**
@@ -189,10 +172,10 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * @generated
    */
   @Override
-  public CONDITION createCONDITION()
+  public STEPS createSTEPS()
   {
-    CONDITIONImpl condition = new CONDITIONImpl();
-    return condition;
+    STEPSImpl steps = new STEPSImpl();
+    return steps;
   }
 
   /**
@@ -201,10 +184,10 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * @generated
    */
   @Override
-  public AND createAND()
+  public and_workload createand_workload()
   {
-    ANDImpl and = new ANDImpl();
-    return and;
+    and_workloadImpl and_workload = new and_workloadImpl();
+    return and_workload;
   }
 
   /**
@@ -213,9 +196,45 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * @generated
    */
   @Override
-  public WHEN createWHEN()
+  public and_the_scenario createand_the_scenario()
   {
-    WHENImpl when = new WHENImpl();
+    and_the_scenarioImpl and_the_scenario = new and_the_scenarioImpl();
+    return and_the_scenario;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public and_atleast createand_atleast()
+  {
+    and_atleastImpl and_atleast = new and_atleastImpl();
+    return and_atleast;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public and_the_metric createand_the_metric()
+  {
+    and_the_metricImpl and_the_metric = new and_the_metricImpl();
+    return and_the_metric;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public when createwhen()
+  {
+    whenImpl when = new whenImpl();
     return when;
   }
 
@@ -225,9 +244,9 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * @generated
    */
   @Override
-  public THEN createTHEN()
+  public then createthen()
   {
-    THENImpl then = new THENImpl();
+    thenImpl then = new thenImpl();
     return then;
   }
 
@@ -237,10 +256,10 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * @generated
    */
   @Override
-  public POSTCONDITION createPOSTCONDITION()
+  public given creategiven()
   {
-    POSTCONDITIONImpl postcondition = new POSTCONDITIONImpl();
-    return postcondition;
+    givenImpl given = new givenImpl();
+    return given;
   }
 
   /**
@@ -249,22 +268,10 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * @generated
    */
   @Override
-  public Metric createMetric()
+  public SCENARIO createSCENARIO()
   {
-    MetricImpl metric = new MetricImpl();
-    return metric;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Counter createCounter()
-  {
-    CounterImpl counter = new CounterImpl();
-    return counter;
+    SCENARIOImpl scenario = new SCENARIOImpl();
+    return scenario;
   }
 
   /**
@@ -284,11 +291,11 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public LoadGenerator createLoadGenerator()
+  public METRICTYPEMONITORED createMETRICTYPEMONITOREDFromString(EDataType eDataType, String initialValue)
   {
-    LoadGeneratorImpl loadGenerator = new LoadGeneratorImpl();
-    return loadGenerator;
+    METRICTYPEMONITORED result = METRICTYPEMONITORED.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
   }
 
   /**
@@ -296,11 +303,9 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public Monitor createMonitor()
+  public String convertMETRICTYPEMONITOREDToString(EDataType eDataType, Object instanceValue)
   {
-    MonitorImpl monitor = new MonitorImpl();
-    return monitor;
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**
@@ -308,11 +313,11 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public MetricModel createMetricModel()
+  public METRICTYPE createMETRICTYPEFromString(EDataType eDataType, String initialValue)
   {
-    MetricModelImpl metricModel = new MetricModelImpl();
-    return metricModel;
+    METRICTYPE result = METRICTYPE.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
   }
 
   /**
@@ -320,95 +325,9 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public Memory createMemory()
+  public String convertMETRICTYPEToString(EDataType eDataType, Object instanceValue)
   {
-    MemoryImpl memory = new MemoryImpl();
-    return memory;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Transaction createTransaction()
-  {
-    TransactionImpl transaction = new TransactionImpl();
-    return transaction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Disk createDisk()
-  {
-    DiskImpl disk = new DiskImpl();
-    return disk;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Criteria createCriteria()
-  {
-    CriteriaImpl criteria = new CriteriaImpl();
-    return criteria;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Threshold createThreshold()
-  {
-    ThresholdImpl threshold = new ThresholdImpl();
-    return threshold;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Disk_IO_Counter createDisk_IO_Counter()
-  {
-    Disk_IO_CounterImpl disk_IO_Counter = new Disk_IO_CounterImpl();
-    return disk_IO_Counter;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public TransactionCounter createTransactionCounter()
-  {
-    TransactionCounterImpl transactionCounter = new TransactionCounterImpl();
-    return transactionCounter;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public MemoryCounter createMemoryCounter()
-  {
-    MemoryCounterImpl memoryCounter = new MemoryCounterImpl();
-    return memoryCounter;
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**
@@ -451,94 +370,6 @@ public class XCanopusFactoryImpl extends EFactoryImpl implements XCanopusFactory
    * @generated
    */
   public String convertSUT_TYPEToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ASSOCIATION_CRITERIA createASSOCIATION_CRITERIAFromString(EDataType eDataType, String initialValue)
-  {
-    ASSOCIATION_CRITERIA result = ASSOCIATION_CRITERIA.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertASSOCIATION_CRITERIAToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public COUNTER_DISK createCOUNTER_DISKFromString(EDataType eDataType, String initialValue)
-  {
-    COUNTER_DISK result = COUNTER_DISK.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertCOUNTER_DISKToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public COUNTER_TRANSACTION createCOUNTER_TRANSACTIONFromString(EDataType eDataType, String initialValue)
-  {
-    COUNTER_TRANSACTION result = COUNTER_TRANSACTION.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertCOUNTER_TRANSACTIONToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public COUNTER_MEMORY createCOUNTER_MEMORYFromString(EDataType eDataType, String initialValue)
-  {
-    COUNTER_MEMORY result = COUNTER_MEMORY.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertCOUNTER_MEMORYToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

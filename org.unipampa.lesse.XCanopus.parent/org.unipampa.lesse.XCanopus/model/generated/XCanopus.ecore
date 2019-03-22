@@ -2,110 +2,72 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="xCanopus" nsURI="http://www.unipampa.org/lesse/XCanopus" nsPrefix="xCanopus">
   <eClassifiers xsi:type="ecore:EClass" name="Model">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="includes" upperBound="-1"
-        eType="#//Include" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="monitorings" upperBound="-1"
-        eType="#//Monitoring" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="suts" upperBound="-1" eType="#//SUT"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="main" upperBound="-1" eType="#//Main"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="loadGenerators" upperBound="-1"
-        eType="#//LoadGenerator" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Include">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MetricModel">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
+        eType="#//STEPS" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Monitoring">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sut" eType="#//SUT"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sut_type" eType="#//SUT_TYPE"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//CONDITION"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sut_type2" eType="#//SUT_TYPE"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CONDITION">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="post" eType="#//POSTCONDITION"
+  <eClassifiers xsi:type="ecore:EClass" name="Main">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="main" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AND" eSuperTypes="#//CONDITION"/>
-  <eClassifiers xsi:type="ecore:EClass" name="WHEN" eSuperTypes="#//CONDITION"/>
-  <eClassifiers xsi:type="ecore:EClass" name="THEN" eSuperTypes="#//CONDITION"/>
-  <eClassifiers xsi:type="ecore:EClass" name="POSTCONDITION">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="WGT" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="THE" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ATL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="STEPS"/>
+  <eClassifiers xsi:type="ecore:EClass" name="and_workload" eSuperTypes="#//STEPS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sut1" eType="#//SUT"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="suttype" eType="#//SUT_TYPE"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sut2" eType="#//SUT"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Metric">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="and_the_scenario" eSuperTypes="#//STEPS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scenario" eType="#//SCENARIO"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Counter">
+  <eClassifiers xsi:type="ecore:EClass" name="and_atleast" eSuperTypes="#//STEPS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="integer1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="integer2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="and_the_metric" eSuperTypes="#//STEPS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric" eType="#//METRICTYPE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="integer1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="integer2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="integer3" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="when" eSuperTypes="#//STEPS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metrictype" eType="#//METRICTYPEMONITORED"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="then" eSuperTypes="#//STEPS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric" eType="#//METRICTYPE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="integer1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="integer2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="integer3" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="given" eSuperTypes="#//STEPS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sut1" eType="#//SUT"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="suttype" eType="#//SUT_TYPE"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sut2" eType="#//SUT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="METRICTYPEMONITORED">
+    <eLiterals name="MEMORY" literal="memory"/>
+    <eLiterals name="DISK" value="1" literal="disk"/>
+    <eLiterals name="WEBRESOURCES" value="2" literal="web resources"/>
+    <eLiterals name="TRANSACTION" value="3" literal="transaction"/>
+    <eLiterals name="PROCESSOR" value="4" literal="processor"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="METRICTYPE">
+    <eLiterals name="availablembytescounter" literal="available mbytes counter"/>
+    <eLiterals name="idletimecounter" value="1" literal="% idle time counter"/>
+    <eLiterals name="throughputmbytes" value="2" literal="throughput mbytes"/>
+    <eLiterals name="transactionpersecond" value="3" literal="transactions per second"/>
+    <eLiterals name="TPS" value="4" literal="TPS"/>
+    <eLiterals name="processortimecounter" value="5" literal="% processor time count"/>
+    <eLiterals name="transactionresponsetime" value="6" literal="transactions response time"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCENARIO">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SUT">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LoadGenerator">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isMonitor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ip" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hardware" eType="#//HARDWARE"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sut" unique="false" upperBound="-1"
-        eType="#//SUT"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="metricmodel" eType="#//MetricModel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="monitor" eType="#//Monitor"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Monitor">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ip" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hardware" eType="#//HARDWARE"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sut" unique="false" upperBound="-1"
-        eType="#//SUT"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MetricModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="memory" eType="#//Memory"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="disk" eType="#//Disk" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="criteria" upperBound="-1"
-        eType="#//Criteria" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="threshold" upperBound="-1"
-        eType="#//Threshold" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="diskCounter" eType="#//Disk_IO_Counter"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transactionCounter" eType="#//TransactionCounter"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="memoryCounter" eType="#//MemoryCounter"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="metric" upperBound="-1"
-        eType="#//Metric" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="counter" upperBound="-1"
-        eType="#//Counter" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Memory" eSuperTypes="#//Metric">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="memoryCounter" eType="#//MemoryCounter"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Transaction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transactionCounter" eType="#//TransactionCounter"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Disk" eSuperTypes="#//Metric">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="disk_io_counter" eType="#//Disk_IO_Counter"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Criteria">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Threshold">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Disk_IO_Counter" eSuperTypes="#//Counter">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="counterDisk" unique="false"
-        upperBound="-1" eType="#//COUNTER_DISK"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TransactionCounter" eSuperTypes="#//Counter">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="counterTransaction" unique="false"
-        upperBound="-1" eType="#//COUNTER_TRANSACTION"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MemoryCounter" eSuperTypes="#//Counter">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="counterMemory" unique="false"
-        upperBound="-1" eType="#//COUNTER_MEMORY"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="HARDWARE">
     <eLiterals name="PHYSICAL_MACHINE" literal="PHYSICAL_MACHINE"/>
@@ -117,33 +79,5 @@
     <eLiterals name="DATABASE" value="1" literal="DATABASE"/>
     <eLiterals name="WEBAPP" value="2" literal="WEBAPP"/>
     <eLiterals name="WEBSERVICE" value="3" literal="WEBSERVICE"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ASSOCIATION_CRITERIA">
-    <eLiterals name="BETWEEN" literal="BETWEEN"/>
-    <eLiterals name="GREATER_THAN_OR_EQUAL_TO" value="1" literal="GREATER_THAN_OR_EQUAL_TO"/>
-    <eLiterals name="LESS_THAN" value="2" literal="LESS_THAN"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="COUNTER_DISK">
-    <eLiterals name="AVG_DISK_SECS_TRANSFER_COUNTER" literal="AVG_DISK_SECS_TRANSFER_COUNTER"/>
-    <eLiterals name="PERCENTAGE_IDLE_TIME_COUNTER" value="1" literal="PERCENTAGE_IDLE_TIME_COUNTER"/>
-    <eLiterals name="DISK_TRANSFERS_SEC_COUNTER" value="2" literal="DISK_TRANSFERS_SEC_COUNTER"/>
-    <eLiterals name="AVG_DISK_QUEUE_LENGTH_COUNTER" value="3" literal="AVG_DISK_QUEUE_LENGTH_COUNTER"/>
-    <eLiterals name="SPLIT_IO_SEC_COUNTER" value="4" literal="SPLIT_IO_SEC_COUNTER"/>
-    <eLiterals name="FREE_MEGABYTES_COUNTER" value="5" literal="FREE_MEGABYTES_COUNTER"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="COUNTER_TRANSACTION">
-    <eLiterals name="TRANSACTION_RESPONSE_TIME" literal="TRANSACTION_RESPONSE_TIME"/>
-    <eLiterals name="TRANSACTION_PER_SECOND_TPS" value="1" literal="TRANSACTION_PER_SECOND_TPS"/>
-    <eLiterals name="TRANSACTION_SUCCESS_RATE" value="2" literal="TRANSACTION_SUCCESS_RATE"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="COUNTER_MEMORY">
-    <eLiterals name="AVALIABLE_MBYTES_COUNTER" literal="AVALIABLE_MBYTES_COUNTER"/>
-    <eLiterals name="PAGES_SEC_COUNTER" value="1" literal="PAGES_SEC_COUNTER"/>
-    <eLiterals name="PAGE_READS_SEC_COUNTER" value="2" literal="PAGE_READS_SEC_COUNTER"/>
-    <eLiterals name="WORKING_SET_COUNTER" value="3" literal="WORKING_SET_COUNTER"/>
-    <eLiterals name="POOL_NONPAGE_BYTES_COUNTER" value="4" literal="POOL_NONPAGE_BYTES_COUNTER"/>
-    <eLiterals name="PAGED_POOL_BYTES_COUNTER" value="5" literal="PAGED_POOL_BYTES_COUNTER"/>
-    <eLiterals name="PAGED_POOL_FAILURES_COUNTER" value="6" literal="PAGED_POOL_FAILURES_COUNTER"/>
-    <eLiterals name="CACHE_BYTES_COUNTER" value="7" literal="CACHE_BYTES_COUNTER"/>
   </eClassifiers>
 </ecore:EPackage>

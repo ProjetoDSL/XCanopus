@@ -33,114 +33,6 @@ public interface XCanopusFactory extends EFactory
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>Include</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Include</em>'.
-   * @generated
-   */
-  Include createInclude();
-
-  /**
-   * Returns a new object of class '<em>Monitoring</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Monitoring</em>'.
-   * @generated
-   */
-  Monitoring createMonitoring();
-
-  /**
-   * Returns a new object of class '<em>CONDITION</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>CONDITION</em>'.
-   * @generated
-   */
-  CONDITION createCONDITION();
-
-  /**
-   * Returns a new object of class '<em>AND</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>AND</em>'.
-   * @generated
-   */
-  AND createAND();
-
-  /**
-   * Returns a new object of class '<em>WHEN</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>WHEN</em>'.
-   * @generated
-   */
-  WHEN createWHEN();
-
-  /**
-   * Returns a new object of class '<em>THEN</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>THEN</em>'.
-   * @generated
-   */
-  THEN createTHEN();
-
-  /**
-   * Returns a new object of class '<em>POSTCONDITION</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>POSTCONDITION</em>'.
-   * @generated
-   */
-  POSTCONDITION createPOSTCONDITION();
-
-  /**
-   * Returns a new object of class '<em>Metric</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Metric</em>'.
-   * @generated
-   */
-  Metric createMetric();
-
-  /**
-   * Returns a new object of class '<em>Counter</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Counter</em>'.
-   * @generated
-   */
-  Counter createCounter();
-
-  /**
-   * Returns a new object of class '<em>SUT</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>SUT</em>'.
-   * @generated
-   */
-  SUT createSUT();
-
-  /**
-   * Returns a new object of class '<em>Load Generator</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Load Generator</em>'.
-   * @generated
-   */
-  LoadGenerator createLoadGenerator();
-
-  /**
-   * Returns a new object of class '<em>Monitor</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Monitor</em>'.
-   * @generated
-   */
-  Monitor createMonitor();
-
-  /**
    * Returns a new object of class '<em>Metric Model</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -150,76 +42,103 @@ public interface XCanopusFactory extends EFactory
   MetricModel createMetricModel();
 
   /**
-   * Returns a new object of class '<em>Memory</em>'.
+   * Returns a new object of class '<em>Main</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Memory</em>'.
+   * @return a new object of class '<em>Main</em>'.
    * @generated
    */
-  Memory createMemory();
+  Main createMain();
 
   /**
-   * Returns a new object of class '<em>Transaction</em>'.
+   * Returns a new object of class '<em>STEPS</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Transaction</em>'.
+   * @return a new object of class '<em>STEPS</em>'.
    * @generated
    */
-  Transaction createTransaction();
+  STEPS createSTEPS();
 
   /**
-   * Returns a new object of class '<em>Disk</em>'.
+   * Returns a new object of class '<em>and workload</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Disk</em>'.
+   * @return a new object of class '<em>and workload</em>'.
    * @generated
    */
-  Disk createDisk();
+  and_workload createand_workload();
 
   /**
-   * Returns a new object of class '<em>Criteria</em>'.
+   * Returns a new object of class '<em>and the scenario</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Criteria</em>'.
+   * @return a new object of class '<em>and the scenario</em>'.
    * @generated
    */
-  Criteria createCriteria();
+  and_the_scenario createand_the_scenario();
 
   /**
-   * Returns a new object of class '<em>Threshold</em>'.
+   * Returns a new object of class '<em>and atleast</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Threshold</em>'.
+   * @return a new object of class '<em>and atleast</em>'.
    * @generated
    */
-  Threshold createThreshold();
+  and_atleast createand_atleast();
 
   /**
-   * Returns a new object of class '<em>Disk IO Counter</em>'.
+   * Returns a new object of class '<em>and the metric</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Disk IO Counter</em>'.
+   * @return a new object of class '<em>and the metric</em>'.
    * @generated
    */
-  Disk_IO_Counter createDisk_IO_Counter();
+  and_the_metric createand_the_metric();
 
   /**
-   * Returns a new object of class '<em>Transaction Counter</em>'.
+   * Returns a new object of class '<em>when</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Transaction Counter</em>'.
+   * @return a new object of class '<em>when</em>'.
    * @generated
    */
-  TransactionCounter createTransactionCounter();
+  when createwhen();
 
   /**
-   * Returns a new object of class '<em>Memory Counter</em>'.
+   * Returns a new object of class '<em>then</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Memory Counter</em>'.
+   * @return a new object of class '<em>then</em>'.
    * @generated
    */
-  MemoryCounter createMemoryCounter();
+  then createthen();
+
+  /**
+   * Returns a new object of class '<em>given</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>given</em>'.
+   * @generated
+   */
+  given creategiven();
+
+  /**
+   * Returns a new object of class '<em>SCENARIO</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>SCENARIO</em>'.
+   * @generated
+   */
+  SCENARIO createSCENARIO();
+
+  /**
+   * Returns a new object of class '<em>SUT</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>SUT</em>'.
+   * @generated
+   */
+  SUT createSUT();
 
   /**
    * Returns the package supported by this factory.
