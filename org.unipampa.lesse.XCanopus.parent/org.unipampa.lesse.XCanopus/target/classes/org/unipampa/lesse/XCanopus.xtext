@@ -6,79 +6,92 @@ generate xCanopus "http://www.unipampa.org/lesse/XCanopus"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Model: 
-	   includes += Include*
-	   monitorings += Monitoring*
-	   suts += SUT*
-	   loadGenerators+=LoadGenerator*	   
+     //  includes += Include*
+	 //  monitorings+=MetricModel* 
+	 //  scenario+=SCENARIO* 
+	 //  suts+=SUT*
+	     main+=Main*
 ; 
 
-Include:
-	'include' importURI=STRING 'as' name=ID
+//Include:
+//	'include' importURI=STRING 'as' name=ID
+//;
+
+MetricModel:
+	'Feature:' Freetext '.' 
+	'Monitoring:' name=ID 'description' Freetext '.' '{'
+	(steps+=STEPS)+ '}'
 ;
-
-
-Monitoring:
-	{Monitoring}
-	'Feature' Freetext '.'
-	'Monitoring:' Freetext '.'
-	 	
-	 	'Given' 'that' sut=[SUT|ID] sut_type=SUT_TYPE 'monitored by' sut=[SUT|ID] "monitor" 
-	 	condition=CONDITION  sut=[SUT|ID] "Load Generator" "for the" sut_type2=SUT_TYPE "on" sut=[SUT|ID]
-;
-
 
 // '|' choice
-// '?' optional
+// '?' optional+
 // '+' 1 or more
 // '*' 0 or more
 // '+=' list of elements
+// 0 or more strings
+
+Main:
+	main+=(MetricModel | SCENARIO | SUT)
+;
 
 
 Freetext:
 	EString*
 ;
+ 
+//possible steps
+STEPS: given | when | then | and_workload | and_atleast | and_the_scenario | and_the_metric;
 
-CONDITION: AND | WHEN | THEN // features
+and_workload:
+	'And' WORKLOADGENERATED sut1=[SUT|ID] LOADGENERATORFORTHE suttype=SUT_TYPE ON sut2=[SUT|ID]
 ;
-AND:
-	'And' post=POSTCONDITION
+and_the_scenario:
+	'And' THE scenario=[SCENARIO|ID] ISTESTSCENARIO 
 ;
-WHEN:
-	'When' post=POSTCONDITION
+//first format CHOICE
+and_atleast:
+	'And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT
 ;
-THEN:
-	'Then' post=POSTCONDITION
+and_the_metric:
+	'And' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
+;
+//second format of use CHOICE
+when:
+	'When' THE metrictype=METRICTYPEMONITORED ISMONITORED
+	; 
+then:
+	'Then' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
+;
+given:
+	'Given' THAT sut1=[SUT|ID] suttype=SUT_TYPE MONITOREDBY sut2=[SUT|ID] MONITOR_TEXT
 ;
 
-POSTCONDITION:  WGT = 'workload generated through' | THE = 'the' | ATL = 'At Least'
+enum METRICTYPEMONITORED: MEMORY = 'memory' | DISK = 'disk' | WEBRESOURCES = 'web resources' | TRANSACTION = 'transaction' | PROCESSOR = 'processor' ;
+
+enum METRICTYPE: availablembytescounter = 'available mbytes counter' | idletimecounter = '% idle time counter' | throughputmbytes = 'throughput mbytes' | transactionpersecond = 'transactions per second' | TPS = 'TPS' | processortimecounter = '% processor time count' | transactionresponsetime = 'transactions response time';
+
+//availablembytescounter:
+//	AVAILABLEMBYTESCOUNTER_TEXT 
+//;
+//idletimecounter:
+//	IDLETIMECOUNTER_TEXT 
+//;
+//throughputmbytes:
+//	THROUGHPUTMBYTES_TEXT 
+//;
+//transactionpersecond:
+	 
+//;
+//processortimecounter:
+//	PROCESSORTIMECOUNTER_TEXT
+//;
+
+SCENARIO:
+	'Scenario' '{'
+	name=ID
+	'}'
+;
 	
-;
-				
-
-//Monitoring:
-//	{Monitoring}
-//	'Monitoring'
-//	name=EString
-//	'{'
-//		('projectLabel' projectLabel=EString)?
-//		('projectAuthor' projectAuthor=EString)?
-//		('description' description=EString)?
-//		('suts' '{' suts+=SUT ( "," suts+=SUT)* '}' )?
-//		('loadGenerators' loadGenerators=LoadGenerator)?
-//		('monitors' monitors=Monitor)?
-//		('metricModel' '{' metricModel+=MetricModel ( "," metricModel+=MetricModel)* '}' )?
-//	'}';
-
-
-
-Metric:
-	Memory | Disk ;  // | Transaction;
-
-Counter:
-	Disk_IO_Counter | MemoryCounter | TransactionCounter;
-
-
-
 SUT:
 	{SUT}
 	'SUT'
@@ -92,108 +105,30 @@ SUT:
 	//	('metricmodel' metricmodel=[MetricModel|EString])?
 	'}';
 
-LoadGenerator:
-	{LoadGenerator}
-	(isMonitor?='isMonitor')?
-	'LoadGenerator'
-	'{'
-		('hostname' hostname=EString)?
-		('ip' ip=EString)?
-		('hardware' hardware=HARDWARE)?
-		('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
-		('metricmodel' metricmodel=[MetricModel|EString])?
-		('monitor' monitor=[Monitor|EString])?
-	'}';
+//LoadGenerator:
+//	{LoadGenerator}
+//	(isMonitor?='isMonitor')?
+//	'LoadGenerator'
+//	'{'
+//		('hostname' hostname=EString)?
+//		('ip' ip=EString)?
+//		('hardware' hardware=HARDWARE)?
+//		('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
+//		('metricmodel' metricmodel=[MetricModel|EString])?
+//		('monitorr' monitor=[Monitor|EString])?
+//	'}';
 
-Monitor:
-	{Monitor}
-	'Monitor'
-	'{'
-		('hostname' hostname=EString)?
-		('ip' ip=EString)?
-		('hardware' hardware=HARDWARE)?
-		('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
-	'}';
+//Monitor:
+//	{Monitor}
+//	'Monitor'
+//	'{'
+//		('hostname' hostname=EString)?
+//		('ip' ip=EString)?
+//		('hardware' hardware=HARDWARE)?
+//		('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
+//	'}';
 
-MetricModel:
-	{MetricModel}
-	'MetricModel'
-	'{'
-		('memory' memory=Memory)?
-		('disk' disk=Disk)?
-		('criteria' '{' criteria+=Criteria ( "," criteria+=Criteria)* '}' )?
-		('threshold' '{' threshold+=Threshold ( "," threshold+=Threshold)* '}' )?
-		('diskCounter' diskCounter=Disk_IO_Counter)?
-		('transactionCounter' transactionCounter=TransactionCounter)?
-		('memoryCounter' memoryCounter=MemoryCounter)?
-		('metric' '{' metric+=Metric ( "," metric+=Metric)* '}' )?
-		('counter' '{' counter+=Counter ( "," counter+=Counter)* '}' )?
-	'}';
 
-Memory:
-	{Memory}
-	'Memory'
-	name=EString
-	'{'
-		('memoryCounter' memoryCounter=[MemoryCounter|EString])?
-	'}';
-
-Transaction:
-	{Transaction}
-	'Transaction'
-	name=EString
-	'{'
-		('transactionCounter' transactionCounter=[TransactionCounter|EString])?
-	'}';
-
-Disk:
-	{Disk}
-	'Disk'
-	name=EString
-	'{'
-		('disk_io_counter' disk_io_counter=[Disk_IO_Counter|EString])?
-	'}';
-
-Criteria:
-	{Criteria}
-	'Criteria'
-	'{'
-		('value' value=EInt)?
-	'}';
-
-Threshold:
-	{Threshold}
-	'Threshold'
-	'{'
-		('value' value=EInt)?
-	'}';
-
-Disk_IO_Counter:
-	{Disk_IO_Counter}
-	'Disk_IO_Counter'
-	name=EString
-	'{'
-		('counterDisk' '{' counterDisk+=COUNTER_DISK ( "," counterDisk+=COUNTER_DISK)* '}' )?
-	//	('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-	'}';
-
-TransactionCounter:
-	{TransactionCounter}
-	'TransactionCounter'
-	name=EString
-	'{'
-		('counterTransaction' '{' counterTransaction+=COUNTER_TRANSACTION ( "," counterTransaction+=COUNTER_TRANSACTION)* '}' )?
-	//	('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-	'}';
-
-MemoryCounter:
-	{MemoryCounter}
-	'MemoryCounter'
-	name=EString
-	'{'
-		('counterMemory' '{' counterMemory+=COUNTER_MEMORY ( "," counterMemory+=COUNTER_MEMORY)* '}' )?
-//		('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-	'}';
 
 EInt returns ecore::EInt:
 	'-'? INT;
@@ -210,16 +145,53 @@ enum HARDWARE:
 enum SUT_TYPE:
 				DESKTOPAPP = 'DESKTOPAPP' | DATABASE = 'DATABASE' | WEBAPP = 'WEBAPP' | WEBSERVICE = 'WEBSERVICE';	
 
-enum COUNTER_DISK:
-				AVG_DISK_SECS_TRANSFER_COUNTER = 'AVG_DISK_SECS_TRANSFER_COUNTER' | PERCENTAGE_IDLE_TIME_COUNTER = 'PERCENTAGE_IDLE_TIME_COUNTER' | DISK_TRANSFERS_SEC_COUNTER = 'DISK_TRANSFERS_SEC_COUNTER' | AVG_DISK_QUEUE_LENGTH_COUNTER = 'AVG_DISK_QUEUE_LENGTH_COUNTER' | SPLIT_IO_SEC_COUNTER = 'SPLIT_IO_SEC_COUNTER' | FREE_MEGABYTES_COUNTER = 'FREE_MEGABYTES_COUNTER';
+//enum COUNTER_DISK:
+//				AVG_DISK_SECS_TRANSFER_COUNTER = 'AVG_DISK_SECS_TRANSFER_COUNTER' | PERCENTAGE_IDLE_TIME_COUNTER = 'PERCENTAGE_IDLE_TIME_COUNTER' | DISK_TRANSFERS_SEC_COUNTER = 'DISK_TRANSFERS_SEC_COUNTER' | AVG_DISK_QUEUE_LENGTH_COUNTER = 'AVG_DISK_QUEUE_LENGTH_COUNTER' | SPLIT_IO_SEC_COUNTER = 'SPLIT_IO_SEC_COUNTER' | FREE_MEGABYTES_COUNTER = 'FREE_MEGABYTES_COUNTER';
 
-enum COUNTER_TRANSACTION:
-				TRANSACTION_RESPONSE_TIME = 'TRANSACTION_RESPONSE_TIME' | TRANSACTION_PER_SECOND_TPS = 'TRANSACTION_PER_SECOND_TPS' | TRANSACTION_SUCCESS_RATE = 'TRANSACTION_SUCCESS_RATE';
+//enum COUNTER_TRANSACTION:
+//				TRANSACTION_RESPONSE_TIME = 'TRANSACTION_RESPONSE_TIME' | TRANSACTION_PER_SECOND_TPS = 'TRANSACTION_PER_SECOND_TPS' | TRANSACTION_SUCCESS_RATE = 'TRANSACTION_SUCCESS_RATE';
 
-enum COUNTER_MEMORY:
-				AVALIABLE_MBYTES_COUNTER = 'AVALIABLE_MBYTES_COUNTER' | PAGES_SEC_COUNTER = 'PAGES_SEC_COUNTER' | PAGE_READS_SEC_COUNTER = 'PAGE_READS_SEC_COUNTER' | WORKING_SET_COUNTER = 'WORKING_SET_COUNTER' | POOL_NONPAGE_BYTES_COUNTER = 'POOL_NONPAGE_BYTES_COUNTER' | PAGED_POOL_BYTES_COUNTER = 'PAGED_POOL_BYTES_COUNTER' | PAGED_POOL_FAILURES_COUNTER = 'PAGED_POOL_FAILURES_COUNTER' | CACHE_BYTES_COUNTER = 'CACHE_BYTES_COUNTER';
-				
-				
+//enum COUNTER_MEMORY:
+//				AVALIABLE_MBYTES_COUNTER = 'AVALIABLE_MBYTES_COUNTER' | PAGES_SEC_COUNTER = 'PAGES_SEC_COUNTER' | PAGE_READS_SEC_COUNTER = 'PAGE_READS_SEC_COUNTER' | WORKING_SET_COUNTER = 'WORKING_SET_COUNTER' | POOL_NONPAGE_BYTES_COUNTER = 'POOL_NONPAGE_BYTES_COUNTER' | PAGED_POOL_BYTES_COUNTER = 'PAGED_POOL_BYTES_COUNTER' | PAGED_POOL_FAILURES_COUNTER = 'PAGED_POOL_FAILURES_COUNTER' | CACHE_BYTES_COUNTER = 'CACHE_BYTES_COUNTER';
+	
+	
+	
+terminal SHOULDBELESSTHAN_TEXT:'should be less than';
+terminal SHOULDBEATLEAST_TEXT:'should be at least';
+terminal SHOULDBEGREATERTHAN:'should be more than';
+
+terminal WHENTHENUMBERISLESSTHAN_TEXT:'when the number of virtual users is less than';
+terminal WHENTHENUMBERISGREATERTHAN_TEXT:'when the number of virtual users is greater than';
+terminal WHENTHENUMBERISGREATEROREQUAL_TEXT:'when the number of virtual users is greater or equal to';
+terminal WHENTHENUMBERIRLESSEROREQUAL_TEXT:'when the number of virtual users is lesser or equal to';
+terminal WHENTHENUMBERAREBETWEEN_TEXT:'when the number of virtual users are between';	
+
+//terminal AVAILABLEMBYTESCOUNTER_TEXT:'available mbytes counter';
+//terminal IDLETIMECOUNTER_TEXT:'% idle time counter' ;
+//terminal THROUGHPUTMBYTES_TEXT:'throughput mbytes' ;
+//terminal TRANSACTIONPERSECOND_TEXT:'transaction per second (TPS)' ;
+//terminal PROCESSORTIMECOUNTER_TEXT:'% processor time count' ;
+
+terminal MBWHEN_GREATEROREQUAL_TEXT:'MB when the number of virtual users is greater than or equal to';
+terminal MBWHEN_LESSTHAN_TEXT:'MB when the number of virtual users is less than';
+terminal MBWHEN_MORETHAN_TEXT:'MB when the number of virtual users is more than';
+terminal MBWHEN_MINOROREQUAL_TEXT:'MB when the number of virtual users is lesser than or equal to';
+
+terminal AND: 'and';
+terminal MONITOR_TEXT:'monitor';
+terminal THE:'the';
+terminal THAT:'that';	
+terminal MONITOREDBY:'monitored by ';
+terminal WORKLOADGENERATED:'workload generated through';
+terminal LOADGENERATORFORTHE:'Load Generator for the';
+terminal ISTESTSCENARIO:'test scenario';
+terminal ON:'on';
+terminal ISMONITORED:'is monitored';
+terminal ATL:'at least';
+
+terminal fragment NNL: !('\r' | '\n');
+terminal fragment NL: '\r'? '\n'?;
+
 @Override 
 terminal ID: 
     '^'?('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
@@ -247,4 +219,4 @@ terminal WS:
  
 @Override 
 terminal ANY_OTHER: 
-    .;		
+.;

@@ -11,24 +11,18 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.unipampa.lesse.xCanopus.Counter;
-import org.unipampa.lesse.xCanopus.Criteria;
-import org.unipampa.lesse.xCanopus.Disk;
-import org.unipampa.lesse.xCanopus.Disk_IO_Counter;
-import org.unipampa.lesse.xCanopus.Include;
-import org.unipampa.lesse.xCanopus.LoadGenerator;
-import org.unipampa.lesse.xCanopus.Memory;
-import org.unipampa.lesse.xCanopus.MemoryCounter;
-import org.unipampa.lesse.xCanopus.Metric;
+import org.unipampa.lesse.xCanopus.Main;
 import org.unipampa.lesse.xCanopus.MetricModel;
 import org.unipampa.lesse.xCanopus.Model;
-import org.unipampa.lesse.xCanopus.Monitor;
-import org.unipampa.lesse.xCanopus.Monitoring;
-import org.unipampa.lesse.xCanopus.Threshold;
-import org.unipampa.lesse.xCanopus.Transaction;
-import org.unipampa.lesse.xCanopus.TransactionCounter;
 import org.unipampa.lesse.xCanopus.XCanopusFactory;
 import org.unipampa.lesse.xCanopus.XCanopusPackage;
+import org.unipampa.lesse.xCanopus.and_atleast;
+import org.unipampa.lesse.xCanopus.and_the_metric;
+import org.unipampa.lesse.xCanopus.and_the_scenario;
+import org.unipampa.lesse.xCanopus.and_workload;
+import org.unipampa.lesse.xCanopus.given;
+import org.unipampa.lesse.xCanopus.then;
+import org.unipampa.lesse.xCanopus.when;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,28 +44,49 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass includeEClass = null;
+  private EClass metricModelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass monitoringEClass = null;
+  private EClass mainEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass conditionEClass = null;
+  private EClass stepsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass andEClass = null;
+  private EClass and_workloadEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass and_the_scenarioEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass and_atleastEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass and_the_metricEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -92,21 +107,14 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass postconditionEClass = null;
+  private EClass givenEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass metricEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass counterEClass = null;
+  private EClass scenarioEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -120,77 +128,14 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass loadGeneratorEClass = null;
+  private EEnum metrictypemonitoredEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass monitorEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass metricModelEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass memoryEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass transactionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass diskEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass criteriaEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass thresholdEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass disk_IO_CounterEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass transactionCounterEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass memoryCounterEClass = null;
+  private EEnum metrictypeEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -205,34 +150,6 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   private EEnum suT_TYPEEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum associatioN_CRITERIAEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum counteR_DISKEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum counteR_TRANSACTIONEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum counteR_MEMORYEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -314,7 +231,7 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EReference getModel_Includes()
+  public EReference getModel_Main()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(0);
   }
@@ -325,9 +242,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EReference getModel_Monitorings()
+  public EClass getMetricModel()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(1);
+    return metricModelEClass;
   }
 
   /**
@@ -336,9 +253,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EReference getModel_Suts()
+  public EAttribute getMetricModel_Name()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)metricModelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -347,9 +264,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EReference getModel_LoadGenerators()
+  public EReference getMetricModel_Steps()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(3);
+    return (EReference)metricModelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -358,9 +275,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EClass getInclude()
+  public EClass getMain()
   {
-    return includeEClass;
+    return mainEClass;
   }
 
   /**
@@ -369,9 +286,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EAttribute getInclude_ImportURI()
+  public EReference getMain_Main()
   {
-    return (EAttribute)includeEClass.getEStructuralFeatures().get(0);
+    return (EReference)mainEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -380,9 +297,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EAttribute getInclude_Name()
+  public EClass getSTEPS()
   {
-    return (EAttribute)includeEClass.getEStructuralFeatures().get(1);
+    return stepsEClass;
   }
 
   /**
@@ -391,9 +308,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EClass getMonitoring()
+  public EClass getand_workload()
   {
-    return monitoringEClass;
+    return and_workloadEClass;
   }
 
   /**
@@ -402,9 +319,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EReference getMonitoring_Sut()
+  public EReference getand_workload_Sut1()
   {
-    return (EReference)monitoringEClass.getEStructuralFeatures().get(0);
+    return (EReference)and_workloadEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -413,9 +330,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EAttribute getMonitoring_Sut_type()
+  public EAttribute getand_workload_Suttype()
   {
-    return (EAttribute)monitoringEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)and_workloadEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -424,9 +341,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EReference getMonitoring_Condition()
+  public EReference getand_workload_Sut2()
   {
-    return (EReference)monitoringEClass.getEStructuralFeatures().get(2);
+    return (EReference)and_workloadEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -435,9 +352,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EAttribute getMonitoring_Sut_type2()
+  public EClass getand_the_scenario()
   {
-    return (EAttribute)monitoringEClass.getEStructuralFeatures().get(3);
+    return and_the_scenarioEClass;
   }
 
   /**
@@ -446,9 +363,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EClass getCONDITION()
+  public EReference getand_the_scenario_Scenario()
   {
-    return conditionEClass;
+    return (EReference)and_the_scenarioEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -457,9 +374,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EReference getCONDITION_Post()
+  public EClass getand_atleast()
   {
-    return (EReference)conditionEClass.getEStructuralFeatures().get(0);
+    return and_atleastEClass;
   }
 
   /**
@@ -468,9 +385,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EClass getAND()
+  public EAttribute getand_atleast_Integer1()
   {
-    return andEClass;
+    return (EAttribute)and_atleastEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -479,7 +396,73 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EClass getWHEN()
+  public EAttribute getand_atleast_Integer2()
+  {
+    return (EAttribute)and_atleastEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getand_the_metric()
+  {
+    return and_the_metricEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getand_the_metric_Metric()
+  {
+    return (EAttribute)and_the_metricEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getand_the_metric_Integer1()
+  {
+    return (EAttribute)and_the_metricEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getand_the_metric_Integer2()
+  {
+    return (EAttribute)and_the_metricEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getand_the_metric_Integer3()
+  {
+    return (EAttribute)and_the_metricEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getwhen()
   {
     return whenEClass;
   }
@@ -490,7 +473,18 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EClass getTHEN()
+  public EAttribute getwhen_Metrictype()
+  {
+    return (EAttribute)whenEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getthen()
   {
     return thenEClass;
   }
@@ -501,9 +495,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EClass getPOSTCONDITION()
+  public EAttribute getthen_Metric()
   {
-    return postconditionEClass;
+    return (EAttribute)thenEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -512,9 +506,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EAttribute getPOSTCONDITION_WGT()
+  public EAttribute getthen_Integer1()
   {
-    return (EAttribute)postconditionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)thenEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -523,9 +517,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EAttribute getPOSTCONDITION_THE()
+  public EAttribute getthen_Integer2()
   {
-    return (EAttribute)postconditionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)thenEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -534,9 +528,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EAttribute getPOSTCONDITION_ATL()
+  public EAttribute getthen_Integer3()
   {
-    return (EAttribute)postconditionEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)thenEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -545,9 +539,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EClass getMetric()
+  public EClass getgiven()
   {
-    return metricEClass;
+    return givenEClass;
   }
 
   /**
@@ -556,9 +550,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EAttribute getMetric_Name()
+  public EReference getgiven_Sut1()
   {
-    return (EAttribute)metricEClass.getEStructuralFeatures().get(0);
+    return (EReference)givenEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -567,9 +561,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EClass getCounter()
+  public EAttribute getgiven_Suttype()
   {
-    return counterEClass;
+    return (EAttribute)givenEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -578,9 +572,31 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EAttribute getCounter_Name()
+  public EReference getgiven_Sut2()
   {
-    return (EAttribute)counterEClass.getEStructuralFeatures().get(0);
+    return (EReference)givenEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSCENARIO()
+  {
+    return scenarioEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSCENARIO_Name()
+  {
+    return (EAttribute)scenarioEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -611,9 +627,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EClass getLoadGenerator()
+  public EEnum getMETRICTYPEMONITORED()
   {
-    return loadGeneratorEClass;
+    return metrictypemonitoredEEnum;
   }
 
   /**
@@ -622,427 +638,9 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
    * @generated
    */
   @Override
-  public EAttribute getLoadGenerator_IsMonitor()
+  public EEnum getMETRICTYPE()
   {
-    return (EAttribute)loadGeneratorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getLoadGenerator_Hostname()
-  {
-    return (EAttribute)loadGeneratorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getLoadGenerator_Ip()
-  {
-    return (EAttribute)loadGeneratorEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getLoadGenerator_Hardware()
-  {
-    return (EAttribute)loadGeneratorEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getLoadGenerator_Sut()
-  {
-    return (EReference)loadGeneratorEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getLoadGenerator_Metricmodel()
-  {
-    return (EReference)loadGeneratorEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getLoadGenerator_Monitor()
-  {
-    return (EReference)loadGeneratorEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getMonitor()
-  {
-    return monitorEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getMonitor_Hostname()
-  {
-    return (EAttribute)monitorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getMonitor_Ip()
-  {
-    return (EAttribute)monitorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getMonitor_Hardware()
-  {
-    return (EAttribute)monitorEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getMonitor_Sut()
-  {
-    return (EReference)monitorEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getMetricModel()
-  {
-    return metricModelEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getMetricModel_Memory()
-  {
-    return (EReference)metricModelEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getMetricModel_Disk()
-  {
-    return (EReference)metricModelEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getMetricModel_Criteria()
-  {
-    return (EReference)metricModelEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getMetricModel_Threshold()
-  {
-    return (EReference)metricModelEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getMetricModel_DiskCounter()
-  {
-    return (EReference)metricModelEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getMetricModel_TransactionCounter()
-  {
-    return (EReference)metricModelEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getMetricModel_MemoryCounter()
-  {
-    return (EReference)metricModelEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getMetricModel_Metric()
-  {
-    return (EReference)metricModelEClass.getEStructuralFeatures().get(7);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getMetricModel_Counter()
-  {
-    return (EReference)metricModelEClass.getEStructuralFeatures().get(8);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getMemory()
-  {
-    return memoryEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getMemory_MemoryCounter()
-  {
-    return (EReference)memoryEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getTransaction()
-  {
-    return transactionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getTransaction_Name()
-  {
-    return (EAttribute)transactionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getTransaction_TransactionCounter()
-  {
-    return (EReference)transactionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getDisk()
-  {
-    return diskEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getDisk_Disk_io_counter()
-  {
-    return (EReference)diskEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getCriteria()
-  {
-    return criteriaEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getCriteria_Value()
-  {
-    return (EAttribute)criteriaEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getThreshold()
-  {
-    return thresholdEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getThreshold_Value()
-  {
-    return (EAttribute)thresholdEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getDisk_IO_Counter()
-  {
-    return disk_IO_CounterEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getDisk_IO_Counter_CounterDisk()
-  {
-    return (EAttribute)disk_IO_CounterEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getTransactionCounter()
-  {
-    return transactionCounterEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getTransactionCounter_CounterTransaction()
-  {
-    return (EAttribute)transactionCounterEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getMemoryCounter()
-  {
-    return memoryCounterEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getMemoryCounter_CounterMemory()
-  {
-    return (EAttribute)memoryCounterEClass.getEStructuralFeatures().get(0);
+    return metrictypeEEnum;
   }
 
   /**
@@ -1065,50 +663,6 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
   public EEnum getSUT_TYPE()
   {
     return suT_TYPEEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EEnum getASSOCIATION_CRITERIA()
-  {
-    return associatioN_CRITERIAEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EEnum getCOUNTER_DISK()
-  {
-    return counteR_DISKEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EEnum getCOUNTER_TRANSACTION()
-  {
-    return counteR_TRANSACTIONEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EEnum getCOUNTER_MEMORY()
-  {
-    return counteR_MEMORYEEnum;
   }
 
   /**
@@ -1143,102 +697,60 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
 
     // Create classes and their features
     modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__INCLUDES);
-    createEReference(modelEClass, MODEL__MONITORINGS);
-    createEReference(modelEClass, MODEL__SUTS);
-    createEReference(modelEClass, MODEL__LOAD_GENERATORS);
+    createEReference(modelEClass, MODEL__MAIN);
 
-    includeEClass = createEClass(INCLUDE);
-    createEAttribute(includeEClass, INCLUDE__IMPORT_URI);
-    createEAttribute(includeEClass, INCLUDE__NAME);
+    metricModelEClass = createEClass(METRIC_MODEL);
+    createEAttribute(metricModelEClass, METRIC_MODEL__NAME);
+    createEReference(metricModelEClass, METRIC_MODEL__STEPS);
 
-    monitoringEClass = createEClass(MONITORING);
-    createEReference(monitoringEClass, MONITORING__SUT);
-    createEAttribute(monitoringEClass, MONITORING__SUT_TYPE);
-    createEReference(monitoringEClass, MONITORING__CONDITION);
-    createEAttribute(monitoringEClass, MONITORING__SUT_TYPE2);
+    mainEClass = createEClass(MAIN);
+    createEReference(mainEClass, MAIN__MAIN);
 
-    conditionEClass = createEClass(CONDITION);
-    createEReference(conditionEClass, CONDITION__POST);
+    stepsEClass = createEClass(STEPS);
 
-    andEClass = createEClass(AND);
+    and_workloadEClass = createEClass(AND_WORKLOAD);
+    createEReference(and_workloadEClass, AND_WORKLOAD__SUT1);
+    createEAttribute(and_workloadEClass, AND_WORKLOAD__SUTTYPE);
+    createEReference(and_workloadEClass, AND_WORKLOAD__SUT2);
+
+    and_the_scenarioEClass = createEClass(AND_THE_SCENARIO);
+    createEReference(and_the_scenarioEClass, AND_THE_SCENARIO__SCENARIO);
+
+    and_atleastEClass = createEClass(AND_ATLEAST);
+    createEAttribute(and_atleastEClass, AND_ATLEAST__INTEGER1);
+    createEAttribute(and_atleastEClass, AND_ATLEAST__INTEGER2);
+
+    and_the_metricEClass = createEClass(AND_THE_METRIC);
+    createEAttribute(and_the_metricEClass, AND_THE_METRIC__METRIC);
+    createEAttribute(and_the_metricEClass, AND_THE_METRIC__INTEGER1);
+    createEAttribute(and_the_metricEClass, AND_THE_METRIC__INTEGER2);
+    createEAttribute(and_the_metricEClass, AND_THE_METRIC__INTEGER3);
 
     whenEClass = createEClass(WHEN);
+    createEAttribute(whenEClass, WHEN__METRICTYPE);
 
     thenEClass = createEClass(THEN);
+    createEAttribute(thenEClass, THEN__METRIC);
+    createEAttribute(thenEClass, THEN__INTEGER1);
+    createEAttribute(thenEClass, THEN__INTEGER2);
+    createEAttribute(thenEClass, THEN__INTEGER3);
 
-    postconditionEClass = createEClass(POSTCONDITION);
-    createEAttribute(postconditionEClass, POSTCONDITION__WGT);
-    createEAttribute(postconditionEClass, POSTCONDITION__THE);
-    createEAttribute(postconditionEClass, POSTCONDITION__ATL);
+    givenEClass = createEClass(GIVEN);
+    createEReference(givenEClass, GIVEN__SUT1);
+    createEAttribute(givenEClass, GIVEN__SUTTYPE);
+    createEReference(givenEClass, GIVEN__SUT2);
 
-    metricEClass = createEClass(METRIC);
-    createEAttribute(metricEClass, METRIC__NAME);
-
-    counterEClass = createEClass(COUNTER);
-    createEAttribute(counterEClass, COUNTER__NAME);
+    scenarioEClass = createEClass(SCENARIO);
+    createEAttribute(scenarioEClass, SCENARIO__NAME);
 
     sutEClass = createEClass(SUT);
     createEAttribute(sutEClass, SUT__NAME);
 
-    loadGeneratorEClass = createEClass(LOAD_GENERATOR);
-    createEAttribute(loadGeneratorEClass, LOAD_GENERATOR__IS_MONITOR);
-    createEAttribute(loadGeneratorEClass, LOAD_GENERATOR__HOSTNAME);
-    createEAttribute(loadGeneratorEClass, LOAD_GENERATOR__IP);
-    createEAttribute(loadGeneratorEClass, LOAD_GENERATOR__HARDWARE);
-    createEReference(loadGeneratorEClass, LOAD_GENERATOR__SUT);
-    createEReference(loadGeneratorEClass, LOAD_GENERATOR__METRICMODEL);
-    createEReference(loadGeneratorEClass, LOAD_GENERATOR__MONITOR);
-
-    monitorEClass = createEClass(MONITOR);
-    createEAttribute(monitorEClass, MONITOR__HOSTNAME);
-    createEAttribute(monitorEClass, MONITOR__IP);
-    createEAttribute(monitorEClass, MONITOR__HARDWARE);
-    createEReference(monitorEClass, MONITOR__SUT);
-
-    metricModelEClass = createEClass(METRIC_MODEL);
-    createEReference(metricModelEClass, METRIC_MODEL__MEMORY);
-    createEReference(metricModelEClass, METRIC_MODEL__DISK);
-    createEReference(metricModelEClass, METRIC_MODEL__CRITERIA);
-    createEReference(metricModelEClass, METRIC_MODEL__THRESHOLD);
-    createEReference(metricModelEClass, METRIC_MODEL__DISK_COUNTER);
-    createEReference(metricModelEClass, METRIC_MODEL__TRANSACTION_COUNTER);
-    createEReference(metricModelEClass, METRIC_MODEL__MEMORY_COUNTER);
-    createEReference(metricModelEClass, METRIC_MODEL__METRIC);
-    createEReference(metricModelEClass, METRIC_MODEL__COUNTER);
-
-    memoryEClass = createEClass(MEMORY);
-    createEReference(memoryEClass, MEMORY__MEMORY_COUNTER);
-
-    transactionEClass = createEClass(TRANSACTION);
-    createEAttribute(transactionEClass, TRANSACTION__NAME);
-    createEReference(transactionEClass, TRANSACTION__TRANSACTION_COUNTER);
-
-    diskEClass = createEClass(DISK);
-    createEReference(diskEClass, DISK__DISK_IO_COUNTER);
-
-    criteriaEClass = createEClass(CRITERIA);
-    createEAttribute(criteriaEClass, CRITERIA__VALUE);
-
-    thresholdEClass = createEClass(THRESHOLD);
-    createEAttribute(thresholdEClass, THRESHOLD__VALUE);
-
-    disk_IO_CounterEClass = createEClass(DISK_IO_COUNTER);
-    createEAttribute(disk_IO_CounterEClass, DISK_IO_COUNTER__COUNTER_DISK);
-
-    transactionCounterEClass = createEClass(TRANSACTION_COUNTER);
-    createEAttribute(transactionCounterEClass, TRANSACTION_COUNTER__COUNTER_TRANSACTION);
-
-    memoryCounterEClass = createEClass(MEMORY_COUNTER);
-    createEAttribute(memoryCounterEClass, MEMORY_COUNTER__COUNTER_MEMORY);
-
     // Create enums
+    metrictypemonitoredEEnum = createEEnum(METRICTYPEMONITORED);
+    metrictypeEEnum = createEEnum(METRICTYPE);
     hardwareEEnum = createEEnum(HARDWARE);
     suT_TYPEEEnum = createEEnum(SUT_TYPE);
-    associatioN_CRITERIAEEnum = createEEnum(ASSOCIATION_CRITERIA);
-    counteR_DISKEEnum = createEEnum(COUNTER_DISK);
-    counteR_TRANSACTIONEEnum = createEEnum(COUNTER_TRANSACTION);
-    counteR_MEMORYEEnum = createEEnum(COUNTER_MEMORY);
   }
 
   /**
@@ -1270,107 +782,82 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    andEClass.getESuperTypes().add(this.getCONDITION());
-    whenEClass.getESuperTypes().add(this.getCONDITION());
-    thenEClass.getESuperTypes().add(this.getCONDITION());
-    memoryEClass.getESuperTypes().add(this.getMetric());
-    diskEClass.getESuperTypes().add(this.getMetric());
-    disk_IO_CounterEClass.getESuperTypes().add(this.getCounter());
-    transactionCounterEClass.getESuperTypes().add(this.getCounter());
-    memoryCounterEClass.getESuperTypes().add(this.getCounter());
+    and_workloadEClass.getESuperTypes().add(this.getSTEPS());
+    and_the_scenarioEClass.getESuperTypes().add(this.getSTEPS());
+    and_atleastEClass.getESuperTypes().add(this.getSTEPS());
+    and_the_metricEClass.getESuperTypes().add(this.getSTEPS());
+    whenEClass.getESuperTypes().add(this.getSTEPS());
+    thenEClass.getESuperTypes().add(this.getSTEPS());
+    givenEClass.getESuperTypes().add(this.getSTEPS());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_Includes(), this.getInclude(), null, "includes", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Monitorings(), this.getMonitoring(), null, "monitorings", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Suts(), this.getSUT(), null, "suts", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_LoadGenerators(), this.getLoadGenerator(), null, "loadGenerators", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Main(), this.getMain(), null, "main", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(includeEClass, Include.class, "Include", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getInclude_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, Include.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getInclude_Name(), ecorePackage.getEString(), "name", null, 0, 1, Include.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(metricModelEClass, MetricModel.class, "MetricModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMetricModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, MetricModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMetricModel_Steps(), this.getSTEPS(), null, "steps", null, 0, -1, MetricModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(monitoringEClass, Monitoring.class, "Monitoring", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMonitoring_Sut(), this.getSUT(), null, "sut", null, 0, 1, Monitoring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMonitoring_Sut_type(), this.getSUT_TYPE(), "sut_type", null, 0, 1, Monitoring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMonitoring_Condition(), this.getCONDITION(), null, "condition", null, 0, 1, Monitoring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMonitoring_Sut_type2(), this.getSUT_TYPE(), "sut_type2", null, 0, 1, Monitoring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(mainEClass, Main.class, "Main", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMain_Main(), ecorePackage.getEObject(), null, "main", null, 0, -1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(conditionEClass, org.unipampa.lesse.xCanopus.CONDITION.class, "CONDITION", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCONDITION_Post(), this.getPOSTCONDITION(), null, "post", null, 0, 1, org.unipampa.lesse.xCanopus.CONDITION.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(stepsEClass, org.unipampa.lesse.xCanopus.STEPS.class, "STEPS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(andEClass, org.unipampa.lesse.xCanopus.AND.class, "AND", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(and_workloadEClass, and_workload.class, "and_workload", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getand_workload_Sut1(), this.getSUT(), null, "sut1", null, 0, 1, and_workload.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getand_workload_Suttype(), this.getSUT_TYPE(), "suttype", null, 0, 1, and_workload.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getand_workload_Sut2(), this.getSUT(), null, "sut2", null, 0, 1, and_workload.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(whenEClass, org.unipampa.lesse.xCanopus.WHEN.class, "WHEN", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(and_the_scenarioEClass, and_the_scenario.class, "and_the_scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getand_the_scenario_Scenario(), this.getSCENARIO(), null, "scenario", null, 0, 1, and_the_scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(thenEClass, org.unipampa.lesse.xCanopus.THEN.class, "THEN", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(and_atleastEClass, and_atleast.class, "and_atleast", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getand_atleast_Integer1(), ecorePackage.getEInt(), "integer1", null, 0, 1, and_atleast.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getand_atleast_Integer2(), ecorePackage.getEInt(), "integer2", null, 0, 1, and_atleast.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(postconditionEClass, org.unipampa.lesse.xCanopus.POSTCONDITION.class, "POSTCONDITION", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPOSTCONDITION_WGT(), ecorePackage.getEString(), "WGT", null, 0, 1, org.unipampa.lesse.xCanopus.POSTCONDITION.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPOSTCONDITION_THE(), ecorePackage.getEString(), "THE", null, 0, 1, org.unipampa.lesse.xCanopus.POSTCONDITION.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPOSTCONDITION_ATL(), ecorePackage.getEString(), "ATL", null, 0, 1, org.unipampa.lesse.xCanopus.POSTCONDITION.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(and_the_metricEClass, and_the_metric.class, "and_the_metric", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getand_the_metric_Metric(), this.getMETRICTYPE(), "metric", null, 0, 1, and_the_metric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getand_the_metric_Integer1(), ecorePackage.getEInt(), "integer1", null, 0, 1, and_the_metric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getand_the_metric_Integer2(), ecorePackage.getEInt(), "integer2", null, 0, 1, and_the_metric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getand_the_metric_Integer3(), ecorePackage.getEInt(), "integer3", null, 0, 1, and_the_metric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(metricEClass, Metric.class, "Metric", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMetric_Name(), ecorePackage.getEString(), "name", null, 0, 1, Metric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(whenEClass, when.class, "when", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getwhen_Metrictype(), this.getMETRICTYPEMONITORED(), "metrictype", null, 0, 1, when.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(counterEClass, Counter.class, "Counter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCounter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Counter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(thenEClass, then.class, "then", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getthen_Metric(), this.getMETRICTYPE(), "metric", null, 0, 1, then.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getthen_Integer1(), ecorePackage.getEInt(), "integer1", null, 0, 1, then.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getthen_Integer2(), ecorePackage.getEInt(), "integer2", null, 0, 1, then.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getthen_Integer3(), ecorePackage.getEInt(), "integer3", null, 0, 1, then.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(givenEClass, given.class, "given", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getgiven_Sut1(), this.getSUT(), null, "sut1", null, 0, 1, given.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getgiven_Suttype(), this.getSUT_TYPE(), "suttype", null, 0, 1, given.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getgiven_Sut2(), this.getSUT(), null, "sut2", null, 0, 1, given.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(scenarioEClass, org.unipampa.lesse.xCanopus.SCENARIO.class, "SCENARIO", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSCENARIO_Name(), ecorePackage.getEString(), "name", null, 0, 1, org.unipampa.lesse.xCanopus.SCENARIO.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sutEClass, org.unipampa.lesse.xCanopus.SUT.class, "SUT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSUT_Name(), ecorePackage.getEString(), "name", null, 0, 1, org.unipampa.lesse.xCanopus.SUT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(loadGeneratorEClass, LoadGenerator.class, "LoadGenerator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLoadGenerator_IsMonitor(), ecorePackage.getEBoolean(), "isMonitor", null, 0, 1, LoadGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLoadGenerator_Hostname(), ecorePackage.getEString(), "hostname", null, 0, 1, LoadGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLoadGenerator_Ip(), ecorePackage.getEString(), "ip", null, 0, 1, LoadGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLoadGenerator_Hardware(), this.getHARDWARE(), "hardware", null, 0, 1, LoadGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLoadGenerator_Sut(), this.getSUT(), null, "sut", null, 0, -1, LoadGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLoadGenerator_Metricmodel(), this.getMetricModel(), null, "metricmodel", null, 0, 1, LoadGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLoadGenerator_Monitor(), this.getMonitor(), null, "monitor", null, 0, 1, LoadGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(monitorEClass, Monitor.class, "Monitor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMonitor_Hostname(), ecorePackage.getEString(), "hostname", null, 0, 1, Monitor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMonitor_Ip(), ecorePackage.getEString(), "ip", null, 0, 1, Monitor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMonitor_Hardware(), this.getHARDWARE(), "hardware", null, 0, 1, Monitor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMonitor_Sut(), this.getSUT(), null, "sut", null, 0, -1, Monitor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(metricModelEClass, MetricModel.class, "MetricModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMetricModel_Memory(), this.getMemory(), null, "memory", null, 0, 1, MetricModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMetricModel_Disk(), this.getDisk(), null, "disk", null, 0, 1, MetricModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMetricModel_Criteria(), this.getCriteria(), null, "criteria", null, 0, -1, MetricModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMetricModel_Threshold(), this.getThreshold(), null, "threshold", null, 0, -1, MetricModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMetricModel_DiskCounter(), this.getDisk_IO_Counter(), null, "diskCounter", null, 0, 1, MetricModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMetricModel_TransactionCounter(), this.getTransactionCounter(), null, "transactionCounter", null, 0, 1, MetricModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMetricModel_MemoryCounter(), this.getMemoryCounter(), null, "memoryCounter", null, 0, 1, MetricModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMetricModel_Metric(), this.getMetric(), null, "metric", null, 0, -1, MetricModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMetricModel_Counter(), this.getCounter(), null, "counter", null, 0, -1, MetricModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(memoryEClass, Memory.class, "Memory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMemory_MemoryCounter(), this.getMemoryCounter(), null, "memoryCounter", null, 0, 1, Memory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(transactionEClass, Transaction.class, "Transaction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTransaction_Name(), ecorePackage.getEString(), "name", null, 0, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTransaction_TransactionCounter(), this.getTransactionCounter(), null, "transactionCounter", null, 0, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(diskEClass, Disk.class, "Disk", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDisk_Disk_io_counter(), this.getDisk_IO_Counter(), null, "disk_io_counter", null, 0, 1, Disk.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(criteriaEClass, Criteria.class, "Criteria", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCriteria_Value(), ecorePackage.getEInt(), "value", null, 0, 1, Criteria.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(thresholdEClass, Threshold.class, "Threshold", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getThreshold_Value(), ecorePackage.getEInt(), "value", null, 0, 1, Threshold.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(disk_IO_CounterEClass, Disk_IO_Counter.class, "Disk_IO_Counter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDisk_IO_Counter_CounterDisk(), this.getCOUNTER_DISK(), "counterDisk", null, 0, -1, Disk_IO_Counter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(transactionCounterEClass, TransactionCounter.class, "TransactionCounter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTransactionCounter_CounterTransaction(), this.getCOUNTER_TRANSACTION(), "counterTransaction", null, 0, -1, TransactionCounter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(memoryCounterEClass, MemoryCounter.class, "MemoryCounter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMemoryCounter_CounterMemory(), this.getCOUNTER_MEMORY(), "counterMemory", null, 0, -1, MemoryCounter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     // Initialize enums and add enum literals
+    initEEnum(metrictypemonitoredEEnum, org.unipampa.lesse.xCanopus.METRICTYPEMONITORED.class, "METRICTYPEMONITORED");
+    addEEnumLiteral(metrictypemonitoredEEnum, org.unipampa.lesse.xCanopus.METRICTYPEMONITORED.MEMORY);
+    addEEnumLiteral(metrictypemonitoredEEnum, org.unipampa.lesse.xCanopus.METRICTYPEMONITORED.DISK);
+    addEEnumLiteral(metrictypemonitoredEEnum, org.unipampa.lesse.xCanopus.METRICTYPEMONITORED.WEBRESOURCES);
+    addEEnumLiteral(metrictypemonitoredEEnum, org.unipampa.lesse.xCanopus.METRICTYPEMONITORED.TRANSACTION);
+    addEEnumLiteral(metrictypemonitoredEEnum, org.unipampa.lesse.xCanopus.METRICTYPEMONITORED.PROCESSOR);
+
+    initEEnum(metrictypeEEnum, org.unipampa.lesse.xCanopus.METRICTYPE.class, "METRICTYPE");
+    addEEnumLiteral(metrictypeEEnum, org.unipampa.lesse.xCanopus.METRICTYPE.AVAILABLEMBYTESCOUNTER);
+    addEEnumLiteral(metrictypeEEnum, org.unipampa.lesse.xCanopus.METRICTYPE.IDLETIMECOUNTER);
+    addEEnumLiteral(metrictypeEEnum, org.unipampa.lesse.xCanopus.METRICTYPE.THROUGHPUTMBYTES);
+    addEEnumLiteral(metrictypeEEnum, org.unipampa.lesse.xCanopus.METRICTYPE.TRANSACTIONPERSECOND);
+    addEEnumLiteral(metrictypeEEnum, org.unipampa.lesse.xCanopus.METRICTYPE.TPS);
+    addEEnumLiteral(metrictypeEEnum, org.unipampa.lesse.xCanopus.METRICTYPE.PROCESSORTIMECOUNTER);
+    addEEnumLiteral(metrictypeEEnum, org.unipampa.lesse.xCanopus.METRICTYPE.TRANSACTIONRESPONSETIME);
+
     initEEnum(hardwareEEnum, org.unipampa.lesse.xCanopus.HARDWARE.class, "HARDWARE");
     addEEnumLiteral(hardwareEEnum, org.unipampa.lesse.xCanopus.HARDWARE.PHYSICAL_MACHINE);
     addEEnumLiteral(hardwareEEnum, org.unipampa.lesse.xCanopus.HARDWARE.VIRTUAL_MACHINE);
@@ -1381,34 +868,6 @@ public class XCanopusPackageImpl extends EPackageImpl implements XCanopusPackage
     addEEnumLiteral(suT_TYPEEEnum, org.unipampa.lesse.xCanopus.SUT_TYPE.DATABASE);
     addEEnumLiteral(suT_TYPEEEnum, org.unipampa.lesse.xCanopus.SUT_TYPE.WEBAPP);
     addEEnumLiteral(suT_TYPEEEnum, org.unipampa.lesse.xCanopus.SUT_TYPE.WEBSERVICE);
-
-    initEEnum(associatioN_CRITERIAEEnum, org.unipampa.lesse.xCanopus.ASSOCIATION_CRITERIA.class, "ASSOCIATION_CRITERIA");
-    addEEnumLiteral(associatioN_CRITERIAEEnum, org.unipampa.lesse.xCanopus.ASSOCIATION_CRITERIA.BETWEEN);
-    addEEnumLiteral(associatioN_CRITERIAEEnum, org.unipampa.lesse.xCanopus.ASSOCIATION_CRITERIA.GREATER_THAN_OR_EQUAL_TO);
-    addEEnumLiteral(associatioN_CRITERIAEEnum, org.unipampa.lesse.xCanopus.ASSOCIATION_CRITERIA.LESS_THAN);
-
-    initEEnum(counteR_DISKEEnum, org.unipampa.lesse.xCanopus.COUNTER_DISK.class, "COUNTER_DISK");
-    addEEnumLiteral(counteR_DISKEEnum, org.unipampa.lesse.xCanopus.COUNTER_DISK.AVG_DISK_SECS_TRANSFER_COUNTER);
-    addEEnumLiteral(counteR_DISKEEnum, org.unipampa.lesse.xCanopus.COUNTER_DISK.PERCENTAGE_IDLE_TIME_COUNTER);
-    addEEnumLiteral(counteR_DISKEEnum, org.unipampa.lesse.xCanopus.COUNTER_DISK.DISK_TRANSFERS_SEC_COUNTER);
-    addEEnumLiteral(counteR_DISKEEnum, org.unipampa.lesse.xCanopus.COUNTER_DISK.AVG_DISK_QUEUE_LENGTH_COUNTER);
-    addEEnumLiteral(counteR_DISKEEnum, org.unipampa.lesse.xCanopus.COUNTER_DISK.SPLIT_IO_SEC_COUNTER);
-    addEEnumLiteral(counteR_DISKEEnum, org.unipampa.lesse.xCanopus.COUNTER_DISK.FREE_MEGABYTES_COUNTER);
-
-    initEEnum(counteR_TRANSACTIONEEnum, org.unipampa.lesse.xCanopus.COUNTER_TRANSACTION.class, "COUNTER_TRANSACTION");
-    addEEnumLiteral(counteR_TRANSACTIONEEnum, org.unipampa.lesse.xCanopus.COUNTER_TRANSACTION.TRANSACTION_RESPONSE_TIME);
-    addEEnumLiteral(counteR_TRANSACTIONEEnum, org.unipampa.lesse.xCanopus.COUNTER_TRANSACTION.TRANSACTION_PER_SECOND_TPS);
-    addEEnumLiteral(counteR_TRANSACTIONEEnum, org.unipampa.lesse.xCanopus.COUNTER_TRANSACTION.TRANSACTION_SUCCESS_RATE);
-
-    initEEnum(counteR_MEMORYEEnum, org.unipampa.lesse.xCanopus.COUNTER_MEMORY.class, "COUNTER_MEMORY");
-    addEEnumLiteral(counteR_MEMORYEEnum, org.unipampa.lesse.xCanopus.COUNTER_MEMORY.AVALIABLE_MBYTES_COUNTER);
-    addEEnumLiteral(counteR_MEMORYEEnum, org.unipampa.lesse.xCanopus.COUNTER_MEMORY.PAGES_SEC_COUNTER);
-    addEEnumLiteral(counteR_MEMORYEEnum, org.unipampa.lesse.xCanopus.COUNTER_MEMORY.PAGE_READS_SEC_COUNTER);
-    addEEnumLiteral(counteR_MEMORYEEnum, org.unipampa.lesse.xCanopus.COUNTER_MEMORY.WORKING_SET_COUNTER);
-    addEEnumLiteral(counteR_MEMORYEEnum, org.unipampa.lesse.xCanopus.COUNTER_MEMORY.POOL_NONPAGE_BYTES_COUNTER);
-    addEEnumLiteral(counteR_MEMORYEEnum, org.unipampa.lesse.xCanopus.COUNTER_MEMORY.PAGED_POOL_BYTES_COUNTER);
-    addEEnumLiteral(counteR_MEMORYEEnum, org.unipampa.lesse.xCanopus.COUNTER_MEMORY.PAGED_POOL_FAILURES_COUNTER);
-    addEEnumLiteral(counteR_MEMORYEEnum, org.unipampa.lesse.xCanopus.COUNTER_MEMORY.CACHE_BYTES_COUNTER);
 
     // Create resource
     createResource(eNS_URI);

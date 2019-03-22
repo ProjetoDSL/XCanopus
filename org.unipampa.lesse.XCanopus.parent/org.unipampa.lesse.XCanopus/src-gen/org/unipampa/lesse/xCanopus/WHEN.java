@@ -6,14 +6,49 @@ package org.unipampa.lesse.xCanopus;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>WHEN</b></em>'.
+ * A representation of the model object '<em><b>when</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.unipampa.lesse.xCanopus.when#getMetrictype <em>Metrictype</em>}</li>
+ * </ul>
  *
- * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getWHEN()
+ * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getwhen()
  * @model
  * @generated
  */
-public interface WHEN extends CONDITION
+public interface when extends STEPS
 {
-} // WHEN
+  /**
+   * Returns the value of the '<em><b>Metrictype</b></em>' attribute.
+   * The literals are from the enumeration {@link org.unipampa.lesse.xCanopus.METRICTYPEMONITORED}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Metrictype</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Metrictype</em>' attribute.
+   * @see org.unipampa.lesse.xCanopus.METRICTYPEMONITORED
+   * @see #setMetrictype(METRICTYPEMONITORED)
+   * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getwhen_Metrictype()
+   * @model
+   * @generated
+   */
+  METRICTYPEMONITORED getMetrictype();
+
+  /**
+   * Sets the value of the '{@link org.unipampa.lesse.xCanopus.when#getMetrictype <em>Metrictype</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Metrictype</em>' attribute.
+   * @see org.unipampa.lesse.xCanopus.METRICTYPEMONITORED
+   * @see #getMetrictype()
+   * @generated
+   */
+  void setMetrictype(METRICTYPEMONITORED value);
+
+} // when

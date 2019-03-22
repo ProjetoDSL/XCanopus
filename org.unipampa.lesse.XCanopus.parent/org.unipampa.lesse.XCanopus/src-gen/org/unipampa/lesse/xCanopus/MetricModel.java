@@ -16,15 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.unipampa.lesse.xCanopus.MetricModel#getMemory <em>Memory</em>}</li>
- *   <li>{@link org.unipampa.lesse.xCanopus.MetricModel#getDisk <em>Disk</em>}</li>
- *   <li>{@link org.unipampa.lesse.xCanopus.MetricModel#getCriteria <em>Criteria</em>}</li>
- *   <li>{@link org.unipampa.lesse.xCanopus.MetricModel#getThreshold <em>Threshold</em>}</li>
- *   <li>{@link org.unipampa.lesse.xCanopus.MetricModel#getDiskCounter <em>Disk Counter</em>}</li>
- *   <li>{@link org.unipampa.lesse.xCanopus.MetricModel#getTransactionCounter <em>Transaction Counter</em>}</li>
- *   <li>{@link org.unipampa.lesse.xCanopus.MetricModel#getMemoryCounter <em>Memory Counter</em>}</li>
- *   <li>{@link org.unipampa.lesse.xCanopus.MetricModel#getMetric <em>Metric</em>}</li>
- *   <li>{@link org.unipampa.lesse.xCanopus.MetricModel#getCounter <em>Counter</em>}</li>
+ *   <li>{@link org.unipampa.lesse.xCanopus.MetricModel#getName <em>Name</em>}</li>
+ *   <li>{@link org.unipampa.lesse.xCanopus.MetricModel#getSteps <em>Steps</em>}</li>
  * </ul>
  *
  * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getMetricModel()
@@ -34,197 +27,45 @@ import org.eclipse.emf.ecore.EObject;
 public interface MetricModel extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Memory</b></em>' containment reference.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Memory</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Memory</em>' containment reference.
-   * @see #setMemory(Memory)
-   * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getMetricModel_Memory()
-   * @model containment="true"
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getMetricModel_Name()
+   * @model
    * @generated
    */
-  Memory getMemory();
+  String getName();
 
   /**
-   * Sets the value of the '{@link org.unipampa.lesse.xCanopus.MetricModel#getMemory <em>Memory</em>}' containment reference.
+   * Sets the value of the '{@link org.unipampa.lesse.xCanopus.MetricModel#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Memory</em>' containment reference.
-   * @see #getMemory()
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
    * @generated
    */
-  void setMemory(Memory value);
+  void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Disk</b></em>' containment reference.
+   * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
+   * The list contents are of type {@link org.unipampa.lesse.xCanopus.STEPS}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Disk</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Steps</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Disk</em>' containment reference.
-   * @see #setDisk(Disk)
-   * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getMetricModel_Disk()
+   * @return the value of the '<em>Steps</em>' containment reference list.
+   * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getMetricModel_Steps()
    * @model containment="true"
    * @generated
    */
-  Disk getDisk();
-
-  /**
-   * Sets the value of the '{@link org.unipampa.lesse.xCanopus.MetricModel#getDisk <em>Disk</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Disk</em>' containment reference.
-   * @see #getDisk()
-   * @generated
-   */
-  void setDisk(Disk value);
-
-  /**
-   * Returns the value of the '<em><b>Criteria</b></em>' containment reference list.
-   * The list contents are of type {@link org.unipampa.lesse.xCanopus.Criteria}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Criteria</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Criteria</em>' containment reference list.
-   * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getMetricModel_Criteria()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Criteria> getCriteria();
-
-  /**
-   * Returns the value of the '<em><b>Threshold</b></em>' containment reference list.
-   * The list contents are of type {@link org.unipampa.lesse.xCanopus.Threshold}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Threshold</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Threshold</em>' containment reference list.
-   * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getMetricModel_Threshold()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Threshold> getThreshold();
-
-  /**
-   * Returns the value of the '<em><b>Disk Counter</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Disk Counter</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Disk Counter</em>' containment reference.
-   * @see #setDiskCounter(Disk_IO_Counter)
-   * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getMetricModel_DiskCounter()
-   * @model containment="true"
-   * @generated
-   */
-  Disk_IO_Counter getDiskCounter();
-
-  /**
-   * Sets the value of the '{@link org.unipampa.lesse.xCanopus.MetricModel#getDiskCounter <em>Disk Counter</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Disk Counter</em>' containment reference.
-   * @see #getDiskCounter()
-   * @generated
-   */
-  void setDiskCounter(Disk_IO_Counter value);
-
-  /**
-   * Returns the value of the '<em><b>Transaction Counter</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Transaction Counter</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Transaction Counter</em>' containment reference.
-   * @see #setTransactionCounter(TransactionCounter)
-   * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getMetricModel_TransactionCounter()
-   * @model containment="true"
-   * @generated
-   */
-  TransactionCounter getTransactionCounter();
-
-  /**
-   * Sets the value of the '{@link org.unipampa.lesse.xCanopus.MetricModel#getTransactionCounter <em>Transaction Counter</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Transaction Counter</em>' containment reference.
-   * @see #getTransactionCounter()
-   * @generated
-   */
-  void setTransactionCounter(TransactionCounter value);
-
-  /**
-   * Returns the value of the '<em><b>Memory Counter</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Memory Counter</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Memory Counter</em>' containment reference.
-   * @see #setMemoryCounter(MemoryCounter)
-   * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getMetricModel_MemoryCounter()
-   * @model containment="true"
-   * @generated
-   */
-  MemoryCounter getMemoryCounter();
-
-  /**
-   * Sets the value of the '{@link org.unipampa.lesse.xCanopus.MetricModel#getMemoryCounter <em>Memory Counter</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Memory Counter</em>' containment reference.
-   * @see #getMemoryCounter()
-   * @generated
-   */
-  void setMemoryCounter(MemoryCounter value);
-
-  /**
-   * Returns the value of the '<em><b>Metric</b></em>' containment reference list.
-   * The list contents are of type {@link org.unipampa.lesse.xCanopus.Metric}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Metric</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Metric</em>' containment reference list.
-   * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getMetricModel_Metric()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Metric> getMetric();
-
-  /**
-   * Returns the value of the '<em><b>Counter</b></em>' containment reference list.
-   * The list contents are of type {@link org.unipampa.lesse.xCanopus.Counter}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Counter</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Counter</em>' containment reference list.
-   * @see org.unipampa.lesse.xCanopus.XCanopusPackage#getMetricModel_Counter()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Counter> getCounter();
+  EList<STEPS> getSteps();
 
 } // MetricModel

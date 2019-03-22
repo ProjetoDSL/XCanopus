@@ -6,38 +6,40 @@ generate xCanopus "http://www.unipampa.org/lesse/XCanopus"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Model: 
-//	   includes += Include*
-	   (monitorings+=Monitoring)*
-	   (suts+=SUT)*
-	  // loadGenerators+=LoadGenerator*
-	   (scenario+=SCENARIO)*	   
+     //  includes += Include*
+	 //  monitorings+=MetricModel* 
+	 //  scenario+=SCENARIO* 
+	 //  suts+=SUT*
+	     main+=Main*
 ; 
 
 //Include:
 //	'include' importURI=STRING 'as' name=ID
 //;
 
-
-Monitoring:
+MetricModel:
 	'Feature:' Freetext '.' 
 	'Monitoring:' name=ID 'description' Freetext '.' '{'
-	(steps+=STEPS)* '}'
+	(steps+=STEPS)+ '}'
 ;
-
-
 
 // '|' choice
 // '?' optional+
 // '+' 1 or more
 // '*' 0 or more
 // '+=' list of elements
-
 // 0 or more strings
+
+Main:
+	main+=(MetricModel | SCENARIO | SUT)
+;
+
+
 Freetext:
 	EString*
 ;
  
-  
+//possible steps
 STEPS: given | when | then | and_workload | and_atleast | and_the_scenario | and_the_metric;
 
 and_workload:
@@ -46,20 +48,22 @@ and_workload:
 and_the_scenario:
 	'And' THE scenario=[SCENARIO|ID] ISTESTSCENARIO 
 ;
+//first format CHOICE
 and_atleast:
 	'And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT
 ;
 and_the_metric:
-	'And' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)?
+	'And' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
 ;
+//second format of use CHOICE
 when:
 	'When' THE metrictype=METRICTYPEMONITORED ISMONITORED
 	; 
 then:
-	'Then' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)?
+	'Then' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
 ;
 given:
-	'Given' THAT sut1=[SUT|ID] suttype=SUT_TYPE MONITOREDBY sut2=[SUT|ID] 'monitor'
+	'Given' THAT sut1=[SUT|ID] suttype=SUT_TYPE MONITOREDBY sut2=[SUT|ID] MONITOR_TEXT
 ;
 
 enum METRICTYPEMONITORED: MEMORY = 'memory' | DISK = 'disk' | WEBRESOURCES = 'web resources' | TRANSACTION = 'transaction' | PROCESSOR = 'processor' ;
@@ -81,8 +85,6 @@ enum METRICTYPE: availablembytescounter = 'available mbytes counter' | idletimec
 //processortimecounter:
 //	PROCESSORTIMECOUNTER_TEXT
 //;
-
-
 
 SCENARIO:
 	'Scenario' '{'
@@ -175,7 +177,8 @@ terminal MBWHEN_LESSTHAN_TEXT:'MB when the number of virtual users is less than'
 terminal MBWHEN_MORETHAN_TEXT:'MB when the number of virtual users is more than';
 terminal MBWHEN_MINOROREQUAL_TEXT:'MB when the number of virtual users is lesser than or equal to';
 
-
+terminal AND: 'and';
+terminal MONITOR_TEXT:'monitor';
 terminal THE:'the';
 terminal THAT:'that';	
 terminal MONITOREDBY:'monitored by ';

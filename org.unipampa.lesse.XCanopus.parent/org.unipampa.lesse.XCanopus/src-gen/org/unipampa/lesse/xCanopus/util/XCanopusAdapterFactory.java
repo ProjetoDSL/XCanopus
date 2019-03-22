@@ -81,109 +81,64 @@ public class XCanopusAdapterFactory extends AdapterFactoryImpl
         return createModelAdapter();
       }
       @Override
-      public Adapter caseInclude(Include object)
-      {
-        return createIncludeAdapter();
-      }
-      @Override
-      public Adapter caseMonitoring(Monitoring object)
-      {
-        return createMonitoringAdapter();
-      }
-      @Override
-      public Adapter caseCONDITION(CONDITION object)
-      {
-        return createCONDITIONAdapter();
-      }
-      @Override
-      public Adapter caseAND(AND object)
-      {
-        return createANDAdapter();
-      }
-      @Override
-      public Adapter caseWHEN(WHEN object)
-      {
-        return createWHENAdapter();
-      }
-      @Override
-      public Adapter caseTHEN(THEN object)
-      {
-        return createTHENAdapter();
-      }
-      @Override
-      public Adapter casePOSTCONDITION(POSTCONDITION object)
-      {
-        return createPOSTCONDITIONAdapter();
-      }
-      @Override
-      public Adapter caseMetric(Metric object)
-      {
-        return createMetricAdapter();
-      }
-      @Override
-      public Adapter caseCounter(Counter object)
-      {
-        return createCounterAdapter();
-      }
-      @Override
-      public Adapter caseSUT(SUT object)
-      {
-        return createSUTAdapter();
-      }
-      @Override
-      public Adapter caseLoadGenerator(LoadGenerator object)
-      {
-        return createLoadGeneratorAdapter();
-      }
-      @Override
-      public Adapter caseMonitor(Monitor object)
-      {
-        return createMonitorAdapter();
-      }
-      @Override
       public Adapter caseMetricModel(MetricModel object)
       {
         return createMetricModelAdapter();
       }
       @Override
-      public Adapter caseMemory(Memory object)
+      public Adapter caseMain(Main object)
       {
-        return createMemoryAdapter();
+        return createMainAdapter();
       }
       @Override
-      public Adapter caseTransaction(Transaction object)
+      public Adapter caseSTEPS(STEPS object)
       {
-        return createTransactionAdapter();
+        return createSTEPSAdapter();
       }
       @Override
-      public Adapter caseDisk(Disk object)
+      public Adapter caseand_workload(and_workload object)
       {
-        return createDiskAdapter();
+        return createand_workloadAdapter();
       }
       @Override
-      public Adapter caseCriteria(Criteria object)
+      public Adapter caseand_the_scenario(and_the_scenario object)
       {
-        return createCriteriaAdapter();
+        return createand_the_scenarioAdapter();
       }
       @Override
-      public Adapter caseThreshold(Threshold object)
+      public Adapter caseand_atleast(and_atleast object)
       {
-        return createThresholdAdapter();
+        return createand_atleastAdapter();
       }
       @Override
-      public Adapter caseDisk_IO_Counter(Disk_IO_Counter object)
+      public Adapter caseand_the_metric(and_the_metric object)
       {
-        return createDisk_IO_CounterAdapter();
+        return createand_the_metricAdapter();
       }
       @Override
-      public Adapter caseTransactionCounter(TransactionCounter object)
+      public Adapter casewhen(when object)
       {
-        return createTransactionCounterAdapter();
+        return createwhenAdapter();
       }
       @Override
-      public Adapter caseMemoryCounter(MemoryCounter object)
+      public Adapter casethen(then object)
       {
-        return createMemoryCounterAdapter();
+        return createthenAdapter();
+      }
+      @Override
+      public Adapter casegiven(given object)
+      {
+        return creategivenAdapter();
+      }
+      @Override
+      public Adapter caseSCENARIO(SCENARIO object)
+      {
+        return createSCENARIOAdapter();
+      }
+      @Override
+      public Adapter caseSUT(SUT object)
+      {
+        return createSUTAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -223,186 +178,6 @@ public class XCanopusAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.Include <em>Include</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.Include
-   * @generated
-   */
-  public Adapter createIncludeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.Monitoring <em>Monitoring</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.Monitoring
-   * @generated
-   */
-  public Adapter createMonitoringAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.CONDITION <em>CONDITION</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.CONDITION
-   * @generated
-   */
-  public Adapter createCONDITIONAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.AND <em>AND</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.AND
-   * @generated
-   */
-  public Adapter createANDAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.WHEN <em>WHEN</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.WHEN
-   * @generated
-   */
-  public Adapter createWHENAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.THEN <em>THEN</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.THEN
-   * @generated
-   */
-  public Adapter createTHENAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.POSTCONDITION <em>POSTCONDITION</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.POSTCONDITION
-   * @generated
-   */
-  public Adapter createPOSTCONDITIONAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.Metric <em>Metric</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.Metric
-   * @generated
-   */
-  public Adapter createMetricAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.Counter <em>Counter</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.Counter
-   * @generated
-   */
-  public Adapter createCounterAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.SUT <em>SUT</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.SUT
-   * @generated
-   */
-  public Adapter createSUTAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.LoadGenerator <em>Load Generator</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.LoadGenerator
-   * @generated
-   */
-  public Adapter createLoadGeneratorAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.Monitor <em>Monitor</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.Monitor
-   * @generated
-   */
-  public Adapter createMonitorAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.MetricModel <em>Metric Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -418,121 +193,166 @@ public class XCanopusAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.Memory <em>Memory</em>}'.
+   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.Main <em>Main</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.Memory
+   * @see org.unipampa.lesse.xCanopus.Main
    * @generated
    */
-  public Adapter createMemoryAdapter()
+  public Adapter createMainAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.Transaction <em>Transaction</em>}'.
+   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.STEPS <em>STEPS</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.Transaction
+   * @see org.unipampa.lesse.xCanopus.STEPS
    * @generated
    */
-  public Adapter createTransactionAdapter()
+  public Adapter createSTEPSAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.Disk <em>Disk</em>}'.
+   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.and_workload <em>and workload</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.Disk
+   * @see org.unipampa.lesse.xCanopus.and_workload
    * @generated
    */
-  public Adapter createDiskAdapter()
+  public Adapter createand_workloadAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.Criteria <em>Criteria</em>}'.
+   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.and_the_scenario <em>and the scenario</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.Criteria
+   * @see org.unipampa.lesse.xCanopus.and_the_scenario
    * @generated
    */
-  public Adapter createCriteriaAdapter()
+  public Adapter createand_the_scenarioAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.Threshold <em>Threshold</em>}'.
+   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.and_atleast <em>and atleast</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.Threshold
+   * @see org.unipampa.lesse.xCanopus.and_atleast
    * @generated
    */
-  public Adapter createThresholdAdapter()
+  public Adapter createand_atleastAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.Disk_IO_Counter <em>Disk IO Counter</em>}'.
+   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.and_the_metric <em>and the metric</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.Disk_IO_Counter
+   * @see org.unipampa.lesse.xCanopus.and_the_metric
    * @generated
    */
-  public Adapter createDisk_IO_CounterAdapter()
+  public Adapter createand_the_metricAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.TransactionCounter <em>Transaction Counter</em>}'.
+   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.when <em>when</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.TransactionCounter
+   * @see org.unipampa.lesse.xCanopus.when
    * @generated
    */
-  public Adapter createTransactionCounterAdapter()
+  public Adapter createwhenAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.MemoryCounter <em>Memory Counter</em>}'.
+   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.then <em>then</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.unipampa.lesse.xCanopus.MemoryCounter
+   * @see org.unipampa.lesse.xCanopus.then
    * @generated
    */
-  public Adapter createMemoryCounterAdapter()
+  public Adapter createthenAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.given <em>given</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.unipampa.lesse.xCanopus.given
+   * @generated
+   */
+  public Adapter creategivenAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.SCENARIO <em>SCENARIO</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.unipampa.lesse.xCanopus.SCENARIO
+   * @generated
+   */
+  public Adapter createSCENARIOAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.unipampa.lesse.xCanopus.SUT <em>SUT</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.unipampa.lesse.xCanopus.SUT
+   * @generated
+   */
+  public Adapter createSUTAdapter()
   {
     return null;
   }

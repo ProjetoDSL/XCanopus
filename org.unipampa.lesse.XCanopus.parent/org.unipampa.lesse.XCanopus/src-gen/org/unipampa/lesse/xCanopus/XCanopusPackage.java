@@ -69,40 +69,13 @@ public interface XCanopusPackage extends EPackage
   int MODEL = 0;
 
   /**
-   * The feature id for the '<em><b>Includes</b></em>' containment reference list.
+   * The feature id for the '<em><b>Main</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__INCLUDES = 0;
-
-  /**
-   * The feature id for the '<em><b>Monitorings</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL__MONITORINGS = 1;
-
-  /**
-   * The feature id for the '<em><b>Suts</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL__SUTS = 2;
-
-  /**
-   * The feature id for the '<em><b>Load Generators</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL__LOAD_GENERATORS = 3;
+  int MODEL__MAIN = 0;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -111,26 +84,17 @@ public interface XCanopusPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 4;
+  int MODEL_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.IncludeImpl <em>Include</em>}' class.
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.MetricModelImpl <em>Metric Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.IncludeImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getInclude()
+   * @see org.unipampa.lesse.xCanopus.impl.MetricModelImpl
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMetricModel()
    * @generated
    */
-  int INCLUDE = 1;
-
-  /**
-   * The feature id for the '<em><b>Import URI</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INCLUDE__IMPORT_URI = 0;
+  int METRIC_MODEL = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -139,239 +103,377 @@ public interface XCanopusPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INCLUDE__NAME = 1;
+  int METRIC_MODEL__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Include</em>' class.
+   * The feature id for the '<em><b>Steps</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INCLUDE_FEATURE_COUNT = 2;
+  int METRIC_MODEL__STEPS = 1;
 
   /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.MonitoringImpl <em>Monitoring</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.MonitoringImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMonitoring()
-   * @generated
-   */
-  int MONITORING = 2;
-
-  /**
-   * The feature id for the '<em><b>Sut</b></em>' reference.
+   * The number of structural features of the '<em>Metric Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MONITORING__SUT = 0;
+  int METRIC_MODEL_FEATURE_COUNT = 2;
 
   /**
-   * The feature id for the '<em><b>Sut type</b></em>' attribute.
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.MainImpl <em>Main</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.unipampa.lesse.xCanopus.impl.MainImpl
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMain()
+   * @generated
+   */
+  int MAIN = 2;
+
+  /**
+   * The feature id for the '<em><b>Main</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MONITORING__SUT_TYPE = 1;
+  int MAIN__MAIN = 0;
 
   /**
-   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * The number of structural features of the '<em>Main</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MONITORING__CONDITION = 2;
+  int MAIN_FEATURE_COUNT = 1;
 
   /**
-   * The feature id for the '<em><b>Sut type2</b></em>' attribute.
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.STEPSImpl <em>STEPS</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.unipampa.lesse.xCanopus.impl.STEPSImpl
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getSTEPS()
+   * @generated
+   */
+  int STEPS = 3;
+
+  /**
+   * The number of structural features of the '<em>STEPS</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MONITORING__SUT_TYPE2 = 3;
+  int STEPS_FEATURE_COUNT = 0;
 
   /**
-   * The number of structural features of the '<em>Monitoring</em>' class.
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.and_workloadImpl <em>and workload</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.unipampa.lesse.xCanopus.impl.and_workloadImpl
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getand_workload()
+   * @generated
+   */
+  int AND_WORKLOAD = 4;
+
+  /**
+   * The feature id for the '<em><b>Sut1</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MONITORING_FEATURE_COUNT = 4;
+  int AND_WORKLOAD__SUT1 = STEPS_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.CONDITIONImpl <em>CONDITION</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.CONDITIONImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getCONDITION()
-   * @generated
-   */
-  int CONDITION = 3;
-
-  /**
-   * The feature id for the '<em><b>Post</b></em>' containment reference.
+   * The feature id for the '<em><b>Suttype</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITION__POST = 0;
+  int AND_WORKLOAD__SUTTYPE = STEPS_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>CONDITION</em>' class.
+   * The feature id for the '<em><b>Sut2</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITION_FEATURE_COUNT = 1;
+  int AND_WORKLOAD__SUT2 = STEPS_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.ANDImpl <em>AND</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.ANDImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getAND()
-   * @generated
-   */
-  int AND = 4;
-
-  /**
-   * The feature id for the '<em><b>Post</b></em>' containment reference.
+   * The number of structural features of the '<em>and workload</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AND__POST = CONDITION__POST;
+  int AND_WORKLOAD_FEATURE_COUNT = STEPS_FEATURE_COUNT + 3;
 
   /**
-   * The number of structural features of the '<em>AND</em>' class.
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.and_the_scenarioImpl <em>and the scenario</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.unipampa.lesse.xCanopus.impl.and_the_scenarioImpl
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getand_the_scenario()
+   * @generated
+   */
+  int AND_THE_SCENARIO = 5;
+
+  /**
+   * The feature id for the '<em><b>Scenario</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AND_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 0;
+  int AND_THE_SCENARIO__SCENARIO = STEPS_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.WHENImpl <em>WHEN</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.WHENImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getWHEN()
-   * @generated
-   */
-  int WHEN = 5;
-
-  /**
-   * The feature id for the '<em><b>Post</b></em>' containment reference.
+   * The number of structural features of the '<em>and the scenario</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WHEN__POST = CONDITION__POST;
+  int AND_THE_SCENARIO_FEATURE_COUNT = STEPS_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>WHEN</em>' class.
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.and_atleastImpl <em>and atleast</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.unipampa.lesse.xCanopus.impl.and_atleastImpl
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getand_atleast()
+   * @generated
+   */
+  int AND_ATLEAST = 6;
+
+  /**
+   * The feature id for the '<em><b>Integer1</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WHEN_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 0;
+  int AND_ATLEAST__INTEGER1 = STEPS_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.THENImpl <em>THEN</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.THENImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getTHEN()
-   * @generated
-   */
-  int THEN = 6;
-
-  /**
-   * The feature id for the '<em><b>Post</b></em>' containment reference.
+   * The feature id for the '<em><b>Integer2</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int THEN__POST = CONDITION__POST;
+  int AND_ATLEAST__INTEGER2 = STEPS_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>THEN</em>' class.
+   * The number of structural features of the '<em>and atleast</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int THEN_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 0;
+  int AND_ATLEAST_FEATURE_COUNT = STEPS_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.POSTCONDITIONImpl <em>POSTCONDITION</em>}' class.
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.and_the_metricImpl <em>and the metric</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.POSTCONDITIONImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getPOSTCONDITION()
+   * @see org.unipampa.lesse.xCanopus.impl.and_the_metricImpl
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getand_the_metric()
    * @generated
    */
-  int POSTCONDITION = 7;
+  int AND_THE_METRIC = 7;
 
   /**
-   * The feature id for the '<em><b>WGT</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int POSTCONDITION__WGT = 0;
-
-  /**
-   * The feature id for the '<em><b>THE</b></em>' attribute.
+   * The feature id for the '<em><b>Metric</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POSTCONDITION__THE = 1;
+  int AND_THE_METRIC__METRIC = STEPS_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>ATL</b></em>' attribute.
+   * The feature id for the '<em><b>Integer1</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POSTCONDITION__ATL = 2;
+  int AND_THE_METRIC__INTEGER1 = STEPS_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>POSTCONDITION</em>' class.
+   * The feature id for the '<em><b>Integer2</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POSTCONDITION_FEATURE_COUNT = 3;
+  int AND_THE_METRIC__INTEGER2 = STEPS_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.MetricImpl <em>Metric</em>}' class.
+   * The feature id for the '<em><b>Integer3</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.MetricImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMetric()
+   * @generated
+   * @ordered
+   */
+  int AND_THE_METRIC__INTEGER3 = STEPS_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>and the metric</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_THE_METRIC_FEATURE_COUNT = STEPS_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.whenImpl <em>when</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.unipampa.lesse.xCanopus.impl.whenImpl
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getwhen()
    * @generated
    */
-  int METRIC = 8;
+  int WHEN = 8;
+
+  /**
+   * The feature id for the '<em><b>Metrictype</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHEN__METRICTYPE = STEPS_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>when</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHEN_FEATURE_COUNT = STEPS_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.thenImpl <em>then</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.unipampa.lesse.xCanopus.impl.thenImpl
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getthen()
+   * @generated
+   */
+  int THEN = 9;
+
+  /**
+   * The feature id for the '<em><b>Metric</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int THEN__METRIC = STEPS_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Integer1</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int THEN__INTEGER1 = STEPS_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Integer2</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int THEN__INTEGER2 = STEPS_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Integer3</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int THEN__INTEGER3 = STEPS_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>then</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int THEN_FEATURE_COUNT = STEPS_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.givenImpl <em>given</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.unipampa.lesse.xCanopus.impl.givenImpl
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getgiven()
+   * @generated
+   */
+  int GIVEN = 10;
+
+  /**
+   * The feature id for the '<em><b>Sut1</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GIVEN__SUT1 = STEPS_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Suttype</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GIVEN__SUTTYPE = STEPS_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Sut2</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GIVEN__SUT2 = STEPS_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>given</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GIVEN_FEATURE_COUNT = STEPS_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.SCENARIOImpl <em>SCENARIO</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.unipampa.lesse.xCanopus.impl.SCENARIOImpl
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getSCENARIO()
+   * @generated
+   */
+  int SCENARIO = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -380,44 +482,16 @@ public interface XCanopusPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METRIC__NAME = 0;
+  int SCENARIO__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Metric</em>' class.
+   * The number of structural features of the '<em>SCENARIO</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METRIC_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.CounterImpl <em>Counter</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.CounterImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getCounter()
-   * @generated
-   */
-  int COUNTER = 9;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COUNTER__NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Counter</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COUNTER_FEATURE_COUNT = 1;
+  int SCENARIO_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.SUTImpl <em>SUT</em>}' class.
@@ -427,7 +501,7 @@ public interface XCanopusPackage extends EPackage
    * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getSUT()
    * @generated
    */
-  int SUT = 10;
+  int SUT = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -448,519 +522,24 @@ public interface XCanopusPackage extends EPackage
   int SUT_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.LoadGeneratorImpl <em>Load Generator</em>}' class.
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.METRICTYPEMONITORED <em>METRICTYPEMONITORED</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.LoadGeneratorImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getLoadGenerator()
+   * @see org.unipampa.lesse.xCanopus.METRICTYPEMONITORED
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMETRICTYPEMONITORED()
    * @generated
    */
-  int LOAD_GENERATOR = 11;
+  int METRICTYPEMONITORED = 13;
 
   /**
-   * The feature id for the '<em><b>Is Monitor</b></em>' attribute.
+   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.METRICTYPE <em>METRICTYPE</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOAD_GENERATOR__IS_MONITOR = 0;
-
-  /**
-   * The feature id for the '<em><b>Hostname</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOAD_GENERATOR__HOSTNAME = 1;
-
-  /**
-   * The feature id for the '<em><b>Ip</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOAD_GENERATOR__IP = 2;
-
-  /**
-   * The feature id for the '<em><b>Hardware</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOAD_GENERATOR__HARDWARE = 3;
-
-  /**
-   * The feature id for the '<em><b>Sut</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOAD_GENERATOR__SUT = 4;
-
-  /**
-   * The feature id for the '<em><b>Metricmodel</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOAD_GENERATOR__METRICMODEL = 5;
-
-  /**
-   * The feature id for the '<em><b>Monitor</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOAD_GENERATOR__MONITOR = 6;
-
-  /**
-   * The number of structural features of the '<em>Load Generator</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOAD_GENERATOR_FEATURE_COUNT = 7;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.MonitorImpl <em>Monitor</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.MonitorImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMonitor()
+   * @see org.unipampa.lesse.xCanopus.METRICTYPE
+   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMETRICTYPE()
    * @generated
    */
-  int MONITOR = 12;
-
-  /**
-   * The feature id for the '<em><b>Hostname</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MONITOR__HOSTNAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Ip</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MONITOR__IP = 1;
-
-  /**
-   * The feature id for the '<em><b>Hardware</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MONITOR__HARDWARE = 2;
-
-  /**
-   * The feature id for the '<em><b>Sut</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MONITOR__SUT = 3;
-
-  /**
-   * The number of structural features of the '<em>Monitor</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MONITOR_FEATURE_COUNT = 4;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.MetricModelImpl <em>Metric Model</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.MetricModelImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMetricModel()
-   * @generated
-   */
-  int METRIC_MODEL = 13;
-
-  /**
-   * The feature id for the '<em><b>Memory</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRIC_MODEL__MEMORY = 0;
-
-  /**
-   * The feature id for the '<em><b>Disk</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRIC_MODEL__DISK = 1;
-
-  /**
-   * The feature id for the '<em><b>Criteria</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRIC_MODEL__CRITERIA = 2;
-
-  /**
-   * The feature id for the '<em><b>Threshold</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRIC_MODEL__THRESHOLD = 3;
-
-  /**
-   * The feature id for the '<em><b>Disk Counter</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRIC_MODEL__DISK_COUNTER = 4;
-
-  /**
-   * The feature id for the '<em><b>Transaction Counter</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRIC_MODEL__TRANSACTION_COUNTER = 5;
-
-  /**
-   * The feature id for the '<em><b>Memory Counter</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRIC_MODEL__MEMORY_COUNTER = 6;
-
-  /**
-   * The feature id for the '<em><b>Metric</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRIC_MODEL__METRIC = 7;
-
-  /**
-   * The feature id for the '<em><b>Counter</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRIC_MODEL__COUNTER = 8;
-
-  /**
-   * The number of structural features of the '<em>Metric Model</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRIC_MODEL_FEATURE_COUNT = 9;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.MemoryImpl <em>Memory</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.MemoryImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMemory()
-   * @generated
-   */
-  int MEMORY = 14;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MEMORY__NAME = METRIC__NAME;
-
-  /**
-   * The feature id for the '<em><b>Memory Counter</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MEMORY__MEMORY_COUNTER = METRIC_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Memory</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MEMORY_FEATURE_COUNT = METRIC_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.TransactionImpl <em>Transaction</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.TransactionImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getTransaction()
-   * @generated
-   */
-  int TRANSACTION = 15;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRANSACTION__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Transaction Counter</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRANSACTION__TRANSACTION_COUNTER = 1;
-
-  /**
-   * The number of structural features of the '<em>Transaction</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRANSACTION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.DiskImpl <em>Disk</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.DiskImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getDisk()
-   * @generated
-   */
-  int DISK = 16;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DISK__NAME = METRIC__NAME;
-
-  /**
-   * The feature id for the '<em><b>Disk io counter</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DISK__DISK_IO_COUNTER = METRIC_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Disk</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DISK_FEATURE_COUNT = METRIC_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.CriteriaImpl <em>Criteria</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.CriteriaImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getCriteria()
-   * @generated
-   */
-  int CRITERIA = 17;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CRITERIA__VALUE = 0;
-
-  /**
-   * The number of structural features of the '<em>Criteria</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CRITERIA_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.ThresholdImpl <em>Threshold</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.ThresholdImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getThreshold()
-   * @generated
-   */
-  int THRESHOLD = 18;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int THRESHOLD__VALUE = 0;
-
-  /**
-   * The number of structural features of the '<em>Threshold</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int THRESHOLD_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.Disk_IO_CounterImpl <em>Disk IO Counter</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.Disk_IO_CounterImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getDisk_IO_Counter()
-   * @generated
-   */
-  int DISK_IO_COUNTER = 19;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DISK_IO_COUNTER__NAME = COUNTER__NAME;
-
-  /**
-   * The feature id for the '<em><b>Counter Disk</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DISK_IO_COUNTER__COUNTER_DISK = COUNTER_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Disk IO Counter</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DISK_IO_COUNTER_FEATURE_COUNT = COUNTER_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.TransactionCounterImpl <em>Transaction Counter</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.TransactionCounterImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getTransactionCounter()
-   * @generated
-   */
-  int TRANSACTION_COUNTER = 20;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRANSACTION_COUNTER__NAME = COUNTER__NAME;
-
-  /**
-   * The feature id for the '<em><b>Counter Transaction</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRANSACTION_COUNTER__COUNTER_TRANSACTION = COUNTER_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Transaction Counter</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRANSACTION_COUNTER_FEATURE_COUNT = COUNTER_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.impl.MemoryCounterImpl <em>Memory Counter</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.impl.MemoryCounterImpl
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMemoryCounter()
-   * @generated
-   */
-  int MEMORY_COUNTER = 21;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MEMORY_COUNTER__NAME = COUNTER__NAME;
-
-  /**
-   * The feature id for the '<em><b>Counter Memory</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MEMORY_COUNTER__COUNTER_MEMORY = COUNTER_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Memory Counter</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MEMORY_COUNTER_FEATURE_COUNT = COUNTER_FEATURE_COUNT + 1;
+  int METRICTYPE = 14;
 
   /**
    * The meta object id for the '{@link org.unipampa.lesse.xCanopus.HARDWARE <em>HARDWARE</em>}' enum.
@@ -970,7 +549,7 @@ public interface XCanopusPackage extends EPackage
    * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getHARDWARE()
    * @generated
    */
-  int HARDWARE = 22;
+  int HARDWARE = 15;
 
   /**
    * The meta object id for the '{@link org.unipampa.lesse.xCanopus.SUT_TYPE <em>SUT TYPE</em>}' enum.
@@ -980,47 +559,7 @@ public interface XCanopusPackage extends EPackage
    * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getSUT_TYPE()
    * @generated
    */
-  int SUT_TYPE = 23;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.ASSOCIATION_CRITERIA <em>ASSOCIATION CRITERIA</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.ASSOCIATION_CRITERIA
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getASSOCIATION_CRITERIA()
-   * @generated
-   */
-  int ASSOCIATION_CRITERIA = 24;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.COUNTER_DISK <em>COUNTER DISK</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.COUNTER_DISK
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getCOUNTER_DISK()
-   * @generated
-   */
-  int COUNTER_DISK = 25;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.COUNTER_TRANSACTION <em>COUNTER TRANSACTION</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.COUNTER_TRANSACTION
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getCOUNTER_TRANSACTION()
-   * @generated
-   */
-  int COUNTER_TRANSACTION = 26;
-
-  /**
-   * The meta object id for the '{@link org.unipampa.lesse.xCanopus.COUNTER_MEMORY <em>COUNTER MEMORY</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.unipampa.lesse.xCanopus.COUNTER_MEMORY
-   * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getCOUNTER_MEMORY()
-   * @generated
-   */
-  int COUNTER_MEMORY = 27;
+  int SUT_TYPE = 16;
 
 
   /**
@@ -1034,270 +573,367 @@ public interface XCanopusPackage extends EPackage
   EClass getModel();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.unipampa.lesse.xCanopus.Model#getIncludes <em>Includes</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.unipampa.lesse.xCanopus.Model#getMain <em>Main</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Includes</em>'.
-   * @see org.unipampa.lesse.xCanopus.Model#getIncludes()
+   * @return the meta object for the containment reference list '<em>Main</em>'.
+   * @see org.unipampa.lesse.xCanopus.Model#getMain()
    * @see #getModel()
    * @generated
    */
-  EReference getModel_Includes();
+  EReference getModel_Main();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.unipampa.lesse.xCanopus.Model#getMonitorings <em>Monitorings</em>}'.
+   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.MetricModel <em>Metric Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Monitorings</em>'.
-   * @see org.unipampa.lesse.xCanopus.Model#getMonitorings()
-   * @see #getModel()
+   * @return the meta object for class '<em>Metric Model</em>'.
+   * @see org.unipampa.lesse.xCanopus.MetricModel
    * @generated
    */
-  EReference getModel_Monitorings();
+  EClass getMetricModel();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.unipampa.lesse.xCanopus.Model#getSuts <em>Suts</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Suts</em>'.
-   * @see org.unipampa.lesse.xCanopus.Model#getSuts()
-   * @see #getModel()
-   * @generated
-   */
-  EReference getModel_Suts();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.unipampa.lesse.xCanopus.Model#getLoadGenerators <em>Load Generators</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Load Generators</em>'.
-   * @see org.unipampa.lesse.xCanopus.Model#getLoadGenerators()
-   * @see #getModel()
-   * @generated
-   */
-  EReference getModel_LoadGenerators();
-
-  /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.Include <em>Include</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Include</em>'.
-   * @see org.unipampa.lesse.xCanopus.Include
-   * @generated
-   */
-  EClass getInclude();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.Include#getImportURI <em>Import URI</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Import URI</em>'.
-   * @see org.unipampa.lesse.xCanopus.Include#getImportURI()
-   * @see #getInclude()
-   * @generated
-   */
-  EAttribute getInclude_ImportURI();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.Include#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.MetricModel#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.unipampa.lesse.xCanopus.Include#getName()
-   * @see #getInclude()
+   * @see org.unipampa.lesse.xCanopus.MetricModel#getName()
+   * @see #getMetricModel()
    * @generated
    */
-  EAttribute getInclude_Name();
+  EAttribute getMetricModel_Name();
 
   /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.Monitoring <em>Monitoring</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.unipampa.lesse.xCanopus.MetricModel#getSteps <em>Steps</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Monitoring</em>'.
-   * @see org.unipampa.lesse.xCanopus.Monitoring
+   * @return the meta object for the containment reference list '<em>Steps</em>'.
+   * @see org.unipampa.lesse.xCanopus.MetricModel#getSteps()
+   * @see #getMetricModel()
    * @generated
    */
-  EClass getMonitoring();
+  EReference getMetricModel_Steps();
 
   /**
-   * Returns the meta object for the reference '{@link org.unipampa.lesse.xCanopus.Monitoring#getSut <em>Sut</em>}'.
+   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.Main <em>Main</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Sut</em>'.
-   * @see org.unipampa.lesse.xCanopus.Monitoring#getSut()
-   * @see #getMonitoring()
+   * @return the meta object for class '<em>Main</em>'.
+   * @see org.unipampa.lesse.xCanopus.Main
    * @generated
    */
-  EReference getMonitoring_Sut();
+  EClass getMain();
 
   /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.Monitoring#getSut_type <em>Sut type</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.unipampa.lesse.xCanopus.Main#getMain <em>Main</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Sut type</em>'.
-   * @see org.unipampa.lesse.xCanopus.Monitoring#getSut_type()
-   * @see #getMonitoring()
+   * @return the meta object for the containment reference list '<em>Main</em>'.
+   * @see org.unipampa.lesse.xCanopus.Main#getMain()
+   * @see #getMain()
    * @generated
    */
-  EAttribute getMonitoring_Sut_type();
+  EReference getMain_Main();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.unipampa.lesse.xCanopus.Monitoring#getCondition <em>Condition</em>}'.
+   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.STEPS <em>STEPS</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Condition</em>'.
-   * @see org.unipampa.lesse.xCanopus.Monitoring#getCondition()
-   * @see #getMonitoring()
+   * @return the meta object for class '<em>STEPS</em>'.
+   * @see org.unipampa.lesse.xCanopus.STEPS
    * @generated
    */
-  EReference getMonitoring_Condition();
+  EClass getSTEPS();
 
   /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.Monitoring#getSut_type2 <em>Sut type2</em>}'.
+   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.and_workload <em>and workload</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Sut type2</em>'.
-   * @see org.unipampa.lesse.xCanopus.Monitoring#getSut_type2()
-   * @see #getMonitoring()
+   * @return the meta object for class '<em>and workload</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_workload
    * @generated
    */
-  EAttribute getMonitoring_Sut_type2();
+  EClass getand_workload();
 
   /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.CONDITION <em>CONDITION</em>}'.
+   * Returns the meta object for the reference '{@link org.unipampa.lesse.xCanopus.and_workload#getSut1 <em>Sut1</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>CONDITION</em>'.
-   * @see org.unipampa.lesse.xCanopus.CONDITION
+   * @return the meta object for the reference '<em>Sut1</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_workload#getSut1()
+   * @see #getand_workload()
    * @generated
    */
-  EClass getCONDITION();
+  EReference getand_workload_Sut1();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.unipampa.lesse.xCanopus.CONDITION#getPost <em>Post</em>}'.
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.and_workload#getSuttype <em>Suttype</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Post</em>'.
-   * @see org.unipampa.lesse.xCanopus.CONDITION#getPost()
-   * @see #getCONDITION()
+   * @return the meta object for the attribute '<em>Suttype</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_workload#getSuttype()
+   * @see #getand_workload()
    * @generated
    */
-  EReference getCONDITION_Post();
+  EAttribute getand_workload_Suttype();
 
   /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.AND <em>AND</em>}'.
+   * Returns the meta object for the reference '{@link org.unipampa.lesse.xCanopus.and_workload#getSut2 <em>Sut2</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>AND</em>'.
-   * @see org.unipampa.lesse.xCanopus.AND
+   * @return the meta object for the reference '<em>Sut2</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_workload#getSut2()
+   * @see #getand_workload()
    * @generated
    */
-  EClass getAND();
+  EReference getand_workload_Sut2();
 
   /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.WHEN <em>WHEN</em>}'.
+   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.and_the_scenario <em>and the scenario</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>WHEN</em>'.
-   * @see org.unipampa.lesse.xCanopus.WHEN
+   * @return the meta object for class '<em>and the scenario</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_the_scenario
    * @generated
    */
-  EClass getWHEN();
+  EClass getand_the_scenario();
 
   /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.THEN <em>THEN</em>}'.
+   * Returns the meta object for the reference '{@link org.unipampa.lesse.xCanopus.and_the_scenario#getScenario <em>Scenario</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>THEN</em>'.
-   * @see org.unipampa.lesse.xCanopus.THEN
+   * @return the meta object for the reference '<em>Scenario</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_the_scenario#getScenario()
+   * @see #getand_the_scenario()
    * @generated
    */
-  EClass getTHEN();
+  EReference getand_the_scenario_Scenario();
 
   /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.POSTCONDITION <em>POSTCONDITION</em>}'.
+   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.and_atleast <em>and atleast</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>POSTCONDITION</em>'.
-   * @see org.unipampa.lesse.xCanopus.POSTCONDITION
+   * @return the meta object for class '<em>and atleast</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_atleast
    * @generated
    */
-  EClass getPOSTCONDITION();
+  EClass getand_atleast();
 
   /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.POSTCONDITION#getWGT <em>WGT</em>}'.
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.and_atleast#getInteger1 <em>Integer1</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>WGT</em>'.
-   * @see org.unipampa.lesse.xCanopus.POSTCONDITION#getWGT()
-   * @see #getPOSTCONDITION()
+   * @return the meta object for the attribute '<em>Integer1</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_atleast#getInteger1()
+   * @see #getand_atleast()
    * @generated
    */
-  EAttribute getPOSTCONDITION_WGT();
+  EAttribute getand_atleast_Integer1();
 
   /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.POSTCONDITION#getTHE <em>THE</em>}'.
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.and_atleast#getInteger2 <em>Integer2</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>THE</em>'.
-   * @see org.unipampa.lesse.xCanopus.POSTCONDITION#getTHE()
-   * @see #getPOSTCONDITION()
+   * @return the meta object for the attribute '<em>Integer2</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_atleast#getInteger2()
+   * @see #getand_atleast()
    * @generated
    */
-  EAttribute getPOSTCONDITION_THE();
+  EAttribute getand_atleast_Integer2();
 
   /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.POSTCONDITION#getATL <em>ATL</em>}'.
+   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.and_the_metric <em>and the metric</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>ATL</em>'.
-   * @see org.unipampa.lesse.xCanopus.POSTCONDITION#getATL()
-   * @see #getPOSTCONDITION()
+   * @return the meta object for class '<em>and the metric</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_the_metric
    * @generated
    */
-  EAttribute getPOSTCONDITION_ATL();
+  EClass getand_the_metric();
 
   /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.Metric <em>Metric</em>}'.
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.and_the_metric#getMetric <em>Metric</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Metric</em>'.
-   * @see org.unipampa.lesse.xCanopus.Metric
+   * @return the meta object for the attribute '<em>Metric</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_the_metric#getMetric()
+   * @see #getand_the_metric()
    * @generated
    */
-  EClass getMetric();
+  EAttribute getand_the_metric_Metric();
 
   /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.Metric#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.and_the_metric#getInteger1 <em>Integer1</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Integer1</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_the_metric#getInteger1()
+   * @see #getand_the_metric()
+   * @generated
+   */
+  EAttribute getand_the_metric_Integer1();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.and_the_metric#getInteger2 <em>Integer2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Integer2</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_the_metric#getInteger2()
+   * @see #getand_the_metric()
+   * @generated
+   */
+  EAttribute getand_the_metric_Integer2();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.and_the_metric#getInteger3 <em>Integer3</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Integer3</em>'.
+   * @see org.unipampa.lesse.xCanopus.and_the_metric#getInteger3()
+   * @see #getand_the_metric()
+   * @generated
+   */
+  EAttribute getand_the_metric_Integer3();
+
+  /**
+   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.when <em>when</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>when</em>'.
+   * @see org.unipampa.lesse.xCanopus.when
+   * @generated
+   */
+  EClass getwhen();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.when#getMetrictype <em>Metrictype</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Metrictype</em>'.
+   * @see org.unipampa.lesse.xCanopus.when#getMetrictype()
+   * @see #getwhen()
+   * @generated
+   */
+  EAttribute getwhen_Metrictype();
+
+  /**
+   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.then <em>then</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>then</em>'.
+   * @see org.unipampa.lesse.xCanopus.then
+   * @generated
+   */
+  EClass getthen();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.then#getMetric <em>Metric</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Metric</em>'.
+   * @see org.unipampa.lesse.xCanopus.then#getMetric()
+   * @see #getthen()
+   * @generated
+   */
+  EAttribute getthen_Metric();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.then#getInteger1 <em>Integer1</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Integer1</em>'.
+   * @see org.unipampa.lesse.xCanopus.then#getInteger1()
+   * @see #getthen()
+   * @generated
+   */
+  EAttribute getthen_Integer1();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.then#getInteger2 <em>Integer2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Integer2</em>'.
+   * @see org.unipampa.lesse.xCanopus.then#getInteger2()
+   * @see #getthen()
+   * @generated
+   */
+  EAttribute getthen_Integer2();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.then#getInteger3 <em>Integer3</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Integer3</em>'.
+   * @see org.unipampa.lesse.xCanopus.then#getInteger3()
+   * @see #getthen()
+   * @generated
+   */
+  EAttribute getthen_Integer3();
+
+  /**
+   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.given <em>given</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>given</em>'.
+   * @see org.unipampa.lesse.xCanopus.given
+   * @generated
+   */
+  EClass getgiven();
+
+  /**
+   * Returns the meta object for the reference '{@link org.unipampa.lesse.xCanopus.given#getSut1 <em>Sut1</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Sut1</em>'.
+   * @see org.unipampa.lesse.xCanopus.given#getSut1()
+   * @see #getgiven()
+   * @generated
+   */
+  EReference getgiven_Sut1();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.given#getSuttype <em>Suttype</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Suttype</em>'.
+   * @see org.unipampa.lesse.xCanopus.given#getSuttype()
+   * @see #getgiven()
+   * @generated
+   */
+  EAttribute getgiven_Suttype();
+
+  /**
+   * Returns the meta object for the reference '{@link org.unipampa.lesse.xCanopus.given#getSut2 <em>Sut2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Sut2</em>'.
+   * @see org.unipampa.lesse.xCanopus.given#getSut2()
+   * @see #getgiven()
+   * @generated
+   */
+  EReference getgiven_Sut2();
+
+  /**
+   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.SCENARIO <em>SCENARIO</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>SCENARIO</em>'.
+   * @see org.unipampa.lesse.xCanopus.SCENARIO
+   * @generated
+   */
+  EClass getSCENARIO();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.SCENARIO#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.unipampa.lesse.xCanopus.Metric#getName()
-   * @see #getMetric()
+   * @see org.unipampa.lesse.xCanopus.SCENARIO#getName()
+   * @see #getSCENARIO()
    * @generated
    */
-  EAttribute getMetric_Name();
-
-  /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.Counter <em>Counter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Counter</em>'.
-   * @see org.unipampa.lesse.xCanopus.Counter
-   * @generated
-   */
-  EClass getCounter();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.Counter#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.unipampa.lesse.xCanopus.Counter#getName()
-   * @see #getCounter()
-   * @generated
-   */
-  EAttribute getCounter_Name();
+  EAttribute getSCENARIO_Name();
 
   /**
    * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.SUT <em>SUT</em>}'.
@@ -1321,433 +957,24 @@ public interface XCanopusPackage extends EPackage
   EAttribute getSUT_Name();
 
   /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.LoadGenerator <em>Load Generator</em>}'.
+   * Returns the meta object for enum '{@link org.unipampa.lesse.xCanopus.METRICTYPEMONITORED <em>METRICTYPEMONITORED</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Load Generator</em>'.
-   * @see org.unipampa.lesse.xCanopus.LoadGenerator
+   * @return the meta object for enum '<em>METRICTYPEMONITORED</em>'.
+   * @see org.unipampa.lesse.xCanopus.METRICTYPEMONITORED
    * @generated
    */
-  EClass getLoadGenerator();
+  EEnum getMETRICTYPEMONITORED();
 
   /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.LoadGenerator#isIsMonitor <em>Is Monitor</em>}'.
+   * Returns the meta object for enum '{@link org.unipampa.lesse.xCanopus.METRICTYPE <em>METRICTYPE</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Monitor</em>'.
-   * @see org.unipampa.lesse.xCanopus.LoadGenerator#isIsMonitor()
-   * @see #getLoadGenerator()
+   * @return the meta object for enum '<em>METRICTYPE</em>'.
+   * @see org.unipampa.lesse.xCanopus.METRICTYPE
    * @generated
    */
-  EAttribute getLoadGenerator_IsMonitor();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.LoadGenerator#getHostname <em>Hostname</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Hostname</em>'.
-   * @see org.unipampa.lesse.xCanopus.LoadGenerator#getHostname()
-   * @see #getLoadGenerator()
-   * @generated
-   */
-  EAttribute getLoadGenerator_Hostname();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.LoadGenerator#getIp <em>Ip</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ip</em>'.
-   * @see org.unipampa.lesse.xCanopus.LoadGenerator#getIp()
-   * @see #getLoadGenerator()
-   * @generated
-   */
-  EAttribute getLoadGenerator_Ip();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.LoadGenerator#getHardware <em>Hardware</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Hardware</em>'.
-   * @see org.unipampa.lesse.xCanopus.LoadGenerator#getHardware()
-   * @see #getLoadGenerator()
-   * @generated
-   */
-  EAttribute getLoadGenerator_Hardware();
-
-  /**
-   * Returns the meta object for the reference list '{@link org.unipampa.lesse.xCanopus.LoadGenerator#getSut <em>Sut</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Sut</em>'.
-   * @see org.unipampa.lesse.xCanopus.LoadGenerator#getSut()
-   * @see #getLoadGenerator()
-   * @generated
-   */
-  EReference getLoadGenerator_Sut();
-
-  /**
-   * Returns the meta object for the reference '{@link org.unipampa.lesse.xCanopus.LoadGenerator#getMetricmodel <em>Metricmodel</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Metricmodel</em>'.
-   * @see org.unipampa.lesse.xCanopus.LoadGenerator#getMetricmodel()
-   * @see #getLoadGenerator()
-   * @generated
-   */
-  EReference getLoadGenerator_Metricmodel();
-
-  /**
-   * Returns the meta object for the reference '{@link org.unipampa.lesse.xCanopus.LoadGenerator#getMonitor <em>Monitor</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Monitor</em>'.
-   * @see org.unipampa.lesse.xCanopus.LoadGenerator#getMonitor()
-   * @see #getLoadGenerator()
-   * @generated
-   */
-  EReference getLoadGenerator_Monitor();
-
-  /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.Monitor <em>Monitor</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Monitor</em>'.
-   * @see org.unipampa.lesse.xCanopus.Monitor
-   * @generated
-   */
-  EClass getMonitor();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.Monitor#getHostname <em>Hostname</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Hostname</em>'.
-   * @see org.unipampa.lesse.xCanopus.Monitor#getHostname()
-   * @see #getMonitor()
-   * @generated
-   */
-  EAttribute getMonitor_Hostname();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.Monitor#getIp <em>Ip</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ip</em>'.
-   * @see org.unipampa.lesse.xCanopus.Monitor#getIp()
-   * @see #getMonitor()
-   * @generated
-   */
-  EAttribute getMonitor_Ip();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.Monitor#getHardware <em>Hardware</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Hardware</em>'.
-   * @see org.unipampa.lesse.xCanopus.Monitor#getHardware()
-   * @see #getMonitor()
-   * @generated
-   */
-  EAttribute getMonitor_Hardware();
-
-  /**
-   * Returns the meta object for the reference list '{@link org.unipampa.lesse.xCanopus.Monitor#getSut <em>Sut</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Sut</em>'.
-   * @see org.unipampa.lesse.xCanopus.Monitor#getSut()
-   * @see #getMonitor()
-   * @generated
-   */
-  EReference getMonitor_Sut();
-
-  /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.MetricModel <em>Metric Model</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Metric Model</em>'.
-   * @see org.unipampa.lesse.xCanopus.MetricModel
-   * @generated
-   */
-  EClass getMetricModel();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.unipampa.lesse.xCanopus.MetricModel#getMemory <em>Memory</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Memory</em>'.
-   * @see org.unipampa.lesse.xCanopus.MetricModel#getMemory()
-   * @see #getMetricModel()
-   * @generated
-   */
-  EReference getMetricModel_Memory();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.unipampa.lesse.xCanopus.MetricModel#getDisk <em>Disk</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Disk</em>'.
-   * @see org.unipampa.lesse.xCanopus.MetricModel#getDisk()
-   * @see #getMetricModel()
-   * @generated
-   */
-  EReference getMetricModel_Disk();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.unipampa.lesse.xCanopus.MetricModel#getCriteria <em>Criteria</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Criteria</em>'.
-   * @see org.unipampa.lesse.xCanopus.MetricModel#getCriteria()
-   * @see #getMetricModel()
-   * @generated
-   */
-  EReference getMetricModel_Criteria();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.unipampa.lesse.xCanopus.MetricModel#getThreshold <em>Threshold</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Threshold</em>'.
-   * @see org.unipampa.lesse.xCanopus.MetricModel#getThreshold()
-   * @see #getMetricModel()
-   * @generated
-   */
-  EReference getMetricModel_Threshold();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.unipampa.lesse.xCanopus.MetricModel#getDiskCounter <em>Disk Counter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Disk Counter</em>'.
-   * @see org.unipampa.lesse.xCanopus.MetricModel#getDiskCounter()
-   * @see #getMetricModel()
-   * @generated
-   */
-  EReference getMetricModel_DiskCounter();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.unipampa.lesse.xCanopus.MetricModel#getTransactionCounter <em>Transaction Counter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Transaction Counter</em>'.
-   * @see org.unipampa.lesse.xCanopus.MetricModel#getTransactionCounter()
-   * @see #getMetricModel()
-   * @generated
-   */
-  EReference getMetricModel_TransactionCounter();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.unipampa.lesse.xCanopus.MetricModel#getMemoryCounter <em>Memory Counter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Memory Counter</em>'.
-   * @see org.unipampa.lesse.xCanopus.MetricModel#getMemoryCounter()
-   * @see #getMetricModel()
-   * @generated
-   */
-  EReference getMetricModel_MemoryCounter();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.unipampa.lesse.xCanopus.MetricModel#getMetric <em>Metric</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Metric</em>'.
-   * @see org.unipampa.lesse.xCanopus.MetricModel#getMetric()
-   * @see #getMetricModel()
-   * @generated
-   */
-  EReference getMetricModel_Metric();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.unipampa.lesse.xCanopus.MetricModel#getCounter <em>Counter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Counter</em>'.
-   * @see org.unipampa.lesse.xCanopus.MetricModel#getCounter()
-   * @see #getMetricModel()
-   * @generated
-   */
-  EReference getMetricModel_Counter();
-
-  /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.Memory <em>Memory</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Memory</em>'.
-   * @see org.unipampa.lesse.xCanopus.Memory
-   * @generated
-   */
-  EClass getMemory();
-
-  /**
-   * Returns the meta object for the reference '{@link org.unipampa.lesse.xCanopus.Memory#getMemoryCounter <em>Memory Counter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Memory Counter</em>'.
-   * @see org.unipampa.lesse.xCanopus.Memory#getMemoryCounter()
-   * @see #getMemory()
-   * @generated
-   */
-  EReference getMemory_MemoryCounter();
-
-  /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.Transaction <em>Transaction</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Transaction</em>'.
-   * @see org.unipampa.lesse.xCanopus.Transaction
-   * @generated
-   */
-  EClass getTransaction();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.Transaction#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.unipampa.lesse.xCanopus.Transaction#getName()
-   * @see #getTransaction()
-   * @generated
-   */
-  EAttribute getTransaction_Name();
-
-  /**
-   * Returns the meta object for the reference '{@link org.unipampa.lesse.xCanopus.Transaction#getTransactionCounter <em>Transaction Counter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Transaction Counter</em>'.
-   * @see org.unipampa.lesse.xCanopus.Transaction#getTransactionCounter()
-   * @see #getTransaction()
-   * @generated
-   */
-  EReference getTransaction_TransactionCounter();
-
-  /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.Disk <em>Disk</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Disk</em>'.
-   * @see org.unipampa.lesse.xCanopus.Disk
-   * @generated
-   */
-  EClass getDisk();
-
-  /**
-   * Returns the meta object for the reference '{@link org.unipampa.lesse.xCanopus.Disk#getDisk_io_counter <em>Disk io counter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Disk io counter</em>'.
-   * @see org.unipampa.lesse.xCanopus.Disk#getDisk_io_counter()
-   * @see #getDisk()
-   * @generated
-   */
-  EReference getDisk_Disk_io_counter();
-
-  /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.Criteria <em>Criteria</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Criteria</em>'.
-   * @see org.unipampa.lesse.xCanopus.Criteria
-   * @generated
-   */
-  EClass getCriteria();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.Criteria#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.unipampa.lesse.xCanopus.Criteria#getValue()
-   * @see #getCriteria()
-   * @generated
-   */
-  EAttribute getCriteria_Value();
-
-  /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.Threshold <em>Threshold</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Threshold</em>'.
-   * @see org.unipampa.lesse.xCanopus.Threshold
-   * @generated
-   */
-  EClass getThreshold();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.unipampa.lesse.xCanopus.Threshold#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.unipampa.lesse.xCanopus.Threshold#getValue()
-   * @see #getThreshold()
-   * @generated
-   */
-  EAttribute getThreshold_Value();
-
-  /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.Disk_IO_Counter <em>Disk IO Counter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Disk IO Counter</em>'.
-   * @see org.unipampa.lesse.xCanopus.Disk_IO_Counter
-   * @generated
-   */
-  EClass getDisk_IO_Counter();
-
-  /**
-   * Returns the meta object for the attribute list '{@link org.unipampa.lesse.xCanopus.Disk_IO_Counter#getCounterDisk <em>Counter Disk</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Counter Disk</em>'.
-   * @see org.unipampa.lesse.xCanopus.Disk_IO_Counter#getCounterDisk()
-   * @see #getDisk_IO_Counter()
-   * @generated
-   */
-  EAttribute getDisk_IO_Counter_CounterDisk();
-
-  /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.TransactionCounter <em>Transaction Counter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Transaction Counter</em>'.
-   * @see org.unipampa.lesse.xCanopus.TransactionCounter
-   * @generated
-   */
-  EClass getTransactionCounter();
-
-  /**
-   * Returns the meta object for the attribute list '{@link org.unipampa.lesse.xCanopus.TransactionCounter#getCounterTransaction <em>Counter Transaction</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Counter Transaction</em>'.
-   * @see org.unipampa.lesse.xCanopus.TransactionCounter#getCounterTransaction()
-   * @see #getTransactionCounter()
-   * @generated
-   */
-  EAttribute getTransactionCounter_CounterTransaction();
-
-  /**
-   * Returns the meta object for class '{@link org.unipampa.lesse.xCanopus.MemoryCounter <em>Memory Counter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Memory Counter</em>'.
-   * @see org.unipampa.lesse.xCanopus.MemoryCounter
-   * @generated
-   */
-  EClass getMemoryCounter();
-
-  /**
-   * Returns the meta object for the attribute list '{@link org.unipampa.lesse.xCanopus.MemoryCounter#getCounterMemory <em>Counter Memory</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Counter Memory</em>'.
-   * @see org.unipampa.lesse.xCanopus.MemoryCounter#getCounterMemory()
-   * @see #getMemoryCounter()
-   * @generated
-   */
-  EAttribute getMemoryCounter_CounterMemory();
+  EEnum getMETRICTYPE();
 
   /**
    * Returns the meta object for enum '{@link org.unipampa.lesse.xCanopus.HARDWARE <em>HARDWARE</em>}'.
@@ -1768,46 +995,6 @@ public interface XCanopusPackage extends EPackage
    * @generated
    */
   EEnum getSUT_TYPE();
-
-  /**
-   * Returns the meta object for enum '{@link org.unipampa.lesse.xCanopus.ASSOCIATION_CRITERIA <em>ASSOCIATION CRITERIA</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>ASSOCIATION CRITERIA</em>'.
-   * @see org.unipampa.lesse.xCanopus.ASSOCIATION_CRITERIA
-   * @generated
-   */
-  EEnum getASSOCIATION_CRITERIA();
-
-  /**
-   * Returns the meta object for enum '{@link org.unipampa.lesse.xCanopus.COUNTER_DISK <em>COUNTER DISK</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>COUNTER DISK</em>'.
-   * @see org.unipampa.lesse.xCanopus.COUNTER_DISK
-   * @generated
-   */
-  EEnum getCOUNTER_DISK();
-
-  /**
-   * Returns the meta object for enum '{@link org.unipampa.lesse.xCanopus.COUNTER_TRANSACTION <em>COUNTER TRANSACTION</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>COUNTER TRANSACTION</em>'.
-   * @see org.unipampa.lesse.xCanopus.COUNTER_TRANSACTION
-   * @generated
-   */
-  EEnum getCOUNTER_TRANSACTION();
-
-  /**
-   * Returns the meta object for enum '{@link org.unipampa.lesse.xCanopus.COUNTER_MEMORY <em>COUNTER MEMORY</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>COUNTER MEMORY</em>'.
-   * @see org.unipampa.lesse.xCanopus.COUNTER_MEMORY
-   * @generated
-   */
-  EEnum getCOUNTER_MEMORY();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1843,54 +1030,22 @@ public interface XCanopusPackage extends EPackage
     EClass MODEL = eINSTANCE.getModel();
 
     /**
-     * The meta object literal for the '<em><b>Includes</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Main</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__INCLUDES = eINSTANCE.getModel_Includes();
+    EReference MODEL__MAIN = eINSTANCE.getModel_Main();
 
     /**
-     * The meta object literal for the '<em><b>Monitorings</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.MetricModelImpl <em>Metric Model</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.unipampa.lesse.xCanopus.impl.MetricModelImpl
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMetricModel()
      * @generated
      */
-    EReference MODEL__MONITORINGS = eINSTANCE.getModel_Monitorings();
-
-    /**
-     * The meta object literal for the '<em><b>Suts</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODEL__SUTS = eINSTANCE.getModel_Suts();
-
-    /**
-     * The meta object literal for the '<em><b>Load Generators</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODEL__LOAD_GENERATORS = eINSTANCE.getModel_LoadGenerators();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.IncludeImpl <em>Include</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.IncludeImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getInclude()
-     * @generated
-     */
-    EClass INCLUDE = eINSTANCE.getInclude();
-
-    /**
-     * The meta object literal for the '<em><b>Import URI</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute INCLUDE__IMPORT_URI = eINSTANCE.getInclude_ImportURI();
+    EClass METRIC_MODEL = eINSTANCE.getMetricModel();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1898,141 +1053,267 @@ public interface XCanopusPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INCLUDE__NAME = eINSTANCE.getInclude_Name();
+    EAttribute METRIC_MODEL__NAME = eINSTANCE.getMetricModel_Name();
 
     /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.MonitoringImpl <em>Monitoring</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.MonitoringImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMonitoring()
-     * @generated
-     */
-    EClass MONITORING = eINSTANCE.getMonitoring();
-
-    /**
-     * The meta object literal for the '<em><b>Sut</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MONITORING__SUT = eINSTANCE.getMonitoring_Sut();
+    EReference METRIC_MODEL__STEPS = eINSTANCE.getMetricModel_Steps();
 
     /**
-     * The meta object literal for the '<em><b>Sut type</b></em>' attribute feature.
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.MainImpl <em>Main</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.unipampa.lesse.xCanopus.impl.MainImpl
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMain()
+     * @generated
+     */
+    EClass MAIN = eINSTANCE.getMain();
+
+    /**
+     * The meta object literal for the '<em><b>Main</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MONITORING__SUT_TYPE = eINSTANCE.getMonitoring_Sut_type();
+    EReference MAIN__MAIN = eINSTANCE.getMain_Main();
 
     /**
-     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.STEPSImpl <em>STEPS</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.unipampa.lesse.xCanopus.impl.STEPSImpl
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getSTEPS()
+     * @generated
+     */
+    EClass STEPS = eINSTANCE.getSTEPS();
+
+    /**
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.and_workloadImpl <em>and workload</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.unipampa.lesse.xCanopus.impl.and_workloadImpl
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getand_workload()
+     * @generated
+     */
+    EClass AND_WORKLOAD = eINSTANCE.getand_workload();
+
+    /**
+     * The meta object literal for the '<em><b>Sut1</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MONITORING__CONDITION = eINSTANCE.getMonitoring_Condition();
+    EReference AND_WORKLOAD__SUT1 = eINSTANCE.getand_workload_Sut1();
 
     /**
-     * The meta object literal for the '<em><b>Sut type2</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Suttype</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MONITORING__SUT_TYPE2 = eINSTANCE.getMonitoring_Sut_type2();
+    EAttribute AND_WORKLOAD__SUTTYPE = eINSTANCE.getand_workload_Suttype();
 
     /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.CONDITIONImpl <em>CONDITION</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.CONDITIONImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getCONDITION()
-     * @generated
-     */
-    EClass CONDITION = eINSTANCE.getCONDITION();
-
-    /**
-     * The meta object literal for the '<em><b>Post</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Sut2</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONDITION__POST = eINSTANCE.getCONDITION_Post();
+    EReference AND_WORKLOAD__SUT2 = eINSTANCE.getand_workload_Sut2();
 
     /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.ANDImpl <em>AND</em>}' class.
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.and_the_scenarioImpl <em>and the scenario</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.ANDImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getAND()
+     * @see org.unipampa.lesse.xCanopus.impl.and_the_scenarioImpl
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getand_the_scenario()
      * @generated
      */
-    EClass AND = eINSTANCE.getAND();
+    EClass AND_THE_SCENARIO = eINSTANCE.getand_the_scenario();
 
     /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.WHENImpl <em>WHEN</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.WHENImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getWHEN()
-     * @generated
-     */
-    EClass WHEN = eINSTANCE.getWHEN();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.THENImpl <em>THEN</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.THENImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getTHEN()
-     * @generated
-     */
-    EClass THEN = eINSTANCE.getTHEN();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.POSTCONDITIONImpl <em>POSTCONDITION</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.POSTCONDITIONImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getPOSTCONDITION()
-     * @generated
-     */
-    EClass POSTCONDITION = eINSTANCE.getPOSTCONDITION();
-
-    /**
-     * The meta object literal for the '<em><b>WGT</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Scenario</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute POSTCONDITION__WGT = eINSTANCE.getPOSTCONDITION_WGT();
+    EReference AND_THE_SCENARIO__SCENARIO = eINSTANCE.getand_the_scenario_Scenario();
 
     /**
-     * The meta object literal for the '<em><b>THE</b></em>' attribute feature.
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.and_atleastImpl <em>and atleast</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.unipampa.lesse.xCanopus.impl.and_atleastImpl
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getand_atleast()
+     * @generated
+     */
+    EClass AND_ATLEAST = eINSTANCE.getand_atleast();
+
+    /**
+     * The meta object literal for the '<em><b>Integer1</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute POSTCONDITION__THE = eINSTANCE.getPOSTCONDITION_THE();
+    EAttribute AND_ATLEAST__INTEGER1 = eINSTANCE.getand_atleast_Integer1();
 
     /**
-     * The meta object literal for the '<em><b>ATL</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Integer2</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute POSTCONDITION__ATL = eINSTANCE.getPOSTCONDITION_ATL();
+    EAttribute AND_ATLEAST__INTEGER2 = eINSTANCE.getand_atleast_Integer2();
 
     /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.MetricImpl <em>Metric</em>}' class.
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.and_the_metricImpl <em>and the metric</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.MetricImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMetric()
+     * @see org.unipampa.lesse.xCanopus.impl.and_the_metricImpl
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getand_the_metric()
      * @generated
      */
-    EClass METRIC = eINSTANCE.getMetric();
+    EClass AND_THE_METRIC = eINSTANCE.getand_the_metric();
+
+    /**
+     * The meta object literal for the '<em><b>Metric</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute AND_THE_METRIC__METRIC = eINSTANCE.getand_the_metric_Metric();
+
+    /**
+     * The meta object literal for the '<em><b>Integer1</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute AND_THE_METRIC__INTEGER1 = eINSTANCE.getand_the_metric_Integer1();
+
+    /**
+     * The meta object literal for the '<em><b>Integer2</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute AND_THE_METRIC__INTEGER2 = eINSTANCE.getand_the_metric_Integer2();
+
+    /**
+     * The meta object literal for the '<em><b>Integer3</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute AND_THE_METRIC__INTEGER3 = eINSTANCE.getand_the_metric_Integer3();
+
+    /**
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.whenImpl <em>when</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.unipampa.lesse.xCanopus.impl.whenImpl
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getwhen()
+     * @generated
+     */
+    EClass WHEN = eINSTANCE.getwhen();
+
+    /**
+     * The meta object literal for the '<em><b>Metrictype</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WHEN__METRICTYPE = eINSTANCE.getwhen_Metrictype();
+
+    /**
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.thenImpl <em>then</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.unipampa.lesse.xCanopus.impl.thenImpl
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getthen()
+     * @generated
+     */
+    EClass THEN = eINSTANCE.getthen();
+
+    /**
+     * The meta object literal for the '<em><b>Metric</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute THEN__METRIC = eINSTANCE.getthen_Metric();
+
+    /**
+     * The meta object literal for the '<em><b>Integer1</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute THEN__INTEGER1 = eINSTANCE.getthen_Integer1();
+
+    /**
+     * The meta object literal for the '<em><b>Integer2</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute THEN__INTEGER2 = eINSTANCE.getthen_Integer2();
+
+    /**
+     * The meta object literal for the '<em><b>Integer3</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute THEN__INTEGER3 = eINSTANCE.getthen_Integer3();
+
+    /**
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.givenImpl <em>given</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.unipampa.lesse.xCanopus.impl.givenImpl
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getgiven()
+     * @generated
+     */
+    EClass GIVEN = eINSTANCE.getgiven();
+
+    /**
+     * The meta object literal for the '<em><b>Sut1</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GIVEN__SUT1 = eINSTANCE.getgiven_Sut1();
+
+    /**
+     * The meta object literal for the '<em><b>Suttype</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GIVEN__SUTTYPE = eINSTANCE.getgiven_Suttype();
+
+    /**
+     * The meta object literal for the '<em><b>Sut2</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GIVEN__SUT2 = eINSTANCE.getgiven_Sut2();
+
+    /**
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.SCENARIOImpl <em>SCENARIO</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.unipampa.lesse.xCanopus.impl.SCENARIOImpl
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getSCENARIO()
+     * @generated
+     */
+    EClass SCENARIO = eINSTANCE.getSCENARIO();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2040,25 +1321,7 @@ public interface XCanopusPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute METRIC__NAME = eINSTANCE.getMetric_Name();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.CounterImpl <em>Counter</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.CounterImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getCounter()
-     * @generated
-     */
-    EClass COUNTER = eINSTANCE.getCounter();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COUNTER__NAME = eINSTANCE.getCounter_Name();
+    EAttribute SCENARIO__NAME = eINSTANCE.getSCENARIO_Name();
 
     /**
      * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.SUTImpl <em>SUT</em>}' class.
@@ -2079,346 +1342,24 @@ public interface XCanopusPackage extends EPackage
     EAttribute SUT__NAME = eINSTANCE.getSUT_Name();
 
     /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.LoadGeneratorImpl <em>Load Generator</em>}' class.
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.METRICTYPEMONITORED <em>METRICTYPEMONITORED</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.LoadGeneratorImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getLoadGenerator()
+     * @see org.unipampa.lesse.xCanopus.METRICTYPEMONITORED
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMETRICTYPEMONITORED()
      * @generated
      */
-    EClass LOAD_GENERATOR = eINSTANCE.getLoadGenerator();
+    EEnum METRICTYPEMONITORED = eINSTANCE.getMETRICTYPEMONITORED();
 
     /**
-     * The meta object literal for the '<em><b>Is Monitor</b></em>' attribute feature.
+     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.METRICTYPE <em>METRICTYPE</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.unipampa.lesse.xCanopus.METRICTYPE
+     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMETRICTYPE()
      * @generated
      */
-    EAttribute LOAD_GENERATOR__IS_MONITOR = eINSTANCE.getLoadGenerator_IsMonitor();
-
-    /**
-     * The meta object literal for the '<em><b>Hostname</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LOAD_GENERATOR__HOSTNAME = eINSTANCE.getLoadGenerator_Hostname();
-
-    /**
-     * The meta object literal for the '<em><b>Ip</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LOAD_GENERATOR__IP = eINSTANCE.getLoadGenerator_Ip();
-
-    /**
-     * The meta object literal for the '<em><b>Hardware</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LOAD_GENERATOR__HARDWARE = eINSTANCE.getLoadGenerator_Hardware();
-
-    /**
-     * The meta object literal for the '<em><b>Sut</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LOAD_GENERATOR__SUT = eINSTANCE.getLoadGenerator_Sut();
-
-    /**
-     * The meta object literal for the '<em><b>Metricmodel</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LOAD_GENERATOR__METRICMODEL = eINSTANCE.getLoadGenerator_Metricmodel();
-
-    /**
-     * The meta object literal for the '<em><b>Monitor</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LOAD_GENERATOR__MONITOR = eINSTANCE.getLoadGenerator_Monitor();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.MonitorImpl <em>Monitor</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.MonitorImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMonitor()
-     * @generated
-     */
-    EClass MONITOR = eINSTANCE.getMonitor();
-
-    /**
-     * The meta object literal for the '<em><b>Hostname</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MONITOR__HOSTNAME = eINSTANCE.getMonitor_Hostname();
-
-    /**
-     * The meta object literal for the '<em><b>Ip</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MONITOR__IP = eINSTANCE.getMonitor_Ip();
-
-    /**
-     * The meta object literal for the '<em><b>Hardware</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MONITOR__HARDWARE = eINSTANCE.getMonitor_Hardware();
-
-    /**
-     * The meta object literal for the '<em><b>Sut</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MONITOR__SUT = eINSTANCE.getMonitor_Sut();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.MetricModelImpl <em>Metric Model</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.MetricModelImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMetricModel()
-     * @generated
-     */
-    EClass METRIC_MODEL = eINSTANCE.getMetricModel();
-
-    /**
-     * The meta object literal for the '<em><b>Memory</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METRIC_MODEL__MEMORY = eINSTANCE.getMetricModel_Memory();
-
-    /**
-     * The meta object literal for the '<em><b>Disk</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METRIC_MODEL__DISK = eINSTANCE.getMetricModel_Disk();
-
-    /**
-     * The meta object literal for the '<em><b>Criteria</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METRIC_MODEL__CRITERIA = eINSTANCE.getMetricModel_Criteria();
-
-    /**
-     * The meta object literal for the '<em><b>Threshold</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METRIC_MODEL__THRESHOLD = eINSTANCE.getMetricModel_Threshold();
-
-    /**
-     * The meta object literal for the '<em><b>Disk Counter</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METRIC_MODEL__DISK_COUNTER = eINSTANCE.getMetricModel_DiskCounter();
-
-    /**
-     * The meta object literal for the '<em><b>Transaction Counter</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METRIC_MODEL__TRANSACTION_COUNTER = eINSTANCE.getMetricModel_TransactionCounter();
-
-    /**
-     * The meta object literal for the '<em><b>Memory Counter</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METRIC_MODEL__MEMORY_COUNTER = eINSTANCE.getMetricModel_MemoryCounter();
-
-    /**
-     * The meta object literal for the '<em><b>Metric</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METRIC_MODEL__METRIC = eINSTANCE.getMetricModel_Metric();
-
-    /**
-     * The meta object literal for the '<em><b>Counter</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METRIC_MODEL__COUNTER = eINSTANCE.getMetricModel_Counter();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.MemoryImpl <em>Memory</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.MemoryImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMemory()
-     * @generated
-     */
-    EClass MEMORY = eINSTANCE.getMemory();
-
-    /**
-     * The meta object literal for the '<em><b>Memory Counter</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MEMORY__MEMORY_COUNTER = eINSTANCE.getMemory_MemoryCounter();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.TransactionImpl <em>Transaction</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.TransactionImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getTransaction()
-     * @generated
-     */
-    EClass TRANSACTION = eINSTANCE.getTransaction();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TRANSACTION__NAME = eINSTANCE.getTransaction_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Transaction Counter</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TRANSACTION__TRANSACTION_COUNTER = eINSTANCE.getTransaction_TransactionCounter();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.DiskImpl <em>Disk</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.DiskImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getDisk()
-     * @generated
-     */
-    EClass DISK = eINSTANCE.getDisk();
-
-    /**
-     * The meta object literal for the '<em><b>Disk io counter</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DISK__DISK_IO_COUNTER = eINSTANCE.getDisk_Disk_io_counter();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.CriteriaImpl <em>Criteria</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.CriteriaImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getCriteria()
-     * @generated
-     */
-    EClass CRITERIA = eINSTANCE.getCriteria();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CRITERIA__VALUE = eINSTANCE.getCriteria_Value();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.ThresholdImpl <em>Threshold</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.ThresholdImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getThreshold()
-     * @generated
-     */
-    EClass THRESHOLD = eINSTANCE.getThreshold();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute THRESHOLD__VALUE = eINSTANCE.getThreshold_Value();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.Disk_IO_CounterImpl <em>Disk IO Counter</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.Disk_IO_CounterImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getDisk_IO_Counter()
-     * @generated
-     */
-    EClass DISK_IO_COUNTER = eINSTANCE.getDisk_IO_Counter();
-
-    /**
-     * The meta object literal for the '<em><b>Counter Disk</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DISK_IO_COUNTER__COUNTER_DISK = eINSTANCE.getDisk_IO_Counter_CounterDisk();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.TransactionCounterImpl <em>Transaction Counter</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.TransactionCounterImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getTransactionCounter()
-     * @generated
-     */
-    EClass TRANSACTION_COUNTER = eINSTANCE.getTransactionCounter();
-
-    /**
-     * The meta object literal for the '<em><b>Counter Transaction</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TRANSACTION_COUNTER__COUNTER_TRANSACTION = eINSTANCE.getTransactionCounter_CounterTransaction();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.impl.MemoryCounterImpl <em>Memory Counter</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.impl.MemoryCounterImpl
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getMemoryCounter()
-     * @generated
-     */
-    EClass MEMORY_COUNTER = eINSTANCE.getMemoryCounter();
-
-    /**
-     * The meta object literal for the '<em><b>Counter Memory</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MEMORY_COUNTER__COUNTER_MEMORY = eINSTANCE.getMemoryCounter_CounterMemory();
+    EEnum METRICTYPE = eINSTANCE.getMETRICTYPE();
 
     /**
      * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.HARDWARE <em>HARDWARE</em>}' enum.
@@ -2439,46 +1380,6 @@ public interface XCanopusPackage extends EPackage
      * @generated
      */
     EEnum SUT_TYPE = eINSTANCE.getSUT_TYPE();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.ASSOCIATION_CRITERIA <em>ASSOCIATION CRITERIA</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.ASSOCIATION_CRITERIA
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getASSOCIATION_CRITERIA()
-     * @generated
-     */
-    EEnum ASSOCIATION_CRITERIA = eINSTANCE.getASSOCIATION_CRITERIA();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.COUNTER_DISK <em>COUNTER DISK</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.COUNTER_DISK
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getCOUNTER_DISK()
-     * @generated
-     */
-    EEnum COUNTER_DISK = eINSTANCE.getCOUNTER_DISK();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.COUNTER_TRANSACTION <em>COUNTER TRANSACTION</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.COUNTER_TRANSACTION
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getCOUNTER_TRANSACTION()
-     * @generated
-     */
-    EEnum COUNTER_TRANSACTION = eINSTANCE.getCOUNTER_TRANSACTION();
-
-    /**
-     * The meta object literal for the '{@link org.unipampa.lesse.xCanopus.COUNTER_MEMORY <em>COUNTER MEMORY</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.unipampa.lesse.xCanopus.COUNTER_MEMORY
-     * @see org.unipampa.lesse.xCanopus.impl.XCanopusPackageImpl#getCOUNTER_MEMORY()
-     * @generated
-     */
-    EEnum COUNTER_MEMORY = eINSTANCE.getCOUNTER_MEMORY();
 
   }
 
