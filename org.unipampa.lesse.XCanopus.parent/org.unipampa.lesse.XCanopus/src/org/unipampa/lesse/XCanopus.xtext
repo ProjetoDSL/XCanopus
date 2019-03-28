@@ -18,7 +18,7 @@ Model:
 //;
 
 MetricModel:
-	'Feature:' Freetext '.' 
+	'Feature: ' Freetext '.' 
 	'Monitoring:' name=ID 'description' Freetext '.' '{'
 	(steps+=STEPS)+ '}'*
 ;
@@ -40,7 +40,7 @@ Freetext:
 ;
  
 //possible steps
-STEPS: given | when_memory | then | and_workload | and_atleast | and_the_scenario | and_the_metric;
+STEPS: given | when_memory | when_processor | when_disk | when_network | when_web_resources | when_transaction | when_process | and_workload | and_atleast | and_the_scenario;
 
 and_workload:
 	'And' WORKLOADGENERATED sut1=[SUT|ID] LOADGENERATORFORTHE suttype=SUT_TYPE ON sut2=[SUT|ID]
@@ -52,34 +52,97 @@ and_the_scenario:
 and_atleast:
 	'And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT
 ;
-and_the_metric:
-	'And' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
-;
+//and_the_metric:
+//	'And' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
+//;
 //second format of use CHOICE
 when_memory:
 	//'When' THE metrictype=METRICTYPEMONITORED ISMONITORED
 	'When' THE 'memory' ISMONITORED
 	('Then' THE (availablembytescounter = 'available mbytes counter' | 
-	pagesseccounter = 'pages/sec counter' | 
-	pagesreadsseccounter = 'page reads/sec counter' | 
-	workingsetcounter = 'working set counter' | 
+	pagesseccounter = 'pages/sec counter' |
+	pagesreadsseccounter = 'page reads/sec counter' |
+	workingsetcounter = 'working set counter' |
 	poolnonpagedbytescounter = 'pool nonpaged bytes counter' | 
 	pagedpoolbytescounter = 'paged pool bytes counter' | 
 	pagedpoolfailurescounter = 'pages pool failures counter' | 
-	cachebytescounter = 'cache bytes counter' ) 
+	cachebytescounter = 'cache bytes counter' )
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?	
+	;
+when_processor:
+	'When' THE 'processor' ISMONITORED
+	('Then' THE (processortimecounter = '% processor time counter' | 
+	privilegedtimecounter = '% privileged time counter' |
+	interrupttimecounter = '% interrupt time counter' |
+	processorqueuelenghtcounter = 'processor queue lenght counter' |
+	contextswitchescounter = 'context switches counter' |
+	systemuptimecounter = 'system up time counter')
 	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
 	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
-	; 
-then:
-	'Then' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
 ;
+when_disk:
+	'When' THE 'disk' ISMONITORED
+	('Then' THE (avgdisksecstransfercounter = 'average disk secs/transfer counter' |
+	idletimecounter = '% idle time counter' | 
+	avgdiskqueuelenghtcounter = 'average disk queue lenght counter' |
+	splitioseccounter = 'split io/sec counter' |
+	freemegabytescounter = 'free megabytes counter')
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
+;
+when_network:
+	'When' THE 'network' ISMONITORED
+	('Then' THE (bytestotalsec = 'bytes total/sec' |
+	serverbytestotalsec = 'server bytes total/sec' |
+	datagramssec = 'datagrams/sec' |
+	connectionsestablished = 'connections established' |
+	segmentsreceivedsec = 'segments received/sec' |
+	interrupttime = '% interrupt time')
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
+;
+when_web_resources:
+	'When' THE 'web resources' ISMONITORED
+	('Then' THE (throughputmbytes = 'throughput mbytes'  |
+	hitspersecond = 'hits per second' |
+	httpresponsespersecond = 'http responses per second' |
+	pagesdownloadedpersecond = 'pages downlaoded per second' |
+	connections = 'connections' |
+	sslpersecond = 'ssl per second')
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
+;
+when_transaction:
+	'When' THE 'transaction' ISMONITORED
+	('Then' THE (throughputmbytes = 'throughput mbytes'  |
+	hitspersecond = 'hits per second' |
+	httpresponsespersecond = 'http responses per second' |
+	pagesdownloadedpersecond = 'pages downlaoded per second' |
+	connections = 'connections' |
+	sslpersecond = 'ssl per second')
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
+;
+when_process:
+	'When' THE 'process' ISMONITORED
+	('Then' THE (exceptionofexcepthrownsec = 'exception # of except thrown/sec' |
+    exceptionthrowtocatchdepthsec = 'exception throw to catch depth/sec' |
+    memorylargeobjectheapsize = 'mem large object heap size' |
+    memorybytesinallheaps = 'mem # bytes in all heaps' |
+    memoryofpinnedibjects = 'mem # of pinned objects')
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
+;
+//then:
+//	'Then' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
+//;
 given:
 	'Given' THAT sut1=[SUT|ID] suttype=SUT_TYPE MONITOREDBY sut2=[SUT|ID] MONITOR_TEXT
 ;
 
-enum METRICTYPEMONITORED: MEMORY = 'memory' | DISK = 'disk' | WEBRESOURCES = 'web resources' | TRANSACTION = 'transaction' | PROCESSOR = 'processor' ;
-
-enum METRICTYPE: 
+//enum METRICTYPEMONITORED: MEMORY = 'memory' | DISK = 'disk' | WEBRESOURCES = 'web resources' | TRANSACTION = 'transaction' | PROCESSOR = 'processor' ;
+ 
 	//related to Memory
 //	availablembytescounter = 'available mbytes counter' | 
 //	pagesseccounter = 'pages/sec counter' | 
@@ -90,51 +153,49 @@ enum METRICTYPE:
 //	pagedpoolfailurescounter = 'pages pool failures counter' | 
 //	cachebytescounter = 'cache bytes counter' | 
 	//related to Processor
-	processortimecounter = '% processor time counter' | 
-	privilegedtimecounter = '% privileged time counter' |
-	interrupttimecounter = '% interrupt time counter' |
+//	processortimecounter = '% processor time counter' | 
+//	privilegedtimecounter = '% privileged time counter' |
+//	interrupttimecounter = '% interrupt time counter' |
 	//verificar isso
-	processorqueuelenghtcounter = 'processor queue lenght counter' |
-	contextswitchescounter = 'context switches counter' |
-	systemuptimecounter = 'system up time counter' |
+//	processorqueuelenghtcounter = 'processor queue lenght counter' |
+//	contextswitchescounter = 'context switches counter' |
+//	systemuptimecounter = 'system up time counter' |
 	//related to Disk
-	avgdisksecstransfercounter = 'average disk secs/transfer counter' |
-	idletimecounter = '% idle time counter' | 
-	avgdiskqueuelenghtcounter = 'average disk queue lenght counter' |
-	splitioseccounter = 'split io/sec counter' |
-	freemegabytescounter = 'free megabytes counter' |
+//	avgdisksecstransfercounter = 'average disk secs/transfer counter' |
+//	idletimecounter = '% idle time counter' | 
+//	avgdiskqueuelenghtcounter = 'average disk queue lenght counter' |
+//	splitioseccounter = 'split io/sec counter' |
+//	freemegabytescounter = 'free megabytes counter' |
 	//related to Network
-	bytestotalsec = 'bytes total/sec' |
-	serverbytestotalsec = 'server bytes total/sec' |
-	datagramssec = 'datagrams/sec' |
-	connectionsestablished = 'connections established' |
-	segmentsreceivedsec = 'segments received/sec' |
-	interrupttime = '% interrupt time' |
+//	bytestotalsec = 'bytes total/sec' |
+//	serverbytestotalsec = 'server bytes total/sec' |
+//	datagramssec = 'datagrams/sec' |
+//	connectionsestablished = 'connections established' |
+//	segmentsreceivedsec = 'segments received/sec' |
+//	interrupttime = '% interrupt time' |
 	//related to Web Resources
-	throughputmbytes = 'throughput mbytes'  |
-	hitspersecond = 'hits per second' |
-	httpresponsespersecond = 'http responses per second' |
-	pagesdownloadedpersecond = 'pages downlaoded per second' |
-	connections = 'connections' |
-	sslpersecond = 'ssl per second' |
+//	throughputmbytes = 'throughput mbytes'  |
+//	hitspersecond = 'hits per second' |
+//	httpresponsespersecond = 'http responses per second' |
+//	pagesdownloadedpersecond = 'pages downlaoded per second' |
+//	connections = 'connections' |
+//	sslpersecond = 'ssl per second' |
 	//related to Transaction
-	transactionresponsetime  = 'transactions response time' | 
-    transactionspersecond = 'transactions per second' | 
-    transactionsuccessrate = 'transactions success rate' |
+//	transactionresponsetime  = 'transactions response time' | 
+//  transactionspersecond = 'transactions per second' | 
+//  transactionsuccessrate = 'transactions success rate' |
     //related to Process
-    exceptionofexcepthrownsec = 'exception # of except thrown/sec' |
-    exceptionthrowtocatchdepthsec = 'exception throw to catch depth/sec' //|
-//    memorylargeobjectheapsize = 'memory large object heap size' |
-//    memorybytesinallheaps = 'memory # bytes in all heaps' |
-//    memoryofpinnedibjects = 'memory # of pinned objects'
+//  exceptionofexcepthrownsec = 'exception # of except thrown/sec' |
+//  exceptionthrowtocatchdepthsec = 'exception throw to catch depth/sec' |
+//  memorylargeobjectheapsize = 'memory large object heap size' |
+//  memorybytesinallheaps = 'memory # bytes in all heaps' |
+//  memoryofpinnedibjects = 'memory # of pinned objects'
      
-;
+
 
 recebe :
 	string+=STRING
 ;
-
-
 //availablembytescounter:
 //	AVAILABLEMBYTESCOUNTER_TEXT 
 //;
