@@ -28,238 +28,128 @@ public class XCanopusGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public class ModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Model");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cIncludesAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cIncludesIncludeParserRuleCall_0_0 = (RuleCall)cIncludesAssignment_0.eContents().get(0);
-		private final Assignment cMonitoringsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cMonitoringsMonitoringParserRuleCall_1_0 = (RuleCall)cMonitoringsAssignment_1.eContents().get(0);
-		private final Assignment cSutsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cSutsSUTParserRuleCall_2_0 = (RuleCall)cSutsAssignment_2.eContents().get(0);
-		private final Assignment cLoadGeneratorsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cLoadGeneratorsLoadGeneratorParserRuleCall_3_0 = (RuleCall)cLoadGeneratorsAssignment_3.eContents().get(0);
+		private final Assignment cMainAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cMainMainParserRuleCall_0 = (RuleCall)cMainAssignment.eContents().get(0);
 		
 		//Model:
-		//	includes+=Include*
-		//	monitorings+=Monitoring*
-		//	suts+=SUT*
-		//	loadGenerators+=LoadGenerator*;
+		//	main+=Main*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//includes+=Include* monitorings+=Monitoring* suts+=SUT* loadGenerators+=LoadGenerator*
-		public Group getGroup() { return cGroup; }
+		////  includes += Include*
+		////  monitorings+=MetricModel* 
+		////  scenario+=SCENARIO* 
+		////  suts+=SUT*
+		//main+=Main*
+		public Assignment getMainAssignment() { return cMainAssignment; }
 		
-		//includes+=Include*
-		public Assignment getIncludesAssignment_0() { return cIncludesAssignment_0; }
-		
-		//Include
-		public RuleCall getIncludesIncludeParserRuleCall_0_0() { return cIncludesIncludeParserRuleCall_0_0; }
-		
-		//monitorings+=Monitoring*
-		public Assignment getMonitoringsAssignment_1() { return cMonitoringsAssignment_1; }
-		
-		//Monitoring
-		public RuleCall getMonitoringsMonitoringParserRuleCall_1_0() { return cMonitoringsMonitoringParserRuleCall_1_0; }
-		
-		//suts+=SUT*
-		public Assignment getSutsAssignment_2() { return cSutsAssignment_2; }
-		
-		//SUT
-		public RuleCall getSutsSUTParserRuleCall_2_0() { return cSutsSUTParserRuleCall_2_0; }
-		
-		//loadGenerators+=LoadGenerator*
-		public Assignment getLoadGeneratorsAssignment_3() { return cLoadGeneratorsAssignment_3; }
-		
-		//LoadGenerator
-		public RuleCall getLoadGeneratorsLoadGeneratorParserRuleCall_3_0() { return cLoadGeneratorsLoadGeneratorParserRuleCall_3_0; }
+		//Main
+		public RuleCall getMainMainParserRuleCall_0() { return cMainMainParserRuleCall_0; }
 	}
-	public class IncludeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Include");
+	public class MetricModelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.MetricModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cIncludeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cImportURIAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cImportURISTRINGTerminalRuleCall_1_0 = (RuleCall)cImportURIAssignment_1.eContents().get(0);
-		private final Keyword cAsKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Keyword cFeatureKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cFreetextParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cMonitoringKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cNameIDTerminalRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
+		private final Keyword cDescriptionKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final RuleCall cFreetextParserRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
+		private final Keyword cFullStopKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cLeftCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cStepsAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cStepsSTEPSParserRuleCall_9_0 = (RuleCall)cStepsAssignment_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
-		//Include:
-		//	'include' importURI=STRING 'as' name=ID;
+		////Include:
+		////	'include' importURI=STRING 'as' name=ID
+		////;
+		//MetricModel:
+		//	'Feature:' Freetext '.'
+		//	'Monitoring:' name=ID 'description' Freetext '.' '{'
+		//	steps+=STEPS+ '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'include' importURI=STRING 'as' name=ID
+		//'Feature:' Freetext '.' 'Monitoring:' name=ID 'description' Freetext '.' '{' steps+=STEPS+ '}'
 		public Group getGroup() { return cGroup; }
 		
-		//'include'
-		public Keyword getIncludeKeyword_0() { return cIncludeKeyword_0; }
-		
-		//importURI=STRING
-		public Assignment getImportURIAssignment_1() { return cImportURIAssignment_1; }
-		
-		//STRING
-		public RuleCall getImportURISTRINGTerminalRuleCall_1_0() { return cImportURISTRINGTerminalRuleCall_1_0; }
-		
-		//'as'
-		public Keyword getAsKeyword_2() { return cAsKeyword_2; }
-		
-		//name=ID
-		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
-	}
-	public class MonitoringElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Monitoring");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cMonitoringAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cFeatureKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final RuleCall cFreetextParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cMonitoringKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final RuleCall cFreetextParserRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
-		private final Keyword cFullStopKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cGivenKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cThatKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cSutAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final CrossReference cSutSUTCrossReference_9_0 = (CrossReference)cSutAssignment_9.eContents().get(0);
-		private final RuleCall cSutSUTIDTerminalRuleCall_9_0_1 = (RuleCall)cSutSUTCrossReference_9_0.eContents().get(1);
-		private final Assignment cSut_typeAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cSut_typeSUT_TYPEEnumRuleCall_10_0 = (RuleCall)cSut_typeAssignment_10.eContents().get(0);
-		private final Keyword cMonitoredByKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Assignment cSutAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final CrossReference cSutSUTCrossReference_12_0 = (CrossReference)cSutAssignment_12.eContents().get(0);
-		private final RuleCall cSutSUTIDTerminalRuleCall_12_0_1 = (RuleCall)cSutSUTCrossReference_12_0.eContents().get(1);
-		private final Keyword cMonitorKeyword_13 = (Keyword)cGroup.eContents().get(13);
-		private final Assignment cConditionAssignment_14 = (Assignment)cGroup.eContents().get(14);
-		private final RuleCall cConditionCONDITIONParserRuleCall_14_0 = (RuleCall)cConditionAssignment_14.eContents().get(0);
-		private final Assignment cSutAssignment_15 = (Assignment)cGroup.eContents().get(15);
-		private final CrossReference cSutSUTCrossReference_15_0 = (CrossReference)cSutAssignment_15.eContents().get(0);
-		private final RuleCall cSutSUTIDTerminalRuleCall_15_0_1 = (RuleCall)cSutSUTCrossReference_15_0.eContents().get(1);
-		private final Keyword cLoadGeneratorKeyword_16 = (Keyword)cGroup.eContents().get(16);
-		private final Keyword cForTheKeyword_17 = (Keyword)cGroup.eContents().get(17);
-		private final Assignment cSut_type2Assignment_18 = (Assignment)cGroup.eContents().get(18);
-		private final RuleCall cSut_type2SUT_TYPEEnumRuleCall_18_0 = (RuleCall)cSut_type2Assignment_18.eContents().get(0);
-		private final Keyword cOnKeyword_19 = (Keyword)cGroup.eContents().get(19);
-		private final Assignment cSutAssignment_20 = (Assignment)cGroup.eContents().get(20);
-		private final CrossReference cSutSUTCrossReference_20_0 = (CrossReference)cSutAssignment_20.eContents().get(0);
-		private final RuleCall cSutSUTIDTerminalRuleCall_20_0_1 = (RuleCall)cSutSUTCrossReference_20_0.eContents().get(1);
-		
-		//Monitoring:
-		//	{Monitoring}
-		//	'Feature' Freetext '.'
-		//	'Monitoring:' Freetext '.'
-		//	'Given' 'that' sut=[SUT] sut_type=SUT_TYPE 'monitored by' sut=[SUT] "monitor"
-		//	condition=CONDITION sut=[SUT] "Load Generator" "for the" sut_type2=SUT_TYPE "on" sut=[SUT];
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{Monitoring} 'Feature' Freetext '.' 'Monitoring:' Freetext '.' 'Given' 'that' sut=[SUT] sut_type=SUT_TYPE 'monitored by'
-		//sut=[SUT] "monitor" condition=CONDITION sut=[SUT] "Load Generator" "for the" sut_type2=SUT_TYPE "on" sut=[SUT]
-		public Group getGroup() { return cGroup; }
-		
-		//{Monitoring}
-		public Action getMonitoringAction_0() { return cMonitoringAction_0; }
-		
-		//'Feature'
-		public Keyword getFeatureKeyword_1() { return cFeatureKeyword_1; }
+		//'Feature:'
+		public Keyword getFeatureKeyword_0() { return cFeatureKeyword_0; }
 		
 		//Freetext
-		public RuleCall getFreetextParserRuleCall_2() { return cFreetextParserRuleCall_2; }
+		public RuleCall getFreetextParserRuleCall_1() { return cFreetextParserRuleCall_1; }
 		
 		//'.'
-		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
+		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
 		
 		//'Monitoring:'
-		public Keyword getMonitoringKeyword_4() { return cMonitoringKeyword_4; }
+		public Keyword getMonitoringKeyword_3() { return cMonitoringKeyword_3; }
+		
+		//name=ID
+		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_4_0() { return cNameIDTerminalRuleCall_4_0; }
+		
+		//'description'
+		public Keyword getDescriptionKeyword_5() { return cDescriptionKeyword_5; }
 		
 		//Freetext
-		public RuleCall getFreetextParserRuleCall_5() { return cFreetextParserRuleCall_5; }
+		public RuleCall getFreetextParserRuleCall_6() { return cFreetextParserRuleCall_6; }
 		
 		//'.'
-		public Keyword getFullStopKeyword_6() { return cFullStopKeyword_6; }
+		public Keyword getFullStopKeyword_7() { return cFullStopKeyword_7; }
 		
-		//'Given'
-		public Keyword getGivenKeyword_7() { return cGivenKeyword_7; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_8() { return cLeftCurlyBracketKeyword_8; }
 		
-		//'that'
-		public Keyword getThatKeyword_8() { return cThatKeyword_8; }
+		//steps+=STEPS+
+		public Assignment getStepsAssignment_9() { return cStepsAssignment_9; }
 		
-		//sut=[SUT]
-		public Assignment getSutAssignment_9() { return cSutAssignment_9; }
+		//STEPS
+		public RuleCall getStepsSTEPSParserRuleCall_9_0() { return cStepsSTEPSParserRuleCall_9_0; }
 		
-		//[SUT]
-		public CrossReference getSutSUTCrossReference_9_0() { return cSutSUTCrossReference_9_0; }
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+	}
+	public class MainElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Main");
+		private final Assignment cMainAssignment = (Assignment)rule.eContents().get(1);
+		private final Alternatives cMainAlternatives_0 = (Alternatives)cMainAssignment.eContents().get(0);
+		private final RuleCall cMainMetricModelParserRuleCall_0_0 = (RuleCall)cMainAlternatives_0.eContents().get(0);
+		private final RuleCall cMainSCENARIOParserRuleCall_0_1 = (RuleCall)cMainAlternatives_0.eContents().get(1);
+		private final RuleCall cMainSUTParserRuleCall_0_2 = (RuleCall)cMainAlternatives_0.eContents().get(2);
 		
-		//ID
-		public RuleCall getSutSUTIDTerminalRuleCall_9_0_1() { return cSutSUTIDTerminalRuleCall_9_0_1; }
+		//// '|' choice
+		//// '?' optional+
+		//// '+' 1 or more
+		//// '*' 0 or more
+		//// '+=' list of elements
+		//// 0 or more strings
+		//Main:
+		//	main+=(MetricModel | SCENARIO | SUT);
+		@Override public ParserRule getRule() { return rule; }
 		
-		//sut_type=SUT_TYPE
-		public Assignment getSut_typeAssignment_10() { return cSut_typeAssignment_10; }
+		//main+=(MetricModel | SCENARIO | SUT)
+		public Assignment getMainAssignment() { return cMainAssignment; }
 		
-		//SUT_TYPE
-		public RuleCall getSut_typeSUT_TYPEEnumRuleCall_10_0() { return cSut_typeSUT_TYPEEnumRuleCall_10_0; }
+		//(MetricModel | SCENARIO | SUT)
+		public Alternatives getMainAlternatives_0() { return cMainAlternatives_0; }
 		
-		//'monitored by'
-		public Keyword getMonitoredByKeyword_11() { return cMonitoredByKeyword_11; }
+		//MetricModel
+		public RuleCall getMainMetricModelParserRuleCall_0_0() { return cMainMetricModelParserRuleCall_0_0; }
 		
-		//sut=[SUT]
-		public Assignment getSutAssignment_12() { return cSutAssignment_12; }
+		//SCENARIO
+		public RuleCall getMainSCENARIOParserRuleCall_0_1() { return cMainSCENARIOParserRuleCall_0_1; }
 		
-		//[SUT]
-		public CrossReference getSutSUTCrossReference_12_0() { return cSutSUTCrossReference_12_0; }
-		
-		//ID
-		public RuleCall getSutSUTIDTerminalRuleCall_12_0_1() { return cSutSUTIDTerminalRuleCall_12_0_1; }
-		
-		//"monitor"
-		public Keyword getMonitorKeyword_13() { return cMonitorKeyword_13; }
-		
-		//condition=CONDITION
-		public Assignment getConditionAssignment_14() { return cConditionAssignment_14; }
-		
-		//CONDITION
-		public RuleCall getConditionCONDITIONParserRuleCall_14_0() { return cConditionCONDITIONParserRuleCall_14_0; }
-		
-		//sut=[SUT]
-		public Assignment getSutAssignment_15() { return cSutAssignment_15; }
-		
-		//[SUT]
-		public CrossReference getSutSUTCrossReference_15_0() { return cSutSUTCrossReference_15_0; }
-		
-		//ID
-		public RuleCall getSutSUTIDTerminalRuleCall_15_0_1() { return cSutSUTIDTerminalRuleCall_15_0_1; }
-		
-		//"Load Generator"
-		public Keyword getLoadGeneratorKeyword_16() { return cLoadGeneratorKeyword_16; }
-		
-		//"for the"
-		public Keyword getForTheKeyword_17() { return cForTheKeyword_17; }
-		
-		//sut_type2=SUT_TYPE
-		public Assignment getSut_type2Assignment_18() { return cSut_type2Assignment_18; }
-		
-		//SUT_TYPE
-		public RuleCall getSut_type2SUT_TYPEEnumRuleCall_18_0() { return cSut_type2SUT_TYPEEnumRuleCall_18_0; }
-		
-		//"on"
-		public Keyword getOnKeyword_19() { return cOnKeyword_19; }
-		
-		//sut=[SUT]
-		public Assignment getSutAssignment_20() { return cSutAssignment_20; }
-		
-		//[SUT]
-		public CrossReference getSutSUTCrossReference_20_0() { return cSutSUTCrossReference_20_0; }
-		
-		//ID
-		public RuleCall getSutSUTIDTerminalRuleCall_20_0_1() { return cSutSUTIDTerminalRuleCall_20_0_1; }
+		//SUT
+		public RuleCall getMainSUTParserRuleCall_0_2() { return cMainSUTParserRuleCall_0_2; }
 	}
 	public class FreetextElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Freetext");
 		private final RuleCall cEStringParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
-		//// '|' choice
-		//// '?' optional
-		//// '+' 1 or more
-		//// '*' 0 or more
-		//// '+=' list of elements
 		//Freetext:
 		//	EString*;
 		@Override public ParserRule getRule() { return rule; }
@@ -267,192 +157,543 @@ public class XCanopusGrammarAccess extends AbstractGrammarElementFinder {
 		//EString*
 		public RuleCall getEStringParserRuleCall() { return cEStringParserRuleCall; }
 	}
-	public class CONDITIONElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.CONDITION");
+	public class STEPSElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.STEPS");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cANDParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cWHENParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cTHENParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cGivenParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cWhenParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cThenParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cAnd_workloadParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cAnd_atleastParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cAnd_the_scenarioParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cAnd_the_metricParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
-		//CONDITION:
-		//	AND | WHEN | THEN // features
-		//;
+		////possible steps
+		//STEPS:
+		//	given | when | then | and_workload | and_atleast | and_the_scenario | and_the_metric;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//AND | WHEN | THEN
+		//given | when | then | and_workload | and_atleast | and_the_scenario | and_the_metric
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//AND
-		public RuleCall getANDParserRuleCall_0() { return cANDParserRuleCall_0; }
+		//given
+		public RuleCall getGivenParserRuleCall_0() { return cGivenParserRuleCall_0; }
 		
-		//WHEN
-		public RuleCall getWHENParserRuleCall_1() { return cWHENParserRuleCall_1; }
+		//when
+		public RuleCall getWhenParserRuleCall_1() { return cWhenParserRuleCall_1; }
 		
-		//THEN
-		public RuleCall getTHENParserRuleCall_2() { return cTHENParserRuleCall_2; }
+		//then
+		public RuleCall getThenParserRuleCall_2() { return cThenParserRuleCall_2; }
+		
+		//and_workload
+		public RuleCall getAnd_workloadParserRuleCall_3() { return cAnd_workloadParserRuleCall_3; }
+		
+		//and_atleast
+		public RuleCall getAnd_atleastParserRuleCall_4() { return cAnd_atleastParserRuleCall_4; }
+		
+		//and_the_scenario
+		public RuleCall getAnd_the_scenarioParserRuleCall_5() { return cAnd_the_scenarioParserRuleCall_5; }
+		
+		//and_the_metric
+		public RuleCall getAnd_the_metricParserRuleCall_6() { return cAnd_the_metricParserRuleCall_6; }
 	}
-	public class ANDElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.AND");
+	public class And_workloadElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.and_workload");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cAndKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cPostAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cPostPOSTCONDITIONParserRuleCall_1_0 = (RuleCall)cPostAssignment_1.eContents().get(0);
+		private final RuleCall cWORKLOADGENERATEDTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cSut1Assignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cSut1SUTCrossReference_2_0 = (CrossReference)cSut1Assignment_2.eContents().get(0);
+		private final RuleCall cSut1SUTIDTerminalRuleCall_2_0_1 = (RuleCall)cSut1SUTCrossReference_2_0.eContents().get(1);
+		private final RuleCall cLOADGENERATORFORTHETerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		private final Assignment cSuttypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cSuttypeSUT_TYPEEnumRuleCall_4_0 = (RuleCall)cSuttypeAssignment_4.eContents().get(0);
+		private final RuleCall cONTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
+		private final Assignment cSut2Assignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final CrossReference cSut2SUTCrossReference_6_0 = (CrossReference)cSut2Assignment_6.eContents().get(0);
+		private final RuleCall cSut2SUTIDTerminalRuleCall_6_0_1 = (RuleCall)cSut2SUTCrossReference_6_0.eContents().get(1);
 		
-		//AND:
-		//	'And' post=POSTCONDITION;
+		//and_workload:
+		//	'And' WORKLOADGENERATED sut1=[SUT] LOADGENERATORFORTHE suttype=SUT_TYPE ON sut2=[SUT];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'And' post=POSTCONDITION
+		//'And' WORKLOADGENERATED sut1=[SUT] LOADGENERATORFORTHE suttype=SUT_TYPE ON sut2=[SUT]
 		public Group getGroup() { return cGroup; }
 		
 		//'And'
 		public Keyword getAndKeyword_0() { return cAndKeyword_0; }
 		
-		//post=POSTCONDITION
-		public Assignment getPostAssignment_1() { return cPostAssignment_1; }
+		//WORKLOADGENERATED
+		public RuleCall getWORKLOADGENERATEDTerminalRuleCall_1() { return cWORKLOADGENERATEDTerminalRuleCall_1; }
 		
-		//POSTCONDITION
-		public RuleCall getPostPOSTCONDITIONParserRuleCall_1_0() { return cPostPOSTCONDITIONParserRuleCall_1_0; }
+		//sut1=[SUT]
+		public Assignment getSut1Assignment_2() { return cSut1Assignment_2; }
+		
+		//[SUT]
+		public CrossReference getSut1SUTCrossReference_2_0() { return cSut1SUTCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getSut1SUTIDTerminalRuleCall_2_0_1() { return cSut1SUTIDTerminalRuleCall_2_0_1; }
+		
+		//LOADGENERATORFORTHE
+		public RuleCall getLOADGENERATORFORTHETerminalRuleCall_3() { return cLOADGENERATORFORTHETerminalRuleCall_3; }
+		
+		//suttype=SUT_TYPE
+		public Assignment getSuttypeAssignment_4() { return cSuttypeAssignment_4; }
+		
+		//SUT_TYPE
+		public RuleCall getSuttypeSUT_TYPEEnumRuleCall_4_0() { return cSuttypeSUT_TYPEEnumRuleCall_4_0; }
+		
+		//ON
+		public RuleCall getONTerminalRuleCall_5() { return cONTerminalRuleCall_5; }
+		
+		//sut2=[SUT]
+		public Assignment getSut2Assignment_6() { return cSut2Assignment_6; }
+		
+		//[SUT]
+		public CrossReference getSut2SUTCrossReference_6_0() { return cSut2SUTCrossReference_6_0; }
+		
+		//ID
+		public RuleCall getSut2SUTIDTerminalRuleCall_6_0_1() { return cSut2SUTIDTerminalRuleCall_6_0_1; }
 	}
-	public class WHENElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.WHEN");
+	public class And_the_scenarioElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.and_the_scenario");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cWhenKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cPostAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cPostPOSTCONDITIONParserRuleCall_1_0 = (RuleCall)cPostAssignment_1.eContents().get(0);
+		private final Keyword cAndKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cTHETerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cScenarioAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cScenarioSCENARIOCrossReference_2_0 = (CrossReference)cScenarioAssignment_2.eContents().get(0);
+		private final RuleCall cScenarioSCENARIOIDTerminalRuleCall_2_0_1 = (RuleCall)cScenarioSCENARIOCrossReference_2_0.eContents().get(1);
+		private final RuleCall cISTESTSCENARIOTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
-		//WHEN:
-		//	'When' post=POSTCONDITION;
+		//and_the_scenario:
+		//	'And' THE scenario=[SCENARIO] ISTESTSCENARIO;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'When' post=POSTCONDITION
+		//'And' THE scenario=[SCENARIO] ISTESTSCENARIO
+		public Group getGroup() { return cGroup; }
+		
+		//'And'
+		public Keyword getAndKeyword_0() { return cAndKeyword_0; }
+		
+		//THE
+		public RuleCall getTHETerminalRuleCall_1() { return cTHETerminalRuleCall_1; }
+		
+		//scenario=[SCENARIO]
+		public Assignment getScenarioAssignment_2() { return cScenarioAssignment_2; }
+		
+		//[SCENARIO]
+		public CrossReference getScenarioSCENARIOCrossReference_2_0() { return cScenarioSCENARIOCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getScenarioSCENARIOIDTerminalRuleCall_2_0_1() { return cScenarioSCENARIOIDTerminalRuleCall_2_0_1; }
+		
+		//ISTESTSCENARIO
+		public RuleCall getISTESTSCENARIOTerminalRuleCall_3() { return cISTESTSCENARIOTerminalRuleCall_3; }
+	}
+	public class And_atleastElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.and_atleast");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAndKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cATLTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cInteger1Assignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cInteger1INTTerminalRuleCall_2_0 = (RuleCall)cInteger1Assignment_2.eContents().get(0);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final RuleCall cMBWHEN_GREATEROREQUAL_TEXTTerminalRuleCall_3_0 = (RuleCall)cAlternatives_3.eContents().get(0);
+		private final RuleCall cMBWHEN_LESSTHAN_TEXTTerminalRuleCall_3_1 = (RuleCall)cAlternatives_3.eContents().get(1);
+		private final RuleCall cMBWHEN_MORETHAN_TEXTTerminalRuleCall_3_2 = (RuleCall)cAlternatives_3.eContents().get(2);
+		private final RuleCall cMBWHEN_MINOROREQUAL_TEXTTerminalRuleCall_3_3 = (RuleCall)cAlternatives_3.eContents().get(3);
+		private final Assignment cInteger2Assignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cInteger2INTTerminalRuleCall_4_0 = (RuleCall)cInteger2Assignment_4.eContents().get(0);
+		
+		////first format CHOICE
+		//and_atleast:
+		//	'And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT |
+		//	MBWHEN_MINOROREQUAL_TEXT) integer2=INT;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT |
+		//MBWHEN_MINOROREQUAL_TEXT) integer2=INT
+		public Group getGroup() { return cGroup; }
+		
+		//'And'
+		public Keyword getAndKeyword_0() { return cAndKeyword_0; }
+		
+		//ATL
+		public RuleCall getATLTerminalRuleCall_1() { return cATLTerminalRuleCall_1; }
+		
+		//integer1=INT
+		public Assignment getInteger1Assignment_2() { return cInteger1Assignment_2; }
+		
+		//INT
+		public RuleCall getInteger1INTTerminalRuleCall_2_0() { return cInteger1INTTerminalRuleCall_2_0; }
+		
+		//MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		
+		//MBWHEN_GREATEROREQUAL_TEXT
+		public RuleCall getMBWHEN_GREATEROREQUAL_TEXTTerminalRuleCall_3_0() { return cMBWHEN_GREATEROREQUAL_TEXTTerminalRuleCall_3_0; }
+		
+		//MBWHEN_LESSTHAN_TEXT
+		public RuleCall getMBWHEN_LESSTHAN_TEXTTerminalRuleCall_3_1() { return cMBWHEN_LESSTHAN_TEXTTerminalRuleCall_3_1; }
+		
+		//MBWHEN_MORETHAN_TEXT
+		public RuleCall getMBWHEN_MORETHAN_TEXTTerminalRuleCall_3_2() { return cMBWHEN_MORETHAN_TEXTTerminalRuleCall_3_2; }
+		
+		//MBWHEN_MINOROREQUAL_TEXT
+		public RuleCall getMBWHEN_MINOROREQUAL_TEXTTerminalRuleCall_3_3() { return cMBWHEN_MINOROREQUAL_TEXTTerminalRuleCall_3_3; }
+		
+		//integer2=INT
+		public Assignment getInteger2Assignment_4() { return cInteger2Assignment_4; }
+		
+		//INT
+		public RuleCall getInteger2INTTerminalRuleCall_4_0() { return cInteger2INTTerminalRuleCall_4_0; }
+	}
+	public class And_the_metricElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.and_the_metric");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAndKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cTHETerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cMetricAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMetricMETRICTYPEEnumRuleCall_2_0 = (RuleCall)cMetricAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final RuleCall cSHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0 = (RuleCall)cAlternatives_3.eContents().get(0);
+		private final RuleCall cSHOULDBEATLEAST_TEXTTerminalRuleCall_3_1 = (RuleCall)cAlternatives_3.eContents().get(1);
+		private final RuleCall cSHOULDBEGREATERTHANTerminalRuleCall_3_2 = (RuleCall)cAlternatives_3.eContents().get(2);
+		private final Assignment cInteger1Assignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cInteger1INTTerminalRuleCall_4_0 = (RuleCall)cInteger1Assignment_4.eContents().get(0);
+		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
+		private final RuleCall cWHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0 = (RuleCall)cAlternatives_5.eContents().get(0);
+		private final RuleCall cWHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1 = (RuleCall)cAlternatives_5.eContents().get(1);
+		private final RuleCall cWHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2 = (RuleCall)cAlternatives_5.eContents().get(2);
+		private final RuleCall cWHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3 = (RuleCall)cAlternatives_5.eContents().get(3);
+		private final RuleCall cWHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4 = (RuleCall)cAlternatives_5.eContents().get(4);
+		private final Assignment cInteger2Assignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cInteger2INTTerminalRuleCall_6_0 = (RuleCall)cInteger2Assignment_6.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final RuleCall cANDTerminalRuleCall_7_0 = (RuleCall)cGroup_7.eContents().get(0);
+		private final Assignment cInteger3Assignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cInteger3INTTerminalRuleCall_7_1_0 = (RuleCall)cInteger3Assignment_7_1.eContents().get(0);
+		
+		//and_the_metric:
+		//	'And' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT
+		//	(WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT |
+		//	WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'And' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT
+		//(WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT |
+		//WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
+		public Group getGroup() { return cGroup; }
+		
+		//'And'
+		public Keyword getAndKeyword_0() { return cAndKeyword_0; }
+		
+		//THE
+		public RuleCall getTHETerminalRuleCall_1() { return cTHETerminalRuleCall_1; }
+		
+		//metric=METRICTYPE
+		public Assignment getMetricAssignment_2() { return cMetricAssignment_2; }
+		
+		//METRICTYPE
+		public RuleCall getMetricMETRICTYPEEnumRuleCall_2_0() { return cMetricMETRICTYPEEnumRuleCall_2_0; }
+		
+		//SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		
+		//SHOULDBELESSTHAN_TEXT
+		public RuleCall getSHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0() { return cSHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0; }
+		
+		//SHOULDBEATLEAST_TEXT
+		public RuleCall getSHOULDBEATLEAST_TEXTTerminalRuleCall_3_1() { return cSHOULDBEATLEAST_TEXTTerminalRuleCall_3_1; }
+		
+		//SHOULDBEGREATERTHAN
+		public RuleCall getSHOULDBEGREATERTHANTerminalRuleCall_3_2() { return cSHOULDBEGREATERTHANTerminalRuleCall_3_2; }
+		
+		//integer1=INT
+		public Assignment getInteger1Assignment_4() { return cInteger1Assignment_4; }
+		
+		//INT
+		public RuleCall getInteger1INTTerminalRuleCall_4_0() { return cInteger1INTTerminalRuleCall_4_0; }
+		
+		//WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT |
+		//WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT
+		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+		
+		//WHENTHENUMBERISLESSTHAN_TEXT
+		public RuleCall getWHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0() { return cWHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0; }
+		
+		//WHENTHENUMBERISGREATERTHAN_TEXT
+		public RuleCall getWHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1() { return cWHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1; }
+		
+		//WHENTHENUMBERISGREATEROREQUAL_TEXT
+		public RuleCall getWHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2() { return cWHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2; }
+		
+		//WHENTHENUMBERIRLESSEROREQUAL_TEXT
+		public RuleCall getWHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3() { return cWHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3; }
+		
+		//WHENTHENUMBERAREBETWEEN_TEXT
+		public RuleCall getWHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4() { return cWHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4; }
+		
+		//integer2=INT
+		public Assignment getInteger2Assignment_6() { return cInteger2Assignment_6; }
+		
+		//INT
+		public RuleCall getInteger2INTTerminalRuleCall_6_0() { return cInteger2INTTerminalRuleCall_6_0; }
+		
+		//(AND integer3=INT)?
+		public Group getGroup_7() { return cGroup_7; }
+		
+		//AND
+		public RuleCall getANDTerminalRuleCall_7_0() { return cANDTerminalRuleCall_7_0; }
+		
+		//integer3=INT
+		public Assignment getInteger3Assignment_7_1() { return cInteger3Assignment_7_1; }
+		
+		//INT
+		public RuleCall getInteger3INTTerminalRuleCall_7_1_0() { return cInteger3INTTerminalRuleCall_7_1_0; }
+	}
+	public class WhenElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.when");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cWhenKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cTHETerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cMetrictypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMetrictypeMETRICTYPEMONITOREDEnumRuleCall_2_0 = (RuleCall)cMetrictypeAssignment_2.eContents().get(0);
+		private final RuleCall cISMONITOREDTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		
+		////second format of use CHOICE
+		//when:
+		//	'When' THE metrictype=METRICTYPEMONITORED ISMONITORED;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'When' THE metrictype=METRICTYPEMONITORED ISMONITORED
 		public Group getGroup() { return cGroup; }
 		
 		//'When'
 		public Keyword getWhenKeyword_0() { return cWhenKeyword_0; }
 		
-		//post=POSTCONDITION
-		public Assignment getPostAssignment_1() { return cPostAssignment_1; }
+		//THE
+		public RuleCall getTHETerminalRuleCall_1() { return cTHETerminalRuleCall_1; }
 		
-		//POSTCONDITION
-		public RuleCall getPostPOSTCONDITIONParserRuleCall_1_0() { return cPostPOSTCONDITIONParserRuleCall_1_0; }
+		//metrictype=METRICTYPEMONITORED
+		public Assignment getMetrictypeAssignment_2() { return cMetrictypeAssignment_2; }
+		
+		//METRICTYPEMONITORED
+		public RuleCall getMetrictypeMETRICTYPEMONITOREDEnumRuleCall_2_0() { return cMetrictypeMETRICTYPEMONITOREDEnumRuleCall_2_0; }
+		
+		//ISMONITORED
+		public RuleCall getISMONITOREDTerminalRuleCall_3() { return cISMONITOREDTerminalRuleCall_3; }
 	}
-	public class THENElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.THEN");
+	public class ThenElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.then");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cThenKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cPostAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cPostPOSTCONDITIONParserRuleCall_1_0 = (RuleCall)cPostAssignment_1.eContents().get(0);
+		private final RuleCall cTHETerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cMetricAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMetricMETRICTYPEEnumRuleCall_2_0 = (RuleCall)cMetricAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final RuleCall cSHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0 = (RuleCall)cAlternatives_3.eContents().get(0);
+		private final RuleCall cSHOULDBEATLEAST_TEXTTerminalRuleCall_3_1 = (RuleCall)cAlternatives_3.eContents().get(1);
+		private final RuleCall cSHOULDBEGREATERTHANTerminalRuleCall_3_2 = (RuleCall)cAlternatives_3.eContents().get(2);
+		private final Assignment cInteger1Assignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cInteger1INTTerminalRuleCall_4_0 = (RuleCall)cInteger1Assignment_4.eContents().get(0);
+		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
+		private final RuleCall cWHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0 = (RuleCall)cAlternatives_5.eContents().get(0);
+		private final RuleCall cWHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1 = (RuleCall)cAlternatives_5.eContents().get(1);
+		private final RuleCall cWHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2 = (RuleCall)cAlternatives_5.eContents().get(2);
+		private final RuleCall cWHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3 = (RuleCall)cAlternatives_5.eContents().get(3);
+		private final RuleCall cWHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4 = (RuleCall)cAlternatives_5.eContents().get(4);
+		private final Assignment cInteger2Assignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cInteger2INTTerminalRuleCall_6_0 = (RuleCall)cInteger2Assignment_6.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final RuleCall cANDTerminalRuleCall_7_0 = (RuleCall)cGroup_7.eContents().get(0);
+		private final Assignment cInteger3Assignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cInteger3INTTerminalRuleCall_7_1_0 = (RuleCall)cInteger3Assignment_7_1.eContents().get(0);
 		
-		//THEN:
-		//	'Then' post=POSTCONDITION;
+		//then:
+		//	'Then' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT
+		//	(WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT |
+		//	WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Then' post=POSTCONDITION
+		//'Then' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT
+		//(WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT |
+		//WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
 		public Group getGroup() { return cGroup; }
 		
 		//'Then'
 		public Keyword getThenKeyword_0() { return cThenKeyword_0; }
 		
-		//post=POSTCONDITION
-		public Assignment getPostAssignment_1() { return cPostAssignment_1; }
+		//THE
+		public RuleCall getTHETerminalRuleCall_1() { return cTHETerminalRuleCall_1; }
 		
-		//POSTCONDITION
-		public RuleCall getPostPOSTCONDITIONParserRuleCall_1_0() { return cPostPOSTCONDITIONParserRuleCall_1_0; }
+		//metric=METRICTYPE
+		public Assignment getMetricAssignment_2() { return cMetricAssignment_2; }
+		
+		//METRICTYPE
+		public RuleCall getMetricMETRICTYPEEnumRuleCall_2_0() { return cMetricMETRICTYPEEnumRuleCall_2_0; }
+		
+		//SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		
+		//SHOULDBELESSTHAN_TEXT
+		public RuleCall getSHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0() { return cSHOULDBELESSTHAN_TEXTTerminalRuleCall_3_0; }
+		
+		//SHOULDBEATLEAST_TEXT
+		public RuleCall getSHOULDBEATLEAST_TEXTTerminalRuleCall_3_1() { return cSHOULDBEATLEAST_TEXTTerminalRuleCall_3_1; }
+		
+		//SHOULDBEGREATERTHAN
+		public RuleCall getSHOULDBEGREATERTHANTerminalRuleCall_3_2() { return cSHOULDBEGREATERTHANTerminalRuleCall_3_2; }
+		
+		//integer1=INT
+		public Assignment getInteger1Assignment_4() { return cInteger1Assignment_4; }
+		
+		//INT
+		public RuleCall getInteger1INTTerminalRuleCall_4_0() { return cInteger1INTTerminalRuleCall_4_0; }
+		
+		//WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT |
+		//WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT
+		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+		
+		//WHENTHENUMBERISLESSTHAN_TEXT
+		public RuleCall getWHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0() { return cWHENTHENUMBERISLESSTHAN_TEXTTerminalRuleCall_5_0; }
+		
+		//WHENTHENUMBERISGREATERTHAN_TEXT
+		public RuleCall getWHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1() { return cWHENTHENUMBERISGREATERTHAN_TEXTTerminalRuleCall_5_1; }
+		
+		//WHENTHENUMBERISGREATEROREQUAL_TEXT
+		public RuleCall getWHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2() { return cWHENTHENUMBERISGREATEROREQUAL_TEXTTerminalRuleCall_5_2; }
+		
+		//WHENTHENUMBERIRLESSEROREQUAL_TEXT
+		public RuleCall getWHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3() { return cWHENTHENUMBERIRLESSEROREQUAL_TEXTTerminalRuleCall_5_3; }
+		
+		//WHENTHENUMBERAREBETWEEN_TEXT
+		public RuleCall getWHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4() { return cWHENTHENUMBERAREBETWEEN_TEXTTerminalRuleCall_5_4; }
+		
+		//integer2=INT
+		public Assignment getInteger2Assignment_6() { return cInteger2Assignment_6; }
+		
+		//INT
+		public RuleCall getInteger2INTTerminalRuleCall_6_0() { return cInteger2INTTerminalRuleCall_6_0; }
+		
+		//(AND integer3=INT)?
+		public Group getGroup_7() { return cGroup_7; }
+		
+		//AND
+		public RuleCall getANDTerminalRuleCall_7_0() { return cANDTerminalRuleCall_7_0; }
+		
+		//integer3=INT
+		public Assignment getInteger3Assignment_7_1() { return cInteger3Assignment_7_1; }
+		
+		//INT
+		public RuleCall getInteger3INTTerminalRuleCall_7_1_0() { return cInteger3INTTerminalRuleCall_7_1_0; }
 	}
-	public class POSTCONDITIONElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.POSTCONDITION");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cWGTAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final Keyword cWGTWorkloadGeneratedThroughKeyword_0_0 = (Keyword)cWGTAssignment_0.eContents().get(0);
-		private final Assignment cTHEAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final Keyword cTHETheKeyword_1_0 = (Keyword)cTHEAssignment_1.eContents().get(0);
-		private final Assignment cATLAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final Keyword cATLAtLeastKeyword_2_0 = (Keyword)cATLAssignment_2.eContents().get(0);
+	public class GivenElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.given");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cGivenKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cTHATTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cSut1Assignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cSut1SUTCrossReference_2_0 = (CrossReference)cSut1Assignment_2.eContents().get(0);
+		private final RuleCall cSut1SUTIDTerminalRuleCall_2_0_1 = (RuleCall)cSut1SUTCrossReference_2_0.eContents().get(1);
+		private final Assignment cSuttypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cSuttypeSUT_TYPEEnumRuleCall_3_0 = (RuleCall)cSuttypeAssignment_3.eContents().get(0);
+		private final RuleCall cMONITOREDBYTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final Assignment cSut2Assignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cSut2SUTCrossReference_5_0 = (CrossReference)cSut2Assignment_5.eContents().get(0);
+		private final RuleCall cSut2SUTIDTerminalRuleCall_5_0_1 = (RuleCall)cSut2SUTCrossReference_5_0.eContents().get(1);
+		private final RuleCall cMONITOR_TEXTTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
 		
-		//POSTCONDITION:
-		//	WGT='workload generated through' | THE='the' | ATL='At Least';
+		//given:
+		//	'Given' THAT sut1=[SUT] suttype=SUT_TYPE MONITOREDBY sut2=[SUT] MONITOR_TEXT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//WGT='workload generated through' | THE='the' | ATL='At Least'
-		public Alternatives getAlternatives() { return cAlternatives; }
+		//'Given' THAT sut1=[SUT] suttype=SUT_TYPE MONITOREDBY sut2=[SUT] MONITOR_TEXT
+		public Group getGroup() { return cGroup; }
 		
-		//WGT='workload generated through'
-		public Assignment getWGTAssignment_0() { return cWGTAssignment_0; }
+		//'Given'
+		public Keyword getGivenKeyword_0() { return cGivenKeyword_0; }
 		
-		//'workload generated through'
-		public Keyword getWGTWorkloadGeneratedThroughKeyword_0_0() { return cWGTWorkloadGeneratedThroughKeyword_0_0; }
+		//THAT
+		public RuleCall getTHATTerminalRuleCall_1() { return cTHATTerminalRuleCall_1; }
 		
-		//THE='the'
-		public Assignment getTHEAssignment_1() { return cTHEAssignment_1; }
+		//sut1=[SUT]
+		public Assignment getSut1Assignment_2() { return cSut1Assignment_2; }
 		
-		//'the'
-		public Keyword getTHETheKeyword_1_0() { return cTHETheKeyword_1_0; }
+		//[SUT]
+		public CrossReference getSut1SUTCrossReference_2_0() { return cSut1SUTCrossReference_2_0; }
 		
-		//ATL='At Least'
-		public Assignment getATLAssignment_2() { return cATLAssignment_2; }
+		//ID
+		public RuleCall getSut1SUTIDTerminalRuleCall_2_0_1() { return cSut1SUTIDTerminalRuleCall_2_0_1; }
 		
-		//'At Least'
-		public Keyword getATLAtLeastKeyword_2_0() { return cATLAtLeastKeyword_2_0; }
+		//suttype=SUT_TYPE
+		public Assignment getSuttypeAssignment_3() { return cSuttypeAssignment_3; }
+		
+		//SUT_TYPE
+		public RuleCall getSuttypeSUT_TYPEEnumRuleCall_3_0() { return cSuttypeSUT_TYPEEnumRuleCall_3_0; }
+		
+		//MONITOREDBY
+		public RuleCall getMONITOREDBYTerminalRuleCall_4() { return cMONITOREDBYTerminalRuleCall_4; }
+		
+		//sut2=[SUT]
+		public Assignment getSut2Assignment_5() { return cSut2Assignment_5; }
+		
+		//[SUT]
+		public CrossReference getSut2SUTCrossReference_5_0() { return cSut2SUTCrossReference_5_0; }
+		
+		//ID
+		public RuleCall getSut2SUTIDTerminalRuleCall_5_0_1() { return cSut2SUTIDTerminalRuleCall_5_0_1; }
+		
+		//MONITOR_TEXT
+		public RuleCall getMONITOR_TEXTTerminalRuleCall_6() { return cMONITOR_TEXTTerminalRuleCall_6; }
 	}
-	public class MetricElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Metric");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cMemoryParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cDiskParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+	public class SCENARIOElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.SCENARIO");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cScenarioKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		////POSTCONDITIONAL:
-		////			WGT = 'workload generated through' | THE = 'the' | ATLEAST = 'at least'  
-		////;		
-		////Monitoring:
-		////	{Monitoring}
-		////	'Monitoring'
-		////	name=EString
-		////	'{'
-		////		('projectLabel' projectLabel=EString)?
-		////		('projectAuthor' projectAuthor=EString)?
-		////		('description' description=EString)?
-		////		('suts' '{' suts+=SUT ( "," suts+=SUT)* '}' )?
-		////		('loadGenerators' loadGenerators=LoadGenerator)?
-		////		('monitors' monitors=Monitor)?
-		////		('metricModel' '{' metricModel+=MetricModel ( "," metricModel+=MetricModel)* '}' )?
-		////	'}';
-		//Metric:
-		//	Memory | Disk;
+		////availablembytescounter:
+		////	AVAILABLEMBYTESCOUNTER_TEXT 
+		////;
+		////idletimecounter:
+		////	IDLETIMECOUNTER_TEXT 
+		////;
+		////throughputmbytes:
+		////	THROUGHPUTMBYTES_TEXT 
+		////;
+		////transactionpersecond:
+		////;
+		////processortimecounter:
+		////	PROCESSORTIMECOUNTER_TEXT
+		////;
+		//SCENARIO:
+		//	'Scenario' '{'
+		//	name=ID
+		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Memory | Disk
-		public Alternatives getAlternatives() { return cAlternatives; }
+		//'Scenario' '{' name=ID '}'
+		public Group getGroup() { return cGroup; }
 		
-		//Memory
-		public RuleCall getMemoryParserRuleCall_0() { return cMemoryParserRuleCall_0; }
+		//'Scenario'
+		public Keyword getScenarioKeyword_0() { return cScenarioKeyword_0; }
 		
-		//Disk
-		public RuleCall getDiskParserRuleCall_1() { return cDiskParserRuleCall_1; }
-	}
-	public class CounterElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Counter");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cDisk_IO_CounterParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cMemoryCounterParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cTransactionCounterParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//// | Transaction;
-		//Counter:
-		//	Disk_IO_Counter | MemoryCounter | TransactionCounter;
-		@Override public ParserRule getRule() { return rule; }
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
-		//Disk_IO_Counter | MemoryCounter | TransactionCounter
-		public Alternatives getAlternatives() { return cAlternatives; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 		
-		//Disk_IO_Counter
-		public RuleCall getDisk_IO_CounterParserRuleCall_0() { return cDisk_IO_CounterParserRuleCall_0; }
-		
-		//MemoryCounter
-		public RuleCall getMemoryCounterParserRuleCall_1() { return cMemoryCounterParserRuleCall_1; }
-		
-		//TransactionCounter
-		public RuleCall getTransactionCounterParserRuleCall_2() { return cTransactionCounterParserRuleCall_2; }
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 	public class SUTElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.SUT");
@@ -511,1123 +752,33 @@ public class XCanopusGrammarAccess extends AbstractGrammarElementFinder {
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
-	public class LoadGeneratorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.LoadGenerator");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cLoadGeneratorAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cIsMonitorAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cIsMonitorIsMonitorKeyword_1_0 = (Keyword)cIsMonitorAssignment_1.eContents().get(0);
-		private final Keyword cLoadGeneratorKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cHostnameKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cHostnameAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cHostnameEStringParserRuleCall_4_1_0 = (RuleCall)cHostnameAssignment_4_1.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cIpKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cIpAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cIpEStringParserRuleCall_5_1_0 = (RuleCall)cIpAssignment_5_1.eContents().get(0);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cHardwareKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cHardwareAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final RuleCall cHardwareHARDWAREEnumRuleCall_6_1_0 = (RuleCall)cHardwareAssignment_6_1.eContents().get(0);
-		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cSutKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
-		private final Assignment cSutAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
-		private final CrossReference cSutSUTCrossReference_7_2_0 = (CrossReference)cSutAssignment_7_2.eContents().get(0);
-		private final RuleCall cSutSUTEStringParserRuleCall_7_2_0_1 = (RuleCall)cSutSUTCrossReference_7_2_0.eContents().get(1);
-		private final Group cGroup_7_3 = (Group)cGroup_7.eContents().get(3);
-		private final Keyword cCommaKeyword_7_3_0 = (Keyword)cGroup_7_3.eContents().get(0);
-		private final Assignment cSutAssignment_7_3_1 = (Assignment)cGroup_7_3.eContents().get(1);
-		private final CrossReference cSutSUTCrossReference_7_3_1_0 = (CrossReference)cSutAssignment_7_3_1.eContents().get(0);
-		private final RuleCall cSutSUTEStringParserRuleCall_7_3_1_0_1 = (RuleCall)cSutSUTCrossReference_7_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_7_4 = (Keyword)cGroup_7.eContents().get(4);
-		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cMetricmodelKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Assignment cMetricmodelAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
-		private final CrossReference cMetricmodelMetricModelCrossReference_8_1_0 = (CrossReference)cMetricmodelAssignment_8_1.eContents().get(0);
-		private final RuleCall cMetricmodelMetricModelEStringParserRuleCall_8_1_0_1 = (RuleCall)cMetricmodelMetricModelCrossReference_8_1_0.eContents().get(1);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cMonitorKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cMonitorAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final CrossReference cMonitorMonitorCrossReference_9_1_0 = (CrossReference)cMonitorAssignment_9_1.eContents().get(0);
-		private final RuleCall cMonitorMonitorEStringParserRuleCall_9_1_0_1 = (RuleCall)cMonitorMonitorCrossReference_9_1_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		
-		//LoadGenerator:
-		//	{LoadGenerator} isMonitor?='isMonitor'?
-		//	'LoadGenerator'
-		//	'{' ('hostname' hostname=EString)? ('ip' ip=EString)? ('hardware' hardware=HARDWARE)? ('sut' '(' sut+=[SUT|EString]
-		//	("," sut+=[SUT|EString])* ')')? ('metricmodel' metricmodel=[MetricModel|EString])? ('monitor'
-		//	monitor=[Monitor|EString])?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{LoadGenerator} isMonitor?='isMonitor'? 'LoadGenerator' '{' ('hostname' hostname=EString)? ('ip' ip=EString)?
-		//('hardware' hardware=HARDWARE)? ('sut' '(' sut+=[SUT|EString] ("," sut+=[SUT|EString])* ')')? ('metricmodel'
-		//metricmodel=[MetricModel|EString])? ('monitor' monitor=[Monitor|EString])? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{LoadGenerator}
-		public Action getLoadGeneratorAction_0() { return cLoadGeneratorAction_0; }
-		
-		//isMonitor?='isMonitor'?
-		public Assignment getIsMonitorAssignment_1() { return cIsMonitorAssignment_1; }
-		
-		//'isMonitor'
-		public Keyword getIsMonitorIsMonitorKeyword_1_0() { return cIsMonitorIsMonitorKeyword_1_0; }
-		
-		//'LoadGenerator'
-		public Keyword getLoadGeneratorKeyword_2() { return cLoadGeneratorKeyword_2; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//('hostname' hostname=EString)?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'hostname'
-		public Keyword getHostnameKeyword_4_0() { return cHostnameKeyword_4_0; }
-		
-		//hostname=EString
-		public Assignment getHostnameAssignment_4_1() { return cHostnameAssignment_4_1; }
-		
-		//EString
-		public RuleCall getHostnameEStringParserRuleCall_4_1_0() { return cHostnameEStringParserRuleCall_4_1_0; }
-		
-		//('ip' ip=EString)?
-		public Group getGroup_5() { return cGroup_5; }
-		
-		//'ip'
-		public Keyword getIpKeyword_5_0() { return cIpKeyword_5_0; }
-		
-		//ip=EString
-		public Assignment getIpAssignment_5_1() { return cIpAssignment_5_1; }
-		
-		//EString
-		public RuleCall getIpEStringParserRuleCall_5_1_0() { return cIpEStringParserRuleCall_5_1_0; }
-		
-		//('hardware' hardware=HARDWARE)?
-		public Group getGroup_6() { return cGroup_6; }
-		
-		//'hardware'
-		public Keyword getHardwareKeyword_6_0() { return cHardwareKeyword_6_0; }
-		
-		//hardware=HARDWARE
-		public Assignment getHardwareAssignment_6_1() { return cHardwareAssignment_6_1; }
-		
-		//HARDWARE
-		public RuleCall getHardwareHARDWAREEnumRuleCall_6_1_0() { return cHardwareHARDWAREEnumRuleCall_6_1_0; }
-		
-		//('sut' '(' sut+=[SUT|EString] ("," sut+=[SUT|EString])* ')')?
-		public Group getGroup_7() { return cGroup_7; }
-		
-		//'sut'
-		public Keyword getSutKeyword_7_0() { return cSutKeyword_7_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_7_1() { return cLeftParenthesisKeyword_7_1; }
-		
-		//sut+=[SUT|EString]
-		public Assignment getSutAssignment_7_2() { return cSutAssignment_7_2; }
-		
-		//[SUT|EString]
-		public CrossReference getSutSUTCrossReference_7_2_0() { return cSutSUTCrossReference_7_2_0; }
-		
-		//EString
-		public RuleCall getSutSUTEStringParserRuleCall_7_2_0_1() { return cSutSUTEStringParserRuleCall_7_2_0_1; }
-		
-		//("," sut+=[SUT|EString])*
-		public Group getGroup_7_3() { return cGroup_7_3; }
-		
-		//","
-		public Keyword getCommaKeyword_7_3_0() { return cCommaKeyword_7_3_0; }
-		
-		//sut+=[SUT|EString]
-		public Assignment getSutAssignment_7_3_1() { return cSutAssignment_7_3_1; }
-		
-		//[SUT|EString]
-		public CrossReference getSutSUTCrossReference_7_3_1_0() { return cSutSUTCrossReference_7_3_1_0; }
-		
-		//EString
-		public RuleCall getSutSUTEStringParserRuleCall_7_3_1_0_1() { return cSutSUTEStringParserRuleCall_7_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_7_4() { return cRightParenthesisKeyword_7_4; }
-		
-		//('metricmodel' metricmodel=[MetricModel|EString])?
-		public Group getGroup_8() { return cGroup_8; }
-		
-		//'metricmodel'
-		public Keyword getMetricmodelKeyword_8_0() { return cMetricmodelKeyword_8_0; }
-		
-		//metricmodel=[MetricModel|EString]
-		public Assignment getMetricmodelAssignment_8_1() { return cMetricmodelAssignment_8_1; }
-		
-		//[MetricModel|EString]
-		public CrossReference getMetricmodelMetricModelCrossReference_8_1_0() { return cMetricmodelMetricModelCrossReference_8_1_0; }
-		
-		//EString
-		public RuleCall getMetricmodelMetricModelEStringParserRuleCall_8_1_0_1() { return cMetricmodelMetricModelEStringParserRuleCall_8_1_0_1; }
-		
-		//('monitor' monitor=[Monitor|EString])?
-		public Group getGroup_9() { return cGroup_9; }
-		
-		//'monitor'
-		public Keyword getMonitorKeyword_9_0() { return cMonitorKeyword_9_0; }
-		
-		//monitor=[Monitor|EString]
-		public Assignment getMonitorAssignment_9_1() { return cMonitorAssignment_9_1; }
-		
-		//[Monitor|EString]
-		public CrossReference getMonitorMonitorCrossReference_9_1_0() { return cMonitorMonitorCrossReference_9_1_0; }
-		
-		//EString
-		public RuleCall getMonitorMonitorEStringParserRuleCall_9_1_0_1() { return cMonitorMonitorEStringParserRuleCall_9_1_0_1; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
-	}
-	public class MonitorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Monitor");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cMonitorAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cMonitorKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cHostnameKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cHostnameAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cHostnameEStringParserRuleCall_3_1_0 = (RuleCall)cHostnameAssignment_3_1.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cIpKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cIpAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cIpEStringParserRuleCall_4_1_0 = (RuleCall)cIpAssignment_4_1.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cHardwareKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cHardwareAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cHardwareHARDWAREEnumRuleCall_5_1_0 = (RuleCall)cHardwareAssignment_5_1.eContents().get(0);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cSutKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
-		private final Assignment cSutAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
-		private final CrossReference cSutSUTCrossReference_6_2_0 = (CrossReference)cSutAssignment_6_2.eContents().get(0);
-		private final RuleCall cSutSUTEStringParserRuleCall_6_2_0_1 = (RuleCall)cSutSUTCrossReference_6_2_0.eContents().get(1);
-		private final Group cGroup_6_3 = (Group)cGroup_6.eContents().get(3);
-		private final Keyword cCommaKeyword_6_3_0 = (Keyword)cGroup_6_3.eContents().get(0);
-		private final Assignment cSutAssignment_6_3_1 = (Assignment)cGroup_6_3.eContents().get(1);
-		private final CrossReference cSutSUTCrossReference_6_3_1_0 = (CrossReference)cSutAssignment_6_3_1.eContents().get(0);
-		private final RuleCall cSutSUTEStringParserRuleCall_6_3_1_0_1 = (RuleCall)cSutSUTCrossReference_6_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		
-		//Monitor:
-		//	{Monitor}
-		//	'Monitor'
-		//	'{' ('hostname' hostname=EString)? ('ip' ip=EString)? ('hardware' hardware=HARDWARE)? ('sut' '(' sut+=[SUT|EString]
-		//	("," sut+=[SUT|EString])* ')')?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{Monitor} 'Monitor' '{' ('hostname' hostname=EString)? ('ip' ip=EString)? ('hardware' hardware=HARDWARE)? ('sut' '('
-		//sut+=[SUT|EString] ("," sut+=[SUT|EString])* ')')? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{Monitor}
-		public Action getMonitorAction_0() { return cMonitorAction_0; }
-		
-		//'Monitor'
-		public Keyword getMonitorKeyword_1() { return cMonitorKeyword_1; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('hostname' hostname=EString)?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'hostname'
-		public Keyword getHostnameKeyword_3_0() { return cHostnameKeyword_3_0; }
-		
-		//hostname=EString
-		public Assignment getHostnameAssignment_3_1() { return cHostnameAssignment_3_1; }
-		
-		//EString
-		public RuleCall getHostnameEStringParserRuleCall_3_1_0() { return cHostnameEStringParserRuleCall_3_1_0; }
-		
-		//('ip' ip=EString)?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'ip'
-		public Keyword getIpKeyword_4_0() { return cIpKeyword_4_0; }
-		
-		//ip=EString
-		public Assignment getIpAssignment_4_1() { return cIpAssignment_4_1; }
-		
-		//EString
-		public RuleCall getIpEStringParserRuleCall_4_1_0() { return cIpEStringParserRuleCall_4_1_0; }
-		
-		//('hardware' hardware=HARDWARE)?
-		public Group getGroup_5() { return cGroup_5; }
-		
-		//'hardware'
-		public Keyword getHardwareKeyword_5_0() { return cHardwareKeyword_5_0; }
-		
-		//hardware=HARDWARE
-		public Assignment getHardwareAssignment_5_1() { return cHardwareAssignment_5_1; }
-		
-		//HARDWARE
-		public RuleCall getHardwareHARDWAREEnumRuleCall_5_1_0() { return cHardwareHARDWAREEnumRuleCall_5_1_0; }
-		
-		//('sut' '(' sut+=[SUT|EString] ("," sut+=[SUT|EString])* ')')?
-		public Group getGroup_6() { return cGroup_6; }
-		
-		//'sut'
-		public Keyword getSutKeyword_6_0() { return cSutKeyword_6_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_6_1() { return cLeftParenthesisKeyword_6_1; }
-		
-		//sut+=[SUT|EString]
-		public Assignment getSutAssignment_6_2() { return cSutAssignment_6_2; }
-		
-		//[SUT|EString]
-		public CrossReference getSutSUTCrossReference_6_2_0() { return cSutSUTCrossReference_6_2_0; }
-		
-		//EString
-		public RuleCall getSutSUTEStringParserRuleCall_6_2_0_1() { return cSutSUTEStringParserRuleCall_6_2_0_1; }
-		
-		//("," sut+=[SUT|EString])*
-		public Group getGroup_6_3() { return cGroup_6_3; }
-		
-		//","
-		public Keyword getCommaKeyword_6_3_0() { return cCommaKeyword_6_3_0; }
-		
-		//sut+=[SUT|EString]
-		public Assignment getSutAssignment_6_3_1() { return cSutAssignment_6_3_1; }
-		
-		//[SUT|EString]
-		public CrossReference getSutSUTCrossReference_6_3_1_0() { return cSutSUTCrossReference_6_3_1_0; }
-		
-		//EString
-		public RuleCall getSutSUTEStringParserRuleCall_6_3_1_0_1() { return cSutSUTEStringParserRuleCall_6_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_6_4() { return cRightParenthesisKeyword_6_4; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
-	}
-	public class MetricModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.MetricModel");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cMetricModelAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cMetricModelKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cMemoryKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cMemoryAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cMemoryMemoryParserRuleCall_3_1_0 = (RuleCall)cMemoryAssignment_3_1.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cDiskKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cDiskAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cDiskDiskParserRuleCall_4_1_0 = (RuleCall)cDiskAssignment_4_1.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cCriteriaKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
-		private final Assignment cCriteriaAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final RuleCall cCriteriaCriteriaParserRuleCall_5_2_0 = (RuleCall)cCriteriaAssignment_5_2.eContents().get(0);
-		private final Group cGroup_5_3 = (Group)cGroup_5.eContents().get(3);
-		private final Keyword cCommaKeyword_5_3_0 = (Keyword)cGroup_5_3.eContents().get(0);
-		private final Assignment cCriteriaAssignment_5_3_1 = (Assignment)cGroup_5_3.eContents().get(1);
-		private final RuleCall cCriteriaCriteriaParserRuleCall_5_3_1_0 = (RuleCall)cCriteriaAssignment_5_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cThresholdKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
-		private final Assignment cThresholdAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
-		private final RuleCall cThresholdThresholdParserRuleCall_6_2_0 = (RuleCall)cThresholdAssignment_6_2.eContents().get(0);
-		private final Group cGroup_6_3 = (Group)cGroup_6.eContents().get(3);
-		private final Keyword cCommaKeyword_6_3_0 = (Keyword)cGroup_6_3.eContents().get(0);
-		private final Assignment cThresholdAssignment_6_3_1 = (Assignment)cGroup_6_3.eContents().get(1);
-		private final RuleCall cThresholdThresholdParserRuleCall_6_3_1_0 = (RuleCall)cThresholdAssignment_6_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
-		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cDiskCounterKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cDiskCounterAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cDiskCounterDisk_IO_CounterParserRuleCall_7_1_0 = (RuleCall)cDiskCounterAssignment_7_1.eContents().get(0);
-		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cTransactionCounterKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Assignment cTransactionCounterAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
-		private final RuleCall cTransactionCounterTransactionCounterParserRuleCall_8_1_0 = (RuleCall)cTransactionCounterAssignment_8_1.eContents().get(0);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cMemoryCounterKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cMemoryCounterAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cMemoryCounterMemoryCounterParserRuleCall_9_1_0 = (RuleCall)cMemoryCounterAssignment_9_1.eContents().get(0);
-		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Keyword cMetricKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
-		private final Assignment cMetricAssignment_10_2 = (Assignment)cGroup_10.eContents().get(2);
-		private final RuleCall cMetricMetricParserRuleCall_10_2_0 = (RuleCall)cMetricAssignment_10_2.eContents().get(0);
-		private final Group cGroup_10_3 = (Group)cGroup_10.eContents().get(3);
-		private final Keyword cCommaKeyword_10_3_0 = (Keyword)cGroup_10_3.eContents().get(0);
-		private final Assignment cMetricAssignment_10_3_1 = (Assignment)cGroup_10_3.eContents().get(1);
-		private final RuleCall cMetricMetricParserRuleCall_10_3_1_0 = (RuleCall)cMetricAssignment_10_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_10_4 = (Keyword)cGroup_10.eContents().get(4);
-		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cCounterKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
-		private final Assignment cCounterAssignment_11_2 = (Assignment)cGroup_11.eContents().get(2);
-		private final RuleCall cCounterCounterParserRuleCall_11_2_0 = (RuleCall)cCounterAssignment_11_2.eContents().get(0);
-		private final Group cGroup_11_3 = (Group)cGroup_11.eContents().get(3);
-		private final Keyword cCommaKeyword_11_3_0 = (Keyword)cGroup_11_3.eContents().get(0);
-		private final Assignment cCounterAssignment_11_3_1 = (Assignment)cGroup_11_3.eContents().get(1);
-		private final RuleCall cCounterCounterParserRuleCall_11_3_1_0 = (RuleCall)cCounterAssignment_11_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_11_4 = (Keyword)cGroup_11.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
-		
-		//MetricModel:
-		//	{MetricModel}
-		//	'MetricModel'
-		//	'{' ('memory' memory=Memory)? ('disk' disk=Disk)? ('criteria' '{' criteria+=Criteria ("," criteria+=Criteria)* '}')?
-		//	('threshold' '{' threshold+=Threshold ("," threshold+=Threshold)* '}')? ('diskCounter' diskCounter=Disk_IO_Counter)?
-		//	('transactionCounter' transactionCounter=TransactionCounter)? ('memoryCounter' memoryCounter=MemoryCounter)?
-		//	('metric' '{' metric+=Metric ("," metric+=Metric)* '}')? ('counter' '{' counter+=Counter ("," counter+=Counter)*
-		//	'}')?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{MetricModel} 'MetricModel' '{' ('memory' memory=Memory)? ('disk' disk=Disk)? ('criteria' '{' criteria+=Criteria (","
-		//criteria+=Criteria)* '}')? ('threshold' '{' threshold+=Threshold ("," threshold+=Threshold)* '}')? ('diskCounter'
-		//diskCounter=Disk_IO_Counter)? ('transactionCounter' transactionCounter=TransactionCounter)? ('memoryCounter'
-		//memoryCounter=MemoryCounter)? ('metric' '{' metric+=Metric ("," metric+=Metric)* '}')? ('counter' '{' counter+=Counter
-		//("," counter+=Counter)* '}')? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{MetricModel}
-		public Action getMetricModelAction_0() { return cMetricModelAction_0; }
-		
-		//'MetricModel'
-		public Keyword getMetricModelKeyword_1() { return cMetricModelKeyword_1; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('memory' memory=Memory)?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'memory'
-		public Keyword getMemoryKeyword_3_0() { return cMemoryKeyword_3_0; }
-		
-		//memory=Memory
-		public Assignment getMemoryAssignment_3_1() { return cMemoryAssignment_3_1; }
-		
-		//Memory
-		public RuleCall getMemoryMemoryParserRuleCall_3_1_0() { return cMemoryMemoryParserRuleCall_3_1_0; }
-		
-		//('disk' disk=Disk)?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'disk'
-		public Keyword getDiskKeyword_4_0() { return cDiskKeyword_4_0; }
-		
-		//disk=Disk
-		public Assignment getDiskAssignment_4_1() { return cDiskAssignment_4_1; }
-		
-		//Disk
-		public RuleCall getDiskDiskParserRuleCall_4_1_0() { return cDiskDiskParserRuleCall_4_1_0; }
-		
-		//('criteria' '{' criteria+=Criteria ("," criteria+=Criteria)* '}')?
-		public Group getGroup_5() { return cGroup_5; }
-		
-		//'criteria'
-		public Keyword getCriteriaKeyword_5_0() { return cCriteriaKeyword_5_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_5_1() { return cLeftCurlyBracketKeyword_5_1; }
-		
-		//criteria+=Criteria
-		public Assignment getCriteriaAssignment_5_2() { return cCriteriaAssignment_5_2; }
-		
-		//Criteria
-		public RuleCall getCriteriaCriteriaParserRuleCall_5_2_0() { return cCriteriaCriteriaParserRuleCall_5_2_0; }
-		
-		//("," criteria+=Criteria)*
-		public Group getGroup_5_3() { return cGroup_5_3; }
-		
-		//","
-		public Keyword getCommaKeyword_5_3_0() { return cCommaKeyword_5_3_0; }
-		
-		//criteria+=Criteria
-		public Assignment getCriteriaAssignment_5_3_1() { return cCriteriaAssignment_5_3_1; }
-		
-		//Criteria
-		public RuleCall getCriteriaCriteriaParserRuleCall_5_3_1_0() { return cCriteriaCriteriaParserRuleCall_5_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5_4() { return cRightCurlyBracketKeyword_5_4; }
-		
-		//('threshold' '{' threshold+=Threshold ("," threshold+=Threshold)* '}')?
-		public Group getGroup_6() { return cGroup_6; }
-		
-		//'threshold'
-		public Keyword getThresholdKeyword_6_0() { return cThresholdKeyword_6_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_6_1() { return cLeftCurlyBracketKeyword_6_1; }
-		
-		//threshold+=Threshold
-		public Assignment getThresholdAssignment_6_2() { return cThresholdAssignment_6_2; }
-		
-		//Threshold
-		public RuleCall getThresholdThresholdParserRuleCall_6_2_0() { return cThresholdThresholdParserRuleCall_6_2_0; }
-		
-		//("," threshold+=Threshold)*
-		public Group getGroup_6_3() { return cGroup_6_3; }
-		
-		//","
-		public Keyword getCommaKeyword_6_3_0() { return cCommaKeyword_6_3_0; }
-		
-		//threshold+=Threshold
-		public Assignment getThresholdAssignment_6_3_1() { return cThresholdAssignment_6_3_1; }
-		
-		//Threshold
-		public RuleCall getThresholdThresholdParserRuleCall_6_3_1_0() { return cThresholdThresholdParserRuleCall_6_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_6_4() { return cRightCurlyBracketKeyword_6_4; }
-		
-		//('diskCounter' diskCounter=Disk_IO_Counter)?
-		public Group getGroup_7() { return cGroup_7; }
-		
-		//'diskCounter'
-		public Keyword getDiskCounterKeyword_7_0() { return cDiskCounterKeyword_7_0; }
-		
-		//diskCounter=Disk_IO_Counter
-		public Assignment getDiskCounterAssignment_7_1() { return cDiskCounterAssignment_7_1; }
-		
-		//Disk_IO_Counter
-		public RuleCall getDiskCounterDisk_IO_CounterParserRuleCall_7_1_0() { return cDiskCounterDisk_IO_CounterParserRuleCall_7_1_0; }
-		
-		//('transactionCounter' transactionCounter=TransactionCounter)?
-		public Group getGroup_8() { return cGroup_8; }
-		
-		//'transactionCounter'
-		public Keyword getTransactionCounterKeyword_8_0() { return cTransactionCounterKeyword_8_0; }
-		
-		//transactionCounter=TransactionCounter
-		public Assignment getTransactionCounterAssignment_8_1() { return cTransactionCounterAssignment_8_1; }
-		
-		//TransactionCounter
-		public RuleCall getTransactionCounterTransactionCounterParserRuleCall_8_1_0() { return cTransactionCounterTransactionCounterParserRuleCall_8_1_0; }
-		
-		//('memoryCounter' memoryCounter=MemoryCounter)?
-		public Group getGroup_9() { return cGroup_9; }
-		
-		//'memoryCounter'
-		public Keyword getMemoryCounterKeyword_9_0() { return cMemoryCounterKeyword_9_0; }
-		
-		//memoryCounter=MemoryCounter
-		public Assignment getMemoryCounterAssignment_9_1() { return cMemoryCounterAssignment_9_1; }
-		
-		//MemoryCounter
-		public RuleCall getMemoryCounterMemoryCounterParserRuleCall_9_1_0() { return cMemoryCounterMemoryCounterParserRuleCall_9_1_0; }
-		
-		//('metric' '{' metric+=Metric ("," metric+=Metric)* '}')?
-		public Group getGroup_10() { return cGroup_10; }
-		
-		//'metric'
-		public Keyword getMetricKeyword_10_0() { return cMetricKeyword_10_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_10_1() { return cLeftCurlyBracketKeyword_10_1; }
-		
-		//metric+=Metric
-		public Assignment getMetricAssignment_10_2() { return cMetricAssignment_10_2; }
-		
-		//Metric
-		public RuleCall getMetricMetricParserRuleCall_10_2_0() { return cMetricMetricParserRuleCall_10_2_0; }
-		
-		//("," metric+=Metric)*
-		public Group getGroup_10_3() { return cGroup_10_3; }
-		
-		//","
-		public Keyword getCommaKeyword_10_3_0() { return cCommaKeyword_10_3_0; }
-		
-		//metric+=Metric
-		public Assignment getMetricAssignment_10_3_1() { return cMetricAssignment_10_3_1; }
-		
-		//Metric
-		public RuleCall getMetricMetricParserRuleCall_10_3_1_0() { return cMetricMetricParserRuleCall_10_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_10_4() { return cRightCurlyBracketKeyword_10_4; }
-		
-		//('counter' '{' counter+=Counter ("," counter+=Counter)* '}')?
-		public Group getGroup_11() { return cGroup_11; }
-		
-		//'counter'
-		public Keyword getCounterKeyword_11_0() { return cCounterKeyword_11_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_11_1() { return cLeftCurlyBracketKeyword_11_1; }
-		
-		//counter+=Counter
-		public Assignment getCounterAssignment_11_2() { return cCounterAssignment_11_2; }
-		
-		//Counter
-		public RuleCall getCounterCounterParserRuleCall_11_2_0() { return cCounterCounterParserRuleCall_11_2_0; }
-		
-		//("," counter+=Counter)*
-		public Group getGroup_11_3() { return cGroup_11_3; }
-		
-		//","
-		public Keyword getCommaKeyword_11_3_0() { return cCommaKeyword_11_3_0; }
-		
-		//counter+=Counter
-		public Assignment getCounterAssignment_11_3_1() { return cCounterAssignment_11_3_1; }
-		
-		//Counter
-		public RuleCall getCounterCounterParserRuleCall_11_3_1_0() { return cCounterCounterParserRuleCall_11_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_11_4() { return cRightCurlyBracketKeyword_11_4; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
-	}
-	public class MemoryElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Memory");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cMemoryAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cMemoryKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cMemoryCounterKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cMemoryCounterAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cMemoryCounterMemoryCounterCrossReference_4_1_0 = (CrossReference)cMemoryCounterAssignment_4_1.eContents().get(0);
-		private final RuleCall cMemoryCounterMemoryCounterEStringParserRuleCall_4_1_0_1 = (RuleCall)cMemoryCounterMemoryCounterCrossReference_4_1_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//Memory:
-		//	{Memory}
-		//	'Memory'
-		//	name=EString
-		//	'{' ('memoryCounter' memoryCounter=[MemoryCounter|EString])?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{Memory} 'Memory' name=EString '{' ('memoryCounter' memoryCounter=[MemoryCounter|EString])? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{Memory}
-		public Action getMemoryAction_0() { return cMemoryAction_0; }
-		
-		//'Memory'
-		public Keyword getMemoryKeyword_1() { return cMemoryKeyword_1; }
-		
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//('memoryCounter' memoryCounter=[MemoryCounter|EString])?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'memoryCounter'
-		public Keyword getMemoryCounterKeyword_4_0() { return cMemoryCounterKeyword_4_0; }
-		
-		//memoryCounter=[MemoryCounter|EString]
-		public Assignment getMemoryCounterAssignment_4_1() { return cMemoryCounterAssignment_4_1; }
-		
-		//[MemoryCounter|EString]
-		public CrossReference getMemoryCounterMemoryCounterCrossReference_4_1_0() { return cMemoryCounterMemoryCounterCrossReference_4_1_0; }
-		
-		//EString
-		public RuleCall getMemoryCounterMemoryCounterEStringParserRuleCall_4_1_0_1() { return cMemoryCounterMemoryCounterEStringParserRuleCall_4_1_0_1; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
-	public class TransactionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Transaction");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cTransactionAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cTransactionKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cTransactionCounterKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cTransactionCounterAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cTransactionCounterTransactionCounterCrossReference_4_1_0 = (CrossReference)cTransactionCounterAssignment_4_1.eContents().get(0);
-		private final RuleCall cTransactionCounterTransactionCounterEStringParserRuleCall_4_1_0_1 = (RuleCall)cTransactionCounterTransactionCounterCrossReference_4_1_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//Transaction:
-		//	{Transaction}
-		//	'Transaction'
-		//	name=EString
-		//	'{' ('transactionCounter' transactionCounter=[TransactionCounter|EString])?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{Transaction} 'Transaction' name=EString '{' ('transactionCounter' transactionCounter=[TransactionCounter|EString])? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{Transaction}
-		public Action getTransactionAction_0() { return cTransactionAction_0; }
-		
-		//'Transaction'
-		public Keyword getTransactionKeyword_1() { return cTransactionKeyword_1; }
-		
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//('transactionCounter' transactionCounter=[TransactionCounter|EString])?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'transactionCounter'
-		public Keyword getTransactionCounterKeyword_4_0() { return cTransactionCounterKeyword_4_0; }
-		
-		//transactionCounter=[TransactionCounter|EString]
-		public Assignment getTransactionCounterAssignment_4_1() { return cTransactionCounterAssignment_4_1; }
-		
-		//[TransactionCounter|EString]
-		public CrossReference getTransactionCounterTransactionCounterCrossReference_4_1_0() { return cTransactionCounterTransactionCounterCrossReference_4_1_0; }
-		
-		//EString
-		public RuleCall getTransactionCounterTransactionCounterEStringParserRuleCall_4_1_0_1() { return cTransactionCounterTransactionCounterEStringParserRuleCall_4_1_0_1; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
-	public class DiskElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Disk");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cDiskAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cDiskKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cDisk_io_counterKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cDisk_io_counterAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cDisk_io_counterDisk_IO_CounterCrossReference_4_1_0 = (CrossReference)cDisk_io_counterAssignment_4_1.eContents().get(0);
-		private final RuleCall cDisk_io_counterDisk_IO_CounterEStringParserRuleCall_4_1_0_1 = (RuleCall)cDisk_io_counterDisk_IO_CounterCrossReference_4_1_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//Disk:
-		//	{Disk}
-		//	'Disk'
-		//	name=EString
-		//	'{' ('disk_io_counter' disk_io_counter=[Disk_IO_Counter|EString])?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{Disk} 'Disk' name=EString '{' ('disk_io_counter' disk_io_counter=[Disk_IO_Counter|EString])? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{Disk}
-		public Action getDiskAction_0() { return cDiskAction_0; }
-		
-		//'Disk'
-		public Keyword getDiskKeyword_1() { return cDiskKeyword_1; }
-		
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//('disk_io_counter' disk_io_counter=[Disk_IO_Counter|EString])?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'disk_io_counter'
-		public Keyword getDisk_io_counterKeyword_4_0() { return cDisk_io_counterKeyword_4_0; }
-		
-		//disk_io_counter=[Disk_IO_Counter|EString]
-		public Assignment getDisk_io_counterAssignment_4_1() { return cDisk_io_counterAssignment_4_1; }
-		
-		//[Disk_IO_Counter|EString]
-		public CrossReference getDisk_io_counterDisk_IO_CounterCrossReference_4_1_0() { return cDisk_io_counterDisk_IO_CounterCrossReference_4_1_0; }
-		
-		//EString
-		public RuleCall getDisk_io_counterDisk_IO_CounterEStringParserRuleCall_4_1_0_1() { return cDisk_io_counterDisk_IO_CounterEStringParserRuleCall_4_1_0_1; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
-	public class CriteriaElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Criteria");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cCriteriaAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cCriteriaKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cValueKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cValueEIntParserRuleCall_3_1_0 = (RuleCall)cValueAssignment_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		
-		//Criteria:
-		//	{Criteria}
-		//	'Criteria'
-		//	'{' ('value' value=EInt)?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{Criteria} 'Criteria' '{' ('value' value=EInt)? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{Criteria}
-		public Action getCriteriaAction_0() { return cCriteriaAction_0; }
-		
-		//'Criteria'
-		public Keyword getCriteriaKeyword_1() { return cCriteriaKeyword_1; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('value' value=EInt)?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'value'
-		public Keyword getValueKeyword_3_0() { return cValueKeyword_3_0; }
-		
-		//value=EInt
-		public Assignment getValueAssignment_3_1() { return cValueAssignment_3_1; }
-		
-		//EInt
-		public RuleCall getValueEIntParserRuleCall_3_1_0() { return cValueEIntParserRuleCall_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
-	}
-	public class ThresholdElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Threshold");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cThresholdAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cThresholdKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cValueKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cValueEIntParserRuleCall_3_1_0 = (RuleCall)cValueAssignment_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		
-		//Threshold:
-		//	{Threshold}
-		//	'Threshold'
-		//	'{' ('value' value=EInt)?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{Threshold} 'Threshold' '{' ('value' value=EInt)? '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{Threshold}
-		public Action getThresholdAction_0() { return cThresholdAction_0; }
-		
-		//'Threshold'
-		public Keyword getThresholdKeyword_1() { return cThresholdKeyword_1; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('value' value=EInt)?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'value'
-		public Keyword getValueKeyword_3_0() { return cValueKeyword_3_0; }
-		
-		//value=EInt
-		public Assignment getValueAssignment_3_1() { return cValueAssignment_3_1; }
-		
-		//EInt
-		public RuleCall getValueEIntParserRuleCall_3_1_0() { return cValueEIntParserRuleCall_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
-	}
-	public class Disk_IO_CounterElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.Disk_IO_Counter");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cDisk_IO_CounterAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cDisk_IO_CounterKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cCounterDiskKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cCounterDiskAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cCounterDiskCOUNTER_DISKEnumRuleCall_4_2_0 = (RuleCall)cCounterDiskAssignment_4_2.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cCounterDiskAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cCounterDiskCOUNTER_DISKEnumRuleCall_4_3_1_0 = (RuleCall)cCounterDiskAssignment_4_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		////AssociationCounterCriteriaThreshold returns canopusPerformanceMetric::AssociationCounterCriteriaThreshold:
-		////	{canopusPerformanceMetric::AssociationCounterCriteriaThreshold}
-		////	'AssociationCounterCriteriaThreshold'
-		////	'{'
-		////		('associationCriteria' associationCriteria=ASSOCIATION_CRITERIA)?
-		////		('threshold' threshold=[canopusPerformanceMetric::Threshold|EString])?
-		////		('criteria' criteria=[canopusPerformanceMetric::Criteria|EString])?
-		////	'}';
-		//Disk_IO_Counter:
-		//	{Disk_IO_Counter}
-		//	'Disk_IO_Counter'
-		//	name=EString
-		//	'{' ('counterDisk' '{' counterDisk+=COUNTER_DISK ("," counterDisk+=COUNTER_DISK)* '}')?
-		//	//	('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{Disk_IO_Counter} 'Disk_IO_Counter' name=EString '{' ('counterDisk' '{' counterDisk+=COUNTER_DISK (","
-		//counterDisk+=COUNTER_DISK)* '}')? //	('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-		//'}'
-		public Group getGroup() { return cGroup; }
-		
-		//{Disk_IO_Counter}
-		public Action getDisk_IO_CounterAction_0() { return cDisk_IO_CounterAction_0; }
-		
-		//'Disk_IO_Counter'
-		public Keyword getDisk_IO_CounterKeyword_1() { return cDisk_IO_CounterKeyword_1; }
-		
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//('counterDisk' '{' counterDisk+=COUNTER_DISK ("," counterDisk+=COUNTER_DISK)* '}')?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'counterDisk'
-		public Keyword getCounterDiskKeyword_4_0() { return cCounterDiskKeyword_4_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
-		
-		//counterDisk+=COUNTER_DISK
-		public Assignment getCounterDiskAssignment_4_2() { return cCounterDiskAssignment_4_2; }
-		
-		//COUNTER_DISK
-		public RuleCall getCounterDiskCOUNTER_DISKEnumRuleCall_4_2_0() { return cCounterDiskCOUNTER_DISKEnumRuleCall_4_2_0; }
-		
-		//("," counterDisk+=COUNTER_DISK)*
-		public Group getGroup_4_3() { return cGroup_4_3; }
-		
-		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
-		
-		//counterDisk+=COUNTER_DISK
-		public Assignment getCounterDiskAssignment_4_3_1() { return cCounterDiskAssignment_4_3_1; }
-		
-		//COUNTER_DISK
-		public RuleCall getCounterDiskCOUNTER_DISKEnumRuleCall_4_3_1_0() { return cCounterDiskCOUNTER_DISKEnumRuleCall_4_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
-		
-		////	('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
-	public class TransactionCounterElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.TransactionCounter");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cTransactionCounterAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cTransactionCounterKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cCounterTransactionKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cCounterTransactionAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cCounterTransactionCOUNTER_TRANSACTIONEnumRuleCall_4_2_0 = (RuleCall)cCounterTransactionAssignment_4_2.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cCounterTransactionAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cCounterTransactionCOUNTER_TRANSACTIONEnumRuleCall_4_3_1_0 = (RuleCall)cCounterTransactionAssignment_4_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//TransactionCounter:
-		//	{TransactionCounter}
-		//	'TransactionCounter'
-		//	name=EString
-		//	'{' ('counterTransaction' '{' counterTransaction+=COUNTER_TRANSACTION ("," counterTransaction+=COUNTER_TRANSACTION)*
-		//	'}')?
-		//	//	('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{TransactionCounter} 'TransactionCounter' name=EString '{' ('counterTransaction' '{'
-		//counterTransaction+=COUNTER_TRANSACTION ("," counterTransaction+=COUNTER_TRANSACTION)* '}')? //	('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-		//'}'
-		public Group getGroup() { return cGroup; }
-		
-		//{TransactionCounter}
-		public Action getTransactionCounterAction_0() { return cTransactionCounterAction_0; }
-		
-		//'TransactionCounter'
-		public Keyword getTransactionCounterKeyword_1() { return cTransactionCounterKeyword_1; }
-		
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//('counterTransaction' '{' counterTransaction+=COUNTER_TRANSACTION ("," counterTransaction+=COUNTER_TRANSACTION)* '}')?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'counterTransaction'
-		public Keyword getCounterTransactionKeyword_4_0() { return cCounterTransactionKeyword_4_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
-		
-		//counterTransaction+=COUNTER_TRANSACTION
-		public Assignment getCounterTransactionAssignment_4_2() { return cCounterTransactionAssignment_4_2; }
-		
-		//COUNTER_TRANSACTION
-		public RuleCall getCounterTransactionCOUNTER_TRANSACTIONEnumRuleCall_4_2_0() { return cCounterTransactionCOUNTER_TRANSACTIONEnumRuleCall_4_2_0; }
-		
-		//("," counterTransaction+=COUNTER_TRANSACTION)*
-		public Group getGroup_4_3() { return cGroup_4_3; }
-		
-		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
-		
-		//counterTransaction+=COUNTER_TRANSACTION
-		public Assignment getCounterTransactionAssignment_4_3_1() { return cCounterTransactionAssignment_4_3_1; }
-		
-		//COUNTER_TRANSACTION
-		public RuleCall getCounterTransactionCOUNTER_TRANSACTIONEnumRuleCall_4_3_1_0() { return cCounterTransactionCOUNTER_TRANSACTIONEnumRuleCall_4_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
-		
-		////	('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
-	public class MemoryCounterElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.MemoryCounter");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cMemoryCounterAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cMemoryCounterKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cCounterMemoryKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cCounterMemoryAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cCounterMemoryCOUNTER_MEMORYEnumRuleCall_4_2_0 = (RuleCall)cCounterMemoryAssignment_4_2.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cCounterMemoryAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cCounterMemoryCOUNTER_MEMORYEnumRuleCall_4_3_1_0 = (RuleCall)cCounterMemoryAssignment_4_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//MemoryCounter:
-		//	{MemoryCounter}
-		//	'MemoryCounter'
-		//	name=EString
-		//	'{' ('counterMemory' '{' counterMemory+=COUNTER_MEMORY ("," counterMemory+=COUNTER_MEMORY)* '}')?
-		//	//		('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{MemoryCounter} 'MemoryCounter' name=EString '{' ('counterMemory' '{' counterMemory+=COUNTER_MEMORY (","
-		//counterMemory+=COUNTER_MEMORY)* '}')? //		('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-		//'}'
-		public Group getGroup() { return cGroup; }
-		
-		//{MemoryCounter}
-		public Action getMemoryCounterAction_0() { return cMemoryCounterAction_0; }
-		
-		//'MemoryCounter'
-		public Keyword getMemoryCounterKeyword_1() { return cMemoryCounterKeyword_1; }
-		
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//('counterMemory' '{' counterMemory+=COUNTER_MEMORY ("," counterMemory+=COUNTER_MEMORY)* '}')?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'counterMemory'
-		public Keyword getCounterMemoryKeyword_4_0() { return cCounterMemoryKeyword_4_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
-		
-		//counterMemory+=COUNTER_MEMORY
-		public Assignment getCounterMemoryAssignment_4_2() { return cCounterMemoryAssignment_4_2; }
-		
-		//COUNTER_MEMORY
-		public RuleCall getCounterMemoryCOUNTER_MEMORYEnumRuleCall_4_2_0() { return cCounterMemoryCOUNTER_MEMORYEnumRuleCall_4_2_0; }
-		
-		//("," counterMemory+=COUNTER_MEMORY)*
-		public Group getGroup_4_3() { return cGroup_4_3; }
-		
-		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
-		
-		//counterMemory+=COUNTER_MEMORY
-		public Assignment getCounterMemoryAssignment_4_3_1() { return cCounterMemoryAssignment_4_3_1; }
-		
-		//COUNTER_MEMORY
-		public RuleCall getCounterMemoryCOUNTER_MEMORYEnumRuleCall_4_3_1_0() { return cCounterMemoryCOUNTER_MEMORYEnumRuleCall_4_3_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
-		
-		////		('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
 	public class EIntElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.EInt");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		
+		////LoadGenerator:
+		////	{LoadGenerator}
+		////	(isMonitor?='isMonitor')?
+		////	'LoadGenerator'
+		////	'{'
+		////		('hostname' hostname=EString)?
+		////		('ip' ip=EString)?
+		////		('hardware' hardware=HARDWARE)?
+		////		('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
+		////		('metricmodel' metricmodel=[MetricModel|EString])?
+		////		('monitorr' monitor=[Monitor|EString])?
+		////	'}';
+		////Monitor:
+		////	{Monitor}
+		////	'Monitor'
+		////	'{'
+		////		('hostname' hostname=EString)?
+		////		('ip' ip=EString)?
+		////		('hardware' hardware=HARDWARE)?
+		////		('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
+		////	'}';
 		//EInt ecore::EInt:
 		//	'-'? INT;
 		@Override public ParserRule getRule() { return rule; }
@@ -1680,6 +831,128 @@ public class XCanopusGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
 	}
 	
+	public class METRICTYPEMONITOREDElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.METRICTYPEMONITORED");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cMEMORYEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cMEMORYMemoryKeyword_0_0 = (Keyword)cMEMORYEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cDISKEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cDISKDiskKeyword_1_0 = (Keyword)cDISKEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cWEBRESOURCESEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cWEBRESOURCESWebResourcesKeyword_2_0 = (Keyword)cWEBRESOURCESEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cTRANSACTIONEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cTRANSACTIONTransactionKeyword_3_0 = (Keyword)cTRANSACTIONEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cPROCESSOREnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cPROCESSORProcessorKeyword_4_0 = (Keyword)cPROCESSOREnumLiteralDeclaration_4.eContents().get(0);
+		
+		//enum METRICTYPEMONITORED:
+		//	MEMORY='memory' | DISK='disk' | WEBRESOURCES='web resources' | TRANSACTION='transaction' | PROCESSOR='processor';
+		public EnumRule getRule() { return rule; }
+		
+		//MEMORY='memory' | DISK='disk' | WEBRESOURCES='web resources' | TRANSACTION='transaction' | PROCESSOR='processor'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//MEMORY='memory'
+		public EnumLiteralDeclaration getMEMORYEnumLiteralDeclaration_0() { return cMEMORYEnumLiteralDeclaration_0; }
+		
+		//'memory'
+		public Keyword getMEMORYMemoryKeyword_0_0() { return cMEMORYMemoryKeyword_0_0; }
+		
+		//DISK='disk'
+		public EnumLiteralDeclaration getDISKEnumLiteralDeclaration_1() { return cDISKEnumLiteralDeclaration_1; }
+		
+		//'disk'
+		public Keyword getDISKDiskKeyword_1_0() { return cDISKDiskKeyword_1_0; }
+		
+		//WEBRESOURCES='web resources'
+		public EnumLiteralDeclaration getWEBRESOURCESEnumLiteralDeclaration_2() { return cWEBRESOURCESEnumLiteralDeclaration_2; }
+		
+		//'web resources'
+		public Keyword getWEBRESOURCESWebResourcesKeyword_2_0() { return cWEBRESOURCESWebResourcesKeyword_2_0; }
+		
+		//TRANSACTION='transaction'
+		public EnumLiteralDeclaration getTRANSACTIONEnumLiteralDeclaration_3() { return cTRANSACTIONEnumLiteralDeclaration_3; }
+		
+		//'transaction'
+		public Keyword getTRANSACTIONTransactionKeyword_3_0() { return cTRANSACTIONTransactionKeyword_3_0; }
+		
+		//PROCESSOR='processor'
+		public EnumLiteralDeclaration getPROCESSOREnumLiteralDeclaration_4() { return cPROCESSOREnumLiteralDeclaration_4; }
+		
+		//'processor'
+		public Keyword getPROCESSORProcessorKeyword_4_0() { return cPROCESSORProcessorKeyword_4_0; }
+	}
+	public class METRICTYPEElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.METRICTYPE");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cAvailablembytescounterEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cAvailablembytescounterAvailableMbytesCounterKeyword_0_0 = (Keyword)cAvailablembytescounterEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cIdletimecounterEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cIdletimecounterIdleTimeCounterKeyword_1_0 = (Keyword)cIdletimecounterEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cThroughputmbytesEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cThroughputmbytesThroughputMbytesKeyword_2_0 = (Keyword)cThroughputmbytesEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cTransactionpersecondEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cTransactionpersecondTransactionsPerSecondKeyword_3_0 = (Keyword)cTransactionpersecondEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cTPSEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cTPSTPSKeyword_4_0 = (Keyword)cTPSEnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cProcessortimecounterEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cProcessortimecounterProcessorTimeCountKeyword_5_0 = (Keyword)cProcessortimecounterEnumLiteralDeclaration_5.eContents().get(0);
+		private final EnumLiteralDeclaration cTransactionresponsetimeEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
+		private final Keyword cTransactionresponsetimeTransactionsResponseTimeKeyword_6_0 = (Keyword)cTransactionresponsetimeEnumLiteralDeclaration_6.eContents().get(0);
+		
+		//enum METRICTYPE:
+		//	availablembytescounter='available mbytes counter' | idletimecounter='% idle time counter' |
+		//	throughputmbytes='throughput mbytes' | transactionpersecond='transactions per second' | TPS |
+		//	processortimecounter='% processor time count' | transactionresponsetime='transactions response time';
+		public EnumRule getRule() { return rule; }
+		
+		//availablembytescounter='available mbytes counter' | idletimecounter='% idle time counter' |
+		//throughputmbytes='throughput mbytes' | transactionpersecond='transactions per second' | TPS |
+		//processortimecounter='% processor time count' | transactionresponsetime='transactions response time'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//availablembytescounter='available mbytes counter'
+		public EnumLiteralDeclaration getAvailablembytescounterEnumLiteralDeclaration_0() { return cAvailablembytescounterEnumLiteralDeclaration_0; }
+		
+		//'available mbytes counter'
+		public Keyword getAvailablembytescounterAvailableMbytesCounterKeyword_0_0() { return cAvailablembytescounterAvailableMbytesCounterKeyword_0_0; }
+		
+		//idletimecounter='% idle time counter'
+		public EnumLiteralDeclaration getIdletimecounterEnumLiteralDeclaration_1() { return cIdletimecounterEnumLiteralDeclaration_1; }
+		
+		//'% idle time counter'
+		public Keyword getIdletimecounterIdleTimeCounterKeyword_1_0() { return cIdletimecounterIdleTimeCounterKeyword_1_0; }
+		
+		//throughputmbytes='throughput mbytes'
+		public EnumLiteralDeclaration getThroughputmbytesEnumLiteralDeclaration_2() { return cThroughputmbytesEnumLiteralDeclaration_2; }
+		
+		//'throughput mbytes'
+		public Keyword getThroughputmbytesThroughputMbytesKeyword_2_0() { return cThroughputmbytesThroughputMbytesKeyword_2_0; }
+		
+		//transactionpersecond='transactions per second'
+		public EnumLiteralDeclaration getTransactionpersecondEnumLiteralDeclaration_3() { return cTransactionpersecondEnumLiteralDeclaration_3; }
+		
+		//'transactions per second'
+		public Keyword getTransactionpersecondTransactionsPerSecondKeyword_3_0() { return cTransactionpersecondTransactionsPerSecondKeyword_3_0; }
+		
+		//TPS
+		public EnumLiteralDeclaration getTPSEnumLiteralDeclaration_4() { return cTPSEnumLiteralDeclaration_4; }
+		
+		//'TPS'
+		public Keyword getTPSTPSKeyword_4_0() { return cTPSTPSKeyword_4_0; }
+		
+		//processortimecounter='% processor time count'
+		public EnumLiteralDeclaration getProcessortimecounterEnumLiteralDeclaration_5() { return cProcessortimecounterEnumLiteralDeclaration_5; }
+		
+		//'% processor time count'
+		public Keyword getProcessortimecounterProcessorTimeCountKeyword_5_0() { return cProcessortimecounterProcessorTimeCountKeyword_5_0; }
+		
+		//transactionresponsetime='transactions response time'
+		public EnumLiteralDeclaration getTransactionresponsetimeEnumLiteralDeclaration_6() { return cTransactionresponsetimeEnumLiteralDeclaration_6; }
+		
+		//'transactions response time'
+		public Keyword getTransactionresponsetimeTransactionsResponseTimeKeyword_6_0() { return cTransactionresponsetimeTransactionsResponseTimeKeyword_6_0; }
+	}
 	public class HARDWAREElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.HARDWARE");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -1758,247 +1031,53 @@ public class XCanopusGrammarAccess extends AbstractGrammarElementFinder {
 		//'WEBSERVICE'
 		public Keyword getWEBSERVICEWEBSERVICEKeyword_3_0() { return cWEBSERVICEWEBSERVICEKeyword_3_0; }
 	}
-	public class ASSOCIATION_CRITERIAElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.ASSOCIATION_CRITERIA");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cBETWEENEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cBETWEENBETWEENKeyword_0_0 = (Keyword)cBETWEENEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cGREATER_THAN_OR_EQUAL_TOEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cGREATER_THAN_OR_EQUAL_TOGREATER_THAN_OR_EQUAL_TOKeyword_1_0 = (Keyword)cGREATER_THAN_OR_EQUAL_TOEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cLESS_THANEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cLESS_THANLESS_THANKeyword_2_0 = (Keyword)cLESS_THANEnumLiteralDeclaration_2.eContents().get(0);
-		
-		//enum ASSOCIATION_CRITERIA:
-		//	BETWEEN | GREATER_THAN_OR_EQUAL_TO | LESS_THAN;
-		public EnumRule getRule() { return rule; }
-		
-		//BETWEEN | GREATER_THAN_OR_EQUAL_TO | LESS_THAN
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//BETWEEN
-		public EnumLiteralDeclaration getBETWEENEnumLiteralDeclaration_0() { return cBETWEENEnumLiteralDeclaration_0; }
-		
-		//'BETWEEN'
-		public Keyword getBETWEENBETWEENKeyword_0_0() { return cBETWEENBETWEENKeyword_0_0; }
-		
-		//GREATER_THAN_OR_EQUAL_TO
-		public EnumLiteralDeclaration getGREATER_THAN_OR_EQUAL_TOEnumLiteralDeclaration_1() { return cGREATER_THAN_OR_EQUAL_TOEnumLiteralDeclaration_1; }
-		
-		//'GREATER_THAN_OR_EQUAL_TO'
-		public Keyword getGREATER_THAN_OR_EQUAL_TOGREATER_THAN_OR_EQUAL_TOKeyword_1_0() { return cGREATER_THAN_OR_EQUAL_TOGREATER_THAN_OR_EQUAL_TOKeyword_1_0; }
-		
-		//LESS_THAN
-		public EnumLiteralDeclaration getLESS_THANEnumLiteralDeclaration_2() { return cLESS_THANEnumLiteralDeclaration_2; }
-		
-		//'LESS_THAN'
-		public Keyword getLESS_THANLESS_THANKeyword_2_0() { return cLESS_THANLESS_THANKeyword_2_0; }
-	}
-	public class COUNTER_DISKElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.COUNTER_DISK");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cAVG_DISK_SECS_TRANSFER_COUNTEREnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cAVG_DISK_SECS_TRANSFER_COUNTERAVG_DISK_SECS_TRANSFER_COUNTERKeyword_0_0 = (Keyword)cAVG_DISK_SECS_TRANSFER_COUNTEREnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cPERCENTAGE_IDLE_TIME_COUNTEREnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cPERCENTAGE_IDLE_TIME_COUNTERPERCENTAGE_IDLE_TIME_COUNTERKeyword_1_0 = (Keyword)cPERCENTAGE_IDLE_TIME_COUNTEREnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cDISK_TRANSFERS_SEC_COUNTEREnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cDISK_TRANSFERS_SEC_COUNTERDISK_TRANSFERS_SEC_COUNTERKeyword_2_0 = (Keyword)cDISK_TRANSFERS_SEC_COUNTEREnumLiteralDeclaration_2.eContents().get(0);
-		private final EnumLiteralDeclaration cAVG_DISK_QUEUE_LENGTH_COUNTEREnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
-		private final Keyword cAVG_DISK_QUEUE_LENGTH_COUNTERAVG_DISK_QUEUE_LENGTH_COUNTERKeyword_3_0 = (Keyword)cAVG_DISK_QUEUE_LENGTH_COUNTEREnumLiteralDeclaration_3.eContents().get(0);
-		private final EnumLiteralDeclaration cSPLIT_IO_SEC_COUNTEREnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
-		private final Keyword cSPLIT_IO_SEC_COUNTERSPLIT_IO_SEC_COUNTERKeyword_4_0 = (Keyword)cSPLIT_IO_SEC_COUNTEREnumLiteralDeclaration_4.eContents().get(0);
-		private final EnumLiteralDeclaration cFREE_MEGABYTES_COUNTEREnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
-		private final Keyword cFREE_MEGABYTES_COUNTERFREE_MEGABYTES_COUNTERKeyword_5_0 = (Keyword)cFREE_MEGABYTES_COUNTEREnumLiteralDeclaration_5.eContents().get(0);
-		
-		//enum COUNTER_DISK:
-		//	AVG_DISK_SECS_TRANSFER_COUNTER | PERCENTAGE_IDLE_TIME_COUNTER | DISK_TRANSFERS_SEC_COUNTER |
-		//	AVG_DISK_QUEUE_LENGTH_COUNTER | SPLIT_IO_SEC_COUNTER | FREE_MEGABYTES_COUNTER;
-		public EnumRule getRule() { return rule; }
-		
-		//AVG_DISK_SECS_TRANSFER_COUNTER | PERCENTAGE_IDLE_TIME_COUNTER | DISK_TRANSFERS_SEC_COUNTER |
-		//AVG_DISK_QUEUE_LENGTH_COUNTER | SPLIT_IO_SEC_COUNTER | FREE_MEGABYTES_COUNTER
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//AVG_DISK_SECS_TRANSFER_COUNTER
-		public EnumLiteralDeclaration getAVG_DISK_SECS_TRANSFER_COUNTEREnumLiteralDeclaration_0() { return cAVG_DISK_SECS_TRANSFER_COUNTEREnumLiteralDeclaration_0; }
-		
-		//'AVG_DISK_SECS_TRANSFER_COUNTER'
-		public Keyword getAVG_DISK_SECS_TRANSFER_COUNTERAVG_DISK_SECS_TRANSFER_COUNTERKeyword_0_0() { return cAVG_DISK_SECS_TRANSFER_COUNTERAVG_DISK_SECS_TRANSFER_COUNTERKeyword_0_0; }
-		
-		//PERCENTAGE_IDLE_TIME_COUNTER
-		public EnumLiteralDeclaration getPERCENTAGE_IDLE_TIME_COUNTEREnumLiteralDeclaration_1() { return cPERCENTAGE_IDLE_TIME_COUNTEREnumLiteralDeclaration_1; }
-		
-		//'PERCENTAGE_IDLE_TIME_COUNTER'
-		public Keyword getPERCENTAGE_IDLE_TIME_COUNTERPERCENTAGE_IDLE_TIME_COUNTERKeyword_1_0() { return cPERCENTAGE_IDLE_TIME_COUNTERPERCENTAGE_IDLE_TIME_COUNTERKeyword_1_0; }
-		
-		//DISK_TRANSFERS_SEC_COUNTER
-		public EnumLiteralDeclaration getDISK_TRANSFERS_SEC_COUNTEREnumLiteralDeclaration_2() { return cDISK_TRANSFERS_SEC_COUNTEREnumLiteralDeclaration_2; }
-		
-		//'DISK_TRANSFERS_SEC_COUNTER'
-		public Keyword getDISK_TRANSFERS_SEC_COUNTERDISK_TRANSFERS_SEC_COUNTERKeyword_2_0() { return cDISK_TRANSFERS_SEC_COUNTERDISK_TRANSFERS_SEC_COUNTERKeyword_2_0; }
-		
-		//AVG_DISK_QUEUE_LENGTH_COUNTER
-		public EnumLiteralDeclaration getAVG_DISK_QUEUE_LENGTH_COUNTEREnumLiteralDeclaration_3() { return cAVG_DISK_QUEUE_LENGTH_COUNTEREnumLiteralDeclaration_3; }
-		
-		//'AVG_DISK_QUEUE_LENGTH_COUNTER'
-		public Keyword getAVG_DISK_QUEUE_LENGTH_COUNTERAVG_DISK_QUEUE_LENGTH_COUNTERKeyword_3_0() { return cAVG_DISK_QUEUE_LENGTH_COUNTERAVG_DISK_QUEUE_LENGTH_COUNTERKeyword_3_0; }
-		
-		//SPLIT_IO_SEC_COUNTER
-		public EnumLiteralDeclaration getSPLIT_IO_SEC_COUNTEREnumLiteralDeclaration_4() { return cSPLIT_IO_SEC_COUNTEREnumLiteralDeclaration_4; }
-		
-		//'SPLIT_IO_SEC_COUNTER'
-		public Keyword getSPLIT_IO_SEC_COUNTERSPLIT_IO_SEC_COUNTERKeyword_4_0() { return cSPLIT_IO_SEC_COUNTERSPLIT_IO_SEC_COUNTERKeyword_4_0; }
-		
-		//FREE_MEGABYTES_COUNTER
-		public EnumLiteralDeclaration getFREE_MEGABYTES_COUNTEREnumLiteralDeclaration_5() { return cFREE_MEGABYTES_COUNTEREnumLiteralDeclaration_5; }
-		
-		//'FREE_MEGABYTES_COUNTER'
-		public Keyword getFREE_MEGABYTES_COUNTERFREE_MEGABYTES_COUNTERKeyword_5_0() { return cFREE_MEGABYTES_COUNTERFREE_MEGABYTES_COUNTERKeyword_5_0; }
-	}
-	public class COUNTER_TRANSACTIONElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.COUNTER_TRANSACTION");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cTRANSACTION_RESPONSE_TIMEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cTRANSACTION_RESPONSE_TIMETRANSACTION_RESPONSE_TIMEKeyword_0_0 = (Keyword)cTRANSACTION_RESPONSE_TIMEEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cTRANSACTION_PER_SECOND_TPSEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cTRANSACTION_PER_SECOND_TPSTRANSACTION_PER_SECOND_TPSKeyword_1_0 = (Keyword)cTRANSACTION_PER_SECOND_TPSEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cTRANSACTION_SUCCESS_RATEEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cTRANSACTION_SUCCESS_RATETRANSACTION_SUCCESS_RATEKeyword_2_0 = (Keyword)cTRANSACTION_SUCCESS_RATEEnumLiteralDeclaration_2.eContents().get(0);
-		
-		//enum COUNTER_TRANSACTION:
-		//	TRANSACTION_RESPONSE_TIME | TRANSACTION_PER_SECOND_TPS | TRANSACTION_SUCCESS_RATE;
-		public EnumRule getRule() { return rule; }
-		
-		//TRANSACTION_RESPONSE_TIME | TRANSACTION_PER_SECOND_TPS | TRANSACTION_SUCCESS_RATE
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//TRANSACTION_RESPONSE_TIME
-		public EnumLiteralDeclaration getTRANSACTION_RESPONSE_TIMEEnumLiteralDeclaration_0() { return cTRANSACTION_RESPONSE_TIMEEnumLiteralDeclaration_0; }
-		
-		//'TRANSACTION_RESPONSE_TIME'
-		public Keyword getTRANSACTION_RESPONSE_TIMETRANSACTION_RESPONSE_TIMEKeyword_0_0() { return cTRANSACTION_RESPONSE_TIMETRANSACTION_RESPONSE_TIMEKeyword_0_0; }
-		
-		//TRANSACTION_PER_SECOND_TPS
-		public EnumLiteralDeclaration getTRANSACTION_PER_SECOND_TPSEnumLiteralDeclaration_1() { return cTRANSACTION_PER_SECOND_TPSEnumLiteralDeclaration_1; }
-		
-		//'TRANSACTION_PER_SECOND_TPS'
-		public Keyword getTRANSACTION_PER_SECOND_TPSTRANSACTION_PER_SECOND_TPSKeyword_1_0() { return cTRANSACTION_PER_SECOND_TPSTRANSACTION_PER_SECOND_TPSKeyword_1_0; }
-		
-		//TRANSACTION_SUCCESS_RATE
-		public EnumLiteralDeclaration getTRANSACTION_SUCCESS_RATEEnumLiteralDeclaration_2() { return cTRANSACTION_SUCCESS_RATEEnumLiteralDeclaration_2; }
-		
-		//'TRANSACTION_SUCCESS_RATE'
-		public Keyword getTRANSACTION_SUCCESS_RATETRANSACTION_SUCCESS_RATEKeyword_2_0() { return cTRANSACTION_SUCCESS_RATETRANSACTION_SUCCESS_RATEKeyword_2_0; }
-	}
-	public class COUNTER_MEMORYElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.COUNTER_MEMORY");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cAVALIABLE_MBYTES_COUNTEREnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cAVALIABLE_MBYTES_COUNTERAVALIABLE_MBYTES_COUNTERKeyword_0_0 = (Keyword)cAVALIABLE_MBYTES_COUNTEREnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cPAGES_SEC_COUNTEREnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cPAGES_SEC_COUNTERPAGES_SEC_COUNTERKeyword_1_0 = (Keyword)cPAGES_SEC_COUNTEREnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cPAGE_READS_SEC_COUNTEREnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cPAGE_READS_SEC_COUNTERPAGE_READS_SEC_COUNTERKeyword_2_0 = (Keyword)cPAGE_READS_SEC_COUNTEREnumLiteralDeclaration_2.eContents().get(0);
-		private final EnumLiteralDeclaration cWORKING_SET_COUNTEREnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
-		private final Keyword cWORKING_SET_COUNTERWORKING_SET_COUNTERKeyword_3_0 = (Keyword)cWORKING_SET_COUNTEREnumLiteralDeclaration_3.eContents().get(0);
-		private final EnumLiteralDeclaration cPOOL_NONPAGE_BYTES_COUNTEREnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
-		private final Keyword cPOOL_NONPAGE_BYTES_COUNTERPOOL_NONPAGE_BYTES_COUNTERKeyword_4_0 = (Keyword)cPOOL_NONPAGE_BYTES_COUNTEREnumLiteralDeclaration_4.eContents().get(0);
-		private final EnumLiteralDeclaration cPAGED_POOL_BYTES_COUNTEREnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
-		private final Keyword cPAGED_POOL_BYTES_COUNTERPAGED_POOL_BYTES_COUNTERKeyword_5_0 = (Keyword)cPAGED_POOL_BYTES_COUNTEREnumLiteralDeclaration_5.eContents().get(0);
-		private final EnumLiteralDeclaration cPAGED_POOL_FAILURES_COUNTEREnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
-		private final Keyword cPAGED_POOL_FAILURES_COUNTERPAGED_POOL_FAILURES_COUNTERKeyword_6_0 = (Keyword)cPAGED_POOL_FAILURES_COUNTEREnumLiteralDeclaration_6.eContents().get(0);
-		private final EnumLiteralDeclaration cCACHE_BYTES_COUNTEREnumLiteralDeclaration_7 = (EnumLiteralDeclaration)cAlternatives.eContents().get(7);
-		private final Keyword cCACHE_BYTES_COUNTERCACHE_BYTES_COUNTERKeyword_7_0 = (Keyword)cCACHE_BYTES_COUNTEREnumLiteralDeclaration_7.eContents().get(0);
-		
-		//enum COUNTER_MEMORY:
-		//	AVALIABLE_MBYTES_COUNTER | PAGES_SEC_COUNTER | PAGE_READS_SEC_COUNTER | WORKING_SET_COUNTER |
-		//	POOL_NONPAGE_BYTES_COUNTER | PAGED_POOL_BYTES_COUNTER | PAGED_POOL_FAILURES_COUNTER | CACHE_BYTES_COUNTER;
-		public EnumRule getRule() { return rule; }
-		
-		//AVALIABLE_MBYTES_COUNTER | PAGES_SEC_COUNTER | PAGE_READS_SEC_COUNTER | WORKING_SET_COUNTER | POOL_NONPAGE_BYTES_COUNTER
-		//| PAGED_POOL_BYTES_COUNTER | PAGED_POOL_FAILURES_COUNTER | CACHE_BYTES_COUNTER
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//AVALIABLE_MBYTES_COUNTER
-		public EnumLiteralDeclaration getAVALIABLE_MBYTES_COUNTEREnumLiteralDeclaration_0() { return cAVALIABLE_MBYTES_COUNTEREnumLiteralDeclaration_0; }
-		
-		//'AVALIABLE_MBYTES_COUNTER'
-		public Keyword getAVALIABLE_MBYTES_COUNTERAVALIABLE_MBYTES_COUNTERKeyword_0_0() { return cAVALIABLE_MBYTES_COUNTERAVALIABLE_MBYTES_COUNTERKeyword_0_0; }
-		
-		//PAGES_SEC_COUNTER
-		public EnumLiteralDeclaration getPAGES_SEC_COUNTEREnumLiteralDeclaration_1() { return cPAGES_SEC_COUNTEREnumLiteralDeclaration_1; }
-		
-		//'PAGES_SEC_COUNTER'
-		public Keyword getPAGES_SEC_COUNTERPAGES_SEC_COUNTERKeyword_1_0() { return cPAGES_SEC_COUNTERPAGES_SEC_COUNTERKeyword_1_0; }
-		
-		//PAGE_READS_SEC_COUNTER
-		public EnumLiteralDeclaration getPAGE_READS_SEC_COUNTEREnumLiteralDeclaration_2() { return cPAGE_READS_SEC_COUNTEREnumLiteralDeclaration_2; }
-		
-		//'PAGE_READS_SEC_COUNTER'
-		public Keyword getPAGE_READS_SEC_COUNTERPAGE_READS_SEC_COUNTERKeyword_2_0() { return cPAGE_READS_SEC_COUNTERPAGE_READS_SEC_COUNTERKeyword_2_0; }
-		
-		//WORKING_SET_COUNTER
-		public EnumLiteralDeclaration getWORKING_SET_COUNTEREnumLiteralDeclaration_3() { return cWORKING_SET_COUNTEREnumLiteralDeclaration_3; }
-		
-		//'WORKING_SET_COUNTER'
-		public Keyword getWORKING_SET_COUNTERWORKING_SET_COUNTERKeyword_3_0() { return cWORKING_SET_COUNTERWORKING_SET_COUNTERKeyword_3_0; }
-		
-		//POOL_NONPAGE_BYTES_COUNTER
-		public EnumLiteralDeclaration getPOOL_NONPAGE_BYTES_COUNTEREnumLiteralDeclaration_4() { return cPOOL_NONPAGE_BYTES_COUNTEREnumLiteralDeclaration_4; }
-		
-		//'POOL_NONPAGE_BYTES_COUNTER'
-		public Keyword getPOOL_NONPAGE_BYTES_COUNTERPOOL_NONPAGE_BYTES_COUNTERKeyword_4_0() { return cPOOL_NONPAGE_BYTES_COUNTERPOOL_NONPAGE_BYTES_COUNTERKeyword_4_0; }
-		
-		//PAGED_POOL_BYTES_COUNTER
-		public EnumLiteralDeclaration getPAGED_POOL_BYTES_COUNTEREnumLiteralDeclaration_5() { return cPAGED_POOL_BYTES_COUNTEREnumLiteralDeclaration_5; }
-		
-		//'PAGED_POOL_BYTES_COUNTER'
-		public Keyword getPAGED_POOL_BYTES_COUNTERPAGED_POOL_BYTES_COUNTERKeyword_5_0() { return cPAGED_POOL_BYTES_COUNTERPAGED_POOL_BYTES_COUNTERKeyword_5_0; }
-		
-		//PAGED_POOL_FAILURES_COUNTER
-		public EnumLiteralDeclaration getPAGED_POOL_FAILURES_COUNTEREnumLiteralDeclaration_6() { return cPAGED_POOL_FAILURES_COUNTEREnumLiteralDeclaration_6; }
-		
-		//'PAGED_POOL_FAILURES_COUNTER'
-		public Keyword getPAGED_POOL_FAILURES_COUNTERPAGED_POOL_FAILURES_COUNTERKeyword_6_0() { return cPAGED_POOL_FAILURES_COUNTERPAGED_POOL_FAILURES_COUNTERKeyword_6_0; }
-		
-		//CACHE_BYTES_COUNTER
-		public EnumLiteralDeclaration getCACHE_BYTES_COUNTEREnumLiteralDeclaration_7() { return cCACHE_BYTES_COUNTEREnumLiteralDeclaration_7; }
-		
-		//'CACHE_BYTES_COUNTER'
-		public Keyword getCACHE_BYTES_COUNTERCACHE_BYTES_COUNTERKeyword_7_0() { return cCACHE_BYTES_COUNTERCACHE_BYTES_COUNTERKeyword_7_0; }
-	}
 	
 	private final ModelElements pModel;
-	private final IncludeElements pInclude;
-	private final MonitoringElements pMonitoring;
-	private final FreetextElements pFreetext;
-	private final CONDITIONElements pCONDITION;
-	private final ANDElements pAND;
-	private final WHENElements pWHEN;
-	private final THENElements pTHEN;
-	private final POSTCONDITIONElements pPOSTCONDITION;
-	private final MetricElements pMetric;
-	private final CounterElements pCounter;
-	private final SUTElements pSUT;
-	private final LoadGeneratorElements pLoadGenerator;
-	private final MonitorElements pMonitor;
 	private final MetricModelElements pMetricModel;
-	private final MemoryElements pMemory;
-	private final TransactionElements pTransaction;
-	private final DiskElements pDisk;
-	private final CriteriaElements pCriteria;
-	private final ThresholdElements pThreshold;
-	private final Disk_IO_CounterElements pDisk_IO_Counter;
-	private final TransactionCounterElements pTransactionCounter;
-	private final MemoryCounterElements pMemoryCounter;
+	private final MainElements pMain;
+	private final FreetextElements pFreetext;
+	private final STEPSElements pSTEPS;
+	private final And_workloadElements pAnd_workload;
+	private final And_the_scenarioElements pAnd_the_scenario;
+	private final And_atleastElements pAnd_atleast;
+	private final And_the_metricElements pAnd_the_metric;
+	private final WhenElements pWhen;
+	private final ThenElements pThen;
+	private final GivenElements pGiven;
+	private final METRICTYPEMONITOREDElements eMETRICTYPEMONITORED;
+	private final METRICTYPEElements eMETRICTYPE;
+	private final SCENARIOElements pSCENARIO;
+	private final SUTElements pSUT;
 	private final EIntElements pEInt;
 	private final EBooleanElements pEBoolean;
 	private final EStringElements pEString;
 	private final HARDWAREElements eHARDWARE;
 	private final SUT_TYPEElements eSUT_TYPE;
-	private final ASSOCIATION_CRITERIAElements eASSOCIATION_CRITERIA;
-	private final COUNTER_DISKElements eCOUNTER_DISK;
-	private final COUNTER_TRANSACTIONElements eCOUNTER_TRANSACTION;
-	private final COUNTER_MEMORYElements eCOUNTER_MEMORY;
+	private final TerminalRule tSHOULDBELESSTHAN_TEXT;
+	private final TerminalRule tSHOULDBEATLEAST_TEXT;
+	private final TerminalRule tSHOULDBEGREATERTHAN;
+	private final TerminalRule tWHENTHENUMBERISLESSTHAN_TEXT;
+	private final TerminalRule tWHENTHENUMBERISGREATERTHAN_TEXT;
+	private final TerminalRule tWHENTHENUMBERISGREATEROREQUAL_TEXT;
+	private final TerminalRule tWHENTHENUMBERIRLESSEROREQUAL_TEXT;
+	private final TerminalRule tWHENTHENUMBERAREBETWEEN_TEXT;
+	private final TerminalRule tMBWHEN_GREATEROREQUAL_TEXT;
+	private final TerminalRule tMBWHEN_LESSTHAN_TEXT;
+	private final TerminalRule tMBWHEN_MORETHAN_TEXT;
+	private final TerminalRule tMBWHEN_MINOROREQUAL_TEXT;
+	private final TerminalRule tAND;
+	private final TerminalRule tMONITOR_TEXT;
+	private final TerminalRule tTHE;
+	private final TerminalRule tTHAT;
+	private final TerminalRule tMONITOREDBY;
+	private final TerminalRule tWORKLOADGENERATED;
+	private final TerminalRule tLOADGENERATORFORTHE;
+	private final TerminalRule tISTESTSCENARIO;
+	private final TerminalRule tON;
+	private final TerminalRule tISMONITORED;
+	private final TerminalRule tATL;
+	private final TerminalRule tNNL;
+	private final TerminalRule tNL;
 	private final TerminalRule tID;
 	private final TerminalRule tINT;
 	private final TerminalRule tSTRING;
@@ -2013,37 +1092,51 @@ public class XCanopusGrammarAccess extends AbstractGrammarElementFinder {
 	public XCanopusGrammarAccess(GrammarProvider grammarProvider) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.pModel = new ModelElements();
-		this.pInclude = new IncludeElements();
-		this.pMonitoring = new MonitoringElements();
-		this.pFreetext = new FreetextElements();
-		this.pCONDITION = new CONDITIONElements();
-		this.pAND = new ANDElements();
-		this.pWHEN = new WHENElements();
-		this.pTHEN = new THENElements();
-		this.pPOSTCONDITION = new POSTCONDITIONElements();
-		this.pMetric = new MetricElements();
-		this.pCounter = new CounterElements();
-		this.pSUT = new SUTElements();
-		this.pLoadGenerator = new LoadGeneratorElements();
-		this.pMonitor = new MonitorElements();
 		this.pMetricModel = new MetricModelElements();
-		this.pMemory = new MemoryElements();
-		this.pTransaction = new TransactionElements();
-		this.pDisk = new DiskElements();
-		this.pCriteria = new CriteriaElements();
-		this.pThreshold = new ThresholdElements();
-		this.pDisk_IO_Counter = new Disk_IO_CounterElements();
-		this.pTransactionCounter = new TransactionCounterElements();
-		this.pMemoryCounter = new MemoryCounterElements();
+		this.pMain = new MainElements();
+		this.pFreetext = new FreetextElements();
+		this.pSTEPS = new STEPSElements();
+		this.pAnd_workload = new And_workloadElements();
+		this.pAnd_the_scenario = new And_the_scenarioElements();
+		this.pAnd_atleast = new And_atleastElements();
+		this.pAnd_the_metric = new And_the_metricElements();
+		this.pWhen = new WhenElements();
+		this.pThen = new ThenElements();
+		this.pGiven = new GivenElements();
+		this.eMETRICTYPEMONITORED = new METRICTYPEMONITOREDElements();
+		this.eMETRICTYPE = new METRICTYPEElements();
+		this.pSCENARIO = new SCENARIOElements();
+		this.pSUT = new SUTElements();
 		this.pEInt = new EIntElements();
 		this.pEBoolean = new EBooleanElements();
 		this.pEString = new EStringElements();
 		this.eHARDWARE = new HARDWAREElements();
 		this.eSUT_TYPE = new SUT_TYPEElements();
-		this.eASSOCIATION_CRITERIA = new ASSOCIATION_CRITERIAElements();
-		this.eCOUNTER_DISK = new COUNTER_DISKElements();
-		this.eCOUNTER_TRANSACTION = new COUNTER_TRANSACTIONElements();
-		this.eCOUNTER_MEMORY = new COUNTER_MEMORYElements();
+		this.tSHOULDBELESSTHAN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.SHOULDBELESSTHAN_TEXT");
+		this.tSHOULDBEATLEAST_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.SHOULDBEATLEAST_TEXT");
+		this.tSHOULDBEGREATERTHAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.SHOULDBEGREATERTHAN");
+		this.tWHENTHENUMBERISLESSTHAN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.WHENTHENUMBERISLESSTHAN_TEXT");
+		this.tWHENTHENUMBERISGREATERTHAN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.WHENTHENUMBERISGREATERTHAN_TEXT");
+		this.tWHENTHENUMBERISGREATEROREQUAL_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.WHENTHENUMBERISGREATEROREQUAL_TEXT");
+		this.tWHENTHENUMBERIRLESSEROREQUAL_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.WHENTHENUMBERIRLESSEROREQUAL_TEXT");
+		this.tWHENTHENUMBERAREBETWEEN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.WHENTHENUMBERAREBETWEEN_TEXT");
+		this.tMBWHEN_GREATEROREQUAL_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.MBWHEN_GREATEROREQUAL_TEXT");
+		this.tMBWHEN_LESSTHAN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.MBWHEN_LESSTHAN_TEXT");
+		this.tMBWHEN_MORETHAN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.MBWHEN_MORETHAN_TEXT");
+		this.tMBWHEN_MINOROREQUAL_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.MBWHEN_MINOROREQUAL_TEXT");
+		this.tAND = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.AND");
+		this.tMONITOR_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.MONITOR_TEXT");
+		this.tTHE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.THE");
+		this.tTHAT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.THAT");
+		this.tMONITOREDBY = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.MONITOREDBY");
+		this.tWORKLOADGENERATED = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.WORKLOADGENERATED");
+		this.tLOADGENERATORFORTHE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.LOADGENERATORFORTHE");
+		this.tISTESTSCENARIO = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.ISTESTSCENARIO");
+		this.tON = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.ON");
+		this.tISMONITORED = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.ISMONITORED");
+		this.tATL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.ATL");
+		this.tNNL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.NNL");
+		this.tNL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.NL");
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.ID");
 		this.tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.INT");
 		this.tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.unipampa.lesse.XCanopus.STRING");
@@ -2077,10 +1170,7 @@ public class XCanopusGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Model:
-	//	includes+=Include*
-	//	monitorings+=Monitoring*
-	//	suts+=SUT*
-	//	loadGenerators+=LoadGenerator*;
+	//	main+=Main*;
 	public ModelElements getModelAccess() {
 		return pModel;
 	}
@@ -2089,35 +1179,37 @@ public class XCanopusGrammarAccess extends AbstractGrammarElementFinder {
 		return getModelAccess().getRule();
 	}
 	
-	//Include:
-	//	'include' importURI=STRING 'as' name=ID;
-	public IncludeElements getIncludeAccess() {
-		return pInclude;
+	////Include:
+	////	'include' importURI=STRING 'as' name=ID
+	////;
+	//MetricModel:
+	//	'Feature:' Freetext '.'
+	//	'Monitoring:' name=ID 'description' Freetext '.' '{'
+	//	steps+=STEPS+ '}';
+	public MetricModelElements getMetricModelAccess() {
+		return pMetricModel;
 	}
 	
-	public ParserRule getIncludeRule() {
-		return getIncludeAccess().getRule();
-	}
-	
-	//Monitoring:
-	//	{Monitoring}
-	//	'Feature' Freetext '.'
-	//	'Monitoring:' Freetext '.'
-	//	'Given' 'that' sut=[SUT] sut_type=SUT_TYPE 'monitored by' sut=[SUT] "monitor"
-	//	condition=CONDITION sut=[SUT] "Load Generator" "for the" sut_type2=SUT_TYPE "on" sut=[SUT];
-	public MonitoringElements getMonitoringAccess() {
-		return pMonitoring;
-	}
-	
-	public ParserRule getMonitoringRule() {
-		return getMonitoringAccess().getRule();
+	public ParserRule getMetricModelRule() {
+		return getMetricModelAccess().getRule();
 	}
 	
 	//// '|' choice
-	//// '?' optional
+	//// '?' optional+
 	//// '+' 1 or more
 	//// '*' 0 or more
 	//// '+=' list of elements
+	//// 0 or more strings
+	//Main:
+	//	main+=(MetricModel | SCENARIO | SUT);
+	public MainElements getMainAccess() {
+		return pMain;
+	}
+	
+	public ParserRule getMainRule() {
+		return getMainAccess().getRule();
+	}
+	
 	//Freetext:
 	//	EString*;
 	public FreetextElements getFreetextAccess() {
@@ -2128,92 +1220,140 @@ public class XCanopusGrammarAccess extends AbstractGrammarElementFinder {
 		return getFreetextAccess().getRule();
 	}
 	
-	//CONDITION:
-	//	AND | WHEN | THEN // features
-	//;
-	public CONDITIONElements getCONDITIONAccess() {
-		return pCONDITION;
+	////possible steps
+	//STEPS:
+	//	given | when | then | and_workload | and_atleast | and_the_scenario | and_the_metric;
+	public STEPSElements getSTEPSAccess() {
+		return pSTEPS;
 	}
 	
-	public ParserRule getCONDITIONRule() {
-		return getCONDITIONAccess().getRule();
+	public ParserRule getSTEPSRule() {
+		return getSTEPSAccess().getRule();
 	}
 	
-	//AND:
-	//	'And' post=POSTCONDITION;
-	public ANDElements getANDAccess() {
-		return pAND;
+	//and_workload:
+	//	'And' WORKLOADGENERATED sut1=[SUT] LOADGENERATORFORTHE suttype=SUT_TYPE ON sut2=[SUT];
+	public And_workloadElements getAnd_workloadAccess() {
+		return pAnd_workload;
 	}
 	
-	public ParserRule getANDRule() {
-		return getANDAccess().getRule();
+	public ParserRule getAnd_workloadRule() {
+		return getAnd_workloadAccess().getRule();
 	}
 	
-	//WHEN:
-	//	'When' post=POSTCONDITION;
-	public WHENElements getWHENAccess() {
-		return pWHEN;
+	//and_the_scenario:
+	//	'And' THE scenario=[SCENARIO] ISTESTSCENARIO;
+	public And_the_scenarioElements getAnd_the_scenarioAccess() {
+		return pAnd_the_scenario;
 	}
 	
-	public ParserRule getWHENRule() {
-		return getWHENAccess().getRule();
+	public ParserRule getAnd_the_scenarioRule() {
+		return getAnd_the_scenarioAccess().getRule();
 	}
 	
-	//THEN:
-	//	'Then' post=POSTCONDITION;
-	public THENElements getTHENAccess() {
-		return pTHEN;
+	////first format CHOICE
+	//and_atleast:
+	//	'And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT |
+	//	MBWHEN_MINOROREQUAL_TEXT) integer2=INT;
+	public And_atleastElements getAnd_atleastAccess() {
+		return pAnd_atleast;
 	}
 	
-	public ParserRule getTHENRule() {
-		return getTHENAccess().getRule();
+	public ParserRule getAnd_atleastRule() {
+		return getAnd_atleastAccess().getRule();
 	}
 	
-	//POSTCONDITION:
-	//	WGT='workload generated through' | THE='the' | ATL='At Least';
-	public POSTCONDITIONElements getPOSTCONDITIONAccess() {
-		return pPOSTCONDITION;
+	//and_the_metric:
+	//	'And' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT
+	//	(WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT |
+	//	WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?;
+	public And_the_metricElements getAnd_the_metricAccess() {
+		return pAnd_the_metric;
 	}
 	
-	public ParserRule getPOSTCONDITIONRule() {
-		return getPOSTCONDITIONAccess().getRule();
+	public ParserRule getAnd_the_metricRule() {
+		return getAnd_the_metricAccess().getRule();
 	}
 	
-	////POSTCONDITIONAL:
-	////			WGT = 'workload generated through' | THE = 'the' | ATLEAST = 'at least'  
-	////;		
-	////Monitoring:
-	////	{Monitoring}
-	////	'Monitoring'
-	////	name=EString
-	////	'{'
-	////		('projectLabel' projectLabel=EString)?
-	////		('projectAuthor' projectAuthor=EString)?
-	////		('description' description=EString)?
-	////		('suts' '{' suts+=SUT ( "," suts+=SUT)* '}' )?
-	////		('loadGenerators' loadGenerators=LoadGenerator)?
-	////		('monitors' monitors=Monitor)?
-	////		('metricModel' '{' metricModel+=MetricModel ( "," metricModel+=MetricModel)* '}' )?
-	////	'}';
-	//Metric:
-	//	Memory | Disk;
-	public MetricElements getMetricAccess() {
-		return pMetric;
+	////second format of use CHOICE
+	//when:
+	//	'When' THE metrictype=METRICTYPEMONITORED ISMONITORED;
+	public WhenElements getWhenAccess() {
+		return pWhen;
 	}
 	
-	public ParserRule getMetricRule() {
-		return getMetricAccess().getRule();
+	public ParserRule getWhenRule() {
+		return getWhenAccess().getRule();
 	}
 	
-	//// | Transaction;
-	//Counter:
-	//	Disk_IO_Counter | MemoryCounter | TransactionCounter;
-	public CounterElements getCounterAccess() {
-		return pCounter;
+	//then:
+	//	'Then' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT
+	//	(WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT |
+	//	WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?;
+	public ThenElements getThenAccess() {
+		return pThen;
 	}
 	
-	public ParserRule getCounterRule() {
-		return getCounterAccess().getRule();
+	public ParserRule getThenRule() {
+		return getThenAccess().getRule();
+	}
+	
+	//given:
+	//	'Given' THAT sut1=[SUT] suttype=SUT_TYPE MONITOREDBY sut2=[SUT] MONITOR_TEXT;
+	public GivenElements getGivenAccess() {
+		return pGiven;
+	}
+	
+	public ParserRule getGivenRule() {
+		return getGivenAccess().getRule();
+	}
+	
+	//enum METRICTYPEMONITORED:
+	//	MEMORY='memory' | DISK='disk' | WEBRESOURCES='web resources' | TRANSACTION='transaction' | PROCESSOR='processor';
+	public METRICTYPEMONITOREDElements getMETRICTYPEMONITOREDAccess() {
+		return eMETRICTYPEMONITORED;
+	}
+	
+	public EnumRule getMETRICTYPEMONITOREDRule() {
+		return getMETRICTYPEMONITOREDAccess().getRule();
+	}
+	
+	//enum METRICTYPE:
+	//	availablembytescounter='available mbytes counter' | idletimecounter='% idle time counter' |
+	//	throughputmbytes='throughput mbytes' | transactionpersecond='transactions per second' | TPS |
+	//	processortimecounter='% processor time count' | transactionresponsetime='transactions response time';
+	public METRICTYPEElements getMETRICTYPEAccess() {
+		return eMETRICTYPE;
+	}
+	
+	public EnumRule getMETRICTYPERule() {
+		return getMETRICTYPEAccess().getRule();
+	}
+	
+	////availablembytescounter:
+	////	AVAILABLEMBYTESCOUNTER_TEXT 
+	////;
+	////idletimecounter:
+	////	IDLETIMECOUNTER_TEXT 
+	////;
+	////throughputmbytes:
+	////	THROUGHPUTMBYTES_TEXT 
+	////;
+	////transactionpersecond:
+	////;
+	////processortimecounter:
+	////	PROCESSORTIMECOUNTER_TEXT
+	////;
+	//SCENARIO:
+	//	'Scenario' '{'
+	//	name=ID
+	//	'}';
+	public SCENARIOElements getSCENARIOAccess() {
+		return pSCENARIO;
+	}
+	
+	public ParserRule getSCENARIORule() {
+		return getSCENARIOAccess().getRule();
 	}
 	
 	//SUT:
@@ -2236,174 +1376,27 @@ public class XCanopusGrammarAccess extends AbstractGrammarElementFinder {
 		return getSUTAccess().getRule();
 	}
 	
-	//LoadGenerator:
-	//	{LoadGenerator} isMonitor?='isMonitor'?
-	//	'LoadGenerator'
-	//	'{' ('hostname' hostname=EString)? ('ip' ip=EString)? ('hardware' hardware=HARDWARE)? ('sut' '(' sut+=[SUT|EString]
-	//	("," sut+=[SUT|EString])* ')')? ('metricmodel' metricmodel=[MetricModel|EString])? ('monitor'
-	//	monitor=[Monitor|EString])?
-	//	'}';
-	public LoadGeneratorElements getLoadGeneratorAccess() {
-		return pLoadGenerator;
-	}
-	
-	public ParserRule getLoadGeneratorRule() {
-		return getLoadGeneratorAccess().getRule();
-	}
-	
-	//Monitor:
-	//	{Monitor}
-	//	'Monitor'
-	//	'{' ('hostname' hostname=EString)? ('ip' ip=EString)? ('hardware' hardware=HARDWARE)? ('sut' '(' sut+=[SUT|EString]
-	//	("," sut+=[SUT|EString])* ')')?
-	//	'}';
-	public MonitorElements getMonitorAccess() {
-		return pMonitor;
-	}
-	
-	public ParserRule getMonitorRule() {
-		return getMonitorAccess().getRule();
-	}
-	
-	//MetricModel:
-	//	{MetricModel}
-	//	'MetricModel'
-	//	'{' ('memory' memory=Memory)? ('disk' disk=Disk)? ('criteria' '{' criteria+=Criteria ("," criteria+=Criteria)* '}')?
-	//	('threshold' '{' threshold+=Threshold ("," threshold+=Threshold)* '}')? ('diskCounter' diskCounter=Disk_IO_Counter)?
-	//	('transactionCounter' transactionCounter=TransactionCounter)? ('memoryCounter' memoryCounter=MemoryCounter)?
-	//	('metric' '{' metric+=Metric ("," metric+=Metric)* '}')? ('counter' '{' counter+=Counter ("," counter+=Counter)*
-	//	'}')?
-	//	'}';
-	public MetricModelElements getMetricModelAccess() {
-		return pMetricModel;
-	}
-	
-	public ParserRule getMetricModelRule() {
-		return getMetricModelAccess().getRule();
-	}
-	
-	//Memory:
-	//	{Memory}
-	//	'Memory'
-	//	name=EString
-	//	'{' ('memoryCounter' memoryCounter=[MemoryCounter|EString])?
-	//	'}';
-	public MemoryElements getMemoryAccess() {
-		return pMemory;
-	}
-	
-	public ParserRule getMemoryRule() {
-		return getMemoryAccess().getRule();
-	}
-	
-	//Transaction:
-	//	{Transaction}
-	//	'Transaction'
-	//	name=EString
-	//	'{' ('transactionCounter' transactionCounter=[TransactionCounter|EString])?
-	//	'}';
-	public TransactionElements getTransactionAccess() {
-		return pTransaction;
-	}
-	
-	public ParserRule getTransactionRule() {
-		return getTransactionAccess().getRule();
-	}
-	
-	//Disk:
-	//	{Disk}
-	//	'Disk'
-	//	name=EString
-	//	'{' ('disk_io_counter' disk_io_counter=[Disk_IO_Counter|EString])?
-	//	'}';
-	public DiskElements getDiskAccess() {
-		return pDisk;
-	}
-	
-	public ParserRule getDiskRule() {
-		return getDiskAccess().getRule();
-	}
-	
-	//Criteria:
-	//	{Criteria}
-	//	'Criteria'
-	//	'{' ('value' value=EInt)?
-	//	'}';
-	public CriteriaElements getCriteriaAccess() {
-		return pCriteria;
-	}
-	
-	public ParserRule getCriteriaRule() {
-		return getCriteriaAccess().getRule();
-	}
-	
-	//Threshold:
-	//	{Threshold}
-	//	'Threshold'
-	//	'{' ('value' value=EInt)?
-	//	'}';
-	public ThresholdElements getThresholdAccess() {
-		return pThreshold;
-	}
-	
-	public ParserRule getThresholdRule() {
-		return getThresholdAccess().getRule();
-	}
-	
-	////AssociationCounterCriteriaThreshold returns canopusPerformanceMetric::AssociationCounterCriteriaThreshold:
-	////	{canopusPerformanceMetric::AssociationCounterCriteriaThreshold}
-	////	'AssociationCounterCriteriaThreshold'
+	////LoadGenerator:
+	////	{LoadGenerator}
+	////	(isMonitor?='isMonitor')?
+	////	'LoadGenerator'
 	////	'{'
-	////		('associationCriteria' associationCriteria=ASSOCIATION_CRITERIA)?
-	////		('threshold' threshold=[canopusPerformanceMetric::Threshold|EString])?
-	////		('criteria' criteria=[canopusPerformanceMetric::Criteria|EString])?
+	////		('hostname' hostname=EString)?
+	////		('ip' ip=EString)?
+	////		('hardware' hardware=HARDWARE)?
+	////		('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
+	////		('metricmodel' metricmodel=[MetricModel|EString])?
+	////		('monitorr' monitor=[Monitor|EString])?
 	////	'}';
-	//Disk_IO_Counter:
-	//	{Disk_IO_Counter}
-	//	'Disk_IO_Counter'
-	//	name=EString
-	//	'{' ('counterDisk' '{' counterDisk+=COUNTER_DISK ("," counterDisk+=COUNTER_DISK)* '}')?
-	//	//	('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-	//	'}';
-	public Disk_IO_CounterElements getDisk_IO_CounterAccess() {
-		return pDisk_IO_Counter;
-	}
-	
-	public ParserRule getDisk_IO_CounterRule() {
-		return getDisk_IO_CounterAccess().getRule();
-	}
-	
-	//TransactionCounter:
-	//	{TransactionCounter}
-	//	'TransactionCounter'
-	//	name=EString
-	//	'{' ('counterTransaction' '{' counterTransaction+=COUNTER_TRANSACTION ("," counterTransaction+=COUNTER_TRANSACTION)*
-	//	'}')?
-	//	//	('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-	//	'}';
-	public TransactionCounterElements getTransactionCounterAccess() {
-		return pTransactionCounter;
-	}
-	
-	public ParserRule getTransactionCounterRule() {
-		return getTransactionCounterAccess().getRule();
-	}
-	
-	//MemoryCounter:
-	//	{MemoryCounter}
-	//	'MemoryCounter'
-	//	name=EString
-	//	'{' ('counterMemory' '{' counterMemory+=COUNTER_MEMORY ("," counterMemory+=COUNTER_MEMORY)* '}')?
-	//	//		('associationcountercriteriathreshold' '(' associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString] ( "," associationcountercriteriathreshold+=[canopusPerformanceMetric::AssociationCounterCriteriaThreshold|EString])* ')' )?
-	//	'}';
-	public MemoryCounterElements getMemoryCounterAccess() {
-		return pMemoryCounter;
-	}
-	
-	public ParserRule getMemoryCounterRule() {
-		return getMemoryCounterAccess().getRule();
-	}
-	
+	////Monitor:
+	////	{Monitor}
+	////	'Monitor'
+	////	'{'
+	////		('hostname' hostname=EString)?
+	////		('ip' ip=EString)?
+	////		('hardware' hardware=HARDWARE)?
+	////		('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
+	////	'}';
 	//EInt ecore::EInt:
 	//	'-'? INT;
 	public EIntElements getEIntAccess() {
@@ -2454,46 +1447,154 @@ public class XCanopusGrammarAccess extends AbstractGrammarElementFinder {
 		return getSUT_TYPEAccess().getRule();
 	}
 	
-	//enum ASSOCIATION_CRITERIA:
-	//	BETWEEN | GREATER_THAN_OR_EQUAL_TO | LESS_THAN;
-	public ASSOCIATION_CRITERIAElements getASSOCIATION_CRITERIAAccess() {
-		return eASSOCIATION_CRITERIA;
+	//terminal SHOULDBELESSTHAN_TEXT:
+	//	'should be less than';
+	public TerminalRule getSHOULDBELESSTHAN_TEXTRule() {
+		return tSHOULDBELESSTHAN_TEXT;
 	}
 	
-	public EnumRule getASSOCIATION_CRITERIARule() {
-		return getASSOCIATION_CRITERIAAccess().getRule();
+	//terminal SHOULDBEATLEAST_TEXT:
+	//	'should be at least';
+	public TerminalRule getSHOULDBEATLEAST_TEXTRule() {
+		return tSHOULDBEATLEAST_TEXT;
 	}
 	
-	//enum COUNTER_DISK:
-	//	AVG_DISK_SECS_TRANSFER_COUNTER | PERCENTAGE_IDLE_TIME_COUNTER | DISK_TRANSFERS_SEC_COUNTER |
-	//	AVG_DISK_QUEUE_LENGTH_COUNTER | SPLIT_IO_SEC_COUNTER | FREE_MEGABYTES_COUNTER;
-	public COUNTER_DISKElements getCOUNTER_DISKAccess() {
-		return eCOUNTER_DISK;
+	//terminal SHOULDBEGREATERTHAN:
+	//	'should be more than';
+	public TerminalRule getSHOULDBEGREATERTHANRule() {
+		return tSHOULDBEGREATERTHAN;
 	}
 	
-	public EnumRule getCOUNTER_DISKRule() {
-		return getCOUNTER_DISKAccess().getRule();
+	//terminal WHENTHENUMBERISLESSTHAN_TEXT:
+	//	'when the number of virtual users is less than';
+	public TerminalRule getWHENTHENUMBERISLESSTHAN_TEXTRule() {
+		return tWHENTHENUMBERISLESSTHAN_TEXT;
 	}
 	
-	//enum COUNTER_TRANSACTION:
-	//	TRANSACTION_RESPONSE_TIME | TRANSACTION_PER_SECOND_TPS | TRANSACTION_SUCCESS_RATE;
-	public COUNTER_TRANSACTIONElements getCOUNTER_TRANSACTIONAccess() {
-		return eCOUNTER_TRANSACTION;
+	//terminal WHENTHENUMBERISGREATERTHAN_TEXT:
+	//	'when the number of virtual users is greater than';
+	public TerminalRule getWHENTHENUMBERISGREATERTHAN_TEXTRule() {
+		return tWHENTHENUMBERISGREATERTHAN_TEXT;
 	}
 	
-	public EnumRule getCOUNTER_TRANSACTIONRule() {
-		return getCOUNTER_TRANSACTIONAccess().getRule();
+	//terminal WHENTHENUMBERISGREATEROREQUAL_TEXT:
+	//	'when the number of virtual users is greater or equal to';
+	public TerminalRule getWHENTHENUMBERISGREATEROREQUAL_TEXTRule() {
+		return tWHENTHENUMBERISGREATEROREQUAL_TEXT;
 	}
 	
-	//enum COUNTER_MEMORY:
-	//	AVALIABLE_MBYTES_COUNTER | PAGES_SEC_COUNTER | PAGE_READS_SEC_COUNTER | WORKING_SET_COUNTER |
-	//	POOL_NONPAGE_BYTES_COUNTER | PAGED_POOL_BYTES_COUNTER | PAGED_POOL_FAILURES_COUNTER | CACHE_BYTES_COUNTER;
-	public COUNTER_MEMORYElements getCOUNTER_MEMORYAccess() {
-		return eCOUNTER_MEMORY;
+	//terminal WHENTHENUMBERIRLESSEROREQUAL_TEXT:
+	//	'when the number of virtual users is lesser or equal to';
+	public TerminalRule getWHENTHENUMBERIRLESSEROREQUAL_TEXTRule() {
+		return tWHENTHENUMBERIRLESSEROREQUAL_TEXT;
 	}
 	
-	public EnumRule getCOUNTER_MEMORYRule() {
-		return getCOUNTER_MEMORYAccess().getRule();
+	//terminal WHENTHENUMBERAREBETWEEN_TEXT:
+	//	'when the number of virtual users are between';
+	public TerminalRule getWHENTHENUMBERAREBETWEEN_TEXTRule() {
+		return tWHENTHENUMBERAREBETWEEN_TEXT;
+	}
+	
+	//terminal MBWHEN_GREATEROREQUAL_TEXT:
+	//	'MB when the number of virtual users is greater than or equal to';
+	public TerminalRule getMBWHEN_GREATEROREQUAL_TEXTRule() {
+		return tMBWHEN_GREATEROREQUAL_TEXT;
+	}
+	
+	//terminal MBWHEN_LESSTHAN_TEXT:
+	//	'MB when the number of virtual users is less than';
+	public TerminalRule getMBWHEN_LESSTHAN_TEXTRule() {
+		return tMBWHEN_LESSTHAN_TEXT;
+	}
+	
+	//terminal MBWHEN_MORETHAN_TEXT:
+	//	'MB when the number of virtual users is more than';
+	public TerminalRule getMBWHEN_MORETHAN_TEXTRule() {
+		return tMBWHEN_MORETHAN_TEXT;
+	}
+	
+	//terminal MBWHEN_MINOROREQUAL_TEXT:
+	//	'MB when the number of virtual users is lesser than or equal to';
+	public TerminalRule getMBWHEN_MINOROREQUAL_TEXTRule() {
+		return tMBWHEN_MINOROREQUAL_TEXT;
+	}
+	
+	//terminal AND:
+	//	'and';
+	public TerminalRule getANDRule() {
+		return tAND;
+	}
+	
+	//terminal MONITOR_TEXT:
+	//	'monitor';
+	public TerminalRule getMONITOR_TEXTRule() {
+		return tMONITOR_TEXT;
+	}
+	
+	//terminal THE:
+	//	'the';
+	public TerminalRule getTHERule() {
+		return tTHE;
+	}
+	
+	//terminal THAT:
+	//	'that';
+	public TerminalRule getTHATRule() {
+		return tTHAT;
+	}
+	
+	//terminal MONITOREDBY:
+	//	'monitored by ';
+	public TerminalRule getMONITOREDBYRule() {
+		return tMONITOREDBY;
+	}
+	
+	//terminal WORKLOADGENERATED:
+	//	'workload generated through';
+	public TerminalRule getWORKLOADGENERATEDRule() {
+		return tWORKLOADGENERATED;
+	}
+	
+	//terminal LOADGENERATORFORTHE:
+	//	'Load Generator for the';
+	public TerminalRule getLOADGENERATORFORTHERule() {
+		return tLOADGENERATORFORTHE;
+	}
+	
+	//terminal ISTESTSCENARIO:
+	//	'test scenario';
+	public TerminalRule getISTESTSCENARIORule() {
+		return tISTESTSCENARIO;
+	}
+	
+	//terminal ON:
+	//	'on';
+	public TerminalRule getONRule() {
+		return tON;
+	}
+	
+	//terminal ISMONITORED:
+	//	'is monitored';
+	public TerminalRule getISMONITOREDRule() {
+		return tISMONITORED;
+	}
+	
+	//terminal ATL:
+	//	'at least';
+	public TerminalRule getATLRule() {
+		return tATL;
+	}
+	
+	//terminal fragment NNL:
+	//	!('\r' | '\n');
+	public TerminalRule getNNLRule() {
+		return tNNL;
+	}
+	
+	//terminal fragment NL:
+	//	'\r'? '\n'?;
+	public TerminalRule getNLRule() {
+		return tNL;
 	}
 	
 	//@Override

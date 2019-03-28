@@ -17,11 +17,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.unipampa.lesse.xCanopus.Include;
-import org.unipampa.lesse.xCanopus.LoadGenerator;
+import org.unipampa.lesse.xCanopus.Main;
 import org.unipampa.lesse.xCanopus.Model;
-import org.unipampa.lesse.xCanopus.Monitoring;
-import org.unipampa.lesse.xCanopus.SUT;
 import org.unipampa.lesse.xCanopus.XCanopusPackage;
 
 /**
@@ -32,10 +29,7 @@ import org.unipampa.lesse.xCanopus.XCanopusPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.unipampa.lesse.xCanopus.impl.ModelImpl#getIncludes <em>Includes</em>}</li>
- *   <li>{@link org.unipampa.lesse.xCanopus.impl.ModelImpl#getMonitorings <em>Monitorings</em>}</li>
- *   <li>{@link org.unipampa.lesse.xCanopus.impl.ModelImpl#getSuts <em>Suts</em>}</li>
- *   <li>{@link org.unipampa.lesse.xCanopus.impl.ModelImpl#getLoadGenerators <em>Load Generators</em>}</li>
+ *   <li>{@link org.unipampa.lesse.xCanopus.impl.ModelImpl#getMain <em>Main</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,44 +37,14 @@ import org.unipampa.lesse.xCanopus.XCanopusPackage;
 public class ModelImpl extends MinimalEObjectImpl.Container implements Model
 {
   /**
-   * The cached value of the '{@link #getIncludes() <em>Includes</em>}' containment reference list.
+   * The cached value of the '{@link #getMain() <em>Main</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getIncludes()
+   * @see #getMain()
    * @generated
    * @ordered
    */
-  protected EList<Include> includes;
-
-  /**
-   * The cached value of the '{@link #getMonitorings() <em>Monitorings</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMonitorings()
-   * @generated
-   * @ordered
-   */
-  protected EList<Monitoring> monitorings;
-
-  /**
-   * The cached value of the '{@link #getSuts() <em>Suts</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSuts()
-   * @generated
-   * @ordered
-   */
-  protected EList<SUT> suts;
-
-  /**
-   * The cached value of the '{@link #getLoadGenerators() <em>Load Generators</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLoadGenerators()
-   * @generated
-   * @ordered
-   */
-  protected EList<LoadGenerator> loadGenerators;
+  protected EList<Main> main;
 
   /**
    * <!-- begin-user-doc -->
@@ -109,58 +73,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @generated
    */
   @Override
-  public EList<Include> getIncludes()
+  public EList<Main> getMain()
   {
-    if (includes == null)
+    if (main == null)
     {
-      includes = new EObjectContainmentEList<Include>(Include.class, this, XCanopusPackage.MODEL__INCLUDES);
+      main = new EObjectContainmentEList<Main>(Main.class, this, XCanopusPackage.MODEL__MAIN);
     }
-    return includes;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<Monitoring> getMonitorings()
-  {
-    if (monitorings == null)
-    {
-      monitorings = new EObjectContainmentEList<Monitoring>(Monitoring.class, this, XCanopusPackage.MODEL__MONITORINGS);
-    }
-    return monitorings;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<SUT> getSuts()
-  {
-    if (suts == null)
-    {
-      suts = new EObjectContainmentEList<SUT>(SUT.class, this, XCanopusPackage.MODEL__SUTS);
-    }
-    return suts;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<LoadGenerator> getLoadGenerators()
-  {
-    if (loadGenerators == null)
-    {
-      loadGenerators = new EObjectContainmentEList<LoadGenerator>(LoadGenerator.class, this, XCanopusPackage.MODEL__LOAD_GENERATORS);
-    }
-    return loadGenerators;
+    return main;
   }
 
   /**
@@ -173,14 +92,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case XCanopusPackage.MODEL__INCLUDES:
-        return ((InternalEList<?>)getIncludes()).basicRemove(otherEnd, msgs);
-      case XCanopusPackage.MODEL__MONITORINGS:
-        return ((InternalEList<?>)getMonitorings()).basicRemove(otherEnd, msgs);
-      case XCanopusPackage.MODEL__SUTS:
-        return ((InternalEList<?>)getSuts()).basicRemove(otherEnd, msgs);
-      case XCanopusPackage.MODEL__LOAD_GENERATORS:
-        return ((InternalEList<?>)getLoadGenerators()).basicRemove(otherEnd, msgs);
+      case XCanopusPackage.MODEL__MAIN:
+        return ((InternalEList<?>)getMain()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -195,14 +108,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case XCanopusPackage.MODEL__INCLUDES:
-        return getIncludes();
-      case XCanopusPackage.MODEL__MONITORINGS:
-        return getMonitorings();
-      case XCanopusPackage.MODEL__SUTS:
-        return getSuts();
-      case XCanopusPackage.MODEL__LOAD_GENERATORS:
-        return getLoadGenerators();
+      case XCanopusPackage.MODEL__MAIN:
+        return getMain();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -218,21 +125,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case XCanopusPackage.MODEL__INCLUDES:
-        getIncludes().clear();
-        getIncludes().addAll((Collection<? extends Include>)newValue);
-        return;
-      case XCanopusPackage.MODEL__MONITORINGS:
-        getMonitorings().clear();
-        getMonitorings().addAll((Collection<? extends Monitoring>)newValue);
-        return;
-      case XCanopusPackage.MODEL__SUTS:
-        getSuts().clear();
-        getSuts().addAll((Collection<? extends SUT>)newValue);
-        return;
-      case XCanopusPackage.MODEL__LOAD_GENERATORS:
-        getLoadGenerators().clear();
-        getLoadGenerators().addAll((Collection<? extends LoadGenerator>)newValue);
+      case XCanopusPackage.MODEL__MAIN:
+        getMain().clear();
+        getMain().addAll((Collection<? extends Main>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -248,17 +143,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case XCanopusPackage.MODEL__INCLUDES:
-        getIncludes().clear();
-        return;
-      case XCanopusPackage.MODEL__MONITORINGS:
-        getMonitorings().clear();
-        return;
-      case XCanopusPackage.MODEL__SUTS:
-        getSuts().clear();
-        return;
-      case XCanopusPackage.MODEL__LOAD_GENERATORS:
-        getLoadGenerators().clear();
+      case XCanopusPackage.MODEL__MAIN:
+        getMain().clear();
         return;
     }
     super.eUnset(featureID);
@@ -274,14 +160,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case XCanopusPackage.MODEL__INCLUDES:
-        return includes != null && !includes.isEmpty();
-      case XCanopusPackage.MODEL__MONITORINGS:
-        return monitorings != null && !monitorings.isEmpty();
-      case XCanopusPackage.MODEL__SUTS:
-        return suts != null && !suts.isEmpty();
-      case XCanopusPackage.MODEL__LOAD_GENERATORS:
-        return loadGenerators != null && !loadGenerators.isEmpty();
+      case XCanopusPackage.MODEL__MAIN:
+        return main != null && !main.isEmpty();
     }
     return super.eIsSet(featureID);
   }

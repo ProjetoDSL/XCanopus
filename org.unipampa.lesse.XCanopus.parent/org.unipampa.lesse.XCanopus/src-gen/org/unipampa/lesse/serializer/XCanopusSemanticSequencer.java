@@ -15,26 +15,19 @@ import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.unipampa.lesse.services.XCanopusGrammarAccess;
-import org.unipampa.lesse.xCanopus.AND;
-import org.unipampa.lesse.xCanopus.Criteria;
-import org.unipampa.lesse.xCanopus.Disk;
-import org.unipampa.lesse.xCanopus.Disk_IO_Counter;
-import org.unipampa.lesse.xCanopus.Include;
-import org.unipampa.lesse.xCanopus.LoadGenerator;
-import org.unipampa.lesse.xCanopus.Memory;
-import org.unipampa.lesse.xCanopus.MemoryCounter;
+import org.unipampa.lesse.xCanopus.Main;
 import org.unipampa.lesse.xCanopus.MetricModel;
 import org.unipampa.lesse.xCanopus.Model;
-import org.unipampa.lesse.xCanopus.Monitor;
-import org.unipampa.lesse.xCanopus.Monitoring;
-import org.unipampa.lesse.xCanopus.POSTCONDITION;
+import org.unipampa.lesse.xCanopus.SCENARIO;
 import org.unipampa.lesse.xCanopus.SUT;
-import org.unipampa.lesse.xCanopus.THEN;
-import org.unipampa.lesse.xCanopus.Threshold;
-import org.unipampa.lesse.xCanopus.Transaction;
-import org.unipampa.lesse.xCanopus.TransactionCounter;
-import org.unipampa.lesse.xCanopus.WHEN;
 import org.unipampa.lesse.xCanopus.XCanopusPackage;
+import org.unipampa.lesse.xCanopus.and_atleast;
+import org.unipampa.lesse.xCanopus.and_the_metric;
+import org.unipampa.lesse.xCanopus.and_the_scenario;
+import org.unipampa.lesse.xCanopus.and_workload;
+import org.unipampa.lesse.xCanopus.given;
+import org.unipampa.lesse.xCanopus.then;
+import org.unipampa.lesse.xCanopus.when;
 
 @SuppressWarnings("all")
 public class XCanopusSemanticSequencer extends AbstractDelegatingSemanticSequencer {
@@ -50,29 +43,8 @@ public class XCanopusSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == XCanopusPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case XCanopusPackage.AND:
-				sequence_AND(context, (AND) semanticObject); 
-				return; 
-			case XCanopusPackage.CRITERIA:
-				sequence_Criteria(context, (Criteria) semanticObject); 
-				return; 
-			case XCanopusPackage.DISK:
-				sequence_Disk(context, (Disk) semanticObject); 
-				return; 
-			case XCanopusPackage.DISK_IO_COUNTER:
-				sequence_Disk_IO_Counter(context, (Disk_IO_Counter) semanticObject); 
-				return; 
-			case XCanopusPackage.INCLUDE:
-				sequence_Include(context, (Include) semanticObject); 
-				return; 
-			case XCanopusPackage.LOAD_GENERATOR:
-				sequence_LoadGenerator(context, (LoadGenerator) semanticObject); 
-				return; 
-			case XCanopusPackage.MEMORY:
-				sequence_Memory(context, (Memory) semanticObject); 
-				return; 
-			case XCanopusPackage.MEMORY_COUNTER:
-				sequence_MemoryCounter(context, (MemoryCounter) semanticObject); 
+			case XCanopusPackage.MAIN:
+				sequence_Main(context, (Main) semanticObject); 
 				return; 
 			case XCanopusPackage.METRIC_MODEL:
 				sequence_MetricModel(context, (MetricModel) semanticObject); 
@@ -80,32 +52,32 @@ public class XCanopusSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case XCanopusPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
 				return; 
-			case XCanopusPackage.MONITOR:
-				sequence_Monitor(context, (Monitor) semanticObject); 
-				return; 
-			case XCanopusPackage.MONITORING:
-				sequence_Monitoring(context, (Monitoring) semanticObject); 
-				return; 
-			case XCanopusPackage.POSTCONDITION:
-				sequence_POSTCONDITION(context, (POSTCONDITION) semanticObject); 
+			case XCanopusPackage.SCENARIO:
+				sequence_SCENARIO(context, (SCENARIO) semanticObject); 
 				return; 
 			case XCanopusPackage.SUT:
 				sequence_SUT(context, (SUT) semanticObject); 
 				return; 
+			case XCanopusPackage.AND_ATLEAST:
+				sequence_and_atleast(context, (and_atleast) semanticObject); 
+				return; 
+			case XCanopusPackage.AND_THE_METRIC:
+				sequence_and_the_metric(context, (and_the_metric) semanticObject); 
+				return; 
+			case XCanopusPackage.AND_THE_SCENARIO:
+				sequence_and_the_scenario(context, (and_the_scenario) semanticObject); 
+				return; 
+			case XCanopusPackage.AND_WORKLOAD:
+				sequence_and_workload(context, (and_workload) semanticObject); 
+				return; 
+			case XCanopusPackage.GIVEN:
+				sequence_given(context, (given) semanticObject); 
+				return; 
 			case XCanopusPackage.THEN:
-				sequence_THEN(context, (THEN) semanticObject); 
-				return; 
-			case XCanopusPackage.THRESHOLD:
-				sequence_Threshold(context, (Threshold) semanticObject); 
-				return; 
-			case XCanopusPackage.TRANSACTION:
-				sequence_Transaction(context, (Transaction) semanticObject); 
-				return; 
-			case XCanopusPackage.TRANSACTION_COUNTER:
-				sequence_TransactionCounter(context, (TransactionCounter) semanticObject); 
+				sequence_then(context, (then) semanticObject); 
 				return; 
 			case XCanopusPackage.WHEN:
-				sequence_WHEN(context, (WHEN) semanticObject); 
+				sequence_when(context, (when) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -114,124 +86,12 @@ public class XCanopusSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     CONDITION returns AND
-	 *     AND returns AND
+	 *     Main returns Main
 	 *
 	 * Constraint:
-	 *     post=POSTCONDITION
+	 *     (main+=MetricModel | main+=SCENARIO | main+=SUT)
 	 */
-	protected void sequence_AND(ISerializationContext context, AND semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.CONDITION__POST) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.CONDITION__POST));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getANDAccess().getPostPOSTCONDITIONParserRuleCall_1_0(), semanticObject.getPost());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Criteria returns Criteria
-	 *
-	 * Constraint:
-	 *     value=EInt?
-	 */
-	protected void sequence_Criteria(ISerializationContext context, Criteria semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Metric returns Disk
-	 *     Disk returns Disk
-	 *
-	 * Constraint:
-	 *     (name=EString disk_io_counter=[Disk_IO_Counter|EString]?)
-	 */
-	protected void sequence_Disk(ISerializationContext context, Disk semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Counter returns Disk_IO_Counter
-	 *     Disk_IO_Counter returns Disk_IO_Counter
-	 *
-	 * Constraint:
-	 *     (name=EString (counterDisk+=COUNTER_DISK counterDisk+=COUNTER_DISK*)?)
-	 */
-	protected void sequence_Disk_IO_Counter(ISerializationContext context, Disk_IO_Counter semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Include returns Include
-	 *
-	 * Constraint:
-	 *     (importURI=STRING name=ID)
-	 */
-	protected void sequence_Include(ISerializationContext context, Include semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.INCLUDE__IMPORT_URI) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.INCLUDE__IMPORT_URI));
-			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.INCLUDE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.INCLUDE__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getIncludeAccess().getImportURISTRINGTerminalRuleCall_1_0(), semanticObject.getImportURI());
-		feeder.accept(grammarAccess.getIncludeAccess().getNameIDTerminalRuleCall_3_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     LoadGenerator returns LoadGenerator
-	 *
-	 * Constraint:
-	 *     (
-	 *         isMonitor?='isMonitor'? 
-	 *         hostname=EString? 
-	 *         ip=EString? 
-	 *         hardware=HARDWARE? 
-	 *         (sut+=[SUT|EString] sut+=[SUT|EString]*)? 
-	 *         metricmodel=[MetricModel|EString]? 
-	 *         monitor=[Monitor|EString]?
-	 *     )
-	 */
-	protected void sequence_LoadGenerator(ISerializationContext context, LoadGenerator semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Counter returns MemoryCounter
-	 *     MemoryCounter returns MemoryCounter
-	 *
-	 * Constraint:
-	 *     (name=EString (counterMemory+=COUNTER_MEMORY counterMemory+=COUNTER_MEMORY*)?)
-	 */
-	protected void sequence_MemoryCounter(ISerializationContext context, MemoryCounter semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Metric returns Memory
-	 *     Memory returns Memory
-	 *
-	 * Constraint:
-	 *     (name=EString memoryCounter=[MemoryCounter|EString]?)
-	 */
-	protected void sequence_Memory(ISerializationContext context, Memory semanticObject) {
+	protected void sequence_Main(ISerializationContext context, Main semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -241,17 +101,7 @@ public class XCanopusSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     MetricModel returns MetricModel
 	 *
 	 * Constraint:
-	 *     (
-	 *         memory=Memory? 
-	 *         disk=Disk? 
-	 *         (criteria+=Criteria criteria+=Criteria*)? 
-	 *         (threshold+=Threshold threshold+=Threshold*)? 
-	 *         diskCounter=Disk_IO_Counter? 
-	 *         transactionCounter=TransactionCounter? 
-	 *         memoryCounter=MemoryCounter? 
-	 *         (metric+=Metric metric+=Metric*)? 
-	 *         (counter+=Counter counter+=Counter*)?
-	 *     )
+	 *     (name=ID steps+=STEPS+)
 	 */
 	protected void sequence_MetricModel(ISerializationContext context, MetricModel semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -263,12 +113,7 @@ public class XCanopusSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Model returns Model
 	 *
 	 * Constraint:
-	 *     (
-	 *         (includes+=Include+ ((monitorings+=Monitoring+ loadGenerators+=LoadGenerator+) | loadGenerators+=LoadGenerator+)) | 
-	 *         (((includes+=Include+ monitorings+=Monitoring+) | monitorings+=Monitoring+)? suts+=SUT+ loadGenerators+=LoadGenerator+) | 
-	 *         (monitorings+=Monitoring+ loadGenerators+=LoadGenerator+) | 
-	 *         loadGenerators+=LoadGenerator+
-	 *     )?
+	 *     main+=Main+
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -277,45 +122,19 @@ public class XCanopusSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     Monitor returns Monitor
+	 *     SCENARIO returns SCENARIO
 	 *
 	 * Constraint:
-	 *     (hostname=EString? ip=EString? hardware=HARDWARE? (sut+=[SUT|EString] sut+=[SUT|EString]*)?)
+	 *     name=ID
 	 */
-	protected void sequence_Monitor(ISerializationContext context, Monitor semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Monitoring returns Monitoring
-	 *
-	 * Constraint:
-	 *     (
-	 *         sut=[SUT|ID] 
-	 *         sut_type=SUT_TYPE 
-	 *         sut=[SUT|ID] 
-	 *         condition=CONDITION 
-	 *         sut=[SUT|ID] 
-	 *         sut_type2=SUT_TYPE 
-	 *         sut=[SUT|ID]
-	 *     )
-	 */
-	protected void sequence_Monitoring(ISerializationContext context, Monitoring semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     POSTCONDITION returns POSTCONDITION
-	 *
-	 * Constraint:
-	 *     (WGT='workload generated through' | THE='the' | ATL='At Least')
-	 */
-	protected void sequence_POSTCONDITION(ISerializationContext context, POSTCONDITION semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_SCENARIO(ISerializationContext context, SCENARIO semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.SCENARIO__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.SCENARIO__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSCENARIOAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
@@ -339,75 +158,136 @@ public class XCanopusSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     CONDITION returns THEN
-	 *     THEN returns THEN
+	 *     STEPS returns and_atleast
+	 *     and_atleast returns and_atleast
 	 *
 	 * Constraint:
-	 *     post=POSTCONDITION
+	 *     (integer1=INT integer2=INT)
 	 */
-	protected void sequence_THEN(ISerializationContext context, THEN semanticObject) {
+	protected void sequence_and_atleast(ISerializationContext context, and_atleast semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.CONDITION__POST) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.CONDITION__POST));
+			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.AND_ATLEAST__INTEGER1) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.AND_ATLEAST__INTEGER1));
+			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.AND_ATLEAST__INTEGER2) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.AND_ATLEAST__INTEGER2));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTHENAccess().getPostPOSTCONDITIONParserRuleCall_1_0(), semanticObject.getPost());
+		feeder.accept(grammarAccess.getAnd_atleastAccess().getInteger1INTTerminalRuleCall_2_0(), semanticObject.getInteger1());
+		feeder.accept(grammarAccess.getAnd_atleastAccess().getInteger2INTTerminalRuleCall_4_0(), semanticObject.getInteger2());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Threshold returns Threshold
+	 *     STEPS returns and_the_metric
+	 *     and_the_metric returns and_the_metric
 	 *
 	 * Constraint:
-	 *     value=EInt?
+	 *     (metric=METRICTYPE integer1=INT integer2=INT integer3=INT?)
 	 */
-	protected void sequence_Threshold(ISerializationContext context, Threshold semanticObject) {
+	protected void sequence_and_the_metric(ISerializationContext context, and_the_metric semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Counter returns TransactionCounter
-	 *     TransactionCounter returns TransactionCounter
+	 *     STEPS returns and_the_scenario
+	 *     and_the_scenario returns and_the_scenario
 	 *
 	 * Constraint:
-	 *     (name=EString (counterTransaction+=COUNTER_TRANSACTION counterTransaction+=COUNTER_TRANSACTION*)?)
+	 *     scenario=[SCENARIO|ID]
 	 */
-	protected void sequence_TransactionCounter(ISerializationContext context, TransactionCounter semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Transaction returns Transaction
-	 *
-	 * Constraint:
-	 *     (name=EString transactionCounter=[TransactionCounter|EString]?)
-	 */
-	protected void sequence_Transaction(ISerializationContext context, Transaction semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     CONDITION returns WHEN
-	 *     WHEN returns WHEN
-	 *
-	 * Constraint:
-	 *     post=POSTCONDITION
-	 */
-	protected void sequence_WHEN(ISerializationContext context, WHEN semanticObject) {
+	protected void sequence_and_the_scenario(ISerializationContext context, and_the_scenario semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.CONDITION__POST) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.CONDITION__POST));
+			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.AND_THE_SCENARIO__SCENARIO) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.AND_THE_SCENARIO__SCENARIO));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getWHENAccess().getPostPOSTCONDITIONParserRuleCall_1_0(), semanticObject.getPost());
+		feeder.accept(grammarAccess.getAnd_the_scenarioAccess().getScenarioSCENARIOIDTerminalRuleCall_2_0_1(), semanticObject.eGet(XCanopusPackage.Literals.AND_THE_SCENARIO__SCENARIO, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     STEPS returns and_workload
+	 *     and_workload returns and_workload
+	 *
+	 * Constraint:
+	 *     (sut1=[SUT|ID] suttype=SUT_TYPE sut2=[SUT|ID])
+	 */
+	protected void sequence_and_workload(ISerializationContext context, and_workload semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.AND_WORKLOAD__SUT1) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.AND_WORKLOAD__SUT1));
+			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.AND_WORKLOAD__SUTTYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.AND_WORKLOAD__SUTTYPE));
+			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.AND_WORKLOAD__SUT2) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.AND_WORKLOAD__SUT2));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAnd_workloadAccess().getSut1SUTIDTerminalRuleCall_2_0_1(), semanticObject.eGet(XCanopusPackage.Literals.AND_WORKLOAD__SUT1, false));
+		feeder.accept(grammarAccess.getAnd_workloadAccess().getSuttypeSUT_TYPEEnumRuleCall_4_0(), semanticObject.getSuttype());
+		feeder.accept(grammarAccess.getAnd_workloadAccess().getSut2SUTIDTerminalRuleCall_6_0_1(), semanticObject.eGet(XCanopusPackage.Literals.AND_WORKLOAD__SUT2, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     STEPS returns given
+	 *     given returns given
+	 *
+	 * Constraint:
+	 *     (sut1=[SUT|ID] suttype=SUT_TYPE sut2=[SUT|ID])
+	 */
+	protected void sequence_given(ISerializationContext context, given semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.GIVEN__SUT1) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.GIVEN__SUT1));
+			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.GIVEN__SUTTYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.GIVEN__SUTTYPE));
+			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.GIVEN__SUT2) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.GIVEN__SUT2));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getGivenAccess().getSut1SUTIDTerminalRuleCall_2_0_1(), semanticObject.eGet(XCanopusPackage.Literals.GIVEN__SUT1, false));
+		feeder.accept(grammarAccess.getGivenAccess().getSuttypeSUT_TYPEEnumRuleCall_3_0(), semanticObject.getSuttype());
+		feeder.accept(grammarAccess.getGivenAccess().getSut2SUTIDTerminalRuleCall_5_0_1(), semanticObject.eGet(XCanopusPackage.Literals.GIVEN__SUT2, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     STEPS returns then
+	 *     then returns then
+	 *
+	 * Constraint:
+	 *     (metric=METRICTYPE integer1=INT integer2=INT integer3=INT?)
+	 */
+	protected void sequence_then(ISerializationContext context, then semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     STEPS returns when
+	 *     when returns when
+	 *
+	 * Constraint:
+	 *     metrictype=METRICTYPEMONITORED
+	 */
+	protected void sequence_when(ISerializationContext context, when semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XCanopusPackage.Literals.WHEN__METRICTYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XCanopusPackage.Literals.WHEN__METRICTYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getWhenAccess().getMetrictypeMETRICTYPEMONITOREDEnumRuleCall_2_0(), semanticObject.getMetrictype());
 		feeder.finish();
 	}
 	

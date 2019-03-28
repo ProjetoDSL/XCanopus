@@ -6,6 +6,22 @@
     complianceLevel="6.0" copyrightFields="false" runtimeVersion="2.16">
   <genPackages prefix="XCanopus" basePackage="org.unipampa.lesse" disposableProviderFactory="true"
       fileExtensions="xcanopus" ecorePackage="XCanopus.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="XCanopus.ecore#//METRICTYPEMONITORED">
+      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//METRICTYPEMONITORED/MEMORY"/>
+      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//METRICTYPEMONITORED/DISK"/>
+      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//METRICTYPEMONITORED/WEBRESOURCES"/>
+      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//METRICTYPEMONITORED/TRANSACTION"/>
+      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//METRICTYPEMONITORED/PROCESSOR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="XCanopus.ecore#//METRICTYPE">
+      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//METRICTYPE/availablembytescounter"/>
+      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//METRICTYPE/idletimecounter"/>
+      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//METRICTYPE/throughputmbytes"/>
+      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//METRICTYPE/transactionpersecond"/>
+      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//METRICTYPE/TPS"/>
+      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//METRICTYPE/processortimecounter"/>
+      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//METRICTYPE/transactionresponsetime"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="XCanopus.ecore#//HARDWARE">
       <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//HARDWARE/PHYSICAL_MACHINE"/>
       <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//HARDWARE/VIRTUAL_MACHINE"/>
@@ -17,120 +33,54 @@
       <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//SUT_TYPE/WEBAPP"/>
       <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//SUT_TYPE/WEBSERVICE"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="XCanopus.ecore#//ASSOCIATION_CRITERIA">
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//ASSOCIATION_CRITERIA/BETWEEN"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//ASSOCIATION_CRITERIA/GREATER_THAN_OR_EQUAL_TO"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//ASSOCIATION_CRITERIA/LESS_THAN"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="XCanopus.ecore#//COUNTER_DISK">
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_DISK/AVG_DISK_SECS_TRANSFER_COUNTER"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_DISK/PERCENTAGE_IDLE_TIME_COUNTER"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_DISK/DISK_TRANSFERS_SEC_COUNTER"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_DISK/AVG_DISK_QUEUE_LENGTH_COUNTER"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_DISK/SPLIT_IO_SEC_COUNTER"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_DISK/FREE_MEGABYTES_COUNTER"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="XCanopus.ecore#//COUNTER_TRANSACTION">
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_TRANSACTION/TRANSACTION_RESPONSE_TIME"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_TRANSACTION/TRANSACTION_PER_SECOND_TPS"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_TRANSACTION/TRANSACTION_SUCCESS_RATE"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="XCanopus.ecore#//COUNTER_MEMORY">
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_MEMORY/AVALIABLE_MBYTES_COUNTER"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_MEMORY/PAGES_SEC_COUNTER"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_MEMORY/PAGE_READS_SEC_COUNTER"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_MEMORY/WORKING_SET_COUNTER"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_MEMORY/POOL_NONPAGE_BYTES_COUNTER"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_MEMORY/PAGED_POOL_BYTES_COUNTER"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_MEMORY/PAGED_POOL_FAILURES_COUNTER"/>
-      <genEnumLiterals ecoreEnumLiteral="XCanopus.ecore#//COUNTER_MEMORY/CACHE_BYTES_COUNTER"/>
-    </genEnums>
     <genClasses ecoreClass="XCanopus.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//Model/includes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//Model/monitorings"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//Model/suts"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//Model/loadGenerators"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//Model/main"/>
     </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//Include">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Include/importURI"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Include/name"/>
+    <genClasses ecoreClass="XCanopus.ecore#//MetricModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//MetricModel/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//MetricModel/steps"/>
     </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//Monitoring">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//Monitoring/sut"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Monitoring/sut_type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//Monitoring/condition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Monitoring/sut_type2"/>
+    <genClasses ecoreClass="XCanopus.ecore#//Main">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//Main/main"/>
     </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//CONDITION">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//CONDITION/post"/>
+    <genClasses ecoreClass="XCanopus.ecore#//STEPS"/>
+    <genClasses ecoreClass="XCanopus.ecore#//and_workload">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//and_workload/sut1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//and_workload/suttype"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//and_workload/sut2"/>
     </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//AND"/>
-    <genClasses ecoreClass="XCanopus.ecore#//WHEN"/>
-    <genClasses ecoreClass="XCanopus.ecore#//THEN"/>
-    <genClasses ecoreClass="XCanopus.ecore#//POSTCONDITION">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//POSTCONDITION/WGT"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//POSTCONDITION/THE"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//POSTCONDITION/ATL"/>
+    <genClasses ecoreClass="XCanopus.ecore#//and_the_scenario">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//and_the_scenario/scenario"/>
     </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//Metric">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Metric/name"/>
+    <genClasses ecoreClass="XCanopus.ecore#//and_atleast">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//and_atleast/integer1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//and_atleast/integer2"/>
     </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//Counter">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Counter/name"/>
+    <genClasses ecoreClass="XCanopus.ecore#//and_the_metric">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//and_the_metric/metric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//and_the_metric/integer1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//and_the_metric/integer2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//and_the_metric/integer3"/>
+    </genClasses>
+    <genClasses ecoreClass="XCanopus.ecore#//when">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//when/metrictype"/>
+    </genClasses>
+    <genClasses ecoreClass="XCanopus.ecore#//then">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//then/metric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//then/integer1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//then/integer2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//then/integer3"/>
+    </genClasses>
+    <genClasses ecoreClass="XCanopus.ecore#//given">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//given/sut1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//given/suttype"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//given/sut2"/>
+    </genClasses>
+    <genClasses ecoreClass="XCanopus.ecore#//SCENARIO">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//SCENARIO/name"/>
     </genClasses>
     <genClasses ecoreClass="XCanopus.ecore#//SUT">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//SUT/name"/>
-    </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//LoadGenerator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//LoadGenerator/isMonitor"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//LoadGenerator/hostname"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//LoadGenerator/ip"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//LoadGenerator/hardware"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//LoadGenerator/sut"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//LoadGenerator/metricmodel"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//LoadGenerator/monitor"/>
-    </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//Monitor">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Monitor/hostname"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Monitor/ip"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Monitor/hardware"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//Monitor/sut"/>
-    </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//MetricModel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//MetricModel/memory"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//MetricModel/disk"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//MetricModel/criteria"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//MetricModel/threshold"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//MetricModel/diskCounter"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//MetricModel/transactionCounter"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//MetricModel/memoryCounter"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//MetricModel/metric"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XCanopus.ecore#//MetricModel/counter"/>
-    </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//Memory">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//Memory/memoryCounter"/>
-    </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//Transaction">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Transaction/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//Transaction/transactionCounter"/>
-    </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//Disk">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XCanopus.ecore#//Disk/disk_io_counter"/>
-    </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//Criteria">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Criteria/value"/>
-    </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//Threshold">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Threshold/value"/>
-    </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//Disk_IO_Counter">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//Disk_IO_Counter/counterDisk"/>
-    </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//TransactionCounter">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//TransactionCounter/counterTransaction"/>
-    </genClasses>
-    <genClasses ecoreClass="XCanopus.ecore#//MemoryCounter">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XCanopus.ecore#//MemoryCounter/counterMemory"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
