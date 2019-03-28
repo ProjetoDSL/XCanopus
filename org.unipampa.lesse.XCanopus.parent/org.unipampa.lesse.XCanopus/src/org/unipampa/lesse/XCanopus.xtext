@@ -20,11 +20,11 @@ Model:
 MetricModel:
 	'Feature:' Freetext '.' 
 	'Monitoring:' name=ID 'description' Freetext '.' '{'
-	(steps+=STEPS)+ '}'
+	(steps+=STEPS)+ '}'*
 ;
 
 // '|' choice
-// '?' optional+
+// '?' optional
 // '+' 1 or more
 // '*' 0 or more
 // '+=' list of elements
@@ -40,7 +40,7 @@ Freetext:
 ;
  
 //possible steps
-STEPS: given | when | then | and_workload | and_atleast | and_the_scenario | and_the_metric;
+STEPS: given | when_memory | then | and_workload | and_atleast | and_the_scenario | and_the_metric;
 
 and_workload:
 	'And' WORKLOADGENERATED sut1=[SUT|ID] LOADGENERATORFORTHE suttype=SUT_TYPE ON sut2=[SUT|ID]
@@ -56,8 +56,19 @@ and_the_metric:
 	'And' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
 ;
 //second format of use CHOICE
-when:
-	'When' THE metrictype=METRICTYPEMONITORED ISMONITORED
+when_memory:
+	//'When' THE metrictype=METRICTYPEMONITORED ISMONITORED
+	'When' THE 'memory' ISMONITORED
+	('Then' THE (availablembytescounter = 'available mbytes counter' | 
+	pagesseccounter = 'pages/sec counter' | 
+	pagesreadsseccounter = 'page reads/sec counter' | 
+	workingsetcounter = 'working set counter' | 
+	poolnonpagedbytescounter = 'pool nonpaged bytes counter' | 
+	pagedpoolbytescounter = 'paged pool bytes counter' | 
+	pagedpoolfailurescounter = 'pages pool failures counter' | 
+	cachebytescounter = 'cache bytes counter' ) 
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
 	; 
 then:
 	'Then' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
@@ -68,7 +79,61 @@ given:
 
 enum METRICTYPEMONITORED: MEMORY = 'memory' | DISK = 'disk' | WEBRESOURCES = 'web resources' | TRANSACTION = 'transaction' | PROCESSOR = 'processor' ;
 
-enum METRICTYPE: availablembytescounter = 'available mbytes counter' | idletimecounter = '% idle time counter' | throughputmbytes = 'throughput mbytes' | transactionpersecond = 'transactions per second' | TPS = 'TPS' | processortimecounter = '% processor time count' | transactionresponsetime = 'transactions response time';
+enum METRICTYPE: 
+	//related to Memory
+//	availablembytescounter = 'available mbytes counter' | 
+//	pagesseccounter = 'pages/sec counter' | 
+//	pagesreadsseccounter = 'page reads/sec counter' | 
+//	workingsetcounter = 'working set counter' | 
+//	poolnonpagedbytescounter = 'pool nonpaged bytes counter' | 
+//	pagedpoolbytescounter = 'paged pool bytes counter' | 
+//	pagedpoolfailurescounter = 'pages pool failures counter' | 
+//	cachebytescounter = 'cache bytes counter' | 
+	//related to Processor
+	processortimecounter = '% processor time counter' | 
+	privilegedtimecounter = '% privileged time counter' |
+	interrupttimecounter = '% interrupt time counter' |
+	//verificar isso
+	processorqueuelenghtcounter = 'processor queue lenght counter' |
+	contextswitchescounter = 'context switches counter' |
+	systemuptimecounter = 'system up time counter' |
+	//related to Disk
+	avgdisksecstransfercounter = 'average disk secs/transfer counter' |
+	idletimecounter = '% idle time counter' | 
+	avgdiskqueuelenghtcounter = 'average disk queue lenght counter' |
+	splitioseccounter = 'split io/sec counter' |
+	freemegabytescounter = 'free megabytes counter' |
+	//related to Network
+	bytestotalsec = 'bytes total/sec' |
+	serverbytestotalsec = 'server bytes total/sec' |
+	datagramssec = 'datagrams/sec' |
+	connectionsestablished = 'connections established' |
+	segmentsreceivedsec = 'segments received/sec' |
+	interrupttime = '% interrupt time' |
+	//related to Web Resources
+	throughputmbytes = 'throughput mbytes'  |
+	hitspersecond = 'hits per second' |
+	httpresponsespersecond = 'http responses per second' |
+	pagesdownloadedpersecond = 'pages downlaoded per second' |
+	connections = 'connections' |
+	sslpersecond = 'ssl per second' |
+	//related to Transaction
+	transactionresponsetime  = 'transactions response time' | 
+    transactionspersecond = 'transactions per second' | 
+    transactionsuccessrate = 'transactions success rate' |
+    //related to Process
+    exceptionofexcepthrownsec = 'exception # of except thrown/sec' |
+    exceptionthrowtocatchdepthsec = 'exception throw to catch depth/sec' //|
+//    memorylargeobjectheapsize = 'memory large object heap size' |
+//    memorybytesinallheaps = 'memory # bytes in all heaps' |
+//    memoryofpinnedibjects = 'memory # of pinned objects'
+     
+;
+
+recebe :
+	string+=STRING
+;
+
 
 //availablembytescounter:
 //	AVAILABLEMBYTESCOUNTER_TEXT 
@@ -138,7 +203,8 @@ EBoolean returns ecore::EBoolean:
 	
 EString returns ecore::EString:
 	STRING | ID;
-	
+		
+
 enum HARDWARE:
 				PHYSICAL_MACHINE = 'PHYSICAL_MACHINE' | VIRTUAL_MACHINE = 'VIRTUAL_MACHINE' | CLOUD_SERVICE = 'CLOUD_SERVICE';
 
