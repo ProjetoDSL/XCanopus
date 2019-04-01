@@ -115,12 +115,9 @@ when_web_resources:
 ;
 when_transaction:
 	'When' THE 'transaction' ISMONITORED
-	('Then' THE (throughputmbytes = 'throughput mbytes'  |
-	hitspersecond = 'hits per second' |
-	httpresponsespersecond = 'http responses per second' |
-	pagesdownloadedpersecond = 'pages downlaoded per second' |
-	connections = 'connections' |
-	sslpersecond = 'ssl per second')
+	('Then' THE (transactionresponsetime  = 'transactions response time' | 
+    transactionspersecond = 'transactions per second' | 
+    transactionsuccessrate = 'transactions success rate')
 	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
 	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
 ;
