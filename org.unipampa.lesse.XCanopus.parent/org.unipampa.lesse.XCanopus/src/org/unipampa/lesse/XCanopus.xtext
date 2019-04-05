@@ -3,13 +3,12 @@ grammar org.unipampa.lesse.XCanopus with org.eclipse.xtext.common.Terminals hidd
 
 generate xCanopus "http://www.unipampa.org/lesse/XCanopus"
 
+
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
+
 Model: 
-     //  includes += Include*
-	 //  monitorings+=MetricModel* 
-	 //  scenario+=SCENARIO* 
-	 //  suts+=SUT*
+     
 	     main+=Main*
 ; 
 
@@ -18,9 +17,10 @@ Model:
 //;
 
 MetricModel:
-	'Feature: ' Freetext '.' 
-	'Monitoring:' name=ID 'description' Freetext '.' '{'
-	(steps+=STEPS)+ '}'*
+	'Feature' ':'  FREETEXT   '.'
+	'Monitoring' ':' name=ID 'description' FREETEXT  '{'
+	     (steps+=STEPS)+ 
+	'}'
 ;
 
 // '|' choice
@@ -35,40 +35,33 @@ Main:
 ;
 
 
-Freetext:
-	EString*
-;
- 
 //possible steps
 STEPS: given | when_memory | when_processor | when_disk | when_network | when_web_resources | when_transaction | when_process | and_workload | and_atleast | and_the_scenario;
 
 and_workload:
-	'And' WORKLOADGENERATED sut1=[SUT|ID] LOADGENERATORFORTHE suttype=SUT_TYPE ON sut2=[SUT|ID]
+	"And" WORKLOADGENERATED sut1=[SUT|ID] LOADGENERATORFORTHE suttype=SUT_TYPE ON sut2=[SUT|ID]
 ;
 and_the_scenario:
-	'And' THE scenario=[SCENARIO|ID] ISTESTSCENARIO 
+	"And" THE scenario=[SCENARIO|ID]  ISTESTSCENARIO 
 ;
 //first format CHOICE
 and_atleast:
-	'And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT
+	"And" ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT
 ;
-//and_the_metric:
-//	'And' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
-//;
-//second format of use CHOICE
 when_memory:
 	//'When' THE metrictype=METRICTYPEMONITORED ISMONITORED
-	'When' THE 'memory' ISMONITORED
-	('Then' THE (availablembytescounter = 'available mbytes counter' | 
-	pagesseccounter = 'pages/sec counter' |
-	pagesreadsseccounter = 'page reads/sec counter' |
-	workingsetcounter = 'working set counter' |
-	poolnonpagedbytescounter = 'pool nonpaged bytes counter' | 
-	pagedpoolbytescounter = 'paged pool bytes counter' | 
-	pagedpoolfailurescounter = 'pages pool failures counter' | 
-	cachebytescounter = 'cache bytes counter' )
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
-	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?	
+	"When" THE "memory" ISMONITORED
+	("Then" THE (availablembytescounter = "available mbytes counter" | 
+	pagesseccounter = "pages/sec counter" |
+	pagesreadsseccounter = "page reads/sec counter" |
+	workingsetcounter = "working set counter" |
+	poolnonpagedbytescounter = "pool nonpaged bytes counter" | 
+	pagedpoolbytescounter = "paged pool bytes counter" | 
+	pagedpoolfailurescounter = "pages pool failures counter" | 
+	cachebytescounter = "cache bytes counter" )
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
+	('And' ATL integer1=INT 
+		(MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?	
 	;
 when_processor:
 	'When' THE 'processor' ISMONITORED
@@ -78,7 +71,7 @@ when_processor:
 	processorqueuelenghtcounter = 'processor queue lenght counter' |
 	contextswitchescounter = 'context switches counter' |
 	systemuptimecounter = 'system up time counter')
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
 	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
 ;
 when_disk:
@@ -88,7 +81,7 @@ when_disk:
 	avgdiskqueuelenghtcounter = 'average disk queue lenght counter' |
 	splitioseccounter = 'split io/sec counter' |
 	freemegabytescounter = 'free megabytes counter')
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
 	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
 ;
 when_network:
@@ -99,7 +92,7 @@ when_network:
 	connectionsestablished = 'connections established' |
 	segmentsreceivedsec = 'segments received/sec' |
 	interrupttime = '% interrupt time')
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
 	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
 ;
 when_web_resources:
@@ -110,7 +103,7 @@ when_web_resources:
 	pagesdownloadedpersecond = 'pages downlaoded per second' |
 	connections = 'connections' |
 	sslpersecond = 'ssl per second')
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
 	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
 ;
 when_transaction:
@@ -118,7 +111,7 @@ when_transaction:
 	('Then' THE (transactionresponsetime  = 'transactions response time' | 
     transactionspersecond = 'transactions per second' | 
     transactionsuccessrate = 'transactions success rate')
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
 	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
 ;
 when_process:
@@ -128,86 +121,13 @@ when_process:
     memorylargeobjectheapsize = 'mem large object heap size' |
     memorybytesinallheaps = 'mem # bytes in all heaps' |
     memoryofpinnedibjects = 'mem # of pinned objects')
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)? )+
+	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
 	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
 ;
-//then:
-//	'Then' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
-//;
 given:
-	'Given' THAT sut1=[SUT|ID] suttype=SUT_TYPE MONITOREDBY sut2=[SUT|ID] MONITOR_TEXT
+	'Given' THAT_TEXT sut1=[SUT|ID] suttype=SUT_TYPE MONITOREDBY sut2=[SUT|ID] MONITOR_TEXT
 ;
 
-//enum METRICTYPEMONITORED: MEMORY = 'memory' | DISK = 'disk' | WEBRESOURCES = 'web resources' | TRANSACTION = 'transaction' | PROCESSOR = 'processor' ;
- 
-	//related to Memory
-//	availablembytescounter = 'available mbytes counter' | 
-//	pagesseccounter = 'pages/sec counter' | 
-//	pagesreadsseccounter = 'page reads/sec counter' | 
-//	workingsetcounter = 'working set counter' | 
-//	poolnonpagedbytescounter = 'pool nonpaged bytes counter' | 
-//	pagedpoolbytescounter = 'paged pool bytes counter' | 
-//	pagedpoolfailurescounter = 'pages pool failures counter' | 
-//	cachebytescounter = 'cache bytes counter' | 
-	//related to Processor
-//	processortimecounter = '% processor time counter' | 
-//	privilegedtimecounter = '% privileged time counter' |
-//	interrupttimecounter = '% interrupt time counter' |
-	//verificar isso
-//	processorqueuelenghtcounter = 'processor queue lenght counter' |
-//	contextswitchescounter = 'context switches counter' |
-//	systemuptimecounter = 'system up time counter' |
-	//related to Disk
-//	avgdisksecstransfercounter = 'average disk secs/transfer counter' |
-//	idletimecounter = '% idle time counter' | 
-//	avgdiskqueuelenghtcounter = 'average disk queue lenght counter' |
-//	splitioseccounter = 'split io/sec counter' |
-//	freemegabytescounter = 'free megabytes counter' |
-	//related to Network
-//	bytestotalsec = 'bytes total/sec' |
-//	serverbytestotalsec = 'server bytes total/sec' |
-//	datagramssec = 'datagrams/sec' |
-//	connectionsestablished = 'connections established' |
-//	segmentsreceivedsec = 'segments received/sec' |
-//	interrupttime = '% interrupt time' |
-	//related to Web Resources
-//	throughputmbytes = 'throughput mbytes'  |
-//	hitspersecond = 'hits per second' |
-//	httpresponsespersecond = 'http responses per second' |
-//	pagesdownloadedpersecond = 'pages downlaoded per second' |
-//	connections = 'connections' |
-//	sslpersecond = 'ssl per second' |
-	//related to Transaction
-//	transactionresponsetime  = 'transactions response time' | 
-//  transactionspersecond = 'transactions per second' | 
-//  transactionsuccessrate = 'transactions success rate' |
-    //related to Process
-//  exceptionofexcepthrownsec = 'exception # of except thrown/sec' |
-//  exceptionthrowtocatchdepthsec = 'exception throw to catch depth/sec' |
-//  memorylargeobjectheapsize = 'memory large object heap size' |
-//  memorybytesinallheaps = 'memory # bytes in all heaps' |
-//  memoryofpinnedibjects = 'memory # of pinned objects'
-     
-
-
-recebe :
-	string+=STRING
-;
-//availablembytescounter:
-//	AVAILABLEMBYTESCOUNTER_TEXT 
-//;
-//idletimecounter:
-//	IDLETIMECOUNTER_TEXT 
-//;
-//throughputmbytes:
-//	THROUGHPUTMBYTES_TEXT 
-//;
-//transactionpersecond:
-	 
-//;
-//processortimecounter:
-//	PROCESSORTIMECOUNTER_TEXT
-//;
 
 SCENARIO:
 	'Scenario' '{'
@@ -260,8 +180,10 @@ EBoolean returns ecore::EBoolean:
 	'true' | 'false';
 	
 EString returns ecore::EString:
-	STRING | ID;
-		
+	STRING | ID
+;
+
+
 
 enum HARDWARE:
 				PHYSICAL_MACHINE = 'PHYSICAL_MACHINE' | VIRTUAL_MACHINE = 'VIRTUAL_MACHINE' | CLOUD_SERVICE = 'CLOUD_SERVICE';
@@ -290,21 +212,15 @@ terminal WHENTHENUMBERISGREATEROREQUAL_TEXT:'when the number of virtual users is
 terminal WHENTHENUMBERIRLESSEROREQUAL_TEXT:'when the number of virtual users is lesser or equal to';
 terminal WHENTHENUMBERAREBETWEEN_TEXT:'when the number of virtual users are between';	
 
-//terminal AVAILABLEMBYTESCOUNTER_TEXT:'available mbytes counter';
-//terminal IDLETIMECOUNTER_TEXT:'% idle time counter' ;
-//terminal THROUGHPUTMBYTES_TEXT:'throughput mbytes' ;
-//terminal TRANSACTIONPERSECOND_TEXT:'transaction per second (TPS)' ;
-//terminal PROCESSORTIMECOUNTER_TEXT:'% processor time count' ;
-
 terminal MBWHEN_GREATEROREQUAL_TEXT:'MB when the number of virtual users is greater than or equal to';
 terminal MBWHEN_LESSTHAN_TEXT:'MB when the number of virtual users is less than';
 terminal MBWHEN_MORETHAN_TEXT:'MB when the number of virtual users is more than';
 terminal MBWHEN_MINOROREQUAL_TEXT:'MB when the number of virtual users is lesser than or equal to';
 
-terminal AND: 'and';
+//terminal AND_TEXT: 'and ';
 terminal MONITOR_TEXT:'monitor';
 terminal THE:'the';
-terminal THAT:'that';	
+terminal THAT_TEXT:'that';	
 terminal MONITOREDBY:'monitored by ';
 terminal WORKLOADGENERATED:'workload generated through';
 terminal LOADGENERATORFORTHE:'Load Generator for the';
@@ -316,7 +232,7 @@ terminal ATL:'at least';
 terminal fragment NNL: !('\r' | '\n');
 terminal fragment NL: '\r'? '\n'?;
 
-@Override 
+@Override
 terminal ID: 
     '^'?('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
  
@@ -327,7 +243,20 @@ terminal INT returns ecore::EInt:
 @Override 
 terminal STRING: 
     '"' ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
-    "'" ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'";
+    "'" ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
+  ;
+ 
+terminal FREETEXT:
+	'"' -> '"'
+; 
+
+terminal HASH:
+	'#'  '#' 
+; 
+
+terminal SPACE:
+	' '
+;
  
 @Override 
 terminal ML_COMMENT: 
