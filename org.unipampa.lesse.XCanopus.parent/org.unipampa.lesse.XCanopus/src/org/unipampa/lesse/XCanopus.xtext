@@ -8,18 +8,26 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 
 Model: 
-     
-	     main+=Main*
+     main+=Main*
 ; 
 
-//Include:
-//	'include' importURI=STRING 'as' name=ID
-//;
+
+Main:
+	main+=(Include | MetricModel | SCENARIO | SUT | USERPROFILE | SCRIPT | TRANSACTION)
+;
+
+Include:
+	'include' importURI=STRING 'as' name=ID
+;
+
+Parameter:
+	archive=[Include|ID] '.' column=STRING '.' line=STRING
+;
 
 MetricModel:
-	'Feature' ':'  FREETEXT   '.'
-	'Monitoring' ':' name=ID 'description' FREETEXT  '{'
-	     (steps+=STEPS)+ 
+	'Feature:'  FREETEXT '.'
+	'Monitoring:'  name=ID  'description'   FREETEXT   '{'
+	     (steps+=STEPSMETRYCMODEL)+ 
 	'}'
 ;
 
@@ -30,120 +38,332 @@ MetricModel:
 // '+=' list of elements
 // 0 or more strings
 
-Main:
-	main+=(MetricModel | SCENARIO | SUT)
-;
+// ##################################################################################################################################################################################################
+// ##################################################### METRIC MODEL RULES #########################################################################################################################
+// ##################################################################################################################################################################################################
 
-
-//possible steps
-STEPS: given | when_memory | when_processor | when_disk | when_network | when_web_resources | when_transaction | when_process | and_workload | and_atleast | and_the_scenario;
+STEPSMETRYCMODEL: given | when_memory | when_processor | when_disk | when_network | when_web_resources | when_transaction | when_process | and_workload | and_atleast | and_the_scenario;
 
 and_workload:
-	"And" WORKLOADGENERATED sut1=[SUT|ID] LOADGENERATORFORTHE suttype=SUT_TYPE ON sut2=[SUT|ID]
+	'And'  'workload generated through'  sut1=[SUT|ADRESS]  'load generator for the'  suttype=SUT_TYPE  'on'  sut2=[SUT|ADRESS]
 ;
 and_the_scenario:
-	"And" THE scenario=[SCENARIO|ID]  ISTESTSCENARIO 
+	'And'  'the'  scenario=[SCENARIO|ID]  'test scenario' 
 ;
-//first format CHOICE
+
 and_atleast:
-	"And" ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT
+	'And'  'at least'  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt (AND  integer8=EInt)?
 ;
+//
+// When About Memory
+//
 when_memory:
-	//'When' THE metrictype=METRICTYPEMONITORED ISMONITORED
-	"When" THE "memory" ISMONITORED
-	("Then" THE (availablembytescounter = "available mbytes counter" | 
-	pagesseccounter = "pages/sec counter" |
-	pagesreadsseccounter = "page reads/sec counter" |
-	workingsetcounter = "working set counter" |
-	poolnonpagedbytescounter = "pool nonpaged bytes counter" | 
-	pagedpoolbytescounter = "paged pool bytes counter" | 
-	pagedpoolfailurescounter = "pages pool failures counter" | 
-	cachebytescounter = "cache bytes counter" )
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
-	('And' ATL integer1=INT 
-		(MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?	
+	'When' 'the' 'Memory' 'is monitored'
+	('Then'  'the'  (availablembytescounter = 'available mbytes counter' | 
+	pagesseccounter = 'pages/sec counter' |
+	pagesreadsseccounter = 'page reads/sec counter' |
+	workingsetcounter = 'working set counter' |
+	poolnonpagedbytescounter = 'pool nonpaged bytes counter' | 
+	pagedpoolbytescounter = 'paged pool bytes counter' | 
+	pagedpoolfailurescounter = 'pages pool failures counter' | 
+	cachebytescounter = 'cache bytes counter' ) 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer2=EInt  (AND  integer3=EInt)? )
+	
+
+	('And'  'at least'  integer4=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to')   integer5=EInt (AND  integer8=EInt)?)*
+	
+		
+	('And' 'the' (availablembytescounter = 'available mbytes counter' | 
+	pagesseccounter = 'pages/sec counter' |
+	pagesreadsseccounter = 'page reads/sec counter' |
+	workingsetcounter = 'working set counter' |
+	poolnonpagedbytescounter = 'pool nonpaged bytes counter' | 
+	pagedpoolbytescounter = 'paged pool bytes counter' | 
+	pagedpoolfailurescounter = 'pages pool failures counter' | 
+	cachebytescounter = 'cache bytes counter' ) 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6+=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
 	;
+	
+//enum coisa:
+//	um ='MB when the number of virtual users is greater than or equal to' |dois = 'MB when the number of virtual users is less than' | tres = 'MB when the number of virtual users is more than' | quatro = 'MB when the number of virtual users is lesser than or equal to'
+//;
+
+//
+// When About Processor
+//
 when_processor:
-	'When' THE 'processor' ISMONITORED
-	('Then' THE (processortimecounter = '% processor time counter' | 
+	'When'  'the'  'Processor'  'is monitored'
+	('Then'  'the'  (processortimecounter = '% processor time counter' | 
 	privilegedtimecounter = '% privileged time counter' |
 	interrupttimecounter = '% interrupt time counter' |
 	processorqueuelenghtcounter = 'processor queue lenght counter' |
 	contextswitchescounter = 'context switches counter' |
-	systemuptimecounter = 'system up time counter')
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
-	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
+	systemuptimecounter = 'system up time counter') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
+	
+	
+	
+	('And'  'at least'  integer4=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+		
+	('And' 'the'(processortimecounter = '% processor time counter' | 
+	privilegedtimecounter = '% privileged time counter' |
+	interrupttimecounter = '% interrupt time counter' |
+	processorqueuelenghtcounter = 'processor queue lenght counter' |
+	contextswitchescounter = 'context switches counter' |
+	systemuptimecounter = 'system up time counter') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+	
 ;
+//
+// When About Disk
+//
 when_disk:
-	'When' THE 'disk' ISMONITORED
-	('Then' THE (avgdisksecstransfercounter = 'average disk secs/transfer counter' |
+	'When'  'the'  'Disk'  'is monitored'
+	('Then'  'the'  (avgdisksecstransfercounter = 'average disk secs/transfer counter' |
 	idletimecounter = '% idle time counter' | 
 	avgdiskqueuelenghtcounter = 'average disk queue lenght counter' |
 	splitioseccounter = 'split io/sec counter' |
-	freemegabytescounter = 'free megabytes counter')
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
-	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
+	freemegabytescounter = 'free megabytes counter') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt (AND  integer3=EInt)? )
+	
+	('And'  'at least'  integer=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+	
+		
+	('And' 'the' (avgdisksecstransfercounter = 'average disk secs/transfer counter' |
+	idletimecounter = '% idle time counter' | 
+	avgdiskqueuelenghtcounter = 'average disk queue lenght counter' |
+	splitioseccounter = 'split io/sec counter' |
+	freemegabytescounter = 'free megabytes counter')  
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+
 ;
+//
+// When About Network
+//
 when_network:
-	'When' THE 'network' ISMONITORED
-	('Then' THE (bytestotalsec = 'bytes total/sec' |
+	'When'  'the'  'Network'  'is monitored'
+	('Then'  'the'  (bytestotalsec = 'bytes total/sec' |
 	serverbytestotalsec = 'server bytes total/sec' |
 	datagramssec = 'datagrams/sec' |
 	connectionsestablished = 'connections established' |
 	segmentsreceivedsec = 'segments received/sec' |
-	interrupttime = '% interrupt time')
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
-	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
+	interrupttime = '% interrupt time') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
+	
+	('And'  'at least'  integer4=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+	
+		
+	('And' 'the' (bytestotalsec = 'bytes total/sec' |
+	serverbytestotalsec = 'server bytes total/sec' |
+	datagramssec = 'datagrams/sec' |
+	connectionsestablished = 'connections established' |
+	segmentsreceivedsec = 'segments received/sec' |
+	interrupttime = '% interrupt time')  
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+	
+	
 ;
+//
+// When about Web Resources
+//
 when_web_resources:
-	'When' THE 'web resources' ISMONITORED
-	('Then' THE (throughputmbytes = 'throughput mbytes'  |
+	'When'  'the'  'Web resources'  'is monitored'
+	('Then'  'the'  (throughputmbytes = 'throughput mbytes'  |
 	hitspersecond = 'hits per second' |
 	httpresponsespersecond = 'http responses per second' |
 	pagesdownloadedpersecond = 'pages downlaoded per second' |
 	connections = 'connections' |
-	sslpersecond = 'ssl per second')
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
-	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
+	sslpersecond = 'ssl per second') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
+	
+	('And'  'at least'  integer4=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+	
+		
+	('And' 'the' (throughputmbytes = 'throughput mbytes'  |
+	hitspersecond = 'hits per second' |
+	httpresponsespersecond = 'http responses per second' |
+	pagesdownloadedpersecond = 'pages downlaoded per second' |
+	connections = 'connections' |
+	sslpersecond = 'ssl per second')  
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+	
 ;
+//
+// When about Transaction
+//
 when_transaction:
-	'When' THE 'transaction' ISMONITORED
-	('Then' THE (transactionresponsetime  = 'transactions response time' | 
+	'When'  'the'  'Transaction'  'is monitored'
+	('Then'  'the'  (transactionresponsetime  = 'transactions response time' | 
     transactionspersecond = 'transactions per second' | 
-    transactionsuccessrate = 'transactions success rate')
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
-	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
+    transactionsuccessrate = 'transactions success rate') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt 'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
+	
+	
+	('And'  'at least'  integer4=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+	
+		
+	('And' 'the' (transactionresponsetime  = 'transactions response time' | 
+    transactionspersecond = 'transactions per second' | 
+    transactionsuccessrate = 'transactions success rate')   
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+	
+
 ;
+//
+// When About Process
+//
 when_process:
-	'When' THE 'process' ISMONITORED
-	('Then' THE (exceptionofexcepthrownsec = 'exception # of except thrown/sec' |
+	'When'  'the'  'Process'  'is monitored'
+	('Then'  'the'  (exceptionofexcepthrownsec = 'exception # of except thrown/sec' |
     exceptionthrowtocatchdepthsec = 'exception throw to catch depth/sec' |
     memorylargeobjectheapsize = 'mem large object heap size' |
     memorybytesinallheaps = 'mem # bytes in all heaps' |
-    memoryofpinnedibjects = 'mem # of pinned objects')
-	(SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT ('and' integer3=INT)? )+
-	('And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT)?
+    memoryofpinnedibjects = 'mem # of pinned objects') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between') integer2=EInt  (AND  integer3=EInt)? )
+	
+	('And'  'at least'  integer4=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt  (AND  integer3=EInt)? )*
+	
+		
+	('And' 'the' (exceptionofexcepthrownsec = 'exception # of except thrown/sec' |
+    exceptionthrowtocatchdepthsec = 'exception throw to catch depth/sec' |
+    memorylargeobjectheapsize = 'mem large object heap size' |
+    memorybytesinallheaps = 'mem # bytes in all heaps' |
+    memoryofpinnedibjects = 'mem # of pinned objects')  
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt 'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer11=EInt)?)*
+	
+
 ;
 given:
-	'Given' THAT_TEXT sut1=[SUT|ID] suttype=SUT_TYPE MONITOREDBY sut2=[SUT|ID] MONITOR_TEXT
+	'Given'  'that'  sut1=[SUT|ADRESS]   suttype=SUT_TYPE   'monitored by'  sut2=[SUT|ADRESS]   'monitor'
 ;
+
+// ##################################################################################################################################################################################################
+// ##################################################################################################################################################################################################
+// ##################################################################################################################################################################################################
+
+
+// ##################################################################################################################################################################################################
+// ##################################################### SCENARIO RULES #########################################################################################################################
+// ##################################################################################################################################################################################################
 
 
 SCENARIO:
-	'Scenario' '{'
-	name=ID
+//	'Feature' ':' FREETEXT '.'
+	
+	//################### WORKLOAD #############################
+	'Scenario:' 'Evaluate the' name=ID 'workload for' integer1=EInt 'users simultaneosly' '{'
+	'Given' integer2=EInt 'users enter the system every' time1=HOUR
+	'And' integer3=EInt 'users leave the system every' time2=HOUR
+	'And' integer4=EInt 'users register into the system simultaneously'
+	'And' 'performance testing execution during' time3=HOUR	
+	
+	
+	//################## scripts of this workload ######################
+	(('When' percents1+=EInt 'percent' 'of the virtual users execute the' userprofile=[USERPROFILE|ID] 'user profile:'
+	'Then' percents+=EInt 'percent' 'of them execute' script=[SCRIPT|ID] 'script')
+	('And' percent3+=EInt 'percent' 'of them execute' scripts+=[SCRIPT|ID] 'script')*)*	
 	'}'
 ;
 	
+USERPROFILE:
+	'User profile' '{'
+	name=ID
+	'}'
+;
+
+// ##################################################################################################################################################################################################
+// ##################################################################################################################################################################################################
+// ##################################################################################################################################################################################################
+
+
+// ##################################################################################################################################################################################################
+// ##################################################### SCRIPT RULES #########################################################################################################################
+// ##################################################################################################################################################################################################
+
+
+SCRIPT:
+	'Script:' FREETEXT 'based on ' testcaseidentifier=FREETEXT 'from' name=ID '{'
+	'Given' 'the' transaction1=[TRANSACTION|ID] 'transaction activity through' FREETEXT 'action, which is loaded in' (EInt | EDouble) 'seconds'
+	stepswhen=SCRIPTSTEPSWHEN 
+	(('then' 'i will be taken to' FREETEXT  'action in the' transactions+=[TRANSACTION|ID] 'transaction activity, which is loaded in' seconds+=EDouble 'seconds')
+	steps+=(SCRIPTSTEPSAND)*)*
+	'}'
+;
+
+SCRIPTSTEPSWHEN: WhenIClick | WhenIPress |  WhenISelect |  WhenIFill;
+
+WhenIClick:
+	'when i click' 'on' FREETEXT 'link'  archive=Parameter /* SOMETHING PARAMETRIZED */ ('which is dynamycally generated and update on') ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+;
+
+WhenIPress:
+	'when i press' 'the' FREETEXT 'button' archive=Parameter /* SOMETHING PARAMETRIZED */
+;
+
+WhenISelect:
+	'when i select' FREETEXT 'drop-down list with' archive=Parameter /* something parametrized */ 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+;
+
+WhenIFill:
+	'when i fill in' FREETEXT 'input field within'  archive=Parameter /* something parametrized */ 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+;
+
+
+SCRIPTSTEPSAND: AndIClick |  AndIPress | AndISelect | AndIFill | AndINeedToWait ;
+
+AndIClick:
+	'and i click on' FREETEXT  'link' archive=Parameter /* SOMETHING PARAMETRIZED */ 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+;
+
+AndIPress:
+	'and i press the' FREETEXT  'button' archive=Parameter /* SOMETHING PARAMETRIZED */ 
+;
+
+AndISelect:
+	'and i select' FREETEXT 'drop-down list with' archive=Parameter /* something parametrized */ 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+;
+
+AndIFill:
+	'and i fill in' FREETEXT 'input field within' archive=Parameter /* something parametrized */ 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+;
+
+AndINeedToWait:
+	'and i need to wait thinking time during' hour=HOUR 
+;
+
+
+
+
+
+TRANSACTION:
+	'Transaction' '{'
+	name=ID
+	'}'
+;
+
 SUT:
 	{SUT}
 	'SUT'
 	'{'
-		name=ID
+		name=ADRESS
 	//	('hostname' hostname=EString)?
 	//	('ip' ip=EString)?
 	//	('hardware' hardware=HARDWARE)?
-	//	('type' type=SUT_TYPE)?
+	//	'type' type=SUT_TYPE
 	//	('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
 	//	('metricmodel' metricmodel=[MetricModel|EString])?
 	'}';
@@ -171,8 +391,6 @@ SUT:
 //		('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
 //	'}';
 
-
-
 EInt returns ecore::EInt:
 	'-'? INT;
 	
@@ -183,14 +401,18 @@ EString returns ecore::EString:
 	STRING | ID
 ;
 
-
+EDouble returns ecore::EDouble:
+	INT '.' INT
+;
 
 enum HARDWARE:
 				PHYSICAL_MACHINE = 'PHYSICAL_MACHINE' | VIRTUAL_MACHINE = 'VIRTUAL_MACHINE' | CLOUD_SERVICE = 'CLOUD_SERVICE';
-
 enum SUT_TYPE:
 				DESKTOPAPP = 'DESKTOPAPP' | DATABASE = 'DATABASE' | WEBAPP = 'WEBAPP' | WEBSERVICE = 'WEBSERVICE';	
 
+HOUR:	
+	 EInt ':' EInt ':' EInt
+;
 //enum COUNTER_DISK:
 //				AVG_DISK_SECS_TRANSFER_COUNTER = 'AVG_DISK_SECS_TRANSFER_COUNTER' | PERCENTAGE_IDLE_TIME_COUNTER = 'PERCENTAGE_IDLE_TIME_COUNTER' | DISK_TRANSFERS_SEC_COUNTER = 'DISK_TRANSFERS_SEC_COUNTER' | AVG_DISK_QUEUE_LENGTH_COUNTER = 'AVG_DISK_QUEUE_LENGTH_COUNTER' | SPLIT_IO_SEC_COUNTER = 'SPLIT_IO_SEC_COUNTER' | FREE_MEGABYTES_COUNTER = 'FREE_MEGABYTES_COUNTER';
 
@@ -202,62 +424,58 @@ enum SUT_TYPE:
 	
 	
 	
-terminal SHOULDBELESSTHAN_TEXT:'should be less than';
-terminal SHOULDBEATLEAST_TEXT:'should be at least';
-terminal SHOULDBEGREATERTHAN:'should be more than';
+//terminal 'should be less than':'should be less than';
+//terminal 'should be at least':'should be at least';
+//terminal 'should be greater than':'should be more than';
 
-terminal WHENTHENUMBERISLESSTHAN_TEXT:'when the number of virtual users is less than';
-terminal WHENTHENUMBERISGREATERTHAN_TEXT:'when the number of virtual users is greater than';
-terminal WHENTHENUMBERISGREATEROREQUAL_TEXT:'when the number of virtual users is greater or equal to';
-terminal WHENTHENUMBERIRLESSEROREQUAL_TEXT:'when the number of virtual users is lesser or equal to';
-terminal WHENTHENUMBERAREBETWEEN_TEXT:'when the number of virtual users are between';	
-
-terminal MBWHEN_GREATEROREQUAL_TEXT:'MB when the number of virtual users is greater than or equal to';
-terminal MBWHEN_LESSTHAN_TEXT:'MB when the number of virtual users is less than';
-terminal MBWHEN_MORETHAN_TEXT:'MB when the number of virtual users is more than';
-terminal MBWHEN_MINOROREQUAL_TEXT:'MB when the number of virtual users is lesser than or equal to';
-
-//terminal AND_TEXT: 'and ';
-terminal MONITOR_TEXT:'monitor';
-terminal THE:'the';
-terminal THAT_TEXT:'that';	
-terminal MONITOREDBY:'monitored by ';
-terminal WORKLOADGENERATED:'workload generated through';
-terminal LOADGENERATORFORTHE:'Load Generator for the';
-terminal ISTESTSCENARIO:'test scenario';
-terminal ON:'on';
-terminal ISMONITORED:'is monitored';
-terminal ATL:'at least';
+//terminal 'when the number of virtual users is less than':'when the number of virtual users is less than';
+//terminal 'when the number of virtual users is greater than':'when the number of virtual users is greater than';
+//terminal 'when the number of virtual users is greater or equal to':'when the number of virtual users is greater or equal to';
+//terminal 'when the number of virtual users is lesser or equal to':'when the number of virtual users is lesser or equal to';
+//terminal 'when the number of virtual users are between':'when the number of virtual users are between';	
+//
+//terminal 'monitor':'monitor';
+//terminal MONITOREDBY:'monitored by';
 
 terminal fragment NNL: !('\r' | '\n');
 terminal fragment NL: '\r'? '\n'?;
+ 
 
 @Override
 terminal ID: 
     '^'?('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
- 
-@Override 
+  
+@Override
 terminal INT returns ecore::EInt: 
     ('0'..'9')+;
+    
+terminal ADRESS:
+	'#' -> '#' 
+;
+
+terminal AND:'&';
+//terminal DOUBLE returns ecore::EDouble:
+//	INT . INT
+//;
  
-@Override 
-terminal STRING: 
-    '"' ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
-    "'" ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
-  ;
+//@Override 
+//terminal STRING: 
+//    '"' ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
+//    "'" ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
+//;
+
+terminal PERCEIINT:
+	('0'..'9')+ '%'
+; 
  
 terminal FREETEXT:
 	'"' -> '"'
 ; 
 
-terminal HASH:
-	'#'  '#' 
+terminal BETWEENHASH:
+	'#' (!'#') '#' 
 ; 
 
-terminal SPACE:
-	' '
-;
- 
 @Override 
 terminal ML_COMMENT: 
     '/*' -> '*/';
@@ -273,3 +491,4 @@ terminal WS:
 @Override 
 terminal ANY_OTHER: 
 .;
+
