@@ -1,0 +1,56 @@
+Scenario: Evaluate the loadtesting workload for 1000 users simultaneosly {
+Given 100 users enter the system every 00:01:00
+And 200 users leave the system every 00:00:30
+And 1000 users register into the system simultaneously
+And performance testing execution during 04:00:00
+When 60 percent of the virtual users execute the Browsing user profile:
+Then 60 percent of them execute TPCWShop script
+And 25 percent of them execute TPCWShop script
+And 15 percent of them execute TPCWShop script
+When 15 percent of the virtual users execute the Ordering user profile:
+Then 20 percent of them execute TPCWShop script
+And 30 percent of them execute TPCWShop script
+And 50 percent of them execute TPCWShop script
+When 25 percent of the virtual users execute the Shoping user profile:
+Then 25 percent of them execute TPCWShop script
+And 45 percent of them execute TPCWShop script
+And 30 percent of them execute TPCWShop script
+} 
+
+Scenario: Evaluate the stresstesting workload for 1000 users simultaneosly {
+Given 100 users enter the system every 00:01:00
+And 200 users leave the system every 00:00:30
+And 1000 users register into the system simultaneously
+And performance testing execution during 04:00:00
+When 60 percent of the virtual users execute the Browsing user profile:
+Then 60 percent of them execute TPCWShop script
+And 25 percent of them execute TPCWShop script
+And 15 percent of them execute TPCWShop script
+When 15 percent of the virtual users execute the Ordering user profile:
+Then 20 percent of them execute TPCWShop script
+And 30 percent of them execute TPCWShop script
+And 50 percent of them execute TPCWShop script
+When 25 percent of the virtual users execute the Shoping user profile:
+Then 25 percent of them execute TPCWShop script
+And 45 percent of them execute TPCWShop script
+And 30 percent of them execute TPCWShop script
+} 
+
+Scenario: Evaluate the endurancetesting workload for 1000 users simultaneosly {
+Given 100 users enter the system every 00:01:00
+And 200 users leave the system every 00:00:30
+And 1000 users register into the system simultaneously
+And performance testing execution during 04:00:00
+When 60 percent of the virtual users execute the Browsing user profile:
+Then 60 percent of them execute TPCWShop script
+And 25 percent of them execute TPCWShop script
+And 15 percent of them execute TPCWShop script
+When 15 percent of the virtual users execute the Ordering user profile:
+Then 20 percent of them execute TPCWShop script
+And 30 percent of them execute TPCWShop script
+And 50 percent of them execute TPCWShop script
+When 25 percent of the virtual users execute the Shoping user profile:
+Then 25 percent of them execute TPCWShop script
+And 45 percent of them execute TPCWShop script
+And 30 percent of them execute TPCWShop script
+} 

@@ -1,0 +1,21 @@
+include 'data.csv' as parameter 
+
+Script: "the users performs purchase interactions" based on "TestCaseN1" from  TPCWShop {
+Given the HomePage transaction activity through "http://localhost:8080/tpcw/ TPCW_home_interaction" action, which is loaded in 5.0 seconds
+when i click on "Subject" link parameter.'column'.'line' which is dynamycally generated and update on Each Interaction based on a random strategy
+then i will be taken to "/TPCW_new_products_servlet" action in the NewProduct transaction activity, which is loaded in 5.0 seconds
+and i click on "Product" link parameter.'column'.'line' which is dynamically generated and update on Each Interaction based on a random strategy
+and i need to wait thinking time during 00:00:05
+then i will be taken to "/TPCW_product_detail_servlet" action in the ProductDetails transaction activity, which is loaded in 3.0 seconds
+/* Repeat block three times to perform searching of random books */ 
+and i press the "Search" button parameter.'column'.'line'
+then i will be taken to "/TPCW_product_detail_servlet" action in the SearchRequest transaction activity, which is loaded in 2.7 seconds
+and i press the "Search" button parameter.'column'.'line'
+then i will be taken to "/TPCW_product_detail_servlet" action in the SearchRequest transaction activity, which is loaded in 2.7 seconds
+and i press the "Search" button parameter.'column'.'line'
+then i will be taken to "/TPCW_product_detail_servlet" action in the SearchRequest transaction activity, which is loaded in 2.7 seconds
+and i select "Type" drop-down list with parameter.'column'.'line' which is dynamically generated and update on Each Interaction based on a random strategy
+and i fill in "Search" input field within parameter.'column'.'line' which is dynamically generated and update on Each Interaction based on a same as type strategy
+and i press the "Submit" button parameter.'column'.'line'
+then i will be taken to  "/TPCW_execute_search"  action in the SaerhResult transaction activity, which is loaded in 2.9 seconds
+}

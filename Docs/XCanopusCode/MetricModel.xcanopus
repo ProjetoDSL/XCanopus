@@ -1,0 +1,22 @@
+Feature: "Monitor the performance counters of the system and environment".
+Monitoring: MetricModel1 description "Control the performance counters of the application" {
+Given that #ZEUS:192.168.1.1# WEBAPP monitored by #BIG_BROTHER:192.168.1.3# monitor
+And workload generated through #RUNNER:192.168.1.6# load generator for the WEBAPP on #ZEUS#
+And workload generated through #LOAD:192.168.1.7# load generator for the WEBAPP on #ZEUS#
+And the loadtesting test scenario 
+When the Memory is monitored
+Then the available mbytes counter should be at least 2000 MB when the number of virtual users are between 350 & 700
+And at least 1000 MB when the number of virtual users is greater than or equal to 700
+And at least 3000 MB when the number of virtual users is less than 350
+When the Disk is monitored
+Then the % idle time counter should be less than 90 MB when the number of virtual users is less than 1000
+When the Web resources is monitored 
+Then the throughput mbytes should be less than 60000 MB when the number of virtual users is less than 1000
+When the Transaction is monitored
+Then the transactions per second should be less than 55000 MB when the number of virtual users is less than 1000
+And the transactions response time should be less than 3 MB when the number of virtual users is less than 1000
+When the Processor is monitored 
+Then the % processor time counter should be less than 70 MB when the number of virtual users is less than 1000
+}  
+
+ 

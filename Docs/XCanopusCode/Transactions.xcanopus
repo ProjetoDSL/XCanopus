@@ -1,0 +1,19 @@
+Transaction {
+	HomePage
+}
+
+Transaction {
+	NewProduct
+}
+
+Transaction {
+	ProductDetails
+}
+
+Transaction {
+	SearchRequest
+}
+
+Transaction {
+	SaerhResult
+}
