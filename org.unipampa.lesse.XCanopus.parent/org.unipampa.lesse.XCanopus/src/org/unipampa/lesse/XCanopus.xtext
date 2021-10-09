@@ -179,14 +179,14 @@ when_transaction:
 	('Then'  'the'  (transactionresponsetime  = 'transactions response time' | 
     transactionspersecond = 'transactions per second' | 
     transactionsuccessrate = 'transactions success rate') 
-	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"' | 'Milisec' | 'Sec')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"' | 'Msec' | 'Sec')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
 	
 	('And'  'at least'  integer4=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
 		
 	('And' 'the' (transactionresponsetime  = 'transactions response time' | 
     transactionspersecond = 'transactions per second' | 
     transactionsuccessrate = 'transactions success rate')   
-	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"' | 'Milisec' | 'Sec')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer7=EInt  (AND  integer8=EInt)? )* 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"' | 'Msec' | 'Sec')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer7=EInt  (AND  integer8=EInt)? )* 
 	
 	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
 ;
@@ -200,9 +200,9 @@ when_process:
     memorylargeobjectheapsize = 'mem large object heap size' |
     memorybytesinallheaps = 'mem # bytes in all heaps' |
     memoryofpinnedibjects = 'mem # of pinned objects') 
-	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between') integer2=EInt  (AND  integer3=EInt)? )
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between') integer2=EInt  (AND  integer3=EInt)? )
 	
-	('And'  'at least'  integer4=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt  (AND  integer3=EInt)? )*
+	('And'  'at least'  integer4=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt  (AND  integer3=EInt)? )*
 		
 	('And' 'the' (exceptionofexcepthrownsec = 'exception # of except thrown/sec' |
     exceptionthrowtocatchdepthsec = 'exception throw to catch depth/sec' |
@@ -211,7 +211,7 @@ when_process:
     memoryofpinnedibjects = 'mem # of pinned objects')  
 	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
 	
-	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"' | 'Milisec' | 'Sec')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer11=EInt)?)*
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"' | 'Msec' | 'Sec')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer11=EInt)?)*
 ;
 
 // ##################################################################################################################################################################################################
