@@ -57,9 +57,9 @@ when_memory:
 	pagedpoolbytescounter = 'paged pool bytes counter' | 
 	pagedpoolfailurescounter = 'pages pool failures counter' | 
 	cachebytescounter = 'cache bytes counter' ) 
-	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer2=EInt  (AND  integer3=EInt)? )
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer2=EInt  (AND  integer3=EInt)? )
 
-	('And'  'at least'  integer4+=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to')   integer5+=EInt (AND  integer6+=EInt)?)*
+	('And'  'at least'  integer4+=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to')   integer5+=EInt (AND  integer6+=EInt)?)*
 	
 	('And' 'the' (availablembytescounter = 'available mbytes counter' | 
 	pagesseccounter = 'pages/sec counter' |
@@ -69,9 +69,9 @@ when_memory:
 	pagedpoolbytescounter = 'paged pool bytes counter' | 
 	pagedpoolfailurescounter = 'pages pool failures counter' | 
 	cachebytescounter = 'cache bytes counter' ) 
-	('should be less than' | 'should be at least' | 'should be greater than')  integer7+=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer8=EInt  (AND  integer9=EInt)? )* 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer7+=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer8=EInt  (AND  integer9=EInt)? )* 
 	
-	('And'  'at least'  integer10+=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer11+=EInt (AND  integer12+=EInt)?)*
+	('And'  'at least'  integer10+=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer11+=EInt (AND  integer12+=EInt)?)*
 ;
 //
 // When About Processor
@@ -84,9 +84,9 @@ when_processor:
 	processorqueuelenghtcounter = 'processor queue lenght counter' |
 	contextswitchescounter = 'context switches counter' |
 	systemuptimecounter = 'system up time counter') 
-	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
 	
-	('And'  'at least'  integer4=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+	('And'  'at least'  integer4=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
 		
 	('And' 'the'(processortimecounter = '% processor time counter' | 
 	privilegedtimecounter = '% privileged time counter' |
@@ -94,9 +94,9 @@ when_processor:
 	processorqueuelenghtcounter = 'processor queue lenght counter' |
 	contextswitchescounter = 'context switches counter' |
 	systemuptimecounter = 'system up time counter') 
-	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
 	
-	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
 ;
 //
 // When About Disk
@@ -108,18 +108,18 @@ when_disk:
 	avgdiskqueuelenghtcounter = 'average disk queue lenght counter' |
 	splitioseccounter = 'split io/sec counter' |
 	freemegabytescounter = 'free megabytes counter') 
-	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt (AND  integer3=EInt)? )
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt (AND  integer3=EInt)? )
 	
-	('And'  'at least'  integer=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+	('And'  'at least'  integer=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
 		
 	('And' 'the' (avgdisksecstransfercounter = 'average disk secs/transfer counter' |
 	idletimecounter = '% idle time counter' | 
 	avgdiskqueuelenghtcounter = 'average disk queue lenght counter' |
 	splitioseccounter = 'split io/sec counter' |
 	freemegabytescounter = 'free megabytes counter')  
-	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
 	
-	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
 ;
 //
 // When About Network
@@ -132,9 +132,9 @@ when_network:
 	connectionsestablished = 'connections established' |
 	segmentsreceivedsec = 'segments received/sec' |
 	interrupttime = '% interrupt time') 
-	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )	
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )	
 	
-	('And'  'at least'  integer4=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*	
+	('And'  'at least'  integer4=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*	
 	
 	('And' 'the' (bytestotalsec = 'bytes total/sec' |
 	serverbytestotalsec = 'server bytes total/sec' |
@@ -142,9 +142,9 @@ when_network:
 	connectionsestablished = 'connections established' |
 	segmentsreceivedsec = 'segments received/sec' |
 	interrupttime = '% interrupt time')  
-	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
 	
-	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*	
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*	
 ;
 //
 // When about Web Resources
@@ -157,9 +157,9 @@ when_web_resources:
 	pagesdownloadedpersecond = 'pages downlaoded per second' |
 	connections = 'connections' |
 	sslpersecond = 'ssl per second') 
-	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
 	
-	('And'  'at least'  integer4=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+	('And'  'at least'  integer4=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
 			
 	('And' 'the' (throughputmbytes = 'throughput mbytes'  |
 	hitspersecond = 'hits per second' |
@@ -167,9 +167,9 @@ when_web_resources:
 	pagesdownloadedpersecond = 'pages downlaoded per second' |
 	connections = 'connections' |
 	sslpersecond = 'ssl per second')  
-	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer7=EInt  (AND  integer8=EInt)? )* 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer7=EInt  (AND  integer8=EInt)? )* 
 	
-	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
 ;
 //
 // When about Transaction
@@ -179,16 +179,16 @@ when_transaction:
 	('Then'  'the'  (transactionresponsetime  = 'transactions response time' | 
     transactionspersecond = 'transactions per second' | 
     transactionsuccessrate = 'transactions success rate') 
-	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt 'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"' | 'Milisec' | 'Sec')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
 	
-	('And'  'at least'  integer4=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+	('And'  'at least'  integer4=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
 		
 	('And' 'the' (transactionresponsetime  = 'transactions response time' | 
     transactionspersecond = 'transactions per second' | 
     transactionsuccessrate = 'transactions success rate')   
-	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer7=EInt  (AND  integer8=EInt)? )* 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"' | 'Milisec' | 'Sec')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer7=EInt  (AND  integer8=EInt)? )* 
 	
-	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
 ;
 //
 // When About Process
@@ -209,9 +209,9 @@ when_process:
     memorylargeobjectheapsize = 'mem large object heap size' |
     memorybytesinallheaps = 'mem # bytes in all heaps' |
     memoryofpinnedibjects = 'mem # of pinned objects')  
-	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt 'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
 	
-	('And'  'at least'  integer9=EInt  'MB when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer11=EInt)?)*
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"' | 'Milisec' | 'Sec')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer11=EInt)?)*
 ;
 
 // ##################################################################################################################################################################################################
