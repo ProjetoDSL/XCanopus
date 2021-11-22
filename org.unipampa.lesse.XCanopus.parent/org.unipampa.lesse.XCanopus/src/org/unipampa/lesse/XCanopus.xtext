@@ -248,36 +248,36 @@ SCRIPT:
 
 SCRIPTSTEPSWHEN: WhenIClick | WhenIPress |  WhenISelect |  WhenIFill;
 WhenIClick:
-	'when i click' 'on' FREETEXT 'link'  archive=PARAMETER ('which is dynamycally generated and update on') ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+	'when i click' 'on' FREETEXT 'link'  FREETEXT ('which is dynamycally generated and update on') ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
 ;
 
 WhenIPress:
-	'when i press' 'the' FREETEXT 'button' archive=PARAMETER 
+	'when i press' 'the' FREETEXT 'button' FREETEXT
 ;
 
 WhenISelect:
-	'when i select' FREETEXT 'drop-down list with' archive=PARAMETER  'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+	'when i select' FREETEXT 'drop-down list with' FREETEXT  'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
 ;
 
 WhenIFill:
-	'when i fill in' FREETEXT 'input field within'  archive=PARAMETER 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+	'when i fill in' FREETEXT 'input field within'  FREETEXT 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
 ;
 
 SCRIPTSTEPSAND: AndIClick |  AndIPress | AndISelect | AndIFill | AndINeedToWait ;
 AndIClick:
-	'and i click on' FREETEXT  'link' archive=PARAMETER 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+	'and i click on' FREETEXT  'link' FREETEXT 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
 ;
 
 AndIPress:
-	'and i press the' FREETEXT  'button' archive=PARAMETER 
+	'and i press the' FREETEXT  'button' FREETEXT
 ;
 
 AndISelect:
-	'and i select' FREETEXT 'drop-down list with' archive=PARAMETER  'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+	'and i select' FREETEXT 'drop-down list with' FREETEXT 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
 ;
 
 AndIFill:
-	'and i fill in' FREETEXT 'input field within' archive=PARAMETER  'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+	'and i fill in' FREETEXT 'input field within' FREETEXT 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
 ;
 
 AndINeedToWait:

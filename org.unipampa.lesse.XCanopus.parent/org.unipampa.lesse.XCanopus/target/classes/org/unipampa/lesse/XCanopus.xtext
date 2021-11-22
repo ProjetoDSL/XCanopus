@@ -3,132 +3,304 @@ grammar org.unipampa.lesse.XCanopus with org.eclipse.xtext.common.Terminals hidd
 
 generate xCanopus "http://www.unipampa.org/lesse/XCanopus"
 
+
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
+
 Model: 
-     //  includes += Include*
-	 //  monitorings+=MetricModel* 
-	 //  scenario+=SCENARIO* 
-	 //  suts+=SUT*
-	     main+=Main*
+     main+=Main*
 ; 
 
-//Include:
-//	'include' importURI=STRING 'as' name=ID
-//;
+Main:
+	main+=(INCLUDE | MONITORING | SCENARIO | SUT | USERPROFILE | SCRIPT | TRANSACTION)
+;
 
-MetricModel:
-	'Feature:' Freetext '.' 
-	'Monitoring:' name=ID 'description' Freetext '.' '{'
-	(steps+=STEPS)+ '}'
+INCLUDE:
+	'include' importURI=STRING 'as' name=ID
+;
+
+PARAMETER:
+	archive=[INCLUDE|ID] '.' column=STRING '.' line=STRING
+;
+
+// ##################################################################################################################################################################################################
+// ##################################################### MONITORING RULES #########################################################################################################################
+// ##################################################################################################################################################################################################
+
+MONITORING:
+	'Feature:'  FREETEXT '.'
+	'Monitoring:'  name=ID  'description'   FREETEXT   '{'
+	'Given' 'that' sut1=[SUT|ADRESS] suttype1=SUT_TYPE 'monitored by'  sut2=[SUT|ADRESS] 'monitor'
+	('And' 'workload generated through' sutlist+=[SUT|ADRESS]  'load generator for the' suttypelist+=SUT_TYPE 'on' sutlist2+=[SUT|ADRESS])+  
+	'And'  'the'  scenario=[SCENARIO|ID]  'test scenario' 
+	     (steps+=STEPSMETRYCMODEL)+
+	'}'
 ;
 
 // '|' choice
-// '?' optional+
+// '?' optional
 // '+' 1 or more
 // '*' 0 or more
 // '+=' list of elements
 // 0 or more strings
 
-Main:
-	main+=(MetricModel | SCENARIO | SUT)
+
+STEPSMETRYCMODEL:  when_memory | when_processor | when_disk | when_network | when_web_resources | when_transaction | when_process /*| and_workload | and_atleast  /* | and_the_scenario*/;
+
+when_memory:
+	'When' 'the' 'Memory' 'is monitored'
+	('Then'  'the'  (availablembytescounter = 'available mbytes counter' | 
+	pagesseccounter = 'pages/sec counter' |
+	pagesreadsseccounter = 'page reads/sec counter' |
+	workingsetcounter = 'working set counter' |
+	poolnonpagedbytescounter = 'pool nonpaged bytes counter' | 
+	pagedpoolbytescounter = 'paged pool bytes counter' | 
+	pagedpoolfailurescounter = 'pages pool failures counter' | 
+	cachebytescounter = 'cache bytes counter' ) 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer2=EInt  (AND  integer3=EInt)? )
+
+	('And'  'at least'  integer4+=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to')   integer5+=EInt (AND  integer6+=EInt)?)*
+	
+	('And' 'the' (availablembytescounter = 'available mbytes counter' | 
+	pagesseccounter = 'pages/sec counter' |
+	pagesreadsseccounter = 'page reads/sec counter' |
+	workingsetcounter = 'working set counter' |
+	poolnonpagedbytescounter = 'pool nonpaged bytes counter' | 
+	pagedpoolbytescounter = 'paged pool bytes counter' | 
+	pagedpoolfailurescounter = 'pages pool failures counter' | 
+	cachebytescounter = 'cache bytes counter' ) 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer7+=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer8=EInt  (AND  integer9=EInt)? )* 
+	
+	('And'  'at least'  integer10+=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer11+=EInt (AND  integer12+=EInt)?)*
+;
+//
+// When About Processor
+//
+when_processor:
+	'When'  'the'  'Processor'  'is monitored'
+	('Then'  'the'  (processortimecounter = '% processor time counter' | 
+	privilegedtimecounter = '% privileged time counter' |
+	interrupttimecounter = '% interrupt time counter' |
+	processorqueuelenghtcounter = 'processor queue lenght counter' |
+	contextswitchescounter = 'context switches counter' |
+	systemuptimecounter = 'system up time counter') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
+	
+	('And'  'at least'  integer4=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+		
+	('And' 'the'(processortimecounter = '% processor time counter' | 
+	privilegedtimecounter = '% privileged time counter' |
+	interrupttimecounter = '% interrupt time counter' |
+	processorqueuelenghtcounter = 'processor queue lenght counter' |
+	contextswitchescounter = 'context switches counter' |
+	systemuptimecounter = 'system up time counter') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+;
+//
+// When About Disk
+//
+when_disk:
+	'When'  'the'  'Disk'  'is monitored'
+	('Then'  'the'  (avgdisksecstransfercounter = 'average disk secs/transfer counter' |
+	idletimecounter = '% idle time counter' | 
+	avgdiskqueuelenghtcounter = 'average disk queue lenght counter' |
+	splitioseccounter = 'split io/sec counter' |
+	freemegabytescounter = 'free megabytes counter') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt (AND  integer3=EInt)? )
+	
+	('And'  'at least'  integer=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+		
+	('And' 'the' (avgdisksecstransfercounter = 'average disk secs/transfer counter' |
+	idletimecounter = '% idle time counter' | 
+	avgdiskqueuelenghtcounter = 'average disk queue lenght counter' |
+	splitioseccounter = 'split io/sec counter' |
+	freemegabytescounter = 'free megabytes counter')  
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+;
+//
+// When About Network
+//
+when_network:
+	'When'  'the'  'Network'  'is monitored'
+	('Then'  'the'  (bytestotalsec = 'bytes total/sec' |
+	serverbytestotalsec = 'server bytes total/sec' |
+	datagramssec = 'datagrams/sec' |
+	connectionsestablished = 'connections established' |
+	segmentsreceivedsec = 'segments received/sec' |
+	interrupttime = '% interrupt time') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )	
+	
+	('And'  'at least'  integer4=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*	
+	
+	('And' 'the' (bytestotalsec = 'bytes total/sec' |
+	serverbytestotalsec = 'server bytes total/sec' |
+	datagramssec = 'datagrams/sec' |
+	connectionsestablished = 'connections established' |
+	segmentsreceivedsec = 'segments received/sec' |
+	interrupttime = '% interrupt time')  
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*	
+;
+//
+// When about Web Resources
+//
+when_web_resources:
+	'When'  'the'  'Web resources'  'is monitored'
+	('Then'  'the'  (throughputmbytes = 'throughput mbytes'  |
+	hitspersecond = 'hits per second' |
+	httpresponsespersecond = 'http responses per second' |
+	pagesdownloadedpersecond = 'pages downlaoded per second' |
+	connections = 'connections' |
+	sslpersecond = 'ssl per second') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
+	
+	('And'  'at least'  integer4=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+			
+	('And' 'the' (throughputmbytes = 'throughput mbytes'  |
+	hitspersecond = 'hits per second' |
+	httpresponsespersecond = 'http responses per second' |
+	pagesdownloadedpersecond = 'pages downlaoded per second' |
+	connections = 'connections' |
+	sslpersecond = 'ssl per second')  
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+;
+//
+// When about Transaction
+//
+when_transaction:
+	'When'  'the'  'Transaction'  'is monitored'
+	('Then'  'the'  (transactionresponsetime  = 'transactions response time' | 
+    transactionspersecond = 'transactions per second' | 
+    transactionsuccessrate = 'transactions success rate') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"' | 'Msec' | 'Sec')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer2=EInt  (AND  integer3=EInt)? )
+	
+	('And'  'at least'  integer4=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt (AND  integer8=EInt)?)*
+		
+	('And' 'the' (transactionresponsetime  = 'transactions response time' | 
+    transactionspersecond = 'transactions per second' | 
+    transactionsuccessrate = 'transactions success rate')   
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"' | 'Msec' | 'Sec')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer8=EInt)?)*
+;
+//
+// When About Process
+//
+when_process:
+	'When'  'the'  'Process'  'is monitored'
+	('Then'  'the'  (exceptionofexcepthrownsec = 'exception # of except thrown/sec' |
+    exceptionthrowtocatchdepthsec = 'exception throw to catch depth/sec' |
+    memorylargeobjectheapsize = 'mem large object heap size' |
+    memorybytesinallheaps = 'mem # bytes in all heaps' |
+    memoryofpinnedibjects = 'mem # of pinned objects') 
+	('should be less than' | 'should be at least' | 'should be greater than')  integer1=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between') integer2=EInt  (AND  integer3=EInt)? )
+	
+	('And'  'at least'  integer4=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer5=EInt  (AND  integer3=EInt)? )*
+		
+	('And' 'the' (exceptionofexcepthrownsec = 'exception # of except thrown/sec' |
+    exceptionthrowtocatchdepthsec = 'exception throw to catch depth/sec' |
+    memorylargeobjectheapsize = 'mem large object heap size' |
+    memorybytesinallheaps = 'mem # bytes in all heaps' |
+    memoryofpinnedibjects = 'mem # of pinned objects')  
+	('should be less than' | 'should be at least' | 'should be greater than')  integer6=EInt ('KBytes' | 'Mbytes' | '"%"')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')   integer7=EInt  (AND  integer8=EInt)? )* 
+	
+	('And'  'at least'  integer9=EInt ('KBytes' | 'Mbytes' | '"%"' | 'Msec' | 'Sec')? 'when the number of virtual users' ('is greater than or equal to' | 'is less than' | 'is more than' | 'is lesser than or equal to' | 'are between')  integer10=EInt (AND  integer11=EInt)?)*
 ;
 
-
-Freetext:
-	EString*
-;
- 
-//possible steps
-STEPS: given | when | then | and_workload | and_atleast | and_the_scenario | and_the_metric;
-
-and_workload:
-	'And' WORKLOADGENERATED sut1=[SUT|ID] LOADGENERATORFORTHE suttype=SUT_TYPE ON sut2=[SUT|ID]
-;
-and_the_scenario:
-	'And' THE scenario=[SCENARIO|ID] ISTESTSCENARIO 
-;
-//first format CHOICE
-and_atleast:
-	'And' ATL integer1=INT (MBWHEN_GREATEROREQUAL_TEXT | MBWHEN_LESSTHAN_TEXT | MBWHEN_MORETHAN_TEXT | MBWHEN_MINOROREQUAL_TEXT) integer2=INT
-;
-and_the_metric:
-	'And' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
-;
-//second format of use CHOICE
-when:
-	'When' THE metrictype=METRICTYPEMONITORED ISMONITORED
-	; 
-then:
-	'Then' THE metric=METRICTYPE (SHOULDBELESSTHAN_TEXT | SHOULDBEATLEAST_TEXT | SHOULDBEGREATERTHAN) integer1=INT (WHENTHENUMBERISLESSTHAN_TEXT | WHENTHENUMBERISGREATERTHAN_TEXT | WHENTHENUMBERISGREATEROREQUAL_TEXT | WHENTHENUMBERIRLESSEROREQUAL_TEXT | WHENTHENUMBERAREBETWEEN_TEXT) integer2=INT (AND integer3=INT)?
-;
-given:
-	'Given' THAT sut1=[SUT|ID] suttype=SUT_TYPE MONITOREDBY sut2=[SUT|ID] MONITOR_TEXT
-;
-
-enum METRICTYPEMONITORED: MEMORY = 'memory' | DISK = 'disk' | WEBRESOURCES = 'web resources' | TRANSACTION = 'transaction' | PROCESSOR = 'processor' ;
-
-enum METRICTYPE: availablembytescounter = 'available mbytes counter' | idletimecounter = '% idle time counter' | throughputmbytes = 'throughput mbytes' | transactionpersecond = 'transactions per second' | TPS = 'TPS' | processortimecounter = '% processor time count' | transactionresponsetime = 'transactions response time';
-
-//availablembytescounter:
-//	AVAILABLEMBYTESCOUNTER_TEXT 
-//;
-//idletimecounter:
-//	IDLETIMECOUNTER_TEXT 
-//;
-//throughputmbytes:
-//	THROUGHPUTMBYTES_TEXT 
-//;
-//transactionpersecond:
-	 
-//;
-//processortimecounter:
-//	PROCESSORTIMECOUNTER_TEXT
-//;
+// ##################################################################################################################################################################################################
+// ##################################################### SCENARIO RULES #########################################################################################################################
+// ##################################################################################################################################################################################################
 
 SCENARIO:
-	'Scenario' '{'
+	//################### WORKLOAD #############################
+	'Scenario:' 'Evaluate the' name=ID 'workload for' integer1=EInt 'users simultaneously' '{'
+	'Given' integer2=EInt 'users enter the system every' time1=HOUR
+	'And' integer3=EInt 'users leave the system every' time2=HOUR
+	'And' integer4=EInt 'users register into the system simultaneously'
+	'And' 'performance testing execution during' time3=HOUR	
+	//################## scripts of this workload ######################
+	(('When' percentslist+=EInt 'percent' 'of the virtual users execute the' userprofilelist+=[USERPROFILE|ID] 'user profile:'
+	'Then' percentslist+=EInt 'percent' 'of them execute' scriptslist1+=[SCRIPT|ID] 'script')
+	('And' percentlist+=EInt 'percent' 'of them execute' scriptslist2+=[SCRIPT|ID] 'script')*)*	
+	'}'
+;
+
+// ##################################################################################################################################################################################################
+// ##################################################### SCRIPT RULES #########################################################################################################################
+// ##################################################################################################################################################################################################
+
+
+SCRIPT:
+	'Script:' FREETEXT 'based on ' testcaseidentifier=FREETEXT 'from' name=ID '{'
+	'Given' 'the' transaction1=[TRANSACTION|ID] 'transaction activity through' FREETEXT 'action, which is loaded in' time1=EDouble 'seconds'
+	stepswhen=SCRIPTSTEPSWHEN 
+	(('then' 'i will be taken to' FREETEXT  'action in the' transactions+=[TRANSACTION|ID] 'transaction activity, which is loaded in' timelist+=EDouble 'seconds')
+	steps+=(SCRIPTSTEPSAND)*)*
+	'}'
+;
+
+SCRIPTSTEPSWHEN: WhenIClick | WhenIPress |  WhenISelect |  WhenIFill;
+WhenIClick:
+	'when i click' 'on' FREETEXT 'link'  FREETEXT ('which is dynamycally generated and update on') ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+;
+
+WhenIPress:
+	'when i press' 'the' FREETEXT 'button' FREETEXT
+;
+
+WhenISelect:
+	'when i select' FREETEXT 'drop-down list with' FREETEXT  'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+;
+
+WhenIFill:
+	'when i fill in' FREETEXT 'input field within'  FREETEXT 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+;
+
+SCRIPTSTEPSAND: AndIClick |  AndIPress | AndISelect | AndIFill | AndINeedToWait ;
+AndIClick:
+	'and i click on' FREETEXT  'link' FREETEXT 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+;
+
+AndIPress:
+	'and i press the' FREETEXT  'button' FREETEXT
+;
+
+AndISelect:
+	'and i select' FREETEXT 'drop-down list with' FREETEXT 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+;
+
+AndIFill:
+	'and i fill in' FREETEXT 'input field within' FREETEXT 'which is dynamically generated and update on' ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+;
+
+AndINeedToWait:
+	'and i need to wait thinking time during' hour=HOUR 
+;
+
+TRANSACTION:
+	'Transaction' '{'
 	name=ID
 	'}'
 ;
-	
 SUT:
 	{SUT}
 	'SUT'
 	'{'
-		name=ID
-	//	('hostname' hostname=EString)?
-	//	('ip' ip=EString)?
-	//	('hardware' hardware=HARDWARE)?
-	//	('type' type=SUT_TYPE)?
-	//	('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
-	//	('metricmodel' metricmodel=[MetricModel|EString])?
-	'}';
-
-//LoadGenerator:
-//	{LoadGenerator}
-//	(isMonitor?='isMonitor')?
-//	'LoadGenerator'
-//	'{'
-//		('hostname' hostname=EString)?
-//		('ip' ip=EString)?
-//		('hardware' hardware=HARDWARE)?
-//		('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
-//		('metricmodel' metricmodel=[MetricModel|EString])?
-//		('monitorr' monitor=[Monitor|EString])?
-//	'}';
-
-//Monitor:
-//	{Monitor}
-//	'Monitor'
-//	'{'
-//		('hostname' hostname=EString)?
-//		('ip' ip=EString)?
-//		('hardware' hardware=HARDWARE)?
-//		('sut' '(' sut+=[SUT|EString] ( "," sut+=[SUT|EString])* ')' )?
-//	'}';
-
-
+		name=ADRESS
+	'}'
+;
+USERPROFILE:
+	'User profile' '{'
+	name=ID
+	'}'
+;
 
 EInt returns ecore::EInt:
 	'-'? INT;
@@ -137,74 +309,52 @@ EBoolean returns ecore::EBoolean:
 	'true' | 'false';
 	
 EString returns ecore::EString:
-	STRING | ID;
-	
+	STRING | ID
+;
+
+EDouble returns ecore::EDouble:
+	INT '.' INT
+;
+
 enum HARDWARE:
 				PHYSICAL_MACHINE = 'PHYSICAL_MACHINE' | VIRTUAL_MACHINE = 'VIRTUAL_MACHINE' | CLOUD_SERVICE = 'CLOUD_SERVICE';
-
 enum SUT_TYPE:
 				DESKTOPAPP = 'DESKTOPAPP' | DATABASE = 'DATABASE' | WEBAPP = 'WEBAPP' | WEBSERVICE = 'WEBSERVICE';	
 
-//enum COUNTER_DISK:
-//				AVG_DISK_SECS_TRANSFER_COUNTER = 'AVG_DISK_SECS_TRANSFER_COUNTER' | PERCENTAGE_IDLE_TIME_COUNTER = 'PERCENTAGE_IDLE_TIME_COUNTER' | DISK_TRANSFERS_SEC_COUNTER = 'DISK_TRANSFERS_SEC_COUNTER' | AVG_DISK_QUEUE_LENGTH_COUNTER = 'AVG_DISK_QUEUE_LENGTH_COUNTER' | SPLIT_IO_SEC_COUNTER = 'SPLIT_IO_SEC_COUNTER' | FREE_MEGABYTES_COUNTER = 'FREE_MEGABYTES_COUNTER';
-
-//enum COUNTER_TRANSACTION:
-//				TRANSACTION_RESPONSE_TIME = 'TRANSACTION_RESPONSE_TIME' | TRANSACTION_PER_SECOND_TPS = 'TRANSACTION_PER_SECOND_TPS' | TRANSACTION_SUCCESS_RATE = 'TRANSACTION_SUCCESS_RATE';
-
-//enum COUNTER_MEMORY:
-//				AVALIABLE_MBYTES_COUNTER = 'AVALIABLE_MBYTES_COUNTER' | PAGES_SEC_COUNTER = 'PAGES_SEC_COUNTER' | PAGE_READS_SEC_COUNTER = 'PAGE_READS_SEC_COUNTER' | WORKING_SET_COUNTER = 'WORKING_SET_COUNTER' | POOL_NONPAGE_BYTES_COUNTER = 'POOL_NONPAGE_BYTES_COUNTER' | PAGED_POOL_BYTES_COUNTER = 'PAGED_POOL_BYTES_COUNTER' | PAGED_POOL_FAILURES_COUNTER = 'PAGED_POOL_FAILURES_COUNTER' | CACHE_BYTES_COUNTER = 'CACHE_BYTES_COUNTER';
-	
-	
-	
-terminal SHOULDBELESSTHAN_TEXT:'should be less than';
-terminal SHOULDBEATLEAST_TEXT:'should be at least';
-terminal SHOULDBEGREATERTHAN:'should be more than';
-
-terminal WHENTHENUMBERISLESSTHAN_TEXT:'when the number of virtual users is less than';
-terminal WHENTHENUMBERISGREATERTHAN_TEXT:'when the number of virtual users is greater than';
-terminal WHENTHENUMBERISGREATEROREQUAL_TEXT:'when the number of virtual users is greater or equal to';
-terminal WHENTHENUMBERIRLESSEROREQUAL_TEXT:'when the number of virtual users is lesser or equal to';
-terminal WHENTHENUMBERAREBETWEEN_TEXT:'when the number of virtual users are between';	
-
-//terminal AVAILABLEMBYTESCOUNTER_TEXT:'available mbytes counter';
-//terminal IDLETIMECOUNTER_TEXT:'% idle time counter' ;
-//terminal THROUGHPUTMBYTES_TEXT:'throughput mbytes' ;
-//terminal TRANSACTIONPERSECOND_TEXT:'transaction per second (TPS)' ;
-//terminal PROCESSORTIMECOUNTER_TEXT:'% processor time count' ;
-
-terminal MBWHEN_GREATEROREQUAL_TEXT:'MB when the number of virtual users is greater than or equal to';
-terminal MBWHEN_LESSTHAN_TEXT:'MB when the number of virtual users is less than';
-terminal MBWHEN_MORETHAN_TEXT:'MB when the number of virtual users is more than';
-terminal MBWHEN_MINOROREQUAL_TEXT:'MB when the number of virtual users is lesser than or equal to';
-
-terminal AND: 'and';
-terminal MONITOR_TEXT:'monitor';
-terminal THE:'the';
-terminal THAT:'that';	
-terminal MONITOREDBY:'monitored by ';
-terminal WORKLOADGENERATED:'workload generated through';
-terminal LOADGENERATORFORTHE:'Load Generator for the';
-terminal ISTESTSCENARIO:'test scenario';
-terminal ON:'on';
-terminal ISMONITORED:'is monitored';
-terminal ATL:'at least';
+HOUR:	
+	 EInt ':' EInt ':' EInt
+;
 
 terminal fragment NNL: !('\r' | '\n');
 terminal fragment NL: '\r'? '\n'?;
+ 
 
-@Override 
+@Override
 terminal ID: 
     '^'?('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
- 
-@Override 
+  
+@Override
 terminal INT returns ecore::EInt: 
     ('0'..'9')+;
+    
+terminal ADRESS:
+	'#' -> '#' 
+;
+
+terminal AND:'&';
+
+terminal PERCEIINT:
+	('0'..'9')+ '%'
+; 
  
-@Override 
-terminal STRING: 
-    '"' ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
-    "'" ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'";
- 
+terminal FREETEXT:
+	'"' -> '"'
+; 
+
+terminal BETWEENHASH:
+	'#' (!'#') '#' 
+; 
+
 @Override 
 terminal ML_COMMENT: 
     '/*' -> '*/';
@@ -220,3 +370,4 @@ terminal WS:
 @Override 
 terminal ANY_OTHER: 
 .;
+
