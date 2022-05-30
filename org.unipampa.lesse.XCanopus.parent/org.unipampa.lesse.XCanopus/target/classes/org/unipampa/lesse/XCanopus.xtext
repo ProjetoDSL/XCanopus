@@ -248,7 +248,7 @@ SCRIPT:
 
 SCRIPTSTEPSWHEN: WhenIClick | WhenIPress |  WhenISelect |  WhenIFill;
 WhenIClick:
-	'when i click' 'on' FREETEXT 'link'  FREETEXT ('which is dynamycally generated and update on') ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
+	'when i click' 'on' FREETEXT 'link'  FREETEXT ('which is dynamically generated and update on') ('Each Interaction') 'based on a' ('random' | 'same as type') 'strategy'
 ;
 
 WhenIPress:
